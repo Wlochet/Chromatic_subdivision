@@ -1,5 +1,5 @@
 % EJC papers *must* begin with the following two lines.
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 \usepackage{fullpage}
 
 
@@ -59,26 +59,109 @@
 
 \title{Some paths and chromatic number}
 
-% input author, affilliation, address and support information as follows;
-% the address should include the country, and does not have to include
-% the street address
-
-
-
-% \date{\dateline{submission date}{acceptance date}\\
-% \small Mathematics Subject Classifications: comma separated list of
-% MSC codes available from http://www.ams.org/mathscinet/freeTools.html}
-
 
 
 \begin{document}
 
 
 
+\begin{definition}
+Let $k_1,k_2,k_3$ be positive integers. Let $P(k_1,k_2;k_3)$ be the digraph formed by three internally disjoint paths between two vertices $x,y$, two $(x,y)$-dipaths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$.
+When we want to insist on the vertices $x$ and $y$, we denote it by $P_{xy}(k_1,k_2;k_3)$.
+\end{definition}
+
+\section{$P(k,1,1)$}
+
+\begin{theorem}
+Let $D$ be a sc digraph. If $\chi(D) > k^2$ then $D$ contains a subdvision of $P(k,1;1)$
+\end{theorem}
+
+\begin{lemma}
+Let $D$ be a sc digraph
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{C}$ be a collection 
+\end{proof}
 
 
+\section{$P(k,1;k)$}
+
+\begin{theorem}
+Let $D$ be a sc digraph. If $\chi(D) > ?$ then $D$ contains a subdvision of $P(k,1;k)$
+\end{theorem}
+
+Let $\mathcal{C}$ be a collection a dicycle, such that $\forall$ $C_1$, and $C_2$ in $\mathcal{C}$, $C_1$ and $C_2$ intersect on 
+a directed path $P_{1,2}$, such that $P_{1,2}$ is a subpath of both $C_1$ and $C_2$ of length smaller than $k$.
+Let $D[\mathcal{C}]$ be the graph induced on $D$ by the vertices in $\mathcal{C}$.
+
+\begin{claim}
+$\chi(D[\mathcal{C}]) < ? $
+\end{claim}
+
+Let $D'$ be the subgraph of $D[\mathcal{C}]$ that contains only the edges inside a cycle of  $\mathcal{C}$.
 
 
+\begin{claim}
+There exists a proper colouring $c$ of $D'$ with $2k$ colours, such that, each subpath of length $k$ of each cycle of $\mathcal{C}$ is rainbow coloured. 
+\end{claim}
+
+Let $C_1$ be an element of $\mathcal{C}$ and $I(C_1)$ be the set of vertices of cycle $C_i$ which intersect $C_1$, which are at distance 4k 
+of $C_1$ on $C_i$ (before or after).  $D'\setminus C_1$ $I(C_1)$ of $D$. Let $A$ be a connected component 
+of $D'\setminus C_1$ and $A'$ is the union of cycle of $\mathcal{C}$ which contains a vertex of $A$. 
+
+
+\begin{lemma}
+All vertices of $A' \setminus A$ belongs to a single cycle $C_A$ of $\mathcal{C}$.
+\end{lemma}
+
+\begin{proof}
+
+Suppose it's not the case. Let $C_2$ and $C_3$ be two cycles of $A'$ such that $C_2$ and $C_3$ intersect with $C_1$. 
+In $A$ $C_2$ is reduced to a directed path between $u_1$ and $u_2$ and $C_3$ a directed path between $v_1$ and $v_2$.
+Because the intersection of these two cycles is shorter than $k$ and the part on $C_3$ from $v_2$ to $v_1$ and the part
+on $C_2$ from $u_2$ to $u_1$ are longer than $4k$ we are in one of the following case:
+\begin{itemize}
+	\item There exists a vertex $x$, either belonging to $C_1$ or $C_2$ and $C_3$, with two disjoint dipath $P_1$ from
+	$x$ to $u_1$ and $P_2$ from $x$ to $v_1$, longer than $k$. Then there exists a directed path $P(u,v)$ in $A$ from 
+	a vertex $u$ of $C_2$ to a vertex $v$ of $C_3$ which is internally disjoint from  $C_2$, $C_3$ and $C_1$ 
+	(note that it can be so that $u$ = $v$). Now the following three disjoint paths are a subdivision of $P(k,1,k)$ between $x$ and $v$:
+	First, the union of $P_1$, the subpath of $C_2$ from $u_1$ to $u$ and $P(u,v)$ which is longer than $k$, then the path from $v$ to $u$ 
+	along $C_3$ and $C_1$ which is also longer than $k$ and then the union of $P_2$ and the subpath of $C_3$ from $v_1$ to $v$, which is also longer than $k$.
+	\item There exists a vertex $x$ either belonging to $C_1$ or $C_2$ and $C_3$, with two disjoint dipath $P_1$ from
+	$u_2$ to $x$ and $P_2$ from $v_2$ to $x$, longer than $k$. This case is symmetric. 
+\end{itemize}
+
+\end{proof}
+
+\begin{lemma}
+Let $c$ be a partial colouring of $C_1$ such that only a path of length smaller than
+$9k$ is coloured and this path is rainbow coloured. Then $c$ can be extended into
+a colouring of $D[I(C_1)]$ using ? colours, such that on all cycles but $C_1$ at most a path of length $9k$ is
+coloured and this colouration is rainbow.
+\end{lemma}
+
+\begin{proof}
+Since $D[C_1]$ is 2k-degenerate, we can easily extend $c$ to colour $D[C_1]$ such that every path of length $9k$ is rainbow coloured. 
+We will colour the other vertices with ? new colours. For each vertex $x$ of $I(C_1)$ which is not on $C_1$ we say $x$ is at distance $i$
+of $C_1$ if $x$ is on cycle $C_j$ which intersect $C_1$ and the path from $x$ to $C_1$ on $C_j$ is $i$. If $x$ is before $C_1$
+$i$ is positive and $i$ is negative otherwise. Let $D_i$, be digraph induced by the set of vertices at distance $i$, positive, of $C_1$, then
+$\chi(D_i) < k$. Suppose not then we can find a dipath $P$ of length $k$ inside $D_i$ $x_1,x_2, \dots x_k$. By definition there two cycles
+$C_2$, $C_3$, such that $x_1$ is on $C_2$ and $x_k$ on $C_3$. Consider the three paths $P_2 \subset C_2$ from $c_1 \in C_1$ to $x_1$
+disjoint, apart in $c_1$, from $C_1$, $P_3 \subset C_3$ from $c_p \in C_1$ to $x_p$ disjoint, apart in $c_1$, from $C_1$ and $P_4$ from $x_p$
+
+\end{proof}
+
+We will prove the claim in the following way: Pick a cycle $C_1$ and colour it with $3k$ colours. Using 
+
+\begin{lemma}
+Suppose $D_1$ is a union of cycle of length at least $8k$
+
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
 
 
 
