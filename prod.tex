@@ -70,19 +70,7 @@ Let $k_1,k_2,k_3$ be positive integers. Let $P(k_1,k_2;k_3)$ be the digraph form
 When we want to insist on the vertices $x$ and $y$, we denote it by $P_{xy}(k_1,k_2;k_3)$.
 \end{definition}
 
-\section{$P(k,1,1)$}
 
-\begin{theorem}
-Let $D$ be a sc digraph. If $\chi(D) > k^2$ then $D$ contains a subdvision of $P(k,1;1)$
-\end{theorem}
-
-\begin{lemma}
-Let $D$ be a sc digraph
-\end{lemma}
-
-\begin{proof}
-Let $\mathcal{C}$ be a collection 
-\end{proof}
 
 
 \section{$P(k,1;k)$}
@@ -103,21 +91,21 @@ Let $D'$ be the subgraph of $D[\mathcal{C}]$ that contains only the edges inside
 
 
 \begin{claim}
-There exists a proper colouring $c$ of $D'$ with $2k$ colours, such that, each subpath of length $k$ of each cycle of $\mathcal{C}$ is rainbow coloured. 
+There exists a proper colouring $c$ of $D'$ with $4k^2 + 9k$ colours, such that, each subpath of length $k$ of each cycle of $\mathcal{C}$ is rainbow coloured. 
 \end{claim}
 
-Let $C_1$ be an element of $\mathcal{C}$ and $I(C_1)$ be the set of vertices of cycle $C_i$ which intersect $C_1$, which are at distance 4k 
-of $C_1$ on $C_i$ (before or after).  $D'\setminus C_1$ $I(C_1)$ of $D$. Let $A$ be a connected component 
-of $D'\setminus C_1$ and $A'$ is the union of cycle of $\mathcal{C}$ which contains a vertex of $A$. 
+Let $C_1$ be an element of $\mathcal{C}$ and $I(C_1)$ be the set of vertices of cycle $C_i$ which intersect $C_1$, which are at distance $4k$ 
+of $C_1$ on $C_i$ (before or after). For each connected component $A$ 
+of $D'\setminus I(C_1)$, let $E(A)$ be the union of cycle of $\mathcal{C}$ which contains a vertex of $A$. 
 
 
-\begin{lemma}
-All vertices of $A' \setminus A$ belongs to a single cycle $C_A$ of $\mathcal{C}$.
+\begin{lemma}\label{A}
+All vertices of $E(A) \setminus A$ belongs to a single cycle $C_A$ of $\mathcal{C}$.
 \end{lemma}
 
 \begin{proof}
 
-Suppose it's not the case. Let $C_2$ and $C_3$ be two cycles of $A'$ such that $C_2$ and $C_3$ intersect with $C_1$. 
+Suppose it's not the case. Let $C_2$ and $C_3$ be two cycles of $E(A)$ such that $C_2$ and $C_3$ intersect with $C_1$. 
 In $A$ $C_2$ is reduced to a directed path between $u_1$ and $u_2$ and $C_3$ a directed path between $v_1$ and $v_2$.
 Because the intersection of these two cycles is shorter than $k$ and the part on $C_3$ from $v_2$ to $v_1$ and the part
 on $C_2$ from $u_2$ to $u_1$ are longer than $4k$ we are in one of the following case:
@@ -134,30 +122,43 @@ on $C_2$ from $u_2$ to $u_1$ are longer than $4k$ we are in one of the following
 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{IC}
 Let $c$ be a partial colouring of $C_1$ such that only a path of length smaller than
 $9k$ is coloured and this path is rainbow coloured. Then $c$ can be extended into
-a colouring of $D[I(C_1)]$ using ? colours, such that on all cycles but $C_1$ at most a path of length $9k$ is
+a colouring of $D[I(C_1)]$ using $4k^2 + 9k$ colours, such that on all cycles but $C_1$ at most a path of length $9k$ is
 coloured and this colouration is rainbow.
 \end{lemma}
 
 \begin{proof}
 Since $D[C_1]$ is 2k-degenerate, we can easily extend $c$ to colour $D[C_1]$ such that every path of length $9k$ is rainbow coloured. 
-We will colour the other vertices with ? new colours. For each vertex $x$ of $I(C_1)$ which is not on $C_1$ we say $x$ is at distance $i$
+We will colour the other vertices with  $4k^2$ new colours. 
+For each vertex $x$ of $I(C_1)$ which is not on $C_1$ we say $x$ is at distance $i$
 of $C_1$ if $x$ is on cycle $C_j$ which intersect $C_1$ and the path from $x$ to $C_1$ on $C_j$ is $i$. If $x$ is before $C_1$
 $i$ is positive and $i$ is negative otherwise. Let $D_i$, be digraph induced by the set of vertices at distance $i$, positive, of $C_1$, then
 $\chi(D_i) < k$. Suppose not then we can find a dipath $P$ of length $k$ inside $D_i$ $x_1,x_2, \dots x_k$. By definition there two cycles
 $C_2$, $C_3$, such that $x_1$ is on $C_2$ and $x_k$ on $C_3$. Consider the three paths $P_2 \subset C_2$ from $c_1 \in C_1$ to $x_1$
-disjoint, apart in $c_1$, from $C_1$, $P_3 \subset C_3$ from $c_p \in C_1$ to $x_p$ disjoint, apart in $c_1$, from $C_1$ and $P_4$ from $x_p$
+disjoint, apart in $c_1$, from $C_1$, $P_3 \subset C_k$ from $c_p \in C_1$ to $x_p$ disjoint, apart in $c_p$, from $C_1$ and $P_4 \subset C_k$ from $x_p$ to $c_p^{'} \in C_1$, disjoint from $C_1$ apart from $c_p$. We find the subdivision of $P(k,1;k)$, as follow :
 
+If $P_2$ and $P_3$ are not disjoints, then let $u$ be the last vertex on which they intersect (note that $x_1$ and $x_k$ are different).
+We find the subdivision of $P(k,1;k)$ between $u$ and $x_k$. The first path is $u$ to $x_1$ along $P_2$ then $P$, the second one is the
+path from $x_k$ to $u$ along $C_k$ and the third is the path from $u$ to $x_p$ along $C_k$.
+
+If $P_2$ and $P_3$ are disjoint. If $c_1$ is between $c_p{'}$ and $c_p$ along the cycle $C_1$, then we find the subdivision of $P(k,1;k)$
+between $c_1$ and $x_p$. The first path is $P_2 \cdot P$, the second is $P_4$ then the path along $C_1$ from $c_p^{'}$ to $c_1$ and the third
+is the path along $C_1$ from $c_1$ to $c_p$ then $P_3$. If $c_1$ is after $c_p$ then we find the subdivision of $P(k,1;k)$ between $c_p$ and 
+$x_p$. The first path is the path along $C_1$ from $c_p$ to $c_1$, then $P_2$ then $P$. Then second is $P_4$ then the path along $C_1$ from
+$c_p^{'}$ to $c_p$ and the third is $P_3$. 
+
+The argument is the same when $i$ is negative, and thus the rest of $I(C_1)$ can be coloured with $4k*k$ colours. 
 \end{proof}
 
-We will prove the claim in the following way: Pick a cycle $C_1$ and colour it with $3k$ colours. Using 
-
-\begin{lemma}
-Suppose $D_1$ is a union of cycle of length at least $8k$
-
-\end{lemma}
+Now we can prove by induction on the number of cycle in $\mathcal{C}$ that if one of the cycle $C_1$ has a path of length smaller than $9k$
+which is rainbow coloured, then we can extend this colouring to all $D[\mathbb{C}]$ such that, on each cycle, every subdipath of length
+$9k$ is rainbow coloured. By lemma \ref{IC}, we can extend this colouring to a colouring $c$ of $D[I(C_1)]$.
+ Note that the remaining points of $D[\mathbb{C}]$ are in the connected components of $D'\setminus I(C_1)$. 
+Let $A$ be a connected component of $D'\setminus I(C_1)$, by lemma \ref{A} if we give the colours of $c$ to vertices of $E(A) \cap I(C_1)$
+only a path of length smaller than $9k$ receive some colours, so we can apply the induction hypothesis to all $E(A)$ to get a colouring
+of the vertices of $A$ which is compatible with $c$. By doing this to each component, we finish the proof.
 
 \begin{proof}
 
