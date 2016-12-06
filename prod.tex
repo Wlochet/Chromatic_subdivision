@@ -83,7 +83,7 @@ Let $\mathcal{C}$ be a collection a dicycle, such that $\forall$ $C_1$, and $C_2
 a directed path $P_{1,2}$, such that $P_{1,2}$ is a subpath of both $C_1$ and $C_2$ of length smaller than $k$.
 Let $D[\mathcal{C}]$ be the graph induced on $D$ by the vertices in $\mathcal{C}$.
 
-\begin{claim}
+\begin{claim}\label{DC}
 $\chi(D[\mathcal{C}]) < ? $
 \end{claim}
 
@@ -91,7 +91,7 @@ Let $D'$ be the subgraph of $D[\mathcal{C}]$ that contains only the edges inside
 
 
 \begin{claim}
-There exists a proper colouring $c$ of $D'$ with $4k^2 + 9k$ colours, such that, each subpath of length $k$ of each cycle of $\mathcal{C}$ is rainbow coloured. 
+There exists a proper colouring $c$ of $D'$ with $4k^2 + 9k$ colours, such that, each subpath of length $3k$ of each cycle of $\mathcal{C}$ is rainbow coloured. 
 \end{claim}
 
 Let $C_1$ be an element of $\mathcal{C}$ and $I(C_1)$ be the set of vertices of cycle $C_i$ which intersect $C_1$, which are at distance $4k$ 
@@ -122,6 +122,41 @@ on $C_2$ from $u_2$ to $u_1$ are longer than $4k$ we are in one of the following
 
 \end{proof}
 
+
+We will need the following lemmas: 
+\begin{lemma}\label{walk}
+Let $D$ be a digraph and $W$ a walk of length $t^l$ such that every vertex appears at most $t$ times.
+Then there exists a dipath of length $l$ starting with the first vertex of $W$.
+\end{lemma}
+
+\begin{proof}
+We do it by induction on $l$. Let $x$ be the first vertex of $W$, because $x$ appears at most $t$ times, there exists a subpath of length greater 
+than $t^l/t$ not containing $x$. If we apply induction to the longest of such path, then we find a path of length $l-1$ without $x$ such that
+ the first vertex is an out-neighbour of $x$.  
+
+\end{proof}
+
+\begin{lemma}\label{min}
+Let $u_t$ be a sequence of $t > l^k$ integer in $[k]$ then there exists a set $L$ of $l$ of indices such that $u_i$ for $i \in L$ have the same value 
+and the elements in between have greater value. 
+\end{lemma}
+
+\begin{proof}
+We do it by induction on $k$. Let $L_1$ be the indices of the sequence where the value is $1$. If $L_1$ has more than $l$ elements we are done,
+else we find a subsequence of $l^k/l$ consecutive elements without any $1$ and we can apply induction. 
+\end{proof} 
+
+\begin{lemma}\label{max}
+Let $u_t$ be a sequence of $t > k*m$ integer in $[k]$, then there exists a subsequence of size $m$ consecutive integer such that the 
+last is the largest.
+\end{lemma}
+
+\begin{proof}
+By induction on $k$. For $k = 1$, it's easy. 
+If there exists an element of the sequence $u_i = k$ for $i \geq m$ then take the $i$ first element of the sequence.
+If not, take the subsequence starting after the last element of value $k$, it's length is at least $k*m - m$ and we can apply induction. 
+\end{proof}
+
 \begin{lemma}\label{IC}
 Let $c$ be a partial colouring of $C_1$ such that only a path of length smaller than
 $9k$ is coloured and this path is rainbow coloured. Then $c$ can be extended into
@@ -131,10 +166,35 @@ coloured and this colouration is rainbow.
 
 \begin{proof}
 Since $D[C_1]$ is 2k-degenerate, we can easily extend $c$ to colour $D[C_1]$ such that every path of length $9k$ is rainbow coloured. 
-We will colour the other vertices with  $4k^2$ new colours. 
+We will colour the other vertices with  new colours, but before we complete each maximal subdipath of $C_i \setminus C_1$ into transitive tournament
+(by doing this we ensure that the colouring we obtain is rainbow where we want it). We call the arcs added that way the \textit{fake arcs}  
 For each vertex $x$ of $I(C_1)$ which is not on $C_1$ we say $x$ is at distance $i$
-of $C_1$ if $x$ is on cycle $C_j$ which intersect $C_1$ and the path from $x$ to $C_1$ on $C_j$ is $i$. If $x$ is before $C_1$
-$i$ is positive and $i$ is negative otherwise. Let $D_i$, be digraph induced by the set of vertices at distance $i$, positive, of $C_1$, then
+of $C_1$ if $x$ is on cycle $C_j$ which intersect $C_1$ and the path from $x$ to $C_1$ on $C_j$ is $i$
+(note that $x$ can have many distances, if it belongs to different cycles). Call $D_1$ the graph where we remove $C_1$ from $D[I(C_1)]$ and add the fake
+edge.
+
+\begin{claim}
+$\chi(D_1) < a lot$ 
+\end{claim}
+
+\begin{proof}
+It's not, then there exists a path of length ?. 
+For each vertex $v$ we will associate a set of integer $V_d$ as following. If $v \in C_i \cap C_1$ then we put $j$ in $V_d$ if the distance
+from the last vertex of $P_{1,i}$ to $v$ on $C_i$ is $j$, when $i$ is after $P_{1,j}$. If  $i$ is before $P_{1,j}$ we put $-j$ if $j$ is the distance from
+$v$ to the first vertex of $P_{1,j}$. 
+First note that the integer in $V_d$ are either all positive or negative. A FAIRE. 
+Suppose now the set of vertices with positives $V_d$ has chromatic number greater than ?. This means there exists a path of length ?. This means,
+if we replace all fake arcs by the subpath of the cycle corresponding, we get a Walk of length greater than ?, where each vertex appears at most
+$4k$ times. By applying \ref{walk} we obtain a path $P$ of length $t$ with only real arcs. By considering the smallest integer in $V_d$ for each vertex
+of $P$ we obtain a sequence of integer in $[4k]$ of length. 
+By applying lemma \ref{min} we get a set $L = l_1 \dots L_{s+1}$ of vertices of $P$ of size $?$ such that these 
+vertices have the same minimum integer in $V_d$ and the vertices inbetween have greater minimum integer in $V_d$. 
+Now consider the following sequence of integer : $u_1 .. u_s$ where $u_i$ is the highest integer present in $V_d$ for $v \in [l_i .. l_{i+1} - i]$. 
+By applying \ref{max} to this sequence we get a sequence of size $k$ $u_{j_1} \dots u_{j_{k-1}}$ 
+
+
+\end{proof}
+If $x$ is before $C_1$ we say $i$ is positive and $i$ is negative otherwise. Let $D_i$, be digraph induced by the set of vertices at distance $i$, positive, of $C_1$, then
 $\chi(D_i) < k$. Suppose not then we can find a dipath $P$ of length $k$ inside $D_i$ $x_1,x_2, \dots x_k$. By definition there two cycles
 $C_2$, $C_3$, such that $x_1$ is on $C_2$ and $x_k$ on $C_3$. Consider the three paths $P_2 \subset C_2$ from $c_1 \in C_1$ to $x_1$
 disjoint, apart in $c_1$, from $C_1$, $P_3 \subset C_k$ from $c_p \in C_1$ to $x_p$ disjoint, apart in $c_p$, from $C_1$ and $P_4 \subset C_k$ from $x_p$ to $c_p^{'} \in C_1$, disjoint from $C_1$ apart from $c_p$. We find the subdivision of $P(k,1;k)$, as follow :
@@ -160,27 +220,32 @@ Let $A$ be a connected component of $D'\setminus I(C_1)$, by lemma \ref{A} if we
 only a path of length smaller than $9k$ receive some colours, so we can apply the induction hypothesis to all $E(A)$ to get a colouring
 of the vertices of $A$ which is compatible with $c$. By doing this to each component, we finish the proof.
 
-\begin{proof}
 
+\medskip	
+
+Now it remains to colour the edges between cycles of $\mathcal{C}$ in each connected component.
+Let $C_r$ be a cycle of $\mathcal{C}$. We let $L_1$ be the set of cycle of $\mathcal{C}$ which intersect 
+$C_1$. For each cycle $L_1$ of 
+
+
+For each cycle $C_i$ in the same component as $C_2$, there exists a
+sequence of cycle $C_1 = C_r$ $C_2$, $\dots C_l = C_i$ such that, for all $j$, $C_j$ qnd $C_{j+1}$ intersect on an non empty path.
+We can assume this sequence is the shortest possible, and this define a distance between $C_r$ and $C_i$.
+We will colour the set of vertices who belongs to a cycle at distance $i$ of $C_r$.
+
+\begin{lemma}
+Let $C_i$ and $C_j$ be two cycles at distance $l$ of $C_r$ and $C_{i'}$ and $C_{j'}$ be the cycle preceding $C_i$ and $C_j$ on their path to $C_r$.
+Suppose $P_{i,i'}$ and $P_{j,j'}$ are disjoint.
+There exists a path from the last vertex of $P_{i,i'}$ to the first vertex of $P_{j,j'}$ and one from the first vertex of $P_{j,j'}$ to the last of
+$P_{i,i'}$ . One of these path is of size greater than $k$ and they only uses vertices of cycle at distance less than $l$ of $C_r$. 
+\end{lemma}
+
+\begin{proof}
+flemme
 \end{proof}
 
 
 
-%\begin{thebibliography}{10}
-%
-%
-%\bibitem{Yuster}Yair Caro, Douglas West, and Raphael Yuster.
-%\newblock Equitable hypergraph orientations.
-%\newblock {\em Electron. J. Combin.}, 18(1), 2011.
-%
-%\bibitem{MR1095369}Paul Erd{\H{o}}s and Joel Spencer.
-%\newblock Lopsided {L}ov\'asz local lemma and Latin transversals. \newblock {\em Discrete Appl. Math.}, 30(2-3):151--154, 1991.\\
-%\newblock \doi{10.1016/0166-218X(91)90040-4}.
-%
-%\bibitem{Moser}Robin~A. Moser and G\'{a}bor Tardos.
-%\newblock A constructive proof of the general {L}ov\'{a}sz {L}ocal {L}emma.
-%\newblock {\em J. ACM}, 57(2):1--11, 2010.
-%\newblock \doi{10.1145/1667053.1667060}.
-%\end{thebibliography}
 
+ 
 \end{document}
