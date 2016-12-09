@@ -263,26 +263,29 @@ from $y_1$ to $y'$, such that $P_{y_1}$ and $P_{x_1}$ have length greater than $
 
 
 
-Suppose now the set of vertices with positives $dis(v)$ has chromatic number greater than ?. This means there exists a path of length ?. This means,
-if we replace all fake arcs by the subpath of the cycle corresponding, and by \ref{CycleDis} path of length greater than ? with only real arcs. 
-By considering the smallest integer in $dis(v)$ for each vertex of $P$ we obtain a sequence of integer in $[4k]$ of length. 
-By applying lemma \ref{min} we get a set $L = l_1 \dots L_{s+1}$ of vertices of $P$ of size $?$ such that these 
+Suppose now the set of vertices with positives $dis(v)$ has chromatic number greater than $(8k^2)^(4k)$. 
+This means there exists a path of length $(8k^2)^(4k)$. This means,if we replace all fake arcs by the subpath of 
+the cycle corresponding, by \ref{CycleDis} we obtain a path of length greater than $(8k^2)^(4k)$ with only real arcs. 
+By considering the smallest integer in $dis(v)$ for each vertex of $P$ we obtain a sequence of integer in $[4k]$ of length $(8k^2)^(4k)$. 
+By applying lemma \ref{min} we get a set $L = l_1 \dots l_{s+1}$ of vertices of $P$ of size $s+1 = 8k^2$ such that these 
 vertices have the same minimum integer in $dis$ and the vertices in between have greater minimum integer in $dis$. 
-Now consider the following sequence of integer : $u_1 .. u_s$ where $u_i$ is the highest integer present in $dis(v)$ for $v \in [l_i .. l_{i+1} - i]$. 
+Now consider the following sequence of integer : $u_1 .. u_s$ where $u_i$ is the highest integer present in $dis(v)$ 
+for $v \in [l_i .. l_{i+1} - i]$. 
 By applying \ref{max} to this sequence we get a sequence of size $2k$ $u_{j_1} \dots u_{j_{2k-1}}$ such that $u_{j_{2k-1}}$ is the greatest.
-Let $P'$ be the subpath on $P$ between $l_{j_1}$ and the vertex $x_f$ after $l_{j_{2k-1}}$ which gives the value to $u_{j_{2k-1}}$, moreover let $P_1$ 
-be the path from $x_1 \in C_1$ to $l_{j_1}$ of length corresponding to the minimum value of $dis(l_{j_1})$, $P_2$ the one for the minimum 
-value of $dis(l_{j_k})$ between $x_2 \in C_1$ and $l_{j_k}$, and $P_3$ the path from $x_f$ to $x_3 \in C_1$ on the cycle which correspond to the 
-value of $u_{j_{2k-1}}$ (some of these vertices will be outside $I(C_1)$. Note that any vertex $v$ on $P_1$ and $P_2$ has an integer in $dis(v)$ 
+Let $P'$ be the subpath on $P$ between $l_{j_1}$ and the vertex $x_f$ after $l_{j_{2k-1}}$ which gives the value to $u_{j_{2k-1}}$,
+moreover let $P_1$  be the path from $x_1 \in C_1$ to $l_{j_1}$ of length corresponding to the minimum value of $dis(l_{j_1})$, 
+$P_2$ the one for the minimum value of $dis(l_{j_k})$ between $x_2 \in C_1$ and $l_{j_k}$, and $P_3$ the path 
+from $x_f$ to $x_3 \in C_1$ on the cycle which corresponding to the value of $u_{j_{2k-1}}$ 
+(some of these vertices will be outside $I(C_1)$. Note that any vertex $v$ on $P_1$ and $P_2$ has an integer in $dis(v)$ 
 which is smaller than $(l_{j_k})$ and any vertex $v$ on $P_3$ has an integer in $dis(v)$ which is greater than $u_{j_{2k-1}}$. This means 
-$P_1$, $P_2$ and $P_3$ are disjoint from $P'$. Let $P'_1$ be the subdipath of $P'$ from $l_{j_1}$ to $l_{j_k}$ and  $P'_2$ the rest
+$P_1$, $P_2$ and $P_3$ are disjoint from $P'$. Let $P'_1$ be the subpath of $P'$ from $l_{j_1}$ to $l_{j_k}$ and  $P'_2$ the rest
 (note that they both are longer than $k$). 
 We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
 
 \begin{itemize}
-	\item Suppose $P_3$ intersect neither $P_1$ nor $P_2$.
+	\item Suppose $P_3$ intersects neither $P_1$ nor $P_2$.
 	\begin{enumerate}
-		\item f $P_1$ and $P_2 $ are not disjoints, 
+		\item If $P_1$ and $P_2 $ are not disjoints, 
 		then let $u$ be the last vertex on which they intersect. We find the subdivision of $P(k,1;k)$ between $u$ and $l_{j_k}$. 
 		The first path is from $u$ to $x_{j_k}$ along $P_1$ then $P'_1$, the second is from $x_{j_k}$ to $u$ using $P'_2$, then $P_3$ then the path along $C_1$ 
 		then $P_1$ to go to $u$ the last is the path from $u$ to $x_{j_k}$ along $P_2$.
@@ -319,7 +322,7 @@ We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
 %$x_p$. The first path is the path along $C_1$ from $c_p$ to $c_1$, then $P_2$ then $P$. Then second is $P_4$ then the path along $C_1$ from
 %$c_p^{'}$ to $c_p$ and the third is $P_3$. 
 
-The argument is the same when $i$ is negative, and thus the rest of $I(C_1)$ can be coloured with ? colours. 
+The argument is the same when $i$ is negative, and thus the rest of $I(C_1)$ can be coloured with $2(8k^2)^(4k)$ colours. 
 \end{proof}
 
 Now we can prove by induction on the number of cycle in $\mathcal{C}$ that if one of the cycle $C_1$ has a path of length smaller than $9k$
