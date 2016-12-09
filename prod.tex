@@ -91,7 +91,7 @@ Let $D'$ be the subgraph of $D[\mathcal{C}]$ that contains only the edges inside
 
 
 \begin{claim}
-There exists a proper colouring $c$ of $D'$ with $4k^2 + 9k$ colours, such that, each subpath of length $3k$ of each cycle of $\mathcal{C}$ is rainbow coloured. 
+There exists a proper colouring $c$ of $D'$ with $? + 9k$ colours, such that, each subpath of length $9k$ of each cycle of $\mathcal{C}$ is rainbow coloured. 
 \end{claim}
 
 Let $C_1$ be an element of $\mathcal{C}$ and $I(C_1)$ be the set of vertices of cycle $C_i$ which intersect $C_1$, which are at distance $4k$ 
@@ -124,6 +124,7 @@ on $C_2$ from $u_2$ to $u_1$ are longer than $4k$ we are in one of the following
 
 
 We will need the following lemmas: 
+
 \begin{lemma}\label{walk}
 Let $D$ be a digraph and $W$ a walk of length $t^l$ such that every vertex appears at most $t$ times.
 Then there exists a dipath of length $l$ starting with the first vertex of $W$.
@@ -179,16 +180,95 @@ $\chi(D_1) < a lot$
 
 \begin{proof}
 It's not, then there exists a path of length ?. 
-For each vertex $v$ we will associate a set of integer $V_d$ as following. If $v \in C_i \cap C_1$ then we put $j$ in $V_d$ if the distance
+For each vertex $v$ we will associate a set of integer $dis(v)$ as following. If $v \in C_i \cap C_1$ then we put $j$ in $dis(v)$ if the distance
 from the last vertex of $P_{1,i}$ to $v$ on $C_i$ is $j$, when $i$ is after $P_{1,j}$. If  $i$ is before $P_{1,j}$ we put $-j$ if $j$ is the distance from
 $v$ to the first vertex of $P_{1,j}$. 
-First note that the integer in $V_d$ are either all positive or negative. A FAIRE. 
-Suppose now the set of vertices with positives $V_d$ has chromatic number greater than ?. This means there exists a path of length ?. This means,
+First note that the integer in $dis(v)$ are either all positive or negative. A FAIRE c'est du cycle de cycle.
+
+\begin{claim}
+There is no directed cycle $C'$ in the graph induce by the vertice $v$ such that $dist(v)$ is positive.
+\end{claim}
+
+\begin{proof}
+Suppose such a cycle exists, first note that all the edges cannot belong to the same cycle $C_i \in \mathcal{C}$.
+Take $x$ and $y$ two vertices of $C'$ that belong to $C_2 \in \mathcal{C}$. In $I(C_1)$ $C_2$ is a directed path, 
+so we can replace one part of $C'$ (either the one from $x$ to $y$ or the one from $y$ to $x$) by a path $P_2$ which is a subpath of $C_2$ (we still call 
+$C'$ the new cycle obtained). If other vertices of $C'$ belong to $C_2$, we can either extend 
+$P_2$ (if the vertex is before or after $P_2$ on $C_2$)
+or shortcut it (if the vertex is inside $P_2$). So $C'$ consist of $P_2$ a subpath of 
+$C_2$ from $x$ to $y$ then a path from $y$ to $x$ disjoint from $C_2$ 
+(note that we are in $D_1$ so we can't have a cycle with only arcs in $C_2$).
+Call $P_2^b$ the path on $C_2$ from $y$ to $x$, note that it has vertices outside of $D_1$. 
+Suppose we take $C_2$ such that the remaining path from $y$ to $x$ is as small as possible. 
+This path $P'$ can be written $P_1'P_2'$ $\dots$ $P_l'$, where $P_1' = y..a_1'$, 
+$P_l' = a_l' ..x$, $P_i' = a_i'..a_{(i+1)'}$ for all $i$, and such that all 
+the $P_i'$ are subpath of cycle $C_i'$ in $\mathcal{C}$ different from $C_1$ and $C_2$. 
+On $C_l'$, there exists a path $P_l^h$ from $x$ to $a_l$. This path follow a part
+on $I(C_1)$ smaller than $4k$ then a path outside of $I(C_1)$ of length bigger than 
+$4k$ then back to $I(C_1)$. We say a vertex is at the beginning of $P_l^h$ if it is 
+before the part outside $I(C_1)$ and at the end if it is after.
+This gives us a walk $W$ from $x$ to $y$. Let $x'$ be the last vertex of $W$ on the beginning of a 
+$P_i^h$ which belong to $P_2$ before going through the first vertex $y'$ of $W$ which is on the 
+end of a $P_i^h$ and belongs to $P_2$. Note that by the minimality of $P'$, $x'$ is different from $y$ 
+and $y'$ is different from $x$.
+Let $P_F$ be the path from $x'$ to $y'$ extracted from the walk from
+$x'$ to $y'$. Because $x'$ is a vertex at the beginning and $y'$ is a vertex at the end, 
+then $P_F$ has length greater than $k$. Suppose first that $P_F$ and $P_2^f$ are, apart possibly on 
+$x$ and $Y$, disjoint :
+
+\begin{itemize}
+	\item Suppose $x'$ is before $y'$ on the path from $x$ to $y$. We find a subdivision of $P(k,1;k)$ between $y'$ and $x'$.
+	The first path is the path from $y'$ to $y$ along $P_2$ then $P_2^f$ then the path along $P_2$ from $x$ to $x'$. The second 
+	is $P_F$ and the last is th path along $P_2$ from $x'$ to $y'$. Note that by choice of $x'$ and $y'$, $P_F$ and $P_2$ intersect
+	only on $y'$ and $x'$
+	\item Suppose $x'$ is after $y'$. Let $x_1$ be the first vertex on $P_F$ after $x'$ which belongs to $C'$, it is easy to see that
+	this vertex cannot be $y'$. Now we can find a subdivision of $P(k,1;k)$ between $y'$ and $x_1$. The first path is the path from $y'$
+	to $x'$ on $P_2$ then the part of $P_F$ from $x'$ to $x_1$. The second path is the part of $P_F$ from $x_1$ to $y'$ and the last path is
+	the part of $C'$ from $x_1$ to $y'$.
+\end{itemize}
+
+Now suppose $P_F$ and $P_2^f$ intersect, first note that the case where $x'$ is after $y'$ doesn't change since the subdivision 
+of $P(k,1;k)$ in that case doesn't use $P_F$. Remember $P_F$ is the path extracted from the walk from $x'$ to $y'$ using the  $P_i^h$,
+where each $P_i^h$ is a subpath of a cycle $C_i'$ different from $C_2$. Look at the last $P_i^h$ which intersect $P_F$ (so the first 
+on the walk from $x'$ to $y'$. First note that it cannot be neither $P_l^h$ not $P_1^h$ and thus we can assume than $P_i^h$ is a dipath
+of length greater than $4k$ from $u$ to $v$ such that both $u$ and $v$ belong to $P'$. By definition of $\mathcal{C}$, $C_i'$ and $C_2$ and
+intersect on a path of length smaller than $k$ and by choice of $P_i^h$, this intersection is along $P_i^h$ and $P_2 \setminus{x,y}$. 
+Let $a$ be the first vertex of this intersection and $b$ the last. Because the path on $P_F$ from $a$ to $b$ is smaller than $k$
+and $P_F$ has size greater than $4k$, then, on $P_F$ either the path from $b$ to $x$ or the path from $y$ to $a$ has length greater than $k$.
+Let $x_1$ be the last point on $C'$ which belong to $P_i^h$ before the intersection with $P_F$, and $y_1$ the first after the intersection. 
+From the walk $W$ we can extract a path $P_{x'}$ from $x'$ to $x_1$ and $P_{x_1}$ from $x_1$ to $a$, $P_b$ from $b$ to $y_1$ and $P_{y_1}$ 
+from $y_1$ to $y'$, such that $P_{y_1}$ and $P_{x_1}$ have length greater than $k$. 
+
+\begin{itemize}
+	\item Suppose the path on $P_F$ from $b$ to $x$ has length greater than $k$. We find a subdivision of $P(k,1;k)$ between $a$ and $x'$.
+	The first path is the path along $P_F$ from $a$ to $x$ then the path along $P_2$ from $x$ to $x'$. The second is $P_{x'} \cdot P_{x_1} $
+	and the third is the path on $P_2$ from $x'$ to $y$ then the path along $P_F$ from $y$ to $a$.
+	\item Suppose the path on $P_F$ from $y$ to $a$ has length greater than $k$. We find a subdivision of $P(k,1;k)$ between $b$ and $y'$.
+	The first path is the path from $y'$ to $y$ on $P_2$ then the path from $y$ to $b$ on $P_F$. The second is $P_b \cdot P_{y_1}$ and the third is 
+	the path along $P_F$ from $b$ to $x$ then the path from $x$ to $y'$ on $P_2$. 
+\end{itemize} 
+\end{proof}
+
+
+
+%. then a big part on  More generaly on $C_{i}'$, there exists a path from $a_{(i+1)'}$ to $a_i'$.
+%This gives us a walk $W$ from $x$ to $y$, from it we extract 
+
+
+%Let $y_1$ be the vertex after $y$ on $C'$ and $C_3$ be the cycle such that $yy_1$ belongs to $C_3$.  
+%Suppose there exists another vertex $y_2$ of $C_3$ belonging to the path from $y_1$ to $x$ on $C'$. This vertex is either after the arc 
+%$yy_1$ on the part of $C_3$ which belongs to $D_1$ or after. If it is before it contradicts the fact that $x$ and $y$ are chosen so that the path from
+%$y$ to $x$ in minimal. Indeed, take the cycle consisting of the path on $C_3$ from $y_2$ to $y_1$ then the path along $C'$ from $y_1$ to $y_2$, which is a subpath of 
+%the dipath from $y$ to $x_1$. 
+
+
+
+Suppose now the set of vertices with positives $dis(v)$ has chromatic number greater than ?. This means there exists a path of length ?. This means,
 if we replace all fake arcs by the subpath of the cycle corresponding, we get a Walk of length greater than ?, where each vertex appears at most
 $4k$ times. By applying \ref{walk} we obtain a path $P$ of length $t$ with only real arcs. By considering the smallest integer in $V_d$ for each vertex
 of $P$ we obtain a sequence of integer in $[4k]$ of length. 
 By applying lemma \ref{min} we get a set $L = l_1 \dots L_{s+1}$ of vertices of $P$ of size $?$ such that these 
-vertices have the same minimum integer in $V_d$ and the vertices inbetween have greater minimum integer in $V_d$. 
+vertices have the same minimum integer in $dis$ and the vertices in between have greater minimum integer in $dis$. 
 Now consider the following sequence of integer : $u_1 .. u_s$ where $u_i$ is the highest integer present in $V_d$ for $v \in [l_i .. l_{i+1} - i]$. 
 By applying \ref{max} to this sequence we get a sequence of size $2k$ $u_{j_1} \dots u_{j_{2k-1}}$ such that $u_{j_{2k-1}}$ is the greatest.
 Let $P'$ be the subpath on $P$ between $l_{j_1}$ and the vertex $x_f$ after $l_{j_{2k-1}}$ which gives the value to $u_{j_{2k-1}}$, moreover let $P_1$ 
