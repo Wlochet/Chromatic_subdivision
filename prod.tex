@@ -88,6 +88,7 @@ $\chi(D[\mathcal{C}]) < ? $
 \end{claim}
 
 Let $D'$ be the subgraph of $D[\mathcal{C}]$ that contains only the edges inside a cycle of  $\mathcal{C}$.
+We assume $D'$ has only one strongly connected component.
 
 
 \begin{claim}
@@ -106,7 +107,7 @@ All vertices of $E(A) \setminus A$ belongs to a single cycle $C_A$ of $\mathcal{
 \begin{proof}
 
 Suppose it's not the case. Let $C_2$ and $C_3$ be two cycles of $E(A)$ such that $C_2$ and $C_3$ intersect with $C_1$. 
-In $A$ $C_2$ is reduced to a directed path between $u_1$ and $u_2$ and $C_3$ a directed path between $v_1$ and $v_2$.
+In $A$, $C_2$ is reduced to a directed path between $u_1$ and $u_2$ and $C_3$ a directed path between $v_1$ and $v_2$.
 Because the intersection of these two cycles is shorter than $k$ and the part on $C_3$ from $v_2$ to $v_1$ and the part
 on $C_2$ from $u_2$ to $u_1$ are longer than $4k$ we are in one of the following case:
 \begin{itemize}
@@ -125,6 +126,7 @@ on $C_2$ from $u_2$ to $u_1$ are longer than $4k$ we are in one of the following
 
 We will need the following lemmas: 
 
+En fait on a pas besoin de celui la(il a ete remplace par claim 11), mais je l'aime bien donc je laisse.
 \begin{lemma}\label{walk}
 Let $D$ be a digraph and $W$ a walk of length $t^l$ such that every vertex appears at most $t$ times.
 Then there exists a dipath of length $l$ starting with the first vertex of $W$.
@@ -138,7 +140,7 @@ than $t^l/t$ not containing $x$. If we apply induction to the longest of such pa
 \end{proof}
 
 \begin{lemma}\label{min}
-Let $u_t$ be a sequence of $t > l^k$ integer in $[k]$ then there exists a set $L$ of $l$ of indices such that $u_i$ for $i \in L$ have the same value 
+Let $u_t$ be a sequence of $t \geq l^k$ integer in $[k]$ then there exists a set $L$ of $l$ indices such that the $u_i$ for $i \in L$ have the same value 
 and the elements in between have greater value. 
 \end{lemma}
 
@@ -161,64 +163,118 @@ If not, take the subsequence starting after the last element of value $k$, it's 
 \begin{lemma}\label{IC}
 Let $c$ be a partial colouring of $C_1$ such that only a path of length smaller than
 $9k$ is coloured and this path is rainbow coloured. Then $c$ can be extended into
-a colouring of $D[I(C_1)]$ using $4k^2 + 9k$ colours, such that on all cycles but $C_1$ at most a path of length $9k$ is
+a colouring of $D'[I(C_1)]$ using $? + 9k$ colours, such that on all cycles but $C_1$ at most a path of length $9k$ is
 coloured and this colouration is rainbow.
 \end{lemma}
 
 \begin{proof}
-Since $D[C_1]$ is 2k-degenerate, we can easily extend $c$ to colour $D[C_1]$ such that every path of length $9k$ is rainbow coloured. 
-We will colour the other vertices with  new colours, but before we complete each maximal subdipath of $C_i \setminus C_1$ into transitive tournament
-(by doing this we ensure that the colouring we obtain is rainbow where we want it). We call the arcs added that way the \textit{fake arcs}  
-For each vertex $x$ of $I(C_1)$ which is not on $C_1$ we say $x$ is at distance $i$
-of $C_1$ if $x$ is on cycle $C_j$ which intersect $C_1$ and the path from $x$ to $C_1$ on $C_j$ is $i$
-(note that $x$ can have many distances, if it belongs to different cycles). Call $D_1$ the graph where we remove $C_1$ from $D[I(C_1)]$ and add the fake
-edge.
+Since $D'[C_1]$ is 2k-degenerate, we can easily extend $c$ to colour $D'[C_1]$ such that every path of length $9k$ is rainbow coloured. 
+We will colour the other vertices with  new colours, but before we complete each maximal
+subdipath of $C_i \setminus C_1$ into transitive tournament
+(by doing this we ensure that the colouring we obtain is rainbow where we want it). We call the arcs added that way the \textit{fake arcs}.  
+Call $D_1$ the graph where we remove $C_1$ from $D'[I(C_1)]$ and add the fake arcs.
 
 \begin{claim}
-$\chi(D_1) < a lot$ 
+$\chi(D_1) < ?$ 
 \end{claim}
 
 \begin{proof}
-It's not, then there exists a path of length ?. 
-For each vertex $v$ we will associate a set of integer $dis(v)$ as following. If $v \in C_i \cap C_1$ then we put $j$ in $dis(v)$ if the distance
-from the last vertex of $P_{1,i}$ to $v$ on $C_i$ is $j$, when $i$ is after $P_{1,j}$. If  $i$ is before $P_{1,j}$ we put $-j$ if $j$ is the distance from
-$v$ to the first vertex of $P_{1,j}$. 
-First note that the integer in $dis(v)$ are either all positive or negative. A FAIRE c'est du cycle de cycle.
-
+It's not, then there exists a path $P$ of length ?. 
+For each vertex $v$ of $P$ we will associate a set of integer $dis(v)$ as following. 
+If $v \in C_i \setminus C_1$ then we put $j$ in $dis(v)$ if the distance
+from the last vertex of $P_{1,i}$ to $v$ on $C_i$ is $j$, when $v$ is after $P_{1,j}$. 
+If $v$ is before $P_{1,j}$ we put $-j$ if $j$ is the distance from $v$ to the first vertex of $P_{1,j}$. 
+First note that the integer in $dis(v)$ are either all positive or negative. Suppose there exists a vertex 
+$v$ such that $v$ belongs to $C_2$ and $C_3$, and $v$ is after $P_{1,3}$ but before $P_{1,2}$.
+Let $x_1, x_2$ be the first and last vertex of $P_{1,2}$, $y$ the first of $P_{1,3}$ and $z$ the last vertex of $P_{2,3}$
+(which is not empty because of $v$). Since $z$ belongs to $C_3$ at a distance smaller than $5k$ of $P_{1,3}$
+then $z$ is not on $C_1$. 
+\begin{itemize}
+	\item if $y$ is between $x_1$ and $x_2$ along $C_1$, then we find a subdivision of $P(k,1;k)$	
+	between $z$ and $y$. The first path is the path from $y$ to $x_2$ on $C_1$ then the path from
+	$x_2$ to z on $C_2$. The second is the path from $z$ to $y$ on $C_3$ and the third is the path 
+	from $z$ to $x_1$ on $C_2$ then the path from $x_1$ to $y$ on $C_1$.
+	\item Else we find a subdivision of $P(k,1;k)$ between $x_2$ and $z$. The first path is the path from $x_2$
+	to $z$ on $C_2$. The second is the path on $C_3$ from $z$ to $y$ then the path on $C_1$ from $y$ to $x_1$ 
+	and the third is the path on $C_3$ from $z$ to $x_2$
+	
+\end{itemize}
+Thus we only nee to consider the set of vertices $v$ such that $dist(v)$ is positive
 \begin{claim}\label{CycleDis}
 There is no directed cycle $C'$ in the graph induce by the vertice $v$ such that $dist(v)$ is positive.
 \end{claim}
 
 \begin{proof}
-Suppose such a cycle exists, first note that all the edges cannot belong to the same cycle $C_i \in \mathcal{C}$.
-Take $x$ and $y$ two vertices of $C'$ that belong to $C_2 \in \mathcal{C}$. In $I(C_1)$ $C_2$ is a directed path, 
-so we can replace one part of $C'$ (either the one from $x$ to $y$ or the one from $y$ to $x$) by a path $P_2$ which is a subpath of $C_2$ (we still call 
-$C'$ the new cycle obtained). If other vertices of $C'$ belong to $C_2$, we can either extend 
+Suppose such a cycle exists, first note that all the edges cannot belong to the same cycle $C_i \in \mathcal{C}$
+(each cycle of $\mathcal{C}$ with vertices in $D_1$ get some of it's vertices removed).
+Take $x$ and $y$ two vertices of $C'$ that belong to $C_2 \in \mathcal{C}$. In $I(C_1)$, $C_2$ is a directed path, 
+so we can replace one part of $C'$ (either the one from $x$ to $y$ or the one from $y$ to $x$) by a path $P_2$
+ which is a subpath of $C_2$ (we still call $C'$ the new cycle obtained). 
+If other vertices of $C'$ belong to $C_2$, we can either extend 
 $P_2$ (if the vertex is before or after $P_2$ on $C_2$)
 or shortcut it (if the vertex is inside $P_2$). So $C'$ consist of $P_2$ a subpath of 
-$C_2$ from $x$ to $y$ then a path from $y$ to $x$ disjoint from $C_2$ 
-(note that we are in $D_1$ so we can't have a cycle with only arcs in $C_2$).
+$C_2$ from $x$ to $y$ then a path from $y$ to $x$ disjoint from $C_2$.
 Call $P_2^b$ the path on $C_2$ from $y$ to $x$, note that it has vertices outside of $D_1$. 
 Suppose we take $C_2$ such that the remaining path from $y$ to $x$ is as small as possible. 
 This path $P'$ can be written $P_1'P_2'$ $\dots$ $P_l'$, where $P_1' = y..a_1'$, 
 $P_l' = a_l' ..x$, $P_i' = a_i'..a_{(i+1)'}$ for all $i$, and such that all 
 the $P_i'$ are subpath of cycle $C_i'$ in $\mathcal{C}$ different from $C_1$ and $C_2$. 
-On $C_l'$, there exists a path $P_l^h$ from $x$ to $a_l$. This path follow a part
+Moreover we can assume no vertex of $P_{i+1}' \dots P_l'$ belong to $P_i'$. Indeed, suppose this vertex
+exists, then either it's after $P_i'$ on the part of $C_i'$ then we can extend $P_i'$, or it is after and then
+choosing $P_i'$ instead of $P_2$ would have yielded a smaller path outside $P_i'$ which is not possible.
+On $C_l'$, there exists a path $P_l^h$ from $x$ to $a_l$. On $C_l'$, there exists a path $P_1^h$ from $a_1$ to $x$, and
+on $C_1'$ there exists a path $P_i^h$ from $a_{i+1}$ to $a_i$. These paths all follow a part
 on $I(C_1)$ smaller than $4k$ then a path outside of $I(C_1)$ of length bigger than 
-$4k$ then back to $I(C_1)$. We say a vertex is at the beginning of $P_l^h$ if it is 
+$4k$ then back to $I(C_1)$. We say a vertex is at the beginning of a $P_i^h$ if it is 
 before the part outside $I(C_1)$ and at the end if it is after.
-This gives us a walk $W$ from $x$ to $y$. Let $x'$ be the last vertex of $W$ on the beginning of a 
-$P_i^h$ which belong to $P_2$ before going through the first vertex $y'$ of $W$ which is on the 
-end of a $P_i^h$ and belongs to $P_2$. Note that by the minimality of $P'$, $x'$ is different from $y$ 
-and $y'$ is different from $x$.
-Let $P_F$ be the path from $x'$ to $y'$ extracted from the walk from
-$x'$ to $y'$. Because $x'$ is a vertex at the beginning and $y'$ is a vertex at the end, 
-then $P_F$ has length greater than $k$. Suppose first that $P_F$ and $P_2^f$ are, apart possibly on 
-$x$ and $Y$, disjoint :
+
+First note that $P_l^h$ cannot contain $y$ and $P_1^h$ cannot contain $x$.
+Consider the first of the $P_i^h$, such that there exists $x' \in P_2$ at the beginning of $P_i^h$
+(this exists because $P_1^h$ is such a path). Call $x_1$ the first vertex at the end $P_i^h$ which belongs to 
+$D'$, and $P_F^1$ the part of $P_i^h$ between $x'$ and $x_1$. 
+Consider the first one of the $P_j^h$, $j<i$ such that there exists $x_1'$ between $x_1$ and $x$ on
+$C'$ at the beginning of $P_j^h$, and $x_2$ the first vertex at the end of $P_j^h$ which belongs to $C'$ is before $x_1$.
+Call $P_F^2$ the part of $P_j^h$ between $x_1'$ and $x_2$. 
+We repeat this process until we arrive to a path $P_F^s$ for which $x_s$ belongs to $P_2$. 
+All the $P_F^i$ have length greater than $4k$.
+
+We will show first that the $P_F^m$ only intersect on $C'$. Take the first of the $P_F^m$, $P_F^{m_2}$ that intersects
+a previous $P_F^{m_1}$. First, because cycle of $\mathcal{C}$ intersect on a path, $m_1$ and $m_2$ cannot be consecutive.
+$P_F^{m_1}$ is a path from $x_{m_1-1}'$ to $x_{m_1}$ and  $P_F^{m_1}$ is a path from $x_{m_2-1}'$ to $x_{m_2}$ such that on $C'$ they appear
+in the order $x_{m_2}$, $x_{m_2-1}'$, $x_{m_1}$, $x_{m_1-1}'$.
+Let $a$ and $b$ be the first and last intersection of $P_F^{m_2}$ and $P_F^{m_1}$.
+Note that because $m_1$ and $m_2$ are not consecutive, then this intersection is outside of $C'$.
+Moreover there exists a path using the $P_F^i$ between $m_1$ and $m_2$, there exist a path $P_b$ from $u \in C'$
+between$x_{m_1}$ and $x_{m_1-1}'$ to $v \in C'$ between $x_{m_2}$ and $x_{m_2-1}'$ with greater than $k$, 
+and disjoint from $x_{m_2}$, $x_{m_2-1}'$, $x_{m_1}$ and $x_{m_1-1}'$. We distinguish two cases :
+\begin{itemize}
+	\item Suppose that both the path of $P_F^{m_2}$ from $x_{m_2-1}'$ to $a$ and the path of $P_F^{m_1}$ from $a$ to $x_{m_1}$ have
+	length shorter than $k$. Then we find a subdivision of $P(k,1;k)$ between $b$ and $x_{m_1}$. The first path is the path from 
+	$x{m_1}$ to $x_{m_1-1}'$ on $C'$ then the path to $b$ on $P_F^{m_1}$, which have size bigger than $k$. 
+	The second is the path from $b$ to $x_{m_2}$ on $P_F^{m_2}$, which have size bigger than $k$,
+	then the path to $x_{m_1}$ on $C'$, the third it the path from $b$ to $x_{m_1}$ on $P_F^{m_1}$.
+	\item We find a subdivision of $P(k,1;k)$ between $v$ and $u$. The first path is from $v$ to $x_{m_2-1}'$ on $C'$ then the 
+	path using $P_F^{m_2}$ then  $P_F^{m_1}$ from  $x_{m_2-1}'$ to $a$ to $x_{m_1}$, which is longer than $k$,
+	and finally the path on $C'$ to $u$. The second is $P_b$ and the third is the path on $C'$ from $u$ to $v$.
+\end{itemize}
+
+
+Let $P_F$ be the path from $x'$ to $y'$ extracted from the $P_F^i$. Because they don't intersect outside of $C'$,
+$P_F$ have size greater than $k$.
+Suppose first that $P_F$ and $P_2^f$ are, apart possibly on $x$ and $y$, disjoint:
+
+%This gives us a walk $W$ from $x$ to $y$. Let $x'$ be the last vertex of $W$ on the beginning of a 
+%$P_i^h$ which belong to $P_2$ before going through the first vertex $y'$ of $W$ which is on the 
+%end of a $P_i^h$ and belongs to $P_2$. Note that by the minimality of $P'$, $x'$ is different from $y$ 
+%and $y'$ is different from $x$.
+%Let $P_F$ be the path from $x'$ to $y'$ extracted from the walk from
+%$x'$ to $y'$. Because $x'$ is a vertex at the beginning and $y'$ is a vertex at the end, 
+%then $P_F$ has length greater than $k$. Suppose first that $P_F$ and $P_2^b$ are, apart possibly on 
+%$x$ and $Y$, disjoint :
 
 \begin{itemize}
-	\item Suppose $x'$ is before $y'$ on the path from $x$ to $y$. We find a subdivision of $P(k,1;k)$ between $y'$ and $x'$.
-	The first path is the path from $y'$ to $y$ along $P_2$ then $P_2^f$ then the path along $P_2$ from $x$ to $x'$. The second 
+	\item Suppose $x'$ is before $y'$ on the path from $x$ to $y$ $P_2$. We find a subdivision of $P(k,1;k)$ between $y'$ and $x'$.
+	The first path is the path from $y'$ to $y$ along $P_2$ then $P_2^b$ then the path along $P_2$ from $x$ to $x'$. The second 
 	is $P_F$ and the last is th path along $P_2$ from $x'$ to $y'$. Note that by choice of $x'$ and $y'$, $P_F$ and $P_2$ intersect
 	only on $y'$ and $x'$
 	\item Suppose $x'$ is after $y'$. Let $x_1$ be the first vertex on $P_F$ after $x'$ which belongs to $C'$, it is easy to see that
@@ -227,26 +283,34 @@ $x$ and $Y$, disjoint :
 	the part of $C'$ from $x_1$ to $y'$.
 \end{itemize}
 
-Now suppose $P_F$ and $P_2^f$ intersect, first note that the case where $x'$ is after $y'$ doesn't change since the subdivision 
-of $P(k,1;k)$ in that case doesn't use $P_F$. Remember $P_F$ is the path extracted from the walk from $x'$ to $y'$ using the  $P_i^h$,
-where each $P_i^h$ is a subpath of a cycle $C_i'$ different from $C_2$. Look at the last $P_i^h$ which intersect $P_F$ (so the first 
-on the walk from $x'$ to $y'$. First note that it cannot be neither $P_l^h$ not $P_1^h$ and thus we can assume than $P_i^h$ is a dipath
-of length greater than $4k$ from $u$ to $v$ such that both $u$ and $v$ belong to $P'$. By definition of $\mathcal{C}$, $C_i'$ and $C_2$ and
-intersect on a path of length smaller than $k$ and by choice of $P_i^h$, this intersection is along $P_i^h$ and $P_2 \setminus{x,y}$. 
-Let $a$ be the first vertex of this intersection and $b$ the last. Because the path on $P_F$ from $a$ to $b$ is smaller than $k$
-and $P_F$ has size greater than $4k$, then, on $P_F$ either the path from $b$ to $x$ or the path from $y$ to $a$ has length greater than $k$.
-Let $x_1$ be the last point on $C'$ which belong to $P_i^h$ before the intersection with $P_F$, and $y_1$ the first after the intersection. 
-From the walk $W$ we can extract a path $P_{x'}$ from $x'$ to $x_1$ and $P_{x_1}$ from $x_1$ to $a$, $P_b$ from $b$ to $y_1$ and $P_{y_1}$ 
-from $y_1$ to $y'$, such that $P_{y_1}$ and $P_{x_1}$ have length greater than $k$. 
+Now suppose $P_F$ and $P_2^b$ intersect, first note that the case where $x'$ is after $y'$ doesn't change since the subdivision 
+of $P(k,1;k)$ in that case doesn't use $P_F$. 
+Let $P_F^i$ be the first of the $P_F^j$ that intersect with $P_2^b$. First note that it cannot be $P_F^1$ and there is a path $P(x_{i-1}')$
+along the $P_F^j$ and $C'$ from $x'$ to $x_{i-1}'$ which is longer than $k$.
+Because $P_F^i$ and $P_2^b$ are two subpaths of cycles in $\mathcal{C}$, their intersection is along a path of size less than $k$.
+Call $a$ the first vertex of this path and $b$ the last.
 
-\begin{itemize}
-	\item Suppose the path on $P_F$ from $b$ to $x$ has length greater than $k$. We find a subdivision of $P(k,1;k)$ between $a$ and $x'$.
-	The first path is the path along $P_F$ from $a$ to $x$ then the path along $P_2$ from $x$ to $x'$. The second is $P_{x'} \cdot P_{x_1} $
-	and the third is the path on $P_2$ from $x'$ to $y$ then the path along $P_F$ from $y$ to $a$.
-	\item Suppose the path on $P_F$ from $y$ to $a$ has length greater than $k$. We find a subdivision of $P(k,1;k)$ between $b$ and $y'$.
-	The first path is the path from $y'$ to $y$ on $P_2$ then the path from $y$ to $b$ on $P_F$. The second is $P_b \cdot P_{y_1}$ and the third is 
-	the path along $P_F$ from $b$ to $x$ then the path from $x$ to $y'$ on $P_2$. 
-\end{itemize} 
+%Remember $P_F$ is the path extracted from the walk from $x'$ to $y'$ using the  $P_i^h$,
+%where each $P_i^h$ is a subpath of a cycle $C_i'$ different from $C_2$. Look at the last $P_i^h$ which intersect $P_F$ (so the first 
+%on the walk from $x'$ to $y'$. First note that it cannot be neither $P_l^h$ not $P_1^h$ and thus we can assume than $P_i^h$ is a dipath
+%of length greater than $4k$ from $u$ to $v$ such that both $u$ and $v$ belong to $P'$. By definition of $\mathcal{C}$, $C_i'$ and $C_2$ and
+%intersect on a path of length smaller than $k$ and by choice of $P_i^h$, this intersection is along $P_i^h$ and $P_2 \setminus{x,y}$. 
+%Let $a$ be the first vertex of this intersection and $b$ the last. Because the path on $P_F$ from $a$ to $b$ is smaller than $k$
+%and $P_F$ has size greater than $4k$, then, on $P_F$ either the path from $b$ to $x$ or the path from $y$ to $a$ has length greater than $k$.
+%Let $x_1$ be the last point on $C'$ which belong to $P_i^h$ before the intersection with $P_F$, and $y_1$ the first after the intersection. 
+%From the walk $W$ we can extract a path $P_{x'}$ from $x'$ to $x_1$ and $P_{x_1}$ from $x_1$ to $a$, $P_b$ from $b$ to $y_1$ and $P_{y_1}$ 
+%from $y_1$ to $y'$, such that $P_{y_1}$ and $P_{x_1}$ have length greater than $k$. 
+Suppose the path on $P_2^b$ from $b$ to $x$ has length greater than $k$. We find a subdivision of $P(k,1;k)$ between $a$ and $x'$.
+The first path is the path along $P_2^b$ from $a$ to $x$ then the path along $P_2$ from $x$ to $x'$. The second follows $P(x_{i-1}')$
+then the path along $P_F^i$ to $a$ and the third is the path on $P_2$ from $x'$ to $y$ then the path along $P_F$ from $y$ to $a$. 
+This means the path from $y$ to 
+$a$ on $P_2^b$ is longer than $k$. If the path on $P_F^i$ from  $x_{i-1}'$ to $a$ has size bigger than $k$ the we find a subdivision 
+of $P(k,1;k)$ between $x'$ and $x_{i-1}'$. The first is $P(x_{i-1}')$, the second follows the path from $x_{i-1}'$ to $a$ along $P_F^i$ then 
+the path from $a$ to $x$ along $P_2^b$ and the path from $x$ to $x'$ along $C'$. The last path is the one from $x'$ to $x_{i-1}'$ along
+$C'$. This means the path from $b$ to $x_i$ along $P_F^i$ is longer than $k$. Finally we find a subdivision of $P(k,1;k)$ between $b$ 
+and $x$. The first path follows the path along $P_F^i$ from $b$ to $x_i$ then the path on $C'$ from $b$ to $x$. The second follows $P_2$ then
+the path on $P_2^b$ from $y$ to $b$ and the third is the path on $P_2^b$ from $b$ to $x$.
+
 \end{proof}
 
 
@@ -270,7 +334,7 @@ By considering the smallest integer in $dis(v)$ for each vertex of $P$ we obtain
 By applying lemma \ref{min} we get a set $L = l_1 \dots l_{s+1}$ of vertices of $P$ of size $s+1 = 8k^2$ such that these 
 vertices have the same minimum integer in $dis$ and the vertices in between have greater minimum integer in $dis$. 
 Now consider the following sequence of integer : $u_1 .. u_s$ where $u_i$ is the highest integer present in $dis(v)$ 
-for $v \in [l_i .. l_{i+1} - i]$. 
+for $v \in [l_i .. l_{i+1} - 1]$. 
 By applying \ref{max} to this sequence we get a sequence of size $2k$ $u_{j_1} \dots u_{j_{2k-1}}$ such that $u_{j_{2k-1}}$ is the greatest.
 Let $P'$ be the subpath on $P$ between $l_{j_1}$ and the vertex $x_f$ after $l_{j_{2k-1}}$ which gives the value to $u_{j_{2k-1}}$,
 moreover let $P_1$  be the path from $x_1 \in C_1$ to $l_{j_1}$ of length corresponding to the minimum value of $dis(l_{j_1})$, 
