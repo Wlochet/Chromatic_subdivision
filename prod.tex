@@ -61,6 +61,10 @@
 
 \newcommand{\cste}{\bf cste}
 
+
+\DeclareMathOperator{\Dis}{Dis}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % if needed include a line break (\\) at an appropriate place in the title
@@ -78,6 +82,11 @@
 
 {\bf def de dipath}
 
+Let $P$ be a path. We denote by $s(P)$ its initial vertex and by $t(P)$ its terminal vertex.
+The subpath of $P$ with initial vertex $u$ and terminal vertex $v$ is denoted by $P[u,v]$.
+Similarly, if $C$ is a directed cycle, we denote by $C[u,v]$ the subdipath of $C$ with initial vertex $u$ and terminal vertex $v$.
+
+
 Let $k_1,k_2,k_3$ be positive integers. Let $P(k_1,k_2;k_3)$ be the digraph formed by three internally disjoint paths between two vertices $x,y$, two $(x,y)$-dipaths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$.
 When we want to insist on the vertices $x$ and $y$, we denote it by $P_{xy}(k_1,k_2;k_3)$.
 
@@ -89,9 +98,57 @@ Let $c$ be a colouring of a graph $G$. A subset of vertices or a subgraph $S$ of
 
 A (directed) graph $G$ is {\it $k$-degenerate} if every subgraph $H$ of $G$ has a vertex of degree at most $k$.
 The following proposition is well-known.
-\begin{proposition}\label{prop:deg}
+\begin{proposition}[useful??]\label{prop:deg}
 Every $k$-degenerate (directed) graph is $(k+1)$-colourable.
 \end{proposition}
+
+
+
+
+
+We will need the following lemmas:
+
+\begin{lemma}[useful??]\label{walk}
+Let $D$ be a digraph and $W$ a walk of length $t^l$ such that every vertex appears at most $t$ times.
+Then there exists a dipath of length $l$ starting with the first vertex of $W$.
+\end{lemma}
+
+\begin{proof}
+We do it by induction on $l$. Let $x$ be the first vertex of $W$, because $x$ appears at most $t$ times, there exists a subpath of length greater
+than $t^l/t$ not containing $x$. If we apply induction to the longest of such path, then we find a path of length $l-1$ without $x$ such that
+ the first vertex is an out-neighbour of $x$.
+
+\end{proof}
+
+\begin{lemma}\label{min}
+Let $\sigma=(u_t)_{t\in [p]}$ be a sequence of integers in $[k]$. If $p\geq l^k$, then there exists a set $L$ of $l$ indices such that for any $i,j \in L$ with $i\leq j$ the following holds : $u_i=u_j$ and for all $i\leq k\leq j$, $u_k > u_i$.
+\end{lemma}
+
+\begin{proof}
+By induction on $k$, the result holding trivially when $k=1$. Assume now that $k>1$. Let $L_1$ be the elements of the sequence with value $1$. If $L_1$ has at least $l$ elements, we are done.
+If not then there is a subsequence $\sigma'$ of $l^k/l$ consecutive elements in $\{2, \dots , k-1\}$. Applying the induction induction to $\sigma'$ yields the result.
+\end{proof}
+
+\begin{lemma}\label{max}
+Let $\sigma=(u_t)_{t\in [p]}$ be a sequence of integers in $[k]$. 
+If $p > k (m-1)$, then there exists a subsequence of $m$ consecutive integers such that the
+last one is the largest.
+\end{lemma}
+
+\begin{proof}
+By induction on $k$, the result holding trivially when $k=1$. 
+Let $i$ be the smallest integer such that $u_t\leq k-1$ for all $i\leq t\leq p$.
+If $i>m$, then $u_{i-1}=k$, and the subsequence of the $i-1$ first elements of $\sigma$ is the desired sequence.
+If $i\leq m$, apply the induction on $\sigma'=(u_t)_{i\leq t\leq p}$ which is a sequence of more than $(k-1)(m-1)$ integers in $[k-1]$, to get the result. 
+\end{proof}
+
+
+
+
+
+
+
+
 
 
 
@@ -148,97 +205,97 @@ For every set of vertices or digraph $S$, we denote by ${\cal C}\cap S$ the set 
 
 
 
-For $C_1\in \mathcal{C}$, let $I^+(C_1)$ be the set of vertices that are at distance at most $4k$
-from$C_1$ along some cycle $C\in {\cal C}\cap C_1$, and let $I^-(C_1)$ be the set of vertices that are at distance at most $4k$ to $C_1$ along some cycle $C\in {\cal C}\cap C_1$.
+Let $C_1\in \mathcal{C}$.
+For each $C_j\in {\cal C} \cap C_1$, let $Q_j$ be the subdipath of $C_j$ such that
+containing all the vertices that are at distance at most $4k$ from $P_{1,j}$ in the cycle underlying $C_j$.
+Then the dipath $C_j[s(Q_j), s_{1,j}]$ and  $C_j[t_{1,j},t (Q_j)]$ have length $4k$.
+Set $Q^-_j=C[s(Q_j), s_{1,j}[$ and $Q^+_j=C]t_{1,j}, t(Q_j)]$.
+
+Let $I^+(C_1)$ be the set of vertices not in $C_1$ that are at distance at most $4k$
+from $C_1$ along some cycle $C_j\in {\cal C}\cap C_1$, and let $I^-(C_1)$ be the set of vertices not in $C_1$ that are at distance at most $4k$ to $C_1$ along some cycle $C_j\in {\cal C}\cap C_1$.
+Formally, $I^+(C_1) = \bigcup_{C_j\in {\cal C}\cap C_1} V(Q^-_j)$ and $I^-(C_1) = \bigcup_{C_j\in {\cal C}\cap C_1} V(Q^+_j)$.
 Observe that Claim~\ref{claim:dis} implies that $I^+(C_1)$ and $I^-(C_1)$ are disjoint. We set $I(C_1)=I^+(C_1)\cup I^-(C_1)$.
 
 
 
 
 \begin{claim}\label{claim:A}
-Let $C_1$ be a cycle of ${\cal C}$ and let $A$ be a connected componet of $D'\setminus I(C_1)$.
+Let $C_1$ be a cycle of ${\cal C}$ and let $A$ be a connected component of $D'\setminus I(C_1)$.
 All vertices of $({\cal C}\cap A)  - A$ belongs to a unique cycle $C_A$ of $\mathcal{C}$.
 \end{claim}
 
 \begin{subproof}
-Suppose it is not the case. Let $C_2$ and $C_3$ be two cycles of ${\cal C}\cap A$ such that $C_2$ and $C_3$ intersect with $C_1$.
-In $A$, $C_2$ is reduced to a directed path between $u_1$ and $u_2$ and $C_3$ a directed path between $v_1$ and $v_2$.
-Because the intersection of these two cycles is shorter than $k$ and the part on $C_3$ from $v_2$ to $v_1$ and the part
-on $C_2$ from $u_2$ to $u_1$ are longer than $4k$ we are in one of the following case:
+Suppose it is not the case. Then there are two distinct cycles $C_2, C_3$ of ${\cal C}\cap A$ that intersect with $C_1$.
+
+Let $t$ be the closest vertex among $\{t_{1,2}, t_{1,3}\}$ in $C_1$ and let $t'$ be the other vertex of $\{t_{1,2}, t_{1,3}\}$.
+(If $t_{1,2}=t_{1,3}$, then $t=t'$.) For $i=2,3$, let $R_i$ be the $(t,t(Q_i)$-dipath in $C_1\cup Q_i$. Observe that $R_i=Q_i$ or $R_i=C_1[t,t']\cup Q_I$. Hence $R_i$ has length at least $4k$.
+Let $v$ be the last vertex in $R_2\cap R_3$ along $R_2$. (This vertex exists since $t\in R_2\cap R_3$.) In $A$, there exists a $(t(Q_3), C_2)$-dipath $R_A$. Let $w$ be its terminal vertex. By definition of $A$, $w$ is in $C_2[t(Q_2, s(Q_2)]$, therefore $C_2[w,v]$ has length at least $4k$ since it contains $C_2[s(Q_2), s_{1,2}]$. Consequently, both $R_2[v,t(Q_2)]$ and $R_3[v,t(Q_3)]$ have length less than $k$ for otherwise the union of $C_2[w,v]$, $C_2[v,w]$ and $R_3[v,t(Q_3)]\odot R_A$ would be a subdivision of $P(k,1;k)$.
+In particular, $v\neq t$. This implies that $s_{2,3}\in V(R_2\cap R_3)$.
+Moreover, $R_2[s_{2,3}, t(Q_2)]$ has length at most $2k$ because $R_2[s_{2,3},v]$ is a subdipath of $P_{2,3}$ and so has length at most $k$.
+Therefore $R_2[t,s_{2,3}]$ has length at least $2k$ because $R_2$ has length at least $4k$.
+It follows that the union of $C_2[s_{2,3},t]$,  $R_2[t,s_{2,3}]$ and  $R_3[t,s_{2,3}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+\end{subproof}
+
+
+
+For each $C_j\in {\cal C}\cap C_1$, let $T^+_j$ be the transitive tournament whose hamiltonian dipath is $Q^+_j$.
+Let $D^+_1$ be the digraph which is the union of the $Q^+_j$ fro all $C_j\in  {\cal C}\cap C_1$.
+
+\begin{claim}\label{claim:no-dicycle}
+$D^+_1$  and $D'[I^+(C_1)]$ have no directed cycle.  
+\end{claim}
+\begin{subproof}
+Observe first that $D^+_1$ has a directed cycle if and only if $D'[I^+(C_1)]$ has a directed cycle.
+Indeed since $D'[I^+(C_1)]$ is a subdigraph of $D^+_1$, every directed cycle of $D'[I^+(C_1)]$ is also a directed cycle of $D^+_1$.
+Reciprocally, every directed cycle of $D^+_1$ may be transformed into a closed directed walk (by replacing each arc $(u,v)\in A(T^+_j)$, by 
+$Q^+_j(u,v)$), which contains a directed cycle.
+
+Henceforth, it suffices to prove that $D'[I^+(C_1)]$ has no directed cycle.  
+Suppose for a contradiction that it contains a directed cycle $C'$.
+Clearly, it must contain arcs from at least two $Q^+_j$.
+
+
+
+Assume that $C'$ contains several vertices of $Q^+_j$.
+Necessarily, there must be two vertices $x,y$ of $Q^+_j\cap C'$ such that no vertex of $C']x,y[$ is in $C_j$ and  $y$ is before $x$ in $Q^+_j$.
+Therefore $C'[x,y]\odot Q^+[y,x]$ is also a directed cycle in $D'[I^+(C_1)]$. Free to consider this cycle,
+we may assume that $C'\cap Q^+_j$ is a directed path.
+
+Doing so, for all $j$, we may assume that $C'\cap Q^+_j$ is a directed path  for every $C_j\in {\cal C}\cap C_1$.
+Wihtout loss of generality, we may assume that there are cycles $C_2, \dots , C_p$ such that
 \begin{itemize}
-	\item There exists a vertex $x$, either belonging to $C_1$ or $C_2$ and $C_3$, with two disjoint dipath $P_1$ from
-	$x$ to $u_1$ and $P_2$ from $x$ to $v_1$, longer than $k$. Then there exists a directed path $P(u,v)$ in $A$ from
-	a vertex $u$ of $C_2$ to a vertex $v$ of $C_3$ which is internally disjoint from  $C_2$, $C_3$ and $C_1$
-	(note that it can be so that $u$ = $v$). Now the following three disjoint paths are a subdivision of $P(k,1,k)$ between $x$ and $v$:
-	First, the union of $P_1$, the subpath of $C_2$ from $u_1$ to $u$ and $P(u,v)$ which is longer than $k$, then the path from $v$ to $u$
-	along $C_3$ and $C_1$ which is also longer than $k$ and then the union of $P_2$ and the subpath of $C_3$ from $v_1$ to $v$, which is also longer than $k$.
-	\item There exists a vertex $x$ either belonging to $C_1$ or $C_2$ and $C_3$, with two disjoint dipath $P_1$ from
-	$u_2$ to $x$ and $P_2$ from $v_2$ to $x$, longer than $k$. This case is symmetric.
+\item $C'$ is in $Q^+_2\cup \cdots  \cup Q^+_p$;
+\item for all $2\leq j\leq p$, $C'\cap Q^+_j$ is a directed path $P^+_j$ with initial vertex $a_j$ and terminal vertex $b_j$;
+\item the $a_j$ and the $b_j$ appear according to the following order around $C'$: $(a_2, b_p, a_3, b_2, \dots ,   a_p, b_{p-1}, a_2)$ with possibly $a_{j+1}=b_j$ for some $1\leq j \leq p$ where $a_{p+1}=a_2$.
 \end{itemize}
+For $2\leq j\leq p$, set $B_j=C_j[b_j, a_j]$. Note that $B_j$ has length at least $7k$, because $Q^+_2$ has length at most $5k$.
+
+
+Consider the closed directed walk $$W=C_p[a_2,b_p]\odot B_p \odot C_{p-1}[a_p, b_{p-1}] \odot  \cdots  \odot  B_3\odot C_2[a_3, b_2]\odot B_2.$$
+$W$ contains a directed cycle $C_W$. Wihtout loss of generality, we may assume that this cycle is of the form
+$$C_W=B_q[v, a_q] \odot C_{q-1}[a_q, b_{q-1}] \odot  \cdots  \odot  B_3\odot C_2[a_3, b_2]\odot B_2[b_2, v]$$
+for some vertex $v\in B_2\cap B_r$. (The case when $W$ is a directed cycle corresponds to $q=p+1$ and $B_2=B_{p+1}$.)
+
+Note that necessarily, $q\geq 4$, for $B_3$ does not intersect $B_2$, for otherwise $b_3=b_2$ since the intersection of $C_2$ and $C_3$ is a dipath.
+
+Observe that $C_W[b_2,v]=C_2[b_2,v]$ or $C_W[v, a_4]$ has length at least $k$.
+Indeed, if $q=p+1$, then it follows from the fact that $B_2$ has length as least $7k$; if
+$5\leq q\leq p$, then it comes form the fact that $B_4$ is a subdipath of $C_W[v, a_r]$; if $q=4$, then it follows from Claim~\ref{claim:dis}  applied to $C_3$, $C_2$, $C_4$ in the role of $C_1$, $C_2$, $C_3$ respectively.
+In both case, $C_W[b_2, a_4]$ has length at least $k$. 
+
+Furthermore, $C_W[a_4,b_2]$ has length at least $k$ because it contains $B_3$. Therefore the union of
+$C_W[b_2, a_4]$, $C_W[a_4,b_2]$ and $C'[b_2,a_4]=C_3[b_3,a_4]$ is a subdivision of of $P(k,1;k)$, a contradiction.
 \end{subproof}
 
 
 
 
-
-
-
-%%%%%%%%%%%%%%%%%Later
-
-
-
-
-\begin{claim}
-There exists a proper colouring $c$ of $D'$ with $2(8k^2)^{4k} + 9k$ colours, such that, each subpath of length $9k$ of each cycle of $\mathcal{C}$ is rainbow coloured.
-\end{claim}
-
-
-
-
-
-
-
-We will need the following lemmas:
-
-\begin{lemma}\label{walk}
-Let $D$ be a digraph and $W$ a walk of length $t^l$ such that every vertex appears at most $t$ times.
-Then there exists a dipath of length $l$ starting with the first vertex of $W$.
-\end{lemma}
-
-\begin{proof}
-We do it by induction on $l$. Let $x$ be the first vertex of $W$, because $x$ appears at most $t$ times, there exists a subpath of length greater
-than $t^l/t$ not containing $x$. If we apply induction to the longest of such path, then we find a path of length $l-1$ without $x$ such that
- the first vertex is an out-neighbour of $x$.
-
-\end{proof}
-
-\begin{lemma}\label{min}
-Let $u_t$ be a sequence of $t \geq l^k$ integer in $[k]$ then there exists a set $L$ of $l$ indices such that the $u_i$ for $i \in L$ have the same value
-and the elements in between have greater value.
-\end{lemma}
-
-\begin{proof}
-We do it by induction on $k$. Let $L_1$ be the indices of the sequence where the value is $1$. If $L_1$ has more than $l$ elements we are done,
-else we find a subsequence of $l^k/l$ consecutive elements without any $1$ and we can apply induction.
-\end{proof}
-
-\begin{lemma}\label{max}
-Let $u_t$ be a sequence of $t > k*m$ integer in $[k]$, then there exists a subsequence of size $m$ consecutive integer such that the
-last is the largest.
-\end{lemma}
-
-\begin{proof}
-By induction on $k$. For $k = 1$, it's easy.
-If there exists an element of the sequence $u_i = k$ for $i \geq m$ then take the $i$ first element of the sequence.
-If not, take the subsequence starting after the last element of value $k$, it's length is at least $k*m - m$ and we can apply induction.
-\end{proof}
-
-\begin{lemma}\label{IC}
+\begin{claim}\label{IC}
 Let $c$ be a partial colouring of $C_1$ such that only a path of length smaller than
 $9k$ is coloured and this path is rainbow coloured. Then $c$ can be extended into
 a colouring of $D'[I(C_1)]$ using $? + 9k$ colours, such that on all cycles but $C_1$ at most a path of length $9k$ is
 coloured and this colouration is rainbow.
-\end{lemma}
+\end{claim}
 
 \begin{proof}
 Since $D'[C_1]$ is 2k-degenerate, we can easily extend $c$ with the same colour to colour $D'[C_1]$
@@ -253,6 +310,9 @@ $\chi(D_1) <  2(8k^2)^{4k}$
 \end{claim}
 
 \begin{proof}
+To each vertex $v$ in $I(C_1)$ we associate the set $\Dis(v)$ of the lengths of the $C_j[v,s_{1,j}]$ for all cycle $C_j\in {\cal C} \cap C_1$ containing $v$ such that $C_j[v,s_{1,j}]$ has length at most $4k$.
+
+
 For each vertex $v$ of $D_1$ we will associate a set of integer $dis(v)$ as following.
 If $v \in C_i \setminus C_1$ then we put $j$ in $dis(v)$ if the distance
 from the last vertex of $P_{1,i}$ to $v$ on $C_i$ is $j$, when $v$ is after $P_{1,j}$.
@@ -260,119 +320,6 @@ If $v$ is before $P_{1,j}$ we put $-j$ if $j$ is the distance from $v$ to the fi
 First note that the integer in $dis(v)$ are either all positive or negative, be cause of Claim \ref{claim:dis}
 
 Thus we only need to consider the set of vertices $v$ such that $dist(v)$ is positive.
-\begin{claim}\label{CycleDis}
-There is no directed cycle $C'$ in the graph induce by the vertice $v$ such that $dist(v)$ is positive.
-\end{claim}
-
-\begin{proof}
-Suppose such a cycle exists, first note that all the edges cannot belong to the same cycle $C_i \in \mathcal{C}$
-(each cycle of $\mathcal{C}$ with vertices in $D_1$ get some of it's vertices removed).
-Take $x$ and $y$ two vertices of $C'$ that belong to $C_2 \in \mathcal{C}$. In $I(C_1)$, $C_2$ is a directed path,
-so we can replace one part of $C'$ (either the one from $x$ to $y$ or the one from $y$ to $x$) by a path $P_2$
- which is a subpath of $C_2$ (we still call $C'$ the new cycle obtained).
-If other vertices of $C'$ belong to $C_2$, we can either extend
-$P_2$ (if the vertex is before or after $P_2$ on $C_2$)
-or shortcut it (if the vertex is inside $P_2$). So $C'$ consist of $P_2$ a subpath of
-$C_2$ from $x$ to $y$ then a path from $y$ to $x$ disjoint from $C_2$.
-Call $P_2^b$ the path on $C_2$ from $y$ to $x$, note that it has vertices outside of $D_1$.
-Suppose we take $C_2$ such that the remaining path from $y$ to $x$ is as small as possible.
-This path $P'$ can be written $P_1'P_2'$ $\dots$ $P_l'$, where $P_1' = y..a_1'$,
-$P_l' = a_l' ..x$, $P_i' = a_i'..a_{(i+1)'}$ for all $i$, and such that all
-the $P_i'$ are subpath of cycle $C_i'$ in $\mathcal{C}$ different from $C_1$ and $C_2$.
-Moreover we can assume no vertex of $P_{i+1}' \dots P_l'$ belong to $P_i'$. Indeed, suppose this vertex
-exists, then either it's after $P_i'$ on the part of $C_i'$ then we can extend $P_i'$, or it is after and then
-choosing $P_i'$ instead of $P_2$ would have yielded a smaller path outside $P_i'$ which is not possible.
-On $C_l'$, there exists a path $P_l^h$ from $x$ to $a_l$. On $C_l'$, there exists a path $P_1^h$ from $a_1$ to $x$, and
-on $C_1'$ there exists a path $P_i^h$ from $a_{i+1}$ to $a_i$. These paths all follow a part
-on $I(C_1)$ smaller than $4k$ then a path outside of $I(C_1)$ of length bigger than
-$4k$ then back to $I(C_1)$. We say a vertex is at the beginning of a $P_i^h$ if it is
-before the part outside $I(C_1)$ and at the end if it is after.
-
-First note that $P_l^h$ cannot contain $y$ and $P_1^h$ cannot contain $x$.
-Consider the first of the $P_i^h$, such that there exists $x' \in P_2$ at the beginning of $P_i^h$
-(this exists because $P_1^h$ is such a path). Call $x_1$ the first vertex at the end $P_i^h$ which belongs to
-$D'$, and $P_F^1$ the part of $P_i^h$ between $x'$ and $x_1$.
-Consider the first one of the $P_j^h$, $j<i$ such that there exists $x_1'$ between $x_1$ and $x$ on
-$C'$ at the beginning of $P_j^h$, and $x_2$ the first vertex at the end of $P_j^h$ which belongs to $C'$ is before $x_1$.
-Call $P_F^2$ the part of $P_j^h$ between $x_1'$ and $x_2$.
-We repeat this process until we arrive to a path $P_F^s$ for which $x_s$ belongs to $P_2$.
-All the $P_F^i$ have length greater than $4k$.
-
-We will show first that the $P_F^m$ only intersect on $C'$. Take the first of the $P_F^m$, $P_F^{m_2}$ that intersects
-a previous $P_F^{m_1}$. First, because cycle of $\mathcal{C}$ intersect on a path, $m_1$ and $m_2$ cannot be consecutive.
-$P_F^{m_1}$ is a path from $x_{m_1-1}'$ to $x_{m_1}$ and  $P_F^{m_1}$ is a path from $x_{m_2-1}'$ to $x_{m_2}$ such that on $C'$ they appear
-in the order $x_{m_2}$, $x_{m_2-1}'$, $x_{m_1}$, $x_{m_1-1}'$.
-Let $a$ and $b$ be the first and last intersection of $P_F^{m_2}$ and $P_F^{m_1}$.
-Note that because $m_1$ and $m_2$ are not consecutive, then this intersection is outside of $C'$.
-Moreover there exists a path using the $P_F^i$ between $m_1$ and $m_2$, there exist a path $P_b$ from $u \in C'$
-between$x_{m_1}$ and $x_{m_1-1}'$ to $v \in C'$ between $x_{m_2}$ and $x_{m_2-1}'$ with greater than $k$,
-and disjoint from $x_{m_2}$, $x_{m_2-1}'$, $x_{m_1}$ and $x_{m_1-1}'$. We distinguish two cases :
-\begin{itemize}
-	\item Suppose that both the path of $P_F^{m_2}$ from $x_{m_2-1}'$ to $a$ and the path of $P_F^{m_1}$ from $a$ to $x_{m_1}$ have
-	length shorter than $k$. Then we find a subdivision of $P(k,1;k)$ between $b$ and $x_{m_1}$. The first path is the path from
-	$x{m_1}$ to $x_{m_1-1}'$ on $C'$ then the path to $b$ on $P_F^{m_1}$, which have size bigger than $k$.
-	The second is the path from $b$ to $x_{m_2}$ on $P_F^{m_2}$, which have size bigger than $k$,
-	then the path to $x_{m_1}$ on $C'$, the third it the path from $b$ to $x_{m_1}$ on $P_F^{m_1}$.
-	\item We find a subdivision of $P(k,1;k)$ between $v$ and $u$. The first path is from $v$ to $x_{m_2-1}'$ on $C'$ then the
-	path using $P_F^{m_2}$ then  $P_F^{m_1}$ from  $x_{m_2-1}'$ to $a$ to $x_{m_1}$, which is longer than $k$,
-	and finally the path on $C'$ to $u$. The second is $P_b$ and the third is the path on $C'$ from $u$ to $v$.
-\end{itemize}
-
-
-Let $P_F$ be the path from $x'$ to $y'$ extracted from the $P_F^i$. Because they don't intersect outside of $C'$,
-$P_F$ have size greater than $k$.
-Suppose first that $P_F$ and $P_2^f$ are, apart possibly on $x$ and $y$, disjoint:
-
-%This gives us a walk $W$ from $x$ to $y$. Let $x'$ be the last vertex of $W$ on the beginning of a
-%$P_i^h$ which belong to $P_2$ before going through the first vertex $y'$ of $W$ which is on the
-%end of a $P_i^h$ and belongs to $P_2$. Note that by the minimality of $P'$, $x'$ is different from $y$
-%and $y'$ is different from $x$.
-%Let $P_F$ be the path from $x'$ to $y'$ extracted from the walk from
-%$x'$ to $y'$. Because $x'$ is a vertex at the beginning and $y'$ is a vertex at the end,
-%then $P_F$ has length greater than $k$. Suppose first that $P_F$ and $P_2^b$ are, apart possibly on
-%$x$ and $Y$, disjoint :
-
-\begin{itemize}
-	\item Suppose $x'$ is before $y'$ on the path from $x$ to $y$ $P_2$. We find a subdivision of $P(k,1;k)$ between $y'$ and $x'$.
-	The first path is the path from $y'$ to $y$ along $P_2$ then $P_2^b$ then the path along $P_2$ from $x$ to $x'$. The second
-	is $P_F$ and the last is th path along $P_2$ from $x'$ to $y'$. Note that by choice of $x'$ and $y'$, $P_F$ and $P_2$ intersect
-	only on $y'$ and $x'$
-	\item Suppose $x'$ is after $y'$. Let $x_1$ be the first vertex on $P_F$ after $x'$ which belongs to $C'$, it is easy to see that
-	this vertex cannot be $y'$. Now we can find a subdivision of $P(k,1;k)$ between $y'$ and $x_1$. The first path is the path from $y'$
-	to $x'$ on $P_2$ then the part of $P_F$ from $x'$ to $x_1$. The second path is the part of $P_F$ from $x_1$ to $y'$ and the last path is
-	the part of $C'$ from $x_1$ to $y'$.
-\end{itemize}
-
-Now suppose $P_F$ and $P_2^b$ intersect, first note that the case where $x'$ is after $y'$ doesn't change since the subdivision
-of $P(k,1;k)$ in that case doesn't use $P_F$.
-Let $P_F^i$ be the first of the $P_F^j$ that intersect with $P_2^b$. First note that it cannot be $P_F^1$ and there is a path $P(x_{i-1}')$
-along the $P_F^j$ and $C'$ from $x'$ to $x_{i-1}'$ which is longer than $k$.
-Because $P_F^i$ and $P_2^b$ are two subpaths of cycles in $\mathcal{C}$, their intersection is along a path of size less than $k$.
-Call $a$ the first vertex of this path and $b$ the last.
-
-%Remember $P_F$ is the path extracted from the walk from $x'$ to $y'$ using the  $P_i^h$,
-%where each $P_i^h$ is a subpath of a cycle $C_i'$ different from $C_2$. Look at the last $P_i^h$ which intersect $P_F$ (so the first
-%on the walk from $x'$ to $y'$. First note that it cannot be neither $P_l^h$ not $P_1^h$ and thus we can assume than $P_i^h$ is a dipath
-%of length greater than $4k$ from $u$ to $v$ such that both $u$ and $v$ belong to $P'$. By definition of $\mathcal{C}$, $C_i'$ and $C_2$ and
-%intersect on a path of length smaller than $k$ and by choice of $P_i^h$, this intersection is along $P_i^h$ and $P_2 \setminus{x,y}$.
-%Let $a$ be the first vertex of this intersection and $b$ the last. Because the path on $P_F$ from $a$ to $b$ is smaller than $k$
-%and $P_F$ has size greater than $4k$, then, on $P_F$ either the path from $b$ to $x$ or the path from $y$ to $a$ has length greater than $k$.
-%Let $x_1$ be the last point on $C'$ which belong to $P_i^h$ before the intersection with $P_F$, and $y_1$ the first after the intersection.
-%From the walk $W$ we can extract a path $P_{x'}$ from $x'$ to $x_1$ and $P_{x_1}$ from $x_1$ to $a$, $P_b$ from $b$ to $y_1$ and $P_{y_1}$
-%from $y_1$ to $y'$, such that $P_{y_1}$ and $P_{x_1}$ have length greater than $k$.
-Suppose the path on $P_2^b$ from $b$ to $x$ has length greater than $k$. We find a subdivision of $P(k,1;k)$ between $a$ and $x'$.
-The first path is the path along $P_2^b$ from $a$ to $x$ then the path along $P_2$ from $x$ to $x'$. The second follows $P(x_{i-1}')$
-then the path along $P_F^i$ to $a$ and the third is the path on $P_2$ from $x'$ to $y$ then the path along $P_F$ from $y$ to $a$.
-This means the path from $y$ to
-$a$ on $P_2^b$ is longer than $k$. If the path on $P_F^i$ from  $x_{i-1}'$ to $a$ has size bigger than $k$ the we find a subdivision
-of $P(k,1;k)$ between $x'$ and $x_{i-1}'$. The first is $P(x_{i-1}')$, the second follows the path from $x_{i-1}'$ to $a$ along $P_F^i$ then
-the path from $a$ to $x$ along $P_2^b$ and the path from $x$ to $x'$ along $C'$. The last path is the one from $x'$ to $x_{i-1}'$ along
-$C'$. This means the path from $b$ to $x_i$ along $P_F^i$ is longer than $k$. Finally we find a subdivision of $P(k,1;k)$ between $b$
-and $x$. The first path follows the path along $P_F^i$ from $b$ to $x_i$ then the path on $C'$ from $b$ to $x$. The second follows $P_2$ then
-the path on $P_2^b$ from $y$ to $b$ and the third is the path on $P_2^b$ from $b$ to $x$.
-
-\end{proof}
-
 
 
 %. then a big part on  More generaly on $C_{i}'$, there exists a path from $a_{(i+1)'}$ to $a_i'$.
@@ -389,7 +336,7 @@ the path on $P_2^b$ from $y$ to $b$ and the third is the path on $P_2^b$ from $b
 
 Suppose now the set of vertices with positives $dis(v)$ has chromatic number greater than $(8k^2)^{4k}$.
 This means there exists a path of length $(8k^2)^{4k}$. This means,if we replace all fake arcs by the subpath of
-the cycle corresponding, by \ref{CycleDis} we obtain a path of length greater than $(8k^2)^{4k}$ with only real arcs.
+the cycle corresponding, by Claim \ref{Calim:no-dicycle} we obtain a path of length greater than $(8k^2)^{4k}$ with only real arcs.
 By considering the smallest integer in $dis(v)$ for each vertex of $P$ we obtain a sequence of integer in $[4k]$ of length $(8k^2)^{4k}$.
 By applying lemma \ref{min} we get a set $L = l_1 \dots l_{s+1}$ of vertices of $P$ of size $s+1 = 8k^2$ such that these
 vertices have the same minimum integer in $dis$ and the vertices in between have greater minimum integer in $dis$.
@@ -457,6 +404,16 @@ We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
 
 The argument is the same when $i$ is negative, and thus the rest of $I(C_1)$ can be coloured with $2(8k^2)^{4k}$ colours.
 \end{proof}
+
+
+
+
+\begin{claim}
+There exists a proper colouring $c$ of $D'$ with $2(8k^2)^{4k} + 9k$ colours, such that, each subpath of length $9k$ of each cycle of $\mathcal{C}$ is rainbow coloured.
+\end{claim}
+
+
+
 
 
 
