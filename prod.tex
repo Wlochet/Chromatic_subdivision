@@ -60,7 +60,8 @@
 \newenvironment{subproof}{\par\noindent {\it Subproof}.\ }{\hfill$\lozenge$\par\vspace{11pt}}
 
 \newcommand{\cste}{\bf cste}
-
+\newcommand{\col}{(8k^2)^{4k}}
+\newcommand{\free}{subdivision-free}
 
 \DeclareMathOperator{\Dis}{Dis}
 
@@ -79,6 +80,19 @@
 
 \section{Definitions and preliminaries}
 %%%%%%%%%%%%%%%%%%
+
+
+We denote by $[k]$ the set of integers $\{1, \dots , k\}$.
+
+Let $F$ be a digraph.
+A digraph $D$ is said to be {\it $F$-subdivision-free}, if it contains no subdivision of $F$.
+
+The {\it union} of two digraphs $D_1$ and $D_2$ is the digraph  $D_1\cup D_2$ defined by $V(D_1\cup D_2) = V(D_1)\cup V(D_2)$ and 
+$A(D_1\cup D_2) = A(D_1)\cup A(D_2)$.
+If ${\cal D}$ is a set of digraphs, we denote by $\bigcup {\cal D}$ the union of the digraphs, i.e. $V(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} V(D)$
+and $A(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} A(D)$.
+
+
 
 {\bf def de dipath}
 
@@ -121,12 +135,12 @@ than $t^l/t$ not containing $x$. If we apply induction to the longest of such pa
 \end{proof}
 
 \begin{lemma}\label{min}
-Let $\sigma=(u_t)_{t\in [p]}$ be a sequence of integers in $[k]$. If $p\geq l^k$, then there exists a set $L$ of $l$ indices such that for any $i,j \in L$ with $i\leq j$ the following holds : $u_i=u_j$ and for all $i\leq k\leq j$, $u_k > u_i$.
+Let $\sigma=(u_t)_{t\in [p]}$ be a sequence of integers in $[k]$. If $p\geq l^k$, then there exists a set $L$ of $l$ indices such that for any $i,j \in L$ with $i < j$ the following holds : $u_i=u_j$ and $u_k > u_i$, for all $i < k < j$.
 \end{lemma}
 
 \begin{proof}
 By induction on $k$, the result holding trivially when $k=1$. Assume now that $k>1$. Let $L_1$ be the elements of the sequence with value $1$. If $L_1$ has at least $l$ elements, we are done.
-If not then there is a subsequence $\sigma'$ of $l^k/l$ consecutive elements in $\{2, \dots , k-1\}$. Applying the induction induction to $\sigma'$ yields the result.
+If not then there is a subsequence $\sigma'$ of $l^k/l$ consecutive elements in $\{2, \dots , k-1\}$. Applying the induction hypothesis to $\sigma'$ yields the result.
 \end{proof}
 
 \begin{lemma}\label{max}
@@ -162,25 +176,30 @@ Let $D$ be a strongly connected digraph. If $\chi(D) > \cste$, then $D$ contains
 We prove the result by the contrapositive. We consider a digraph $D$ that contains no subdivision of $P(k,1;k)$.
 We shall prove that $\chi(D) \leq \cste$.
 
-\medskip
+\subsection{Suitable collections of directed cycles}
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-Let $\mathcal{C}$ be a collection of directed cycles of length greater than $12k$, such
-that any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on  subpath $P_{i,j}$ of both cycles of order at most $k$.
+A collection ${\cal C}$ of directed cycles is {\it suitable} if all cycles of ${\cal C}$ have length at least $12k$, and for
+any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on  subpath $P_{i,j}$ of order at most $k$.
 We denote by $s_{i,j}$ (resp. $t_{i,j}$) the initial (resp. terminal) vertex of  $P_{i,j}$.
  
  
- \begin{claim}\label{claim:dis}
+ 
+ 
+ 
+ \begin{lemma}\label{lem:dis}
+ Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
 Let $C_1,C_2,C_3\in\mathcal C$ pairwise intersect, and let $v$ belong to $V(C_2)\cap V(C_3)\setminus V(C_1)$. Then exactly one of the following holds:
 \begin{itemize}
-\item For $i=2,3$, there exists in $C_i$ a dipath from $C_1$ to $v$ of length at most $4k$; 
-\item For $i=2,3$, there exists in $C_i$ a dipath from $v$ to $C_1$ of length at most $4k$.
+\item $C_2[t_{1,2}, v]$ and $C_3[t_{1,3}, v]$ have both length at most $4k$; 
+\item $C_2[v, s_{1,2}]$ and $C_3[v, s_{1,3}]$ have both length at most $4k$.
 \end{itemize}
-\end{claim}
+\end{lemma}
 
-\begin{subproof}
+\begin{proof}
 Suppose it is not the case. By symmetry, we may assume that $C_3[t_{1,3},v]$ has length at most $4k$ and
-$C_2[t_{1,2},v]$ has length greater than $4k$. (the other case is symmetric).
+$C_2[v, s_{1,2}]$ has length at most $4k$, so  $C_2[t_{1,2},v]$ has length greater than $4k$.
 
 Observe that $t_{2,3}\notin V(C_1)$ for otherwise $C_3[v,t_{1,3}]$ has length less than $2k$ (since it is contained in $P_{2,3}\cup P_{1,3}$ and each of those paths has length at most $k-1$ by definition of ${\cal C}$) and so $C_3[t_{1,3},v]$ has length at least $10k$, a contradiction.
 We distinguish two cases according to the position of $s_{1,3}$ in $C_1$ relatively to $s_{1,2}$ and $t_{1,2}$.
@@ -193,14 +212,16 @@ $C_2[t_{2,3}, s_{1,2}]\odot C_1[s_{1,2}, s_{1,3}]$ is a subdivision of $P(k,1;k)
 	Thus $C_3[t_2,3, s_{1,3}]$ has length at least $7k$.
 	 Consequently, the union of $C_2[s_{1,2}, t_{2,3}]$, $C_3[t_2,3, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$, and $C_2[t_{2,3}, s_{1,2}]$ is a subdivision of $P(k,1;k)$, a contradiction.
 \end{itemize}
-\end{subproof}
+\end{proof}
  
  
  
  
  
  
- Let $D[\mathcal{C}]$ be the graph induced on $D$ by the vertices in $\mathcal{C}$ and let $D'$ be the subdigraph of $D[\mathcal{C}]$ with vertex set $V(D)$ and arc set  $\bigcup_{C\in {\cal C}} A(C)$.
+% Let $D[\mathcal{C}]$ be the graph induced on $D$ by the vertices in $\mathcal{C}$ and let $D'$ be the subdigraph of $D[\mathcal{C}]$ with vertex set $V(D)$ and arc set  $\bigcup_{C\in {\cal C}} A(C)$.
+
+Let ${\cal C}$ be a suitable collection of directed cycles.
 For every set of vertices or digraph $S$, we denote by ${\cal C}\cap S$ the set of cycles of ${\cal C}$ that intersect $S$. 
 
 
@@ -211,20 +232,20 @@ containing all the vertices that are at distance at most $4k$ from $P_{1,j}$ in 
 Then the dipath $C_j[s(Q_j), s_{1,j}]$ and  $C_j[t_{1,j},t (Q_j)]$ have length $4k$.
 Set $Q^-_j=C[s(Q_j), s_{1,j}[$ and $Q^+_j=C]t_{1,j}, t(Q_j)]$.
 
-Let $I^+(C_1)$ be the set of vertices not in $C_1$ that are at distance at most $4k$
-from $C_1$ along some cycle $C_j\in {\cal C}\cap C_1$, and let $I^-(C_1)$ be the set of vertices not in $C_1$ that are at distance at most $4k$ to $C_1$ along some cycle $C_j\in {\cal C}\cap C_1$.
-Formally, $I^+(C_1) = \bigcup_{C_j\in {\cal C}\cap C_1} V(Q^-_j)$ and $I^-(C_1) = \bigcup_{C_j\in {\cal C}\cap C_1} V(Q^+_j)$.
-Observe that Claim~\ref{claim:dis} implies that $I^+(C_1)$ and $I^-(C_1)$ are disjoint. We set $I(C_1)=I^+(C_1)\cup I^-(C_1)$.
+
+Set $I^+(C_1) = \bigcup_{C_j\in {\cal C}\cap C_1} Q^+_j$ and $I^-(C_1) = \bigcup_{C_j\in {\cal C}\cap C_1} Q^-_j$.
+Observe that Lemma~\ref{lem:dis} implies that $I^+(C_1)$ and $I^-(C_1)$ are vertex-disjoint digraphs. We set $I(C_1)=I^+(C_1)\cup I^-(C_1)$.
 
 
 
 
-\begin{claim}\label{claim:A}
-Let $C_1$ be a cycle of ${\cal C}$ and let $A$ be a connected component of $D'\setminus I(C_1)$.
+\begin{lemma}\label{lem:A}
+Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+Let $C_1$ be a cycle of ${\cal C}$ and let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$.
 All vertices of $({\cal C}\cap A)  - A$ belongs to a unique cycle $C_A$ of $\mathcal{C}$.
-\end{claim}
+\end{lemma}
 
-\begin{subproof}
+\begin{proof}
 Suppose it is not the case. Then there are two distinct cycles $C_2, C_3$ of ${\cal C}\cap A$ that intersect with $C_1$.
 
 Let $t$ be the closest vertex among $\{t_{1,2}, t_{1,3}\}$ in $C_1$ and let $t'$ be the other vertex of $\{t_{1,2}, t_{1,3}\}$.
@@ -234,35 +255,28 @@ In particular, $v\neq t$. This implies that $s_{2,3}\in V(R_2\cap R_3)$.
 Moreover, $R_2[s_{2,3}, t(Q_2)]$ has length at most $2k$ because $R_2[s_{2,3},v]$ is a subdipath of $P_{2,3}$ and so has length at most $k$.
 Therefore $R_2[t,s_{2,3}]$ has length at least $2k$ because $R_2$ has length at least $4k$.
 It follows that the union of $C_2[s_{2,3},t]$,  $R_2[t,s_{2,3}]$ and  $R_3[t,s_{2,3}]$ is a subdivision of $P(k,1;k)$, a contradiction.
-\end{subproof}
+\end{proof}
 
 
 
-For each $C_j\in {\cal C}\cap C_1$, let $T^+_j$ be the transitive tournament whose hamiltonian dipath is $Q^+_j$.
-Let $D^+_1$ be the digraph which is the union of the $Q^+_j$ fro all $C_j\in  {\cal C}\cap C_1$.
 
-\begin{claim}\label{claim:no-dicycle}
-$D^+_1$  and $D'[I^+(C_1)]$ have no directed cycle.  
-\end{claim}
+\begin{lemma}\label{lem:no-dicycle}
+If ${\cal C}$ is a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph, then
+$I^+(C_1)$ has no directed cycle.  
+\end{lemma}
 \begin{subproof}
-Observe first that $D^+_1$ has a directed cycle if and only if $D'[I^+(C_1)]$ has a directed cycle.
-Indeed since $D'[I^+(C_1)]$ is a subdigraph of $D^+_1$, every directed cycle of $D'[I^+(C_1)]$ is also a directed cycle of $D^+_1$.
-Reciprocally, every directed cycle of $D^+_1$ may be transformed into a closed directed walk (by replacing each arc $(u,v)\in A(T^+_j)$, by 
-$Q^+_j(u,v)$), which contains a directed cycle.
-
-Henceforth, it suffices to prove that $D'[I^+(C_1)]$ has no directed cycle.  
-Suppose for a contradiction that it contains a directed cycle $C'$.
+Suppose for a contradiction that $I^+(C_1)$  contains a directed cycle $C'$.
 Clearly, it must contain arcs from at least two $Q^+_j$.
 
 
 
 Assume that $C'$ contains several vertices of $Q^+_j$.
 Necessarily, there must be two vertices $x,y$ of $Q^+_j\cap C'$ such that no vertex of $C']x,y[$ is in $C_j$ and  $y$ is before $x$ in $Q^+_j$.
-Therefore $C'[x,y]\odot Q^+[y,x]$ is also a directed cycle in $D'[I^+(C_1)]$. Free to consider this cycle,
+Therefore $C'[x,y]\odot Q^+[y,x]$ is also a directed cycle in $I^+(C_1)$. Free to consider this cycle,
 we may assume that $C'\cap Q^+_j$ is a directed path.
 
 Doing so, for all $j$, we may assume that $C'\cap Q^+_j$ is a directed path  for every $C_j\in {\cal C}\cap C_1$.
-Wihtout loss of generality, we may assume that there are cycles $C_2, \dots , C_p$ such that
+Without loss of generality, we may assume that there are cycles $C_2, \dots , C_p$ such that
 \begin{itemize}
 \item $C'$ is in $Q^+_2\cup \cdots  \cup Q^+_p$;
 \item for all $2\leq j\leq p$, $C'\cap Q^+_j$ is a directed path $P^+_j$ with initial vertex $a_j$ and terminal vertex $b_j$;
@@ -280,7 +294,7 @@ Note that necessarily, $q\geq 4$, for $B_3$ does not intersect $B_2$, for otherw
 
 Observe that $C_W[b_2,v]=C_2[b_2,v]$ or $C_W[v, a_4]$ has length at least $k$.
 Indeed, if $q=p+1$, then it follows from the fact that $B_2$ has length as least $7k$; if
-$5\leq q\leq p$, then it comes form the fact that $B_4$ is a subdipath of $C_W[v, a_r]$; if $q=4$, then it follows from Claim~\ref{claim:dis}  applied to $C_3$, $C_2$, $C_4$ in the role of $C_1$, $C_2$, $C_3$ respectively.
+$5\leq q\leq p$, then it comes form the fact that $B_4$ is a subdipath of $C_W[v, a_r]$; if $q=4$, then it follows from Lemma~\ref{lem:dis}  applied to $C_3$, $C_2$, $C_4$ in the role of $C_1$, $C_2$, $C_3$ respectively.
 In both case, $C_W[b_2, a_4]$ has length at least $k$. 
 
 Furthermore, $C_W[a_4,b_2]$ has length at least $k$ because it contains $B_3$. Therefore the union of
@@ -290,66 +304,59 @@ $C_W[b_2, a_4]$, $C_W[a_4,b_2]$ and $C'[b_2,a_4]=C_3[b_3,a_4]$ is a subdivision 
 
 
 
-\begin{claim}\label{IC}
-Let $c$ be a partial colouring of $C_1$ such that only a path of length smaller than
-$9k$ is coloured and this path is rainbow coloured. Then $c$ can be extended into
-a colouring of $D'[I(C_1)]$ using $? + 9k$ colours, such that on all cycles but $C_1$ at most a path of length $9k$ is
-coloured and this colouration is rainbow.
-\end{claim}
+\begin{lemma}\label{lem:IC}
+Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+
+Let $c$ be a partial colouring of $C_1$ such that only a path of length at most
+$9k$ is coloured and this path is rainbow-coloured. Then $c$ can be extended into
+a colouring of $C_1\cup I(C_1)$ using $2\cdot \col + 18k$ colours, such that every subpath of length at most $9k$ of $C_1$ is rainbow-coloured and  $Q_j$ is rainbow-coloured, for every $C_j\in {\cal C}\cap C_1$.\end{lemma}
 
 \begin{proof}
-Since $D'[C_1]$ is 2k-degenerate, we can easily extend $c$ with the same colour to colour $D'[C_1]$
-such that every path of length $9k$ is rainbow coloured.
-We will colour the other vertices with  new colours, but before we complete each maximal
-subdipath of $C_i \setminus C_1$ into transitive tournament
-(by doing this we ensure that the colouring we obtain is rainbow where we want it). We call the arcs added that way the \textit{fake arcs}.
-Call $D_1$ the graph where we remove $C_1$ from $D'[I(C_1)]$ and add the fake arcs.
+We can easily extend $c$ to $C_1$ using $18k$ colours (including the at most $9k$ already used colours)
+so that every subpath of $C_1$ of length $9k$ is rainbow-coloured.
+
+We shall now prove that there exists a colouring $c^+$ of $I^+(C_1)$ with $\col$ (new) colours so that $Q^+_j$ is rainbow-coloured for every $C_j\in {\cal C}\cap C_1$, and a colouring $c^-$ of $I^-(C_1)$ with $\col$ (other new) colours so that $Q^-_j$ is rainbow-coloured for every $C_j\in {\cal C}\cap C_1$.
+The union of these three colourings is clearly the desired colouring of $C_1\cup \bigcup{\cal C}[I(C_1)]$. (Observe that a vertex of $I(C_1)$ is coloured only once because  $I^+(C_1)$ and $I^-(C_1)$ are disjoint.)
+
+It remains to prove the existence of $c^+$ and $c^-$. By symmetry, it suffices to prove the existence of $c^+$.
+ To prove the existence of $c^+$ we consider an auxilary digraph $D^+_1$.
+ For each $C_j\in {\cal C}\cap C_1$, let $T^+_j$ be the transitive tournament whose hamiltonian dipath is $Q^+_j$.
+Let $D^+_1=\bigcup_{C_j\in  {\cal C}\cap C_1} T^+_j$. 
+The arcs of the $A(T^+_j)\setminus A(Q^+_j$ are called {\it fake arcs}.
+%Observe that $D^+_1$ is acyclic because $I^+(C_1)$ is. Indeed, if there were a directed cycle
+%cycle in $D^+_1$, it could be transformed into a closed directed walk (by replacing each arc $(u,v)\in A(T^+_j)$, by 
+%$Q^+_j[u,v]$), which would contain a directed cycle.
+Clearly, $c^+$ exists if and only if $D^+_1$ admits a proper colouring. Henceforth it remains to prove the following claim.
 
 \begin{claim}
-$\chi(D_1) <  2(8k^2)^{4k}$
+$\chi(D^+_1) \leq  \col$.
 \end{claim}
 
-\begin{proof}
-To each vertex $v$ in $I(C_1)$ we associate the set $\Dis(v)$ of the lengths of the $C_j[v,s_{1,j}]$ for all cycle $C_j\in {\cal C} \cap C_1$ containing $v$ such that $C_j[v,s_{1,j}]$ has length at most $4k$.
+\begin{subproof}
+To each vertex $v$ in $I^+(C_1)$ we associate the set $\Dis(v)$ of the lengths of the $C_j[t_{1,j},v]$ for all cycle $C_j\in {\cal C} \cap C_1$ containing $v$ such that $C_j[t_{1,j},v]$ has length at most $4k$.
 
 
-For each vertex $v$ of $D_1$ we will associate a set of integer $dis(v)$ as following.
-If $v \in C_i \setminus C_1$ then we put $j$ in $dis(v)$ if the distance
-from the last vertex of $P_{1,i}$ to $v$ on $C_i$ is $j$, when $v$ is after $P_{1,j}$.
-If $v$ is before $P_{1,j}$ we put $-j$ if $j$ is the distance from $v$ to the first vertex of $P_{1,j}$.
-First note that the integer in $dis(v)$ are either all positive or negative, be cause of Claim \ref{claim:dis}
+Suppose for a contradiction that $\chi(D^+_1) \leq  \col$.
+By Gallai-Roy Theorem, $D^+_1$ admits a path of length $\col$. Replacing all fake arcs  $(u,v)$ in some $A(T^+_j)$, by 
+$Q^+_j[u,v]$ we obtain a directed walk $P$ in $I^+(C_1)$ of length at least $\col$. By Lemma \ref{lem:no-dicycle}, $P$ is necessarily a directed path. Set $P=(v_1,  \dots , v_{p})$. We have $p\geq \col$.
 
-Thus we only need to consider the set of vertices $v$ such that $dist(v)$ is positive.
-
-
-%. then a big part on  More generaly on $C_{i}'$, there exists a path from $a_{(i+1)'}$ to $a_i'$.
-%This gives us a walk $W$ from $x$ to $y$, from it we extract
+For $1\leq i\leq p$, let $m_i = \min \Dis(v_i)$. 
+Lemma \ref{min} applied to $(m_i)_{1\leq i\leq p}$ yields  a set of $8k^2$ indices of such that 
+for any $i< j \in L$,  $m_i=m_j$ and $m_k > m_i$, for all $i< k < j$.
+Let $l_1 < l_2 < \cdots < l_{8k^2}$ be the elements of $L$. 
 
 
-%Let $y_1$ be the vertex after $y$ on $C'$ and $C_3$ be the cycle such that $yy_1$ belongs to $C_3$.
-%Suppose there exists another vertex $y_2$ of $C_3$ belonging to the path from $y_1$ to $x$ on $C'$. This vertex is either after the arc
-%$yy_1$ on the part of $C_3$ which belongs to $D_1$ or after. If it is before it contradicts the fact that $x$ and $y$ are chosen so that the path from
-%$y$ to $x$ in minimal. Indeed, take the cycle consisting of the path on $C_3$ from $y_2$ to $y_1$ then the path along $C'$ from $y_1$ to $y_2$, which is a subpath of
-%the dipath from $y$ to $x_1$.
+For $1\leq j\leq 8k^2-1$, let $u_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Dis(v_i)$.
+By definition $u_j\leq 4k$.
+Applying Lemma~\ref{max} to $(u_j)_{1\leq j\leq 8k^2}$,  we get a sequence of size $2k$ $u_{j_0+1} \dots u_{j_0+{2k}}$ such that $u_{j_0+{2k}}$ is the greatest.
 
-
-
-Suppose now the set of vertices with positives $dis(v)$ has chromatic number greater than $(8k^2)^{4k}$.
-This means there exists a path of length $(8k^2)^{4k}$. This means,if we replace all fake arcs by the subpath of
-the cycle corresponding, by Claim \ref{Calim:no-dicycle} we obtain a path of length greater than $(8k^2)^{4k}$ with only real arcs.
-By considering the smallest integer in $dis(v)$ for each vertex of $P$ we obtain a sequence of integer in $[4k]$ of length $(8k^2)^{4k}$.
-By applying lemma \ref{min} we get a set $L = l_1 \dots l_{s+1}$ of vertices of $P$ of size $s+1 = 8k^2$ such that these
-vertices have the same minimum integer in $dis$ and the vertices in between have greater minimum integer in $dis$.
-Now consider the following sequence of integer : $u_1 .. u_s$ where $u_i$ is the highest integer present in $dis(v)$
-for $v \in [l_i .. l_{i+1} - 1]$.
-By applying \ref{max} to this sequence we get a sequence of size $2k$ $u_{j_1} \dots u_{j_{2k-1}}$ such that $u_{j_{2k-1}}$ is the greatest.
 Let $P'$ be the subpath on $P$ between $l_{j_1}$ and the vertex $x_f$ after $l_{j_{2k-1}}$ which gives the value to $u_{j_{2k-1}}$,
 moreover let $P_1$  be the path from $x_1 \in C_1$ to $l_{j_1}$ of length corresponding to the minimum value of $dis(l_{j_1})$,
 $P_2$ the one for the minimum value of $dis(l_{j_k})$ between $x_2 \in C_1$ and $l_{j_k}$, and $P_3$ the path
 from $x_f$ to $x_3 \in C_1$ on the cycle which corresponds to the value of $u_{j_{2k-1}}$
 (some of these vertices will be outside $I(C_1)$. Note that any vertex $v$ on $P_1$ and $P_2$ has an integer in $dis(v)$
 which is smaller than $(l_{j_k})$ and any vertex $v$ on $P_3$ has an integer in $dis(v)$ which
-is greater than $u_{j_{2k-1}}$, or doesn't belong to $I(C_1)$. Using Claim \ref{claim:dis}, this means
+is greater than $u_{j_{2k-1}}$, or doesn't belong to $I(C_1)$. Using Lemma \ref{lem:dis}, this means
 $P_1$, $P_2$ and $P_3$ are disjoint from $P'$. Let $P'_1$ be the subpath of $P'$ from $l_{j_1}$ to $l_{j_k}$ and  $P'_2$ the rest
 (note that they both are longer than $k$).
 We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
@@ -386,40 +393,20 @@ We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
 \end{itemize}
 
 
-\end{proof}
-%If $x$ is before $C_1$ we say $i$ is positive and $i$ is negative otherwise. Let $D_i$, be digraph induced by the set of vertices at distance $i$, positive, of $C_1$, then
-%$\chi(D_i) < k$. Suppose not then we can find a dipath $P$ of length $k$ inside $D_i$ $x_1,x_2, \dots x_k$. By definition there two cycles
-%$C_2$, $C_3$, such that $x_1$ is on $C_2$ and $x_k$ on $C_3$. Consider the three paths $P_2 \subset C_2$ from $c_1 \in C_1$ to $x_1$
-%disjoint, apart in $c_1$, from $C_1$, $P_3 \subset C_k$ from $c_p \in C_1$ to $x_p$ disjoint, apart in $c_p$, from $C_1$ and $P_4 \subset C_k$ from $x_p$ to $c_p^{'} \in C_1$, disjoint from $C_1$ apart from $c_p$. We find the subdivision of $P(k,1;k)$, as follow :
-%
-%If $P_2$ and $P_3$ are not disjoints, then let $u$ be the last vertex on which they intersect (note that $x_1$ and $x_k$ are different).
-%We find the subdivision of $P(k,1;k)$ between $u$ and $x_k$. The first path is $u$ to $x_1$ along $P_2$ then $P$, the second one is the
-%path from $x_k$ to $u$ along $C_k$ and the third is the path from $u$ to $x_p$ along $C_k$.
-%
-%If $P_2$ and $P_3$ are disjoint. If $c_1$ is between $c_p{'}$ and $c_p$ along the cycle $C_1$, then we find the subdivision of $P(k,1;k)$
-%between $c_1$ and $x_p$. The first path is $P_2 \cdot P$, the second is $P_4$ then the path along $C_1$ from $c_p^{'}$ to $c_1$ and the third
-%is the path along $C_1$ from $c_1$ to $c_p$ then $P_3$. If $c_1$ is after $c_p$ then we find the subdivision of $P(k,1;k)$ between $c_p$ and
-%$x_p$. The first path is the path along $C_1$ from $c_p$ to $c_1$, then $P_2$ then $P$. Then second is $P_4$ then the path along $C_1$ from
-%$c_p^{'}$ to $c_p$ and the third is $P_3$.
-
-The argument is the same when $i$ is negative, and thus the rest of $I(C_1)$ can be coloured with $2(8k^2)^{4k}$ colours.
+\end{subproof}
 \end{proof}
 
 
 
 
-\begin{claim}
-There exists a proper colouring $c$ of $D'$ with $2(8k^2)^{4k} + 9k$ colours, such that, each subpath of length $9k$ of each cycle of $\mathcal{C}$ is rainbow coloured.
-\end{claim}
+\begin{lemma}
+There exists a proper colouring $c$ of $\bigcup{\cal C}$ with $2(8k^2)^{4k} + 9k$ colours, such that, each subpath of length $9k$ of each cycle of $\mathcal{C}$ is rainbow coloured.
+\end{lemma}
 
 
 
 
 
-
-\begin{claim}\label{DC}
-$\chi(D[\mathcal{C}]) < ? $
-\end{claim}
 
 
 
@@ -427,10 +414,10 @@ Now we can prove by induction on the number of cycle in $\mathcal{C}$ that if th
 a partial colouring $c$ such that one of the cycle $C_1$ has a path of length smaller than $9k$
 which is rainbow coloured, then we can extend this colouring to all $D[\mathcal{C}]$ using less
 than $2(8k^2)^{4k} +9k$ colours such that, on each cycle, every subpath of length
-$9k$ is rainbow coloured. By lemma \ref{IC}, we can extend this colouring to a colouring $c_1$ of $D'[I(C_1)]$
+$9k$ is rainbow coloured. By Lemma \ref{lem:IC}, we can extend this colouring to a colouring $c_1$ of $\bigcup{\cal C}[I(C_1)]$
 using less than $2(8k^2)^{4k} + 9k$ colours.
-Note that the remaining points of $D'[\mathcal{C}]$ are in one of the connected components of $D'\setminus I(C_1)$.
-Let $A$ be a connected component of $D'\setminus I(C_1)$, by Claim \ref{claim:A} if we give the colours of $c_1$ to vertices of $({\cal C}\cap A) \cap I(C_1)$
+Note that the remaining points of $\bigcup{\cal C}[\mathcal{C}]$ are in one of the connected components of $\bigcup{\cal C} - I(C_1)$.
+Let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$, by Lemma \ref{lem:A} if we give the colours of $c_1$ to vertices of $({\cal C}\cap A) \cap I(C_1)$
 only a path of length smaller than $9k$ of some cycle of $\mathcal{C}$ receive some colours,
 so we can apply the induction hypothesis to all ${\cal C}\cap A$ to get a colouring
 of the vertices of $A$ which is compatible with $c_1$. By doing this to each component, we finish the proof.
@@ -459,6 +446,10 @@ of the vertices of $A$ which is compatible with $c_1$. By doing this to each com
 %flemme
 %\end{proof}
 
+
+\begin{claim}\label{DC}
+$\chi(D[\mathcal{C}]) < ? $
+\end{claim}
 
 
 
