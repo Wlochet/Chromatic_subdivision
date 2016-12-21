@@ -261,7 +261,7 @@ It follows that the union of $C_2[s_{2,3},t]$,  $R_2[t,s_{2,3}]$ and  $R_3[t,s_{
 
 
 \begin{lemma}\label{lem:no-dicycle}
-If ${\cal C}$ is a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph, then
+Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph. For any cycle $C_1\in {\cal C}$, the digraph
 $I^+(C_1)$ has no directed cycle.  
 \end{lemma}
 \begin{subproof}
@@ -307,7 +307,7 @@ $C_W[b_2, a_4]$, $C_W[a_4,b_2]$ and $C'[b_2,a_4]=C_3[b_3,a_4]$ is a subdivision 
 \begin{lemma}\label{lem:IC}
 Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
 
-Let $c$ be a partial colouring of $C_1$ such that only a path of length at most
+Let $c$ be a partial colouring of a cycle $C_1\in {\cal C}$ such that only a path of length at most
 $9k$ is coloured and this path is rainbow-coloured. Then $c$ can be extended into
 a colouring of $C_1\cup I(C_1)$ using $2\cdot \col + 18k$ colours, such that every subpath of length at most $9k$ of $C_1$ is rainbow-coloured and  $Q_j$ is rainbow-coloured, for every $C_j\in {\cal C}\cap C_1$.\end{lemma}
 
@@ -337,119 +337,86 @@ To each vertex $v$ in $I^+(C_1)$ we associate the set $\Dis(v)$ of the lengths o
 
 
 Suppose for a contradiction that $\chi(D^+_1) \leq  \col$.
-By Gallai-Roy Theorem, $D^+_1$ admits a path of length $\col$. Replacing all fake arcs  $(u,v)$ in some $A(T^+_j)$, by 
+By Gallai-Roy Theorem, $D^+_1$ admits a directed path of length $\col$. Replacing all fake arcs  $(u,v)$ in some $A(T^+_j)$, by 
 $Q^+_j[u,v]$ we obtain a directed walk $P$ in $I^+(C_1)$ of length at least $\col$. By Lemma \ref{lem:no-dicycle}, $P$ is necessarily a directed path. Set $P=(v_1,  \dots , v_{p})$. We have $p\geq \col$.
 
 For $1\leq i\leq p$, let $m_i = \min \Dis(v_i)$. 
 Lemma \ref{min} applied to $(m_i)_{1\leq i\leq p}$ yields  a set of $8k^2$ indices of such that 
 for any $i< j \in L$,  $m_i=m_j$ and $m_k > m_i$, for all $i< k < j$.
-Let $l_1 < l_2 < \cdots < l_{8k^2}$ be the elements of $L$. 
+Let $l_1 < l_2 < \cdots < l_{8k^2}$ be the elements of $L$ and let $m= m_{l_1} = \cdots = m_{l_{8k^2}}$.
 
 
-For $1\leq j\leq 8k^2-1$, let $u_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Dis(v_i)$.
-By definition $u_j\leq 4k$.
-Applying Lemma~\ref{max} to $(u_j)_{1\leq j\leq 8k^2}$,  we get a sequence of size $2k$ $u_{j_0+1} \dots u_{j_0+{2k}}$ such that $u_{j_0+{2k}}$ is the greatest.
+For $1\leq j\leq 8k^2-1$, let $M_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Dis(v_i)$.
+By definition $M_j\leq 4k$.
+Applying Lemma~\ref{max} to $(M_j)_{1\leq j\leq 8k^2}$,  we get a sequence of size $2k$ $M_{j_0+1} \dots M_{j_0+{2k}}$ such that $M_{j_0+{2k}}$ is the greatest. For sake of simplicity, we set $\ell_i =j_0+i$ for $1\leq i\leq 2k$.
+Let $f$ the smallest index not smaller than $\ell_{2k}$ for which $M_{\ell_{2k}} \in \Dis (v_f)$. 
 
-Let $P'$ be the subpath on $P$ between $l_{j_1}$ and the vertex $x_f$ after $l_{j_{2k-1}}$ which gives the value to $u_{j_{2k-1}}$,
-moreover let $P_1$  be the path from $x_1 \in C_1$ to $l_{j_1}$ of length corresponding to the minimum value of $dis(l_{j_1})$,
-$P_2$ the one for the minimum value of $dis(l_{j_k})$ between $x_2 \in C_1$ and $l_{j_k}$, and $P_3$ the path
-from $x_f$ to $x_3 \in C_1$ on the cycle which corresponds to the value of $u_{j_{2k-1}}$
-(some of these vertices will be outside $I(C_1)$. Note that any vertex $v$ on $P_1$ and $P_2$ has an integer in $dis(v)$
-which is smaller than $(l_{j_k})$ and any vertex $v$ on $P_3$ has an integer in $dis(v)$ which
-is greater than $u_{j_{2k-1}}$, or doesn't belong to $I(C_1)$. Using Lemma \ref{lem:dis}, this means
-$P_1$, $P_2$ and $P_3$ are disjoint from $P'$. Let $P'_1$ be the subpath of $P'$ from $l_{j_1}$ to $l_{j_k}$ and  $P'_2$ the rest
-(note that they both are longer than $k$).
+Let $j_1$ be an index such that $C_{j_1}[t_{1,j_1},v_{\ell_1}]$ has length $m$ and set $P_1=C_{j_1}[t_{1,j_1},v_{\ell_1}]$.
+Let $j_2$ be an index such that $C_{j_2}[t_{1,j_2},v_{\ell_k}]$ has length $m$ and set $P_2=C_{j_2}[t_{1,j_2},v_{\ell_k}]$.
+Let $j_3$ be an index such that  $C_{j_3}[t_{1,j_3},v_{f}]$ has length $M_{\ell_{2k}}$ and set $P_3=C_{j_3}[v_f, s_{1,j_3}]$ (some vertices of $P_3$ are not in $I^+(C_1)$).
+
+Note that any internal vertex $x$ of $P_1$ or $P_2$ has an integer in $\Dis(x)$
+which is smaller than $m$ and every internal vertex $y$ of $P_3$ has an integer in $\Dis(y)$ which
+is greater than $M_{\ell_{2k}}$, or does not belong to $I^+(C_1)$. Hence, 
+$P_1$, $P_2$ and $P_3$ are disjoint from $P[v_{\ell_1},v_f]$. 
+
+
 We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
 
 \begin{itemize}
-	\item Suppose $P_3$ intersects neither $P_1$ nor $P_2$.
-	\begin{enumerate}
-		\item If $P_1$ and $P_2 $ are not disjoints,
-		then let $u$ be the last vertex on which they intersect. We find the subdivision of $P(k,1;k)$ between $u$ and $l_{j_k}$.
-		The first path is from $u$ to $x_{j_k}$ along $P_1$ then $P'_1$, the second is from $x_{j_k}$
-		to $u$ using $P'_2$, then $P_3$ then the path along $C_1$
-		then $P_1$ to go to $u$ the last is the path from $u$ to $x_{j_k}$ along $P_2$.
-		\item 	If $P_1$ and $P_2$ are disjoint. If $c_1$ is between $c_3$ and $c_2$ along the cycle $C_1$, t
-		hen we find the subdivision of $P(k,1;k)$
-		between $c_1$ and $l_{j_p}$. The first path is $P_1 \cdot P'_1$, the second is $P'_2 \cdot P_3$
-		then the path along $C_1$ from $c_3$ to $c_1$ and the third
-		is the path along $C_1$ from $c_1$ to $c_2$ then $P_2$. If $c_1$ is before
-		 $c_2$ then we find the subdivision of $P(k,1;k)$ between $c_2$ and
-		$l_{j_k} $. The first path is the path along $C_1$ from $c_2$ to $c_1$, then $P_2$ then $P'_1$.
-		Then second is $P'_2 \cdot P_3$ then the path along $C_1$ from
-		$c_3$ to $c_2$ and the third is $P_2$.
-\end{enumerate}
-	\item If $P_3$ intersect first a vertex $v \in P_1 \cap P_2$ then it's like last case where $P_1$ and $P_2$ intersect.
-	\item Suppose $P_3$ intersects first $P_2$. Because $P_3$ and $P_2$ are path of cycles of $\mathcal{C}$
-	their intersection is a path. Let $u$ be the last vertex of this intersection.
-	We find a subdivision of $P(k,1;k)$ between $l_{j_k}$ and $u$.
-	The first path is $P'_2$ then $P_3$ until $u$, the second is the path from $u$ to $P_1$ (either going
-	through $C_1$ or not) then along $P_1$ until $l_{j_1}$ then $P'_1$, the last is from $u$ to $l_{j_k}$ along $P_1$.
-	\item Suppose $P_3$ intersects first $P_1$. Let $u$ be the last vertex of $P_3$ which
-	 is on $P_1$ before it goes to either $P_2$ or to $C_1$.
-	We find a subdivision of $P(k,1;k)$ between $l_{j_k}$ and $u$. The first path is $P'_2$ then
-	$P_3$ until $u$, the second is the path from $u$ to	$l_{j_1}$ along $P_1$ then $P'_1$,
-	the third is from $u$ to $P_2$ using $P_3$ and $C_1$ if necessary then the path along $P_2$ to  $l_{j_k}$.
+	\item Suppose $P_3$ does not intersect $P_1 \cup P_2$.
+	\begin{itemize}
+		\item Assume first that $P_1$ and $P_2$ are disjoint. If $s(P_1)$ is in $C_1[t(P_3), s(P_2)]$, then the union of  $P_1 \odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f] \odot P_3\odot C_1[t(P_3), s(P_1)]$ and $C_1[s(P_1), s(P_2)]\odot P_2$ is a subdivision of $P(k,1;k)$, a contradiction.
+		 If $s(P_1)$ is in $C_1[ s(P_2), t(P_3)]$, then the union of  $C_1[s(P_2), s(P_1)]\odot P_1\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot  P_3\odot C_1[t(P_3), s(P_2)]$, and  $P_2$ is a subdivision of $P(k,1;k)$, a contradiction.
+	
+		\item Assume now $P_1$ and $P_2$ intersect. Let $u$ be the last vertex along $P_2$ on which they intersect. The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3\odot C[t(P_3), s(P_1)]\odot P_1[s(P_1), u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+	\end{itemize}
+
+	\item Assume $P_3$ intersect $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cap P_2$ and let $u$ be the last vertex of $P_1\cap P_2$ along $P_2$. The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3[v_f,v]\odot P_1[v, u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+
+	\item Assume now that $P_3$ intersect $P_1\cup P_2$ but not $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cup P_2$.
+	\begin{itemize}
+	\item If $v \in P_2$, let $u$ be the last vertex on $P_2\cap P_3$ along $P_3$. Observe that $P_3[v,u]$ is also a subpath of $P_2$ and therefore contains no vertex of $P_1$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_1}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_1$. Hence, the union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,v]$, $Q\odot P[v_{\ell_1},v_{\ell_k}]$, and $P_2[u,v_{\ell_k}$ is a subdivision of $P(k,1;k)$, a contradiction.
+	
+	\item If $v\in P_1$, let $u$ be the last vertex on $P_1\cap P_3$ along $P_3$.  Observe that $P_3[v,u]$ is also a subpath of $P_1$ and therefore contains no vertex of $P_2$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_k}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_2$.
+	The union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,u]$, $P_1[u, v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$ and $Q$ is a subdivision of $P(k,1;k)$, a contradiction.
+
+	\end{itemize}
+
 \end{itemize}
-
-
 \end{subproof}
 \end{proof}
 
 
 
 
-\begin{lemma}
-There exists a proper colouring $c$ of $\bigcup{\cal C}$ with $2(8k^2)^{4k} + 9k$ colours, such that, each subpath of length $9k$ of each cycle of $\mathcal{C}$ is rainbow coloured.
+\begin{lemma}\label{lem:col-union-cycle}
+Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+There exists a proper colouring $c$ of $\bigcup{\cal C}$ with $2\cdot \col + 18k$ colours, such that, each subpath of length $9k$ of each cycle of $\mathcal{C}$ is rainbow-coloured.
 \end{lemma}
+\begin{proof}
+We prove by induction on the number of cycles in $\mathcal{C}$ the following stronger statement:
+{\it if there exists
+a partial colouring $c$ such that one of the cycle $C_1$ has a path of length less than $9k$
+which is rainbow-coloured, then we can extend this colouring to all $D[\mathcal{C}]$ using less
+than $2\col +18k$ colours such that, on each cycle, every subpath of length
+$9k$ is rainbow-coloured}.
+
+Consider a rainbow-colouring of a subpath of length less than $9k$ of a cycle $C_1\in {\cal C}$.
+By Lemma \ref{lem:IC}, we can extend this colouring to a colouring $c_1$ of $I(C_1)$ at most $2\cdot \col + 18k$ colours.
+Note that the non-coloured vertices of $\bigcup{\cal C}$ are in one of the connected components of $\bigcup{\cal C} - I(C_1)$.
+Let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$. The coloured (by $c_1$) vertices of ${\cal C}\cap A$ are those of $({\cal C}\cap A)-A$. Hence, by Lemma \ref{lem:A}, they all belong to some cycle $C_j$ and so to the diptah $Q_j$ which has length at most $9k$.
+Hence, by the induction hypothesis, we can extend $c_1$ to $A$. Doing this for each component, we extend $c_1$ to the whole $\bigcup{\cal C}$.
+\end{proof}
 
 
 
 
 
-
-
-
-Now we can prove by induction on the number of cycle in $\mathcal{C}$ that if there exists
-a partial colouring $c$ such that one of the cycle $C_1$ has a path of length smaller than $9k$
-which is rainbow coloured, then we can extend this colouring to all $D[\mathcal{C}]$ using less
-than $2(8k^2)^{4k} +9k$ colours such that, on each cycle, every subpath of length
-$9k$ is rainbow coloured. By Lemma \ref{lem:IC}, we can extend this colouring to a colouring $c_1$ of $\bigcup{\cal C}[I(C_1)]$
-using less than $2(8k^2)^{4k} + 9k$ colours.
-Note that the remaining points of $\bigcup{\cal C}[\mathcal{C}]$ are in one of the connected components of $\bigcup{\cal C} - I(C_1)$.
-Let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$, by Lemma \ref{lem:A} if we give the colours of $c_1$ to vertices of $({\cal C}\cap A) \cap I(C_1)$
-only a path of length smaller than $9k$ of some cycle of $\mathcal{C}$ receive some colours,
-so we can apply the induction hypothesis to all ${\cal C}\cap A$ to get a colouring
-of the vertices of $A$ which is compatible with $c_1$. By doing this to each component, we finish the proof.
-
-
-\medskip
-
-%Now it remains to colour the edges between cycles of $\mathcal{C}$ in each connected component.
-%Let $C_r$ be a cycle of $\mathcal{C}$. We let $L_1$ be the set of cycle of $\mathcal{C}$ which intersect
-%$C_1$. For each cycle $L_1$ of
-%
-%
-%For each cycle $C_i$ in the same component as $C_2$, there exists a
-%sequence of cycle $C_1 = C_r$ $C_2$, $\dots C_l = C_i$ such that, for all $j$, $C_j$ qnd $C_{j+1}$ intersect on an non empty path.
-%We can assume this sequence is the shortest possible, and this define a distance between $C_r$ and $C_i$.
-%We will colour the set of vertices who belongs to a cycle at distance $i$ of $C_r$.
-%
-%\begin{lemma}
-%Let $C_i$ and $C_j$ be two cycles at distance $l$ of $C_r$ and $C_{i'}$ and $C_{j'}$ be the cycle preceding $C_i$ and $C_j$ on their path to $C_r$.
-%Suppose $P_{i,i'}$ and $P_{j,j'}$ are disjoint.
-%There exists a path from the last vertex of $P_{i,i'}$ to the first vertex of $P_{j,j'}$ and one from the first vertex of $P_{j,j'}$ to the last of
-%$P_{i,i'}$ . One of these path is of size greater than $k$ and they only uses vertices of cycle at distance less than $l$ of $C_r$.
-%\end{lemma}
-%
-%\begin{proof}
-%flemme
-%\end{proof}
-
-
-\begin{claim}\label{DC}
-$\chi(D[\mathcal{C}]) < ? $
-\end{claim}
+\begin{lemma}\label{lem:DC}
+Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph $D$.
+Then $\chi(D[\mathcal{C}]) < ? $
+\end{lemma}
 
 
 
