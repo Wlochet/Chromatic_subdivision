@@ -60,6 +60,8 @@
 \newenvironment{subproof}{\par\noindent {\it Subproof}.\ }{\hfill$\lozenge$\par\vspace{11pt}}
 
 \newcommand{\cste}{\bf cste}
+\newcommand{\qj}{\bf cste2}
+\newcommand{\dr}{ k^2}
 \newcommand{\col}{(8k^2)^{4k}}
 \newcommand{\free}{subdivision-free}
 
@@ -91,6 +93,11 @@ The {\it union} of two digraphs $D_1$ and $D_2$ is the digraph  $D_1\cup D_2$ de
 $A(D_1\cup D_2) = A(D_1)\cup A(D_2)$.
 If ${\cal D}$ is a set of digraphs, we denote by $\bigcup {\cal D}$ the union of the digraphs, i.e. $V(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} V(D)$
 and $A(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} A(D)$.
+
+\begin{lemma}\label{lem:decomp}
+Let $D_1$ and $D_2$ be two digraphs.
+$\chi(D_1\cup D_2) \leq \chi(D_1)\times \chi(D_2)$.
+\end{lemma}
 
 
 
@@ -169,10 +176,11 @@ If $i\leq m$, apply the induction on $\sigma'=(u_t)_{i\leq t\leq p}$ which is a 
 \section{$P(k,1;k)$}
 %%%%%%%%%%%
 
-\begin{theorem}
+\begin{theorem}\label{th:main}
 Let $D$ be a strongly connected digraph. If $\chi(D) > \cste$, then $D$ contains a subdvision of $P(k,1;k)$.
 \end{theorem}
-\begin{proof}
+
+
 We prove the result by the contrapositive. We consider a digraph $D$ that contains no subdivision of $P(k,1;k)$.
 We shall prove that $\chi(D) \leq \cste$.
 
@@ -227,7 +235,7 @@ For every set of vertices or digraph $S$, we denote by ${\cal C}\cap S$ the set 
 
 
 Let $C_1\in \mathcal{C}$.
-For each $C_j\in {\cal C} \cap C_1$, let $Q_j$ be the subdipath of $C_j$ such that
+For each $C_j\in {\cal C} \cap C_1$, let $Q_j$ be the subdipath of $C_j$ 
 containing all the vertices that are at distance at most $4k$ from $P_{1,j}$ in the cycle underlying $C_j$.
 Then the dipath $C_j[s(Q_j), s_{1,j}]$ and  $C_j[t_{1,j},t (Q_j)]$ have length $4k$.
 Set $Q^-_j=C[s(Q_j), s_{1,j}[$ and $Q^+_j=C]t_{1,j}, t(Q_j)]$.
@@ -415,15 +423,119 @@ Hence, by the induction hypothesis, we can extend $c_1$ to $A$. Doing this for e
 
 \begin{lemma}\label{lem:DC}
 Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph $D$.
-Then $\chi(D[\mathcal{C}]) < ? $
+For every strongly connected component $\mathcal{S}$ of $\bigcup \mathcal{C}$, 
+$\chi(\mathcal{S}) < (2\cdot \col + 18k) \cdot (2 \cdot \dr)$.
 \end{lemma}
 
+Consider the colouring $c$ obtained by lemma \ref{lem:col-union-cycle}. It allow us 
+to deal with the arcs belonging to cycles in $\mathcal{C}$, to deal with the other, we do the following:
+We present a sort BFS for $\mathcal{S}$.
+Let $C_r$ (for root) be a cycle of $\mathcal{S}$ and $L_0 = \{C_r\}$. For every cycle $C_s$ of $\mathcal{S}$ for which 
+$P_{r,s}$ is not empty, we put $C_s$ in $L_1$ and say that $C_0$ is the \textit{father} of $C_s$. We build $L_i$ inductively
+until we cover all cycle of $\mathcal{S}$ : $L_{i+1}$ consists of every cycle $C_l$ not in $\cup_{j \leq i} L_j$ such that 
+there exists a cycle $C_a \in L_i$ such that $P_{a,l}$ is non empty. $C_a$ is the father of $C_l$ and it is important to note that we 
+fix it uniquely, even though there might exists multiple choices for a father of $C_a$ in $L_i$. We define the \textit{ancestors} of 
+cycle like in trees.
 
 
+Let $C_l$ be a cycle and $C_a$ it's father. let $Q_l$ be the subdipath of $C_l$ which contains
+all the vertices that are at distance at most $k$ from $P_{l,a}$ in the cycle underlying $C_l$.
+Then the dipath $C_l[s(Q_l), s_{l,a}]$ and  $C_j[t_{a,l},t (Q_l)]$ have length $k$.
+Set $Q^-_l=C[s(Q_l), s_{l,a}[$ and $Q^+_l=C]t_{l,a}, t(Q_l)]$.
+
+For a vertex $x$ belonging to cycles in $\mathcal{S}$, we say that $x$ \textit{belongs to}  $L_i$ if
+$i$ is the smallest integer such that $x \ C_l$ for some $C_l \in L_i$.
+
+\begin{lemma}\label{lem:Qpos}
+Suppose there exists a vertex $x$ such that $x \in Q^+_l$ and $x \in Q^-_s$ for some cycles $l$ and $s$.
+Then $D$ contains a subdivision of $P(k,1;k)$
+\end{lemma}
+
+\begin{lemma}\label{lem:Ql}
+Suppose there exists an arc between $x_1 \in C_{l_1}$ and $x_2 \in C_{l_2}$, then $x_1 \in Q_{l_1}$ and 
+$x_2 \in Q_{l_2}$. 
+\end{lemma}
+
+Let $Q^+(r)$ (resp $Q^-(r)$) be the set of vertices belonging to some $Q^+_l$ (resp $Q^-_l$)  and is coloured $r$ in $c$. 
+By lemmas \ref{lem:Qpos} and \ref{lem:Ql}, if for every $r$ we can colour the graph $D_r^+$ induced on $D$ by the vertices in 
+$Q^+(r)$ with $\dr$ colours, then we can colour the graph induced by a $\mathcal{S}$ using 
+$(2\cdot \col + 18k) \cdot (2 \cdot \dr)$ colours  
 
 
+\begin{lemma}\label{lem:lvl}
+Let $x$ and $y$ be vertices of $Q^+(s)$ belonging to $L_i$ and $L_j$, such that $i-j> k$ then there is no arc between $x$ and $y$.
+\end{lemma}
+
+\begin{proof}
+Let $C_x$ be the cycle of $L_i$ such that $x \in C_x$ and $C_y$ the cycle of $L_j$ such that $y \in C_y$.
+By considering the common ancestor of $C_x$ and $C_y$, we obtain a sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$
+and $P_{i,i+1}$ exists for all $i$ between 1 and $l-1$.
+If the arc is from $x$ to $y$, then we find a subdivision of $P(k,1;k)$ between $l_{p-1,p}$ and $y$. 
+First note that by definition of the $L_i$, the dipaths $C_{i-1}[l_{i-1,i}, l_{i-2,i-1}]$ are all disjoint. 
+Then the path $P = C_{p-1}[l_{p-1,p}, l_{p-2,p-1}] \odot C_{p-2}[l_{p-2,p-1}, l_{p-3,p-2}] \dots \odot C_{2}[l_{2,3}, s_{2,1}] 
+\odot C_1[s_{2,1}, x]$ is longer than $k$. The subdivision consists of $P \odot (xy)$, $C_l[l_{p-1,p}, y]$ and $C_l[y,l_{p-1,p}]$.
+The case where the arc is from $y$ to $x$ is similar.
+\end{proof}
+
+\begin{lemma}
+$\chi(D_r^+) < \dr$
+\end{lemma}
+
+\begin{proof}
+We use the following partition of the arcs of $D_r^+$
+
+\begin{itemize}
+	\item $A_0$ is the set of arcs of $D_r^+$ which ends belongs to different levels.
+	\item $A_1$ is the set of arcs of $D_r^+$ which ends belongs to the same levels.
+\end{itemize} 
+
+By lemma \ref{lem:lvl}, $\chi(D_r^+[A_0]) \geq k$. Indeed, assign to each level $L_i$ the colour $i$ modulo $k$ and
+we obtain a proper colouring.
+
+We will now prove that $\chi(D_r^+[A_1]) \geq k$ by contradiction. 
+Suppose it is not, it means that there exists a level $i$ such that the chromatic number of $\chi(D_r^+[A_1])$ in this level is greater 
+than $k$. This means there exists a dipath $P$ of length $k$ in this level between vertices $x$ and $y$. Suppose this path visits twice 
+the same cycle $C_1$ of $\mathcal{C}$. Because all the points belonging to the path received colour $r$ in $c$ this means there exists a 
+handle between two points at distance at least $9k$ of the cycle $C_1$ in $\mathcal{C}$, which is impossible. 
+Consider $C_x$ and $C_y$ cycles containing $x$ and $y$ in $L_i$ and $C_{x'}$, $C_{y'}$ their respective father. 
+By considering the common ancestor of $C_{x'}$ and $C_{y'}$, we can find a dipath $P_y$ from $l_{y,y'}$ to $s_{x,x'}$ which 
+only uses vertices in levels smaller than $i-1$, thus disjoint of $P$, $C_y[l_{y,y'}, y]$, $C_y[y, l_{y,y'}]$ and $C_x[s_{x,x'}, x]$. 
+Then $C_y[l_{y,y'}, y]$, $C_y[y, l_{y,y'}]$ and $P_y \odot C_x[s_{x,x'}, x] \odot P$ form a subdivision of $P(k,1;k)$ between $y$ 
+and $l_{y,y'}$. 
+
+By lemma \ref{lem:decomp} this means $\chi(D_r^+) <  \dr$ 
 
 \end{proof}
+
+\section{Proof of Theorem \ref{th:main}}
+
+Consider $\mathcal{C}$ be a maximal suitable collection of cycles in $D$. Let $D'$ be the digraph obtained by contracting 
+every connected component $S$ of $\bigcup \mathcal{C}$ into one vertex. For each connected component $S_i$ we call $s_i$ the
+new vertex created.
+
+\begin{claim}\label{cl:nocycle}
+$\chi(D') \leq 12k$
+\end{claim} 
+
+\begin{proof}
+First note that since $D$ is strongly connected so is $D'$. If $\chi(D') > 12k$ then by Bondy's Theorem, there exists
+a directed cycle $C = x_1x_2 \dots x_l$ of length greater than $12k$. From $C$ we deduce a cycle $C'$ in $D$ in the following way: 
+\begin{itemize}
+	\item We keep the vertices of $D'$ which correspond to vertices in $D$.
+	\item For each vertex $x_j$ which correspond to a $s_i$ in $D$: the arc $x_{j-1}x_j$ correspond in $D$ to an arc arriving on 
+		$p_i$, a vertex of $S_i$ and the arc $x_jx_{j+1}$ correspond to an arc leaving $l_i$, a vertex of $S_i$. Let $P_j$ be the dipath 
+		from $p_i$ to $l_i$ in $\bigcup \mathcal{C}$. Note that this path intersect the element of $S_i$ only along a subpath. 
+\end{itemize}
+$C'$ is then the path obtained from $C$ where we replace all contracted point $x_j$ by the path $P_j$. 
+First note that $C'$ has size greater than $12k$. Moreover, let $C_i$ be a cycle of $\mathcal{C}$, then $C_i$ can
+intersect $C'$ only along one $P_j$, because they all correspond to different component of $\bigcup \mathcal{C}$. This mean the
+intersection of $C'$ to each cycle of $\mathcal{C}$ is along a subpath. If this intersection is along a subpath longer than $k$ than we can 
+find a subdivision of $P(k,1;k)$. So $C'$ is a directed cycle of length at least $12k$ which intersect every cycle of $\mathcal{C}$ along a 
+subdipath of length at most $k$. This contradicts the maximality of $\mathcal{C}$ and $\chi(D') \leq 12k$.
+\end{proof}
+
+
+So this means by using $12k \cdot (2\cdot \col + 18k) \cdot (2 \cdot \dr)$ we can colour $D$.
 
 
 
