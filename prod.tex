@@ -447,9 +447,17 @@ For a vertex $x$ belonging to cycles in $\mathcal{S}$, we say that $x$ \textit{b
 $i$ is the smallest integer such that $x \ C_l$ for some $C_l \in L_i$.
 
 \begin{lemma}\label{lem:Qpos}
-Suppose there exists a vertex $x$ such that $x \in Q^+_l$ and $x \in Q^-_s$ for some cycles $l$ and $s$.
-Then $D$ contains a subdivision of $P(k,1;k)$
+Suppose there exists a vertex $x$ such that $x \in Q^+_l$ and $x \in Q^-_s$ for some cycles $C_l$ and $C_s$ in some $L_j$.
+If $x$ belongs to $L_j$ then $D$ contains a subdivision of $P(k,1;k)$
 \end{lemma}
+
+\begin{proof}
+Suppose $x$ belongs to $L_j$, we can assume $x = l_{s,l}$.
+Let $C_{l'}$ and $C_{s'}$ be the father of $C_l$ and $C_s$ (they can be the same). 
+By definition of the $L_i$ there exists a dipath $P$ from $s_{l,l'}$ to $l_{s,s'}$ only going through cycles of $L_t$ for $t<j$.
+Let $y$ be the first vertex of $P$ which belongs to $C_s$. Then we find a subdivision of $P(k,1;k)$ between $x$ and $y$.
+The first path is $C_s[y,x]$ longer than $k$, the second is $C_l[x,s_{l,l'}] \odot P[ s_{l,l'}, y]$ and the last is $C_s[x,y]$.
+\end{proof}
 
 \begin{lemma}\label{lem:Ql}
 Suppose there exists an arc between $x_1 \in C_{l_1}$ and $x_2 \in C_{l_2}$, then $x_1 \in Q_{l_1}$ and 
