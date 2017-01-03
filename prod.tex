@@ -165,9 +165,15 @@ If $i\leq m$, apply the induction on $\sigma'=(u_t)_{i\leq t\leq p}$ which is a 
 
 
 
+\section{Negative side}
 
+\begin{theorem}
+For any positive integer $b$ and $k$, there exists a digraph $D$ such that any cycle in $D_{k,b}$ has at least $b$ blocks and $\chi(D) > k$.
+\end{theorem}
 
-
+Take $D_{k,4}$ given by the previous theorem. Consider the digraph $D$ obtained from $D_{k,4}$ as follows: Add two new vertices $x$ and $y$
+and the following edges: $xy$ and for each strong component of $D_{k,4}$, add one arc to $x$ and one arc from $x$. In $D_{k,4}$, every
+directed cycle uses the arc $xy$, therefore $D$ does not contains $P(1,1;1,1)$ and $\chi(D) > k$. 
 
 
 
@@ -427,7 +433,7 @@ For every strongly connected component $\mathcal{S}$ of $\bigcup \mathcal{C}$,
 $\chi(\mathcal{S}) < (2\cdot \col + 18k) \cdot (2 \cdot \dr)$.
 \end{lemma}
 
-Consider the colouring $c$ obtained by lemma \ref{lem:col-union-cycle}. It allow us 
+Consider the colouring $c$ obtained by lemma \ref{lem:col-union-cycle}. It allows us 
 to deal with the arcs belonging to cycles in $\mathcal{C}$, to deal with the other, we do the following:
 We present a sort BFS for $\mathcal{S}$.
 Let $C_r$ (for root) be a cycle of $\mathcal{S}$ and $L_0 = \{C_r\}$. For every cycle $C_s$ of $\mathcal{S}$ for which 
@@ -438,34 +444,62 @@ fix it uniquely, even though there might exists multiple choices for a father of
 cycle like in trees.
 
 
-Let $C_l$ be a cycle and $C_a$ it's father. let $Q_l$ be the subdipath of $C_l$ which contains
-all the vertices that are at distance at most $k$ from $P_{l,a}$ in the cycle underlying $C_l$.
-Then the dipath $C_l[s(Q_l), s_{l,a}]$ and  $C_j[t_{a,l},t (Q_l)]$ have length $k$.
-Set $Q^-_l=C[s(Q_l), s_{l,a}[$ and $Q^+_l=C]t_{l,a}, t(Q_l)]$.
+Let $C_l$ be a cycle and $C_a$ it's father. 
+%let $Q_l$ be the subdipath of $C_l$ which contains
+%all the vertices that are at distance at most $k$ from $P_{l,a}$ in the cycle underlying $C_l$.
+%Then the dipath $C_l[s(Q_l), s_{l,a}]$ and  $C_j[t_{a,l},t (Q_l)]$ have length $k$.
+%Set $Q^-_l=C[s(Q_l), s_{l,a}[$ and $Q^+_l=C]t_{l,a}, t(Q_l)]$.
+
+Let $Q^-_l$ be the set of vertices $x$ of $C_l \setminus C_a$ such that the path $C_l[t_{a,l}, x]$ is longer than $k$. 
+We denote by $Q^+_l$ $C_l \setminus( C_a \cup Q^-_l) $. Note that for a vertex $x$ in  $Q^+_l$, $C_l[x,s_{a,l}]$ is longer than $k$. 
 
 For a vertex $x$ belonging to cycles in $\mathcal{S}$, we say that $x$ \textit{belongs to}  $L_i$ if
 $i$ is the smallest integer such that $x \ C_l$ for some $C_l \in L_i$.
 
 \begin{lemma}\label{lem:Qpos}
-Suppose there exists a vertex $x$ such that $x \in Q^+_l$ and $x \in Q^-_s$ for some cycles $C_l$ and $C_s$ in some $L_j$.
-If $x$ belongs to $L_j$ then $D$ contains a subdivision of $P(k,1;k)$
+Suppose there exists a vertex $x$ such that $x \in Q^+_l$ and $x \in C_s$ for some cycles $C_l$ and $C_s$ in some $L_j$.
+If $x$ belongs to $L_j$ then  $x \in  Q^+_s$ or $D$ contains a subdivision of $P(k,1;k)$
 \end{lemma}
 
 \begin{proof}
-Suppose $x$ belongs to $L_j$, we can assume $x = l_{s,l}$.
+Suppose $x$ belongs to $L_j$ and $x \not \in  Q^+_s$. We can assume $x = l_{s,l}$.
 Let $C_{l'}$ and $C_{s'}$ be the father of $C_l$ and $C_s$ (they can be the same). 
-By definition of the $L_i$ there exists a dipath $P$ from $s_{l,l'}$ to $l_{s,s'}$ only going through cycles of $L_t$ for $t<j$.
+By definition of the $L_i$ there exists a dipath $P$ from $s_{l,l'}$ to $l_{s,s'}$ only going through $C_{l'}$, $C_{s'}$ and their ancestors.
+In particular $P$ is disjoint from $C_l \setminus C_{l'}$ and  $C_s \setminus C_{s'}$
 Let $y$ be the first vertex of $P$ which belongs to $C_s$. Then we find a subdivision of $P(k,1;k)$ between $x$ and $y$.
 The first path is $C_s[y,x]$ longer than $k$, the second is $C_l[x,s_{l,l'}] \odot P[ s_{l,l'}, y]$ and the last is $C_s[x,y]$.
 \end{proof}
 
-\begin{lemma}\label{lem:Ql}
-Suppose there exists an arc between $x_1 \in C_{l_1}$ and $x_2 \in C_{l_2}$, then $x_1 \in Q_{l_1}$ and 
-$x_2 \in Q_{l_2}$. 
+The same works for $Q^-$:
+
+\begin{lemma}\label{lem:Qneg}
+Suppose there exists a vertex $x$ such that $x \in Q^-_l$ and $x \in C_s$ for some cycles $C_l$ and $C_s$ in some $L_j$.
+If $x$ belongs to $L_j$ then  $x \in  Q^-_s$ or $D$ contains a subdivision of $P(k,1;k)$
 \end{lemma}
 
+
+%\begin{lemma}\label{lem:Ql}
+%Suppose there exists an arc between $x_1 \in C_{l_1}$ and $x_2 \in C_{l_2}$. If $C_{l_1}$ and $C_{l_1}$ both belong to the same
+%$L_j$ then $x_1 \in Q_{l_1}$ and $x_2 \in Q_{l_2}$. 
+%\end{lemma}
+
+%\begin{proof}
+%Suppose $x_1 \not \in  Q_{l_1}$. 
+%Let $C_{s_1}$ and $C_{s_1}$ be the fathers of $C_{l_1}$ and  $C_{l_2}$.
+%Let $P$ be the path from $P{l_1,s_1} to P{l_2,s_2}$ in the union of $L_t$ for $t<j$ and $x$
+%and $y$ are the first and last vertices of this dipath. 
+%We distinguishes between three different cases, regarding the intersection of $C_{l_1}$ and  $C_{l_2}$.
+%\begin{itemize}
+%	\item Suppose they don't intersect. 
+%	Then we find a subdivision of $P(k,1;k)$ between $y$ and $x_1$. 
+%	The long paths are $C_{l_1}[y,x_1]$ and $C_{l_1}[x_1,y]$ and the last is $(x_1,x_2) \odot C_{l_2}[x_2,y] \odot P$.
+%	\item Suppose they intersect By lemmas \ref{lem:Qneg} and \ref{lem:Qpos}
+%\end{itemize}
+%
+%\end{proof}
+
 Let $Q^+(r)$ (resp $Q^-(r)$) be the set of vertices belonging to some $Q^+_l$ (resp $Q^-_l$)  and is coloured $r$ in $c$. 
-By lemmas \ref{lem:Qpos} and \ref{lem:Ql}, if for every $r$ we can colour the graph $D_r^+$ induced on $D$ by the vertices in 
+By lemmas \ref{lem:Qpos} and \ref{lem:Qneg}, if for every $r$ we can colour the graph $D_r^+$ induced on $D$ by the vertices in 
 $Q^+(r)$ with $\dr$ colours, then we can colour the graph induced by a $\mathcal{S}$ using 
 $(2\cdot \col + 18k) \cdot (2 \cdot \dr)$ colours  
 
@@ -493,8 +527,8 @@ $\chi(D_r^+) < \dr$
 We use the following partition of the arcs of $D_r^+$
 
 \begin{itemize}
-	\item $A_0$ is the set of arcs of $D_r^+$ which ends belongs to different levels.
-	\item $A_1$ is the set of arcs of $D_r^+$ which ends belongs to the same levels.
+	\item $A_0$ is the set of arcs of $D_r^+$ which ends belong to different levels.
+	\item $A_1$ is the set of arcs of $D_r^+$ which ends belong to the same levels.
 \end{itemize} 
 
 By lemma \ref{lem:lvl}, $\chi(D_r^+[A_0]) \geq k$. Indeed, assign to each level $L_i$ the colour $i$ modulo $k$ and
