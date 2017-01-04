@@ -165,16 +165,70 @@ If $i\leq m$, apply the induction on $\sigma'=(u_t)_{i\leq t\leq p}$ which is a 
 
 
 
+
 \section{Negative side}
 
+In ?? they proved the following 
 \begin{theorem}
 For any positive integer $b$ and $k$, there exists a digraph $D$ such that any cycle in $D_{k,b}$ has at least $b$ blocks and $\chi(D) > k$.
 \end{theorem}
 
-Take $D_{k,4}$ given by the previous theorem. Consider the digraph $D$ obtained from $D_{k,4}$ as follows: Add two new vertices $x$ and $y$
-and the following edges: $xy$ and for each strong component of $D_{k,4}$, add one arc to $x$ and one arc from $x$. In $D_{k,4}$, every
-directed cycle uses the arc $xy$, therefore $D$ does not contains $P(1,1;1,1)$ and $\chi(D) > k$. 
+\begin{theorem}
+For every integer $k$, there exists a $P(1,1;1,1)$ free strongly connected digraph $D$ such that $\chi(D) >k$ 
 
+\end{theorem}
+
+\begin{proof}
+Take $D_{k,4}$ given by the previous theorem. Consider the digraph $D$ obtained from $D_{k,4}$ as follows: Add two new vertices $x$ and $y$, the arc $xy$
+,for every vertex $u$ of out degree $0$ add the arc $ux$ and for every vertex $v$ of indegree 0 the arc $yv$. It is easy to see that $D$ is strongly connected.
+Moreover, in $D_{k,4}$, every directed cycle uses the arc $xy$, therefore $D$ does not contain any subdivision of $P(1,1;1,1)$. 
+\end{proof}
+
+
+
+
+\section{$P(k,1;1)$}
+
+\begin{theorem}\label{th:P11k}
+Let $D$ be a strongly connected digraph. If $\chi(D) > ?$ then $D$ contains a subdivision of $P(1,1;k)$
+\end{theorem}
+
+A collection ${\cal C}$ of directed cycles is {\it suitable} if all cycles of ${\cal C}$ have length at least $2k$, and for
+any two distinct cycles $C_i,C_j\in\mathcal C$, they intersect on at most one vertex. When this intersection exists, we call $x_{i,j}$
+this intersection. A {\it component} of $\mathcal{C}$ is a component in the graph of adjacency of the cycles of $C$. Call $D_{\mathcal{C}}$ the digraph
+obtained from $D$ by contracting each component of $\mathcal{C}$ into one vertex. 
+
+We will prove that every $P(1,1;k)$ subdivision-free digraph $D$ has bounded chromatic number in the following way:
+First take ${\cal C}$ a maximal suitable collection of cycle. 
+We will prove that every component $S$ of ${\cal C}$ induces a graph $D[S]$ on $D$ of bounded chromatic number. 
+Finally we will prove that, since it doesn't contains large directed cycle and it is strongly connected, $D_{\mathcal{C}}$ has bounded chromatic number
+which allows us to conclude.  
+
+We will need the following lemma:
+
+\begin{lemma}
+Let ${\cal C}$ be a suitable collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $C_i$, $C_j$ two cycles of the same
+component $S$ of $\mathcal{C}$. Then there is no arc between $C_i$ and $C_j$. 
+\end{lemma}
+
+\begin{proof}
+We suppose there exists an arc $xy$ between $x \in C_i$ and $y \in C_j$ and we find a subdivision of $P(k,1;1)$. 
+By definition $S$ there exists a sequence of cycles $C_1, C_2, \dots C_l$ such that $C_1 = C_i$, $C_l = C_j$ and $x_{s,s+1}$ exists for $s$ between $1$ and $l-1$.
+On $C_1$, either $C_1[x_{1,2}, x]$ or $C_1[x, x_{1,2}]$ is longer than $k$. 
+Let $P$ be the path from $x_{l-1,l}$ to $x_{1,2}$ using, outside its ends, only vertices in $C_s$ for $s$ between $2$ and $l-1$ (if $l = 2$ then
+$x_{l-1,l} = x_{1,2}$ and $P = x_{1,2}$ works).
+\begin{itemize}
+	\item If $C_1[x_{1,2}, x]$ is longer than $k$ then we find a subdivision of $P(k,1;1)$ between $x_{l-1,l}$ and $y$. 
+	Then the first path of the subdivision of $P(k,1;1)$ is $P \odot C_1[x_{1,2}, x] \odot (x,y)$, the second is 
+	$C_l[x_{l-1,l}, y]$ and the third is $C_l[ y, x_{l-1,l}]$
+	\item If $C_1[x, x_{1,2}]$ is longer than $k$ then we find a subdivision of $P(k,1;1)$ between $x$ and $x_{1,2}$.
+	The first path is $C_1[x, x_{1,2}]$, the second is $(x,y) \odot C_l[y, x_{l-1,l}] \odot P$ and the third is $C_1[x_{1,2}, x]$. 
+\end{itemize}
+\end{proof}
+
+\begin{lemma}
+Let ${\cal C}$ be a suitable collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $S$ a component of $\mathcal{C}$, then $\chi(D[S]) < ??$.	 
+\end{lemma}
 
 
 
@@ -192,13 +246,10 @@ We shall prove that $\chi(D) \leq \cste$.
 
 \subsection{Suitable collections of directed cycles}
 %%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-A collection ${\cal C}$ of directed cycles is {\it suitable} if all cycles of ${\cal C}$ have length at least $12k$, and for
+ 
+ A collection ${\cal C}$ of directed cycles is {\it suitable} if all cycles of ${\cal C}$ have length at least $12k$, and for
 any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on  subpath $P_{i,j}$ of order at most $k$.
 We denote by $s_{i,j}$ (resp. $t_{i,j}$) the initial (resp. terminal) vertex of  $P_{i,j}$.
- 
- 
  
  
  
@@ -503,7 +554,7 @@ If all cycle $C_l$ in $L_j$ such that $x \in C_l$, $x \in Q^-_l$ then $x \in Q^-
 By lemmas \ref{lem:Qpos} and \ref{lem:Qneg}, this is indeed a partition of the vertices coloured $r$ in $c$.
 Thus, if for every $r$ we can colour the graph $D_r^+$ induced on $D$ by the vertices in 
 $Q^+(r)$ with $\dr$ colours, then we can colour the graph induced by a $\mathcal{S}$ using 
-$(2\cdot \col + 18k) \cdot (2 \cdot \dr)$ colours  
+$(2\cdot \col + 18k) \cdot (2 \cdot \dr)$ colours.  
 
 
 \begin{lemma}\label{lem:lvl}
@@ -566,8 +617,8 @@ First note that since $D$ is strongly connected so is $D'$. If $\chi(D') > 12k$ 
 a directed cycle $C = x_1x_2 \dots x_l$ of length greater than $12k$. From $C$ we deduce a cycle $C'$ in $D$ in the following way: 
 \begin{itemize}
 	\item We keep the vertices of $D'$ which correspond to vertices in $D$.
-	\item For each vertex $x_j$ which correspond to a $s_i$ in $D$: the arc $x_{j-1}x_j$ correspond in $D$ to an arc arriving on 
-		$p_i$, a vertex of $S_i$ and the arc $x_jx_{j+1}$ correspond to an arc leaving $l_i$, a vertex of $S_i$. Let $P_j$ be the dipath 
+	\item For each vertex $x_j$ which correspond to a $s_i$ in $D$: the arc $x_{j-1}x_j$ corresponds in $D$ to an arc arriving on 
+		$p_i$, a vertex of $S_i$ and the arc $x_jx_{j+1}$ corresponds to an arc leaving $l_i$, a vertex of $S_i$. Let $P_j$ be the dipath 
 		from $p_i$ to $l_i$ in $\bigcup \mathcal{C}$. Note that this path intersect the element of $S_i$ only along a subpath. 
 \end{itemize}
 $C'$ is then the path obtained from $C$ where we replace all contracted point $x_j$ by the path $P_j$. 
