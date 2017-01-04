@@ -1,5 +1,5 @@
 % EJC papers *must* begin with the following two lines.
-\documentclass[utf8,10pt]{article}
+\documentclass[utf8,11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{fullpage}
 
@@ -190,7 +190,7 @@ Moreover, in $D_{k,4}$, every directed cycle uses the arc $xy$, therefore $D$ do
 \section{$P(k,1;1)$}
 
 \begin{theorem}\label{th:P11k}
-Let $D$ be a strongly connected digraph. If $\chi(D) > ?$ then $D$ contains a subdivision of $P(1,1;k)$
+Let $D$ be a strongly connected digraph. If $\chi(D) >  (k+1)\dot (2k)$ then $D$ contains a subdivision of $P(1,1;k)$
 \end{theorem}
 
 A collection ${\cal C}$ of directed cycles is {\it suitable} if all cycles of ${\cal C}$ have length at least $2k$, and for
@@ -206,31 +206,79 @@ which allows us to conclude.
 
 We will need the following lemma:
 
-\begin{lemma}
+\begin{lemma}\label{lem:headphone}
 Let ${\cal C}$ be a suitable collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $C_i$, $C_j$ two cycles of the same
-component $S$ of $\mathcal{C}$. Then there is no arc between $C_i$ and $C_j$. 
+component $S$ of $\mathcal{C}$. Then there is no path $P_S$ between $C_i$ and $C_j$ which uses only edges outside of $S$.  
 \end{lemma}
 
 \begin{proof}
-We suppose there exists an arc $xy$ between $x \in C_i$ and $y \in C_j$ and we find a subdivision of $P(k,1;1)$. 
+We suppose there exists an $x-y$ dipath $P_S$ between $x \in C_i$ and $y \in C_j$ and we find a subdivision of $P(k,1;1)$. 
 By definition $S$ there exists a sequence of cycles $C_1, C_2, \dots C_l$ such that $C_1 = C_i$, $C_l = C_j$ and $x_{s,s+1}$ exists for $s$ between $1$ and $l-1$.
 On $C_1$, either $C_1[x_{1,2}, x]$ or $C_1[x, x_{1,2}]$ is longer than $k$. 
 Let $P$ be the path from $x_{l-1,l}$ to $x_{1,2}$ using, outside its ends, only vertices in $C_s$ for $s$ between $2$ and $l-1$ (if $l = 2$ then
 $x_{l-1,l} = x_{1,2}$ and $P = x_{1,2}$ works).
 \begin{itemize}
 	\item If $C_1[x_{1,2}, x]$ is longer than $k$ then we find a subdivision of $P(k,1;1)$ between $x_{l-1,l}$ and $y$. 
-	Then the first path of the subdivision of $P(k,1;1)$ is $P \odot C_1[x_{1,2}, x] \odot (x,y)$, the second is 
+	Then the first path of the subdivision of $P(k,1;1)$ is $P \odot C_1[x_{1,2}, x] \odot P_S$, the second is 
 	$C_l[x_{l-1,l}, y]$ and the third is $C_l[ y, x_{l-1,l}]$
 	\item If $C_1[x, x_{1,2}]$ is longer than $k$ then we find a subdivision of $P(k,1;1)$ between $x$ and $x_{1,2}$.
-	The first path is $C_1[x, x_{1,2}]$, the second is $(x,y) \odot C_l[y, x_{l-1,l}] \odot P$ and the third is $C_1[x_{1,2}, x]$. 
+	The first path is $C_1[x, x_{1,2}]$, the second is $P_S \odot C_l[y, x_{l-1,l}] \odot P$ and the third is $C_1[x_{1,2}, x]$. 
 \end{itemize}
 \end{proof}
 
-\begin{lemma}
-Let ${\cal C}$ be a suitable collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $S$ a component of $\mathcal{C}$, then $\chi(D[S]) < ??$.	 
+ 
+\begin{lemma}\label{lem:compo1}
+Let ${\cal C}$ be a suitable collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $S$ a component of $\mathcal{C}$, then $\chi(D[S]) < k+1$.	 
 \end{lemma}
 
+\begin{proof}
+We do it by induction on the number of cycle in $S$. Let $C$ be a cycle of $S$. Since $C$ is longer than $2k$, there is no cords between $x$ and $y$ in $C$
+such that $C[x,y]$ is longer than $k$. This means that $C$ is $k+1$ degenerate and has chromatic number smaller than $k +1$. Let $c$ be a colouring of $C$ with
+$k$ colours. Let $S_1, S_2, \dots, S_r$ be the component containing cycles of $S$ in $\mathcal{C} \setminus{C}$. Since the $S$ is exactly the union of $S_i$ and $C$
+then each $S_i$ has strictly less cycle than $S$. This means there exists a colouring $c_i$ using $k+1$ colours for each $S_i$.
+ 
+Now we claim that the intersection of each $D[S_i]$ with $C$ is exactly one vertex. It is easy to see that $C$ must intersect at least one cycle of each $S_i$, 
+now suppose there exists two vertices of $C$, $x$ and $y$ who belongs to $D[S_i]$. By definition of a suitable collection, they cannot belong to the same cycle 
+of $S_i$, so there exists two cycles $C_i$ and $C_j$ of $S_r$ such that $x \in C_i$ and $y \in C_j$. By lemma \ref{lem:headphone} where $C[x,y]$ plays the role
+of $P_S$, it is not possible. This means that we can consider that the vertices of $C$ receive the same colours in $c$ and in the $c_i$
 
+Moreover, because of lemma \ref{lem:headphone}, there is no edge between different $S_i$ and between $S_i$ and $C$. This means that if we take the union of the 
+$c_i$ and $c$, we obtain a proper colouring of $D[S]$ using $k+1$ colours. 
+\end{proof}
+
+
+\begin{lemma}\label{lem:reduce}
+Let ${\cal C}$ be a maximal suitable collection of cycle in a $P(k,1;1)$ subdivision-free strongly connected digraph $D$. Then $\chi(D_{\mathcal{C}}) < 2k$
+\end{lemma}
+
+\begin{proof}
+First note that, since $D$ is strongly connected,  so is $D_{\mathcal{C}}$. Suppose $\chi(D_{\mathcal{C}}) \geq 2k$, by Bondy's Theorem, there exists a directed cycle
+$C = x_1\dots x_l$ of length greater than $2k$ in $ D_{\mathcal{C}}$. We deduce a cycle $C'$ in $D$ the following way :
+\begin{itemize}
+	\item We keep the vertices of $D'$ which correspond to vertices in $D$.
+	\item For each vertex $x_j$ which correspond to a component $S_i$ in $D$: the arc $x_{j-1}x_j$ corresponds in $D$ to an arc arriving on 
+		$p_i$, a vertex of $S_i$ and the arc $x_jx_{j+1}$ corresponds to an arc leaving $l_i$, a vertex of $S_i$. Let $P_j$ be the dipath 
+		from $p_i$ to $l_i$ in $D[S_i]$. Note that $P_j$ intersect each cycle of $S_i$ on a, possibly empty, subpath of $P_j$. 
+\end{itemize}
+Then $C'$ is the cycle obtained from $C$ by replacing the vertices $x_i$ which correspond to a component of $\mathcal{C}$ in $D$ by the path $P_j$.
+$C'$ is a cycle of $D$ which is longer than $2k$ because it is longer than $C$. Let $C_1$ be a cycle of $\mathcal{C}$, then by construction of $C'$ 
+and $D_{\mathcal{C}}$, $C'$ and $C_1$ can intersect only along a subpath of one $P_j$. Suppose this intersection is more than just a vertex and call $x$ and
+$y$ the first and last vertices of this intersection. Then we find a subdivision of $P(k,1;1)$ between $x$ and $y$. The first is $C'[x,y]$ and the other are
+$C[x,y]$ and $C[y,x]$.
+
+So $C'$ is a cycle longer than $2k$, intersecting cycle of $\mathcal{C}$ on at most one vertex, and which does not belong to $\mathcal{C}$, or it would be reduce
+to one vertex in $D_{\mathcal{C}}$, which contradict the fact that $\mathcal{C}$ is maximal.
+\end{proof}
+
+So we can finally prove Theorem \ref{th:P11k}
+
+\begin{proof}
+${\cal C}$ be a maximal suitable collection of cycle in $D$. By lemma \ref{lem:compo1}, for each component $S_i$ of $\mathcal{C}$, there exists a colouring
+$c_i$ using colours in $[k+1]$ and by lemma \ref{lem:reduce} there exists a colouring $c'$ of $D_{\mathcal{C}}$ using colours in $[2k]$. 
+Define $c : V(D) \rightarrow ([k+1],[2k])$ as follows. If $x$ is a vertex belonging to some component $S_i$ of $\mathcal{C}$ and $s_i$ 
+is the vertex corresponding to $S_i$ in $D_{\mathcal{C}}$, then $c(x) = (c_i(x), c'(s_i)$, else $c(x) =(1,c'(x))$. 
+Clearly, $c$ is a colouring of $D$ using $(k+1)\dot (2k)$ colours. 
+\end{proof}
 
 
 \section{$P(k,1;k)$}
