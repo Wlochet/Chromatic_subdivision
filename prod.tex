@@ -190,36 +190,37 @@ Moreover, in $D_{k,4}$, every directed cycle uses the arc $xy$, therefore $D$ do
 \section{$P(k,1;1)$}
 
 \begin{theorem}\label{th:P11k}
-Let $D$ be a strongly connected digraph. If $\chi(D) >  (k+1)\dot (2k)$ then $D$ contains a subdivision of $P(1,1;k)$
+Let $D$ be a strongly connected digraph. If $\chi(D) >  (k+1) (2k)$ then $D$ contains a subdivision of $P(1,1;k)$
 \end{theorem}
 
 A collection ${\cal C}$ of directed cycles is {\it suitable} if all cycles of ${\cal C}$ have length at least $2k$, and for
-any two distinct cycles $C_i,C_j\in\mathcal C$, they intersect on at most one vertex. When this intersection exists, we call $x_{i,j}$
-this intersection. A {\it component} of $\mathcal{C}$ is a component in the graph of adjacency of the cycles of $C$. Call $D_{\mathcal{C}}$ the digraph
-obtained from $D$ by contracting each component of $\mathcal{C}$ into one vertex. 
+any two distinct cycles $C_i,C_j\in\mathcal C$, they intersect on at most one vertex. When this intersection exists, we call it $x_{i,j}$.
+A {\it component} of $\mathcal{C}$ is a connected component in the graph of adjacency of the cycles of $C$, where vertices correspond to cycles in $\mathcal{C}$
+and two vertices are adjacent if the cycles intersect. 
+Call $D_{\mathcal{C}}$ the digraph obtained from $D$ by contracting each component of $\mathcal{C}$ into one vertex. 
 
-We will prove that every $P(1,1;k)$ subdivision-free digraph $D$ has bounded chromatic number in the following way:
-First take ${\cal C}$ a maximal suitable collection of cycle. 
-We will prove that every component $S$ of ${\cal C}$ induces a graph $D[S]$ on $D$ of bounded chromatic number. 
-Finally we will prove that, since it doesn't contains large directed cycle and it is strongly connected, $D_{\mathcal{C}}$ has bounded chromatic number
-which allows us to conclude.  
+We will prove that every $P(1,1;k)$ subdivision-free strong digraph $D$ has bounded chromatic number in the following way:
+Take ${\cal C}$ a maximal suitable collection of cycle. 
+We will prove that every component $S$ of ${\cal C}$ induces a digraph $D[S]$ on $D$ of bounded chromatic number. 
+Then we will prove that, since it doesn't contains large directed cycle and it is strongly connected, $D_{\mathcal{C}}$ has bounded chromatic number.
+Finally we will, using the two previous results exhibit a colouring of $D$.
 
 We will need the following lemma:
 
 \begin{lemma}\label{lem:headphone}
 Let ${\cal C}$ be a suitable collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $C_i$, $C_j$ two cycles of the same
-component $S$ of $\mathcal{C}$. Then there is no path $P_S$ between $C_i$ and $C_j$ which uses only edges outside of $S$.  
+component $S$ of $\mathcal{C}$. There is no path $P_S$ between $C_i$ and $C_j$ which uses only edges outside of $S$.  
 \end{lemma}
 
 \begin{proof}
-We suppose there exists an $x-y$ dipath $P_S$ between $x \in C_i$ and $y \in C_j$ and we find a subdivision of $P(k,1;1)$. 
-By definition $S$ there exists a sequence of cycles $C_1, C_2, \dots C_l$ such that $C_1 = C_i$, $C_l = C_j$ and $x_{s,s+1}$ exists for $s$ between $1$ and $l-1$.
+We suppose there exists an $x-y$ dipath $P_S$ between $x \in C_i$ and $y \in C_j$ and show that we can find a subdivision of $P(k,1;1)$. 
+By definition of $S$ there exists a sequence of cycles $C_1, C_2, \dots C_l$ such that $C_1 = C_i$, $C_l = C_j$ and $x_{s,s+1}$ exists for $s$ between $1$ and $l-1$.
 On $C_1$, either $C_1[x_{1,2}, x]$ or $C_1[x, x_{1,2}]$ is longer than $k$. 
-Let $P$ be the path from $x_{l-1,l}$ to $x_{1,2}$ using, outside its ends, only vertices in $C_s$ for $s$ between $2$ and $l-1$ (if $l = 2$ then
+Let $P$ be the path from $x_{l-1,l}$ to $x_{1,2}$ using, outside of its ends, only vertices in $C_s$ for $s$ between $2$ and $l-1$ (if $l = 2$ then
 $x_{l-1,l} = x_{1,2}$ and $P = x_{1,2}$ works).
 \begin{itemize}
 	\item If $C_1[x_{1,2}, x]$ is longer than $k$ then we find a subdivision of $P(k,1;1)$ between $x_{l-1,l}$ and $y$. 
-	Then the first path of the subdivision of $P(k,1;1)$ is $P \odot C_1[x_{1,2}, x] \odot P_S$, the second is 
+	The first path of the subdivision of $P(k,1;1)$ is $P \odot C_1[x_{1,2}, x] \odot P_S$, the second is 
 	$C_l[x_{l-1,l}, y]$ and the third is $C_l[ y, x_{l-1,l}]$
 	\item If $C_1[x, x_{1,2}]$ is longer than $k$ then we find a subdivision of $P(k,1;1)$ between $x$ and $x_{1,2}$.
 	The first path is $C_1[x, x_{1,2}]$, the second is $P_S \odot C_l[y, x_{l-1,l}] \odot P$ and the third is $C_1[x_{1,2}, x]$. 
@@ -234,13 +235,14 @@ Let ${\cal C}$ be a suitable collection of cycle in a $P(k,1;1)$ subdivision-fre
 \begin{proof}
 We do it by induction on the number of cycle in $S$. Let $C$ be a cycle of $S$. Since $C$ is longer than $2k$, there is no cords between $x$ and $y$ in $C$
 such that $C[x,y]$ is longer than $k$. This means that $C$ is $k+1$ degenerate and has chromatic number smaller than $k +1$. Let $c$ be a colouring of $C$ with
-$k$ colours. Let $S_1, S_2, \dots, S_r$ be the component containing cycles of $S$ in $\mathcal{C} \setminus{C}$. Since the $S$ is exactly the union of $S_i$ and $C$
-then each $S_i$ has strictly less cycle than $S$. This means there exists a colouring $c_i$ using $k+1$ colours for each $S_i$.
+$k$ colours. Let $S_1, S_2, \dots, S_r$ be the components containing cycles of $S$ in $\mathcal{C} \setminus{C}$. Since $S$ is exactly the union of the $S_i$ and $C$
+then each $S_i$ has strictly less cycle than $S$. By induction there exists a colouring $c_i$ using $k+1$ colours for each $S_i$.
  
 Now we claim that the intersection of each $D[S_i]$ with $C$ is exactly one vertex. It is easy to see that $C$ must intersect at least one cycle of each $S_i$, 
 now suppose there exists two vertices of $C$, $x$ and $y$ who belongs to $D[S_i]$. By definition of a suitable collection, they cannot belong to the same cycle 
 of $S_i$, so there exists two cycles $C_i$ and $C_j$ of $S_r$ such that $x \in C_i$ and $y \in C_j$. By lemma \ref{lem:headphone} where $C[x,y]$ plays the role
-of $P_S$, it is not possible. This means that we can consider that the vertices of $C$ receive the same colours in $c$ and in the $c_i$
+of $P_S$, it is not possible. This means, modulo a permutation of the $c_i$,
+that we can consider that each vertex of $C$ receives the same colour in $c$ and in the $c_i$. 
 
 Moreover, because of lemma \ref{lem:headphone}, there is no edge between different $S_i$ and between $S_i$ and $C$. This means that if we take the union of the 
 $c_i$ and $c$, we obtain a proper colouring of $D[S]$ using $k+1$ colours. 
@@ -253,31 +255,31 @@ Let ${\cal C}$ be a maximal suitable collection of cycle in a $P(k,1;1)$ subdivi
 
 \begin{proof}
 First note that, since $D$ is strongly connected,  so is $D_{\mathcal{C}}$. Suppose $\chi(D_{\mathcal{C}}) \geq 2k$, by Bondy's Theorem, there exists a directed cycle
-$C = x_1\dots x_l$ of length greater than $2k$ in $ D_{\mathcal{C}}$. We deduce a cycle $C'$ in $D$ the following way :
-\begin{itemize}
-	\item We keep the vertices of $D'$ which correspond to vertices in $D$.
-	\item For each vertex $x_j$ which correspond to a component $S_i$ in $D$: the arc $x_{j-1}x_j$ corresponds in $D$ to an arc arriving on 
-		$p_i$, a vertex of $S_i$ and the arc $x_jx_{j+1}$ corresponds to an arc leaving $l_i$, a vertex of $S_i$. Let $P_j$ be the dipath 
-		from $p_i$ to $l_i$ in $D[S_i]$. Note that $P_j$ intersect each cycle of $S_i$ on a, possibly empty, subpath of $P_j$. 
-\end{itemize}
+$C = x_1\dots x_l$ of length greater than $2k$ in $ D_{\mathcal{C}}$. We deduce a cycle $C'$ in $D$ the following way:
+Suppose the vertex $x_j$ corresponds to a component $S_i$ in $D$: the arc $x_{j-1}x_j$ corresponds in $D$ to an arc arriving on 
+$p_i$, a vertex of $S_i$ and the arc $x_jx_{j+1}$ corresponds to an arc leaving $l_i$, a vertex of $S_i$. Let $P_j$ be the dipath 
+from $p_i$ to $l_i$ in $D[S_i]$. Note that $P_j$ intersect each cycle of $S_i$ on a, possibly empty, subpath of $P_j$. 
 Then $C'$ is the cycle obtained from $C$ by replacing the vertices $x_i$ which correspond to a component of $\mathcal{C}$ in $D$ by the path $P_j$.
+
 $C'$ is a cycle of $D$ which is longer than $2k$ because it is longer than $C$. Let $C_1$ be a cycle of $\mathcal{C}$, then by construction of $C'$ 
 and $D_{\mathcal{C}}$, $C'$ and $C_1$ can intersect only along a subpath of one $P_j$. Suppose this intersection is more than just a vertex and call $x$ and
 $y$ the first and last vertices of this intersection. Then we find a subdivision of $P(k,1;1)$ between $x$ and $y$. The first is $C'[x,y]$ and the other are
 $C[x,y]$ and $C[y,x]$.
 
-So $C'$ is a cycle longer than $2k$, intersecting cycle of $\mathcal{C}$ on at most one vertex, and which does not belong to $\mathcal{C}$, or it would be reduce
-to one vertex in $D_{\mathcal{C}}$, which contradict the fact that $\mathcal{C}$ is maximal.
+So $C'$ is a cycle longer than $2k$, intersecting cycles of $\mathcal{C}$ on at most one vertex, and which does not belong to $\mathcal{C}$, or it would be reduced
+to one vertex in $D_{\mathcal{C}}$, which contradicts the fact that $\mathcal{C}$ is maximal.
 \end{proof}
 
 So we can finally prove Theorem \ref{th:P11k}
 
 \begin{proof}
-${\cal C}$ be a maximal suitable collection of cycle in $D$. By lemma \ref{lem:compo1}, for each component $S_i$ of $\mathcal{C}$, there exists a colouring
+Let ${\cal C}$ be a maximal suitable collection of cycle in $D$. By lemma \ref{lem:compo1}, for each component $S_i$ of $\mathcal{C}$, there exists a colouring
 $c_i$ using colours in $[k+1]$ and by lemma \ref{lem:reduce} there exists a colouring $c'$ of $D_{\mathcal{C}}$ using colours in $[2k]$. 
 Define $c : V(D) \rightarrow ([k+1],[2k])$ as follows. If $x$ is a vertex belonging to some component $S_i$ of $\mathcal{C}$ and $s_i$ 
-is the vertex corresponding to $S_i$ in $D_{\mathcal{C}}$, then $c(x) = (c_i(x), c'(s_i)$, else $c(x) =(1,c'(x))$. 
-Clearly, $c$ is a colouring of $D$ using $(k+1)\dot (2k)$ colours. 
+is the vertex corresponding to $S_i$ in $D_{\mathcal{C}}$, then $c(x) = (c_i(x), c'(s_i))$, else $c(x) =(1,c'(x))$. 
+Let $x$ and $y$ be adjacent vertices of $D$. If they belong to the same component $S_i$, then $c_i(x) \not = c_i(y)$ and $c(x) \not = c(y)$. If they don't belong
+to the same component, then the vertices corresponding to these vertices in $D_{\mathcal{C}}$ will be adjacent and $c(x) \not = c(y)$. 
+Thus $c$ is a proper colouring of $D$ using $(k+1)(2k)$ colours. 
 \end{proof}
 
 
