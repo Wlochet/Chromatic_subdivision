@@ -444,7 +444,7 @@ fix it uniquely, even though there might exists multiple choices for a father of
 cycle like in trees.
 
 
-Let $C_l$ be a cycle and $C_a$ it's father. 
+Let $C_l$ be a cycle and $C_a$ its father. 
 %let $Q_l$ be the subdipath of $C_l$ which contains
 %all the vertices that are at distance at most $k$ from $P_{l,a}$ in the cycle underlying $C_l$.
 %Then the dipath $C_l[s(Q_l), s_{l,a}]$ and  $C_j[t_{a,l},t (Q_l)]$ have length $k$.
@@ -497,9 +497,11 @@ If $x$ belongs to $L_j$ then  $x \in  Q^-_s$ or $D$ contains a subdivision of $P
 %\end{itemize}
 %
 %\end{proof}
-
-Let $Q^+(r)$ (resp $Q^-(r)$) be the set of vertices belonging to some $Q^+_l$ (resp $Q^-_l$)  and is coloured $r$ in $c$. 
-By lemmas \ref{lem:Qpos} and \ref{lem:Qneg}, if for every $r$ we can colour the graph $D_r^+$ induced on $D$ by the vertices in 
+We define $Q^+(r)$ (resp $Q^-(r)$) a partition of the vertices coloured $r$ in $c$ as follow:
+If $x$ belongs to $L_j$ and, for all cycle $C_l$ in $L_j$ such that $x \in C_l$, $x \in Q^+_l$ then $x \in Q^+(r)$.
+If all cycle $C_l$ in $L_j$ such that $x \in C_l$, $x \in Q^-_l$ then $x \in Q^-(r)$.
+By lemmas \ref{lem:Qpos} and \ref{lem:Qneg}, this is indeed a partition of the vertices coloured $r$ in $c$.
+Thus, if for every $r$ we can colour the graph $D_r^+$ induced on $D$ by the vertices in 
 $Q^+(r)$ with $\dr$ colours, then we can colour the graph induced by a $\mathcal{S}$ using 
 $(2\cdot \col + 18k) \cdot (2 \cdot \dr)$ colours  
 
