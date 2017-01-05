@@ -59,7 +59,7 @@
 
 \newenvironment{subproof}{\par\noindent {\it Subproof}.\ }{\hfill$\lozenge$\par\vspace{11pt}}
 
-\newcommand{\cste}{\bf cste}
+\newcommand{\cste}{ 12k \cdot (2\cdot \col + 18k) \cdot (2 \cdot \dr)}
 \newcommand{\qj}{\bf cste2}
 \newcommand{\dr}{ k^2}
 \newcommand{\col}{(8k^2)^{4k}}
@@ -79,6 +79,80 @@
 \begin{document}
 
 \maketitle
+
+\section{Introduction}
+Throughout this paper, the chromatic number of a digraph $D$ is the chromatic number of the underlying graph. 
+
+A classical result due to Gallai, Hasse, Roy and Vitaver says that the chromatic number of a graph $G$ equals one plus the length of a longest path in an orientation 
+of $G$ chosen to minimise this path's length. This surprising characterisation of the chromatic number with the orientation of a graph motivates
+the following question: what are the subdigraphs of digraphs with large chromatic number.
+In this setting, which will be the one that interests us from now on, the Theorem can be stated as follows: 
+
+\begin{theorem}[Gallai~\cite{Gal68}, Hasse~\cite{Has64}, Roy~\cite{Roy67}, Vitaver~\cite{Vit62}]\label{thm:gallairoy}
+	If $\chi(D) \geq k$ then $D$ contains a dipath of length $k+1$.  
+\end{theorem}   
+
+A famous theorem by Erd\H{o}s~\cite{Erd59} states that there exists graph with with arbitrarily high girth and
+chromatic number. This means that if $H$ is a digraph containing a cycle, there exists digraphs with arbitrarily high 
+chromatic number without any copy of $H$. Thus the only possible candidates to generalise Theorem \ref{thm:gallairoy} are oriented
+of trees.
+Burr proved that every $(k-1)^2$-chromatic digraph contains every oriented tree of order $k$ and conjectured the following:
+\begin{conjecture}[Burr~\cite{Burr80}]\label{cnj:tn}
+	  Every $(2k-2)$-chromatic digraph $D$ contains a copy of any oriented tree $T$ of order $k$.
+\end{conjecture}
+The best known upper bound, due to Addario-Berry et al.~\cite{AHS+13}, is in $(k/2)^2$.
+However, for paths with two blocks ({\it blocks} are maximal directed subpaths), the best possible upper bound is known:
+
+\begin{theorem}[Addario-Berry et al.~\cite{AHT07}]\label{thm:2blocks}
+Let $P$ be an oriented path with two blocks on $n$ vertices.
+\begin{itemize}
+\item If $n=3$, then every digraph with chromatic number greater than $n$ contains $P$
+\item If $n\geq 4$, then every digraph with chromatic number greater than $n-1$ contains $P$
+\end{itemize}
+\end{theorem}
+
+Another interesting generalisation is to look for subdivision instead of subdigraph. 
+In \cite{CHLN16} Cohen et al. proved the following:
+
+\begin{theorem}\label{dkb}
+For any positive integer $b$ and $k$, there exists an acyclic digraph $D_{k,b}$ such that any cycle in $D_{k,b}$ has at least $b$ blocks and $\chi(D_{k,b}) > k$.
+\end{theorem}
+
+This means that even in the case of subdivision, one can only hope to force oriented trees. 
+However, if we require the digraph to be strongly connected, the picture is a bit different. 
+The following famous theorem by Bondy can be seen as a generalisation of the Gallai-Roy-Hasse-Vitaver's result:
+
+\begin{theorem}[Bondy~\cite{Bon76}]\label{thm:bondy}
+Every strong digraph of chromatic number at least $k$ contains a directed cycle of length at least $k$.
+\end{theorem} 
+
+Let $C(k,l)$ denote the cycle on two blocks, one of length at least $k$ and the other of length at least $l$.
+In \cite{CHLN16}, Cohen et al. proved the following result:
+\begin{theorem}\label{th:ckl}
+Every strongly connected digraph of chromatic number greater than $O((k+l)^4)$ contains a subdivision of $C(k,l)$.
+\end{theorem} 
+The bound has recently been improved by Kim et al. in \cite{KKPM} to $O((k+l)^2)$.  
+
+A subdivision of $C(k,l)$ can be seen as two disjoint dipaths $P_l$ of length at least $l$ and $P_k$ of length at least $k$,
+between the same pair of vertices. The goal of this paper is to try to generalise this results to more than two paths. 
+Let $P(k_1,k_2;k_3)$ be the digraph formed by three internally disjoint paths between two vertices $x,y$, two $(x,y)$-dipaths,
+one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$. 
+First we give a construction of digraphs with arbitrarily large chromatic number such that for any pair of vertices
+$x$ and $y$, there is no three disjoint dipaths from $x$ to $y$ or four disjoint dipath, two from $x$ to $y$ and two form $y$ to $x$. 
+This implies that $P(k_1,k_2;k_3)$ is the only possible candidate if we want to generalise Theorem  \ref{th:ckl}. 
+Then we present a proof for forcing $P(k,1;1)$: 
+
+\begin{theorem}\label{th:P11k}
+Let $D$ be a strongly connected digraph. If $\chi(D) >  (2k-1)\cdot (2k)$, then $D$ contains a subdivision of $P(k,1;1)$
+\end{theorem}
+
+and finally, building on the proof of Theorem \ref{th:P11k}, we present our main result: 
+
+\begin{theorem}\label{th:main}
+Let $D$ be a strongly connected digraph. If $\chi(D) > \cste$, then $D$ contains a subdvision of $P(k,1;k)$.
+\end{theorem}
+
+
 
 \section{Definitions and preliminaries}
 %%%%%%%%%%%%%%%%%%
@@ -163,25 +237,42 @@ If $i>m$, then $u_{i-1}=k$, and the subsequence of the $i-1$ first elements of $
 If $i\leq m$, apply the induction on $\sigma'=(u_t)_{i\leq t\leq p}$ which is a sequence of more than $(k-1)(m-1)$ integers in $[k-1]$, to get the result. 
 \end{proof}
 
+\begin{lemma}\label{lem:contrac}
+Let $D$ be a digraph, $D_1 \dots D_l$ be disjoint subdigraphs of $D$ and $D'$ the digraph obtained by contracting all $D_i$ into
+one vertex $d_i$. Then $\chi(D) \leq \chi(D')\cdot max_{i \in [l]}(\chi(D_i))$.
+\end{lemma}
+
+\begin{proof}
+
+Let $k_1 = max_{i \in [l]}(\chi(D_i))$ and $k_2 = \chi(D')$ and. For each $i$, let $c_i$ be the colouring of $D_i$ using colours in $[k_1]$ and let
+$c'$ be the colouring of $D'$ using colours in $[k_2]$. 
+Define $c : V(D) \rightarrow ([k_1],[k_2])$ as follows. If $x$ is a vertex belonging to some $D_i$, then $c(x) = (c_i(x), c'(d_i))$, else $c(x) =(1,c'(x))$. 
+Let $x$ and $y$ be adjacent vertices of $D$. If they belong to the same subdigraph $D_i$, then $c_i(x) \not = c_i(y)$ and $c(x) \not = c(y)$. If they don't belong
+to the same component, then the vertices corresponding to these vertices in $D_{\mathcal{C}}$ will be adjacent and $c(x) \not = c(y)$. 
+Thus $c$ is a proper colouring of $D$ using $(k+1)(2k)$ colours. 
+\end{proof}
 
 
 
 \section{Negative side}
 
-In ?? they proved the following 
-\begin{theorem}
-For any positive integer $b$ and $k$, there exists a digraph $D$ such that any cycle in $D_{k,b}$ has at least $b$ blocks and $\chi(D) > k$.
-\end{theorem}
+Let $P_3$ be the union of three internally disjoint $(x,y)$-dipaths $Q_1$, $Q_2$ and $Q_3$ for some vertices $x$ and $y$ 
+and $P_{2,2}$ be the union of four internally disjoint dipaths: two $(x,y)$-dipaths and two $(y,x)$-dipaths for some $x$ and $y$. 
 
 \begin{theorem}
-For every integer $k$, there exists a $P(1,1;1,1)$ free strongly connected digraph $D$ such that $\chi(D) >k$ 
-
+For every integer $k$, there exists a strongly connected digraph $D$ such that $\chi(D) >k$ and without subdivision of either $P_3$ or $P_{2,2}$. 
 \end{theorem}
 
 \begin{proof}
-Take $D_{k,4}$ given by the previous theorem. Consider the digraph $D$ obtained from $D_{k,4}$ as follows: Add two new vertices $x$ and $y$, the arc $xy$
-,for every vertex $u$ of out degree $0$ add the arc $ux$ and for every vertex $v$ of indegree 0 the arc $yv$. It is easy to see that $D$ is strongly connected.
-Moreover, in $D_{k,4}$, every directed cycle uses the arc $xy$, therefore $D$ does not contain any subdivision of $P(1,1;1,1)$. 
+Let $D_{k,4}$ a digraph with chromatic number greater than $k$ and with every cycle having at least 4 blocks obtained by Theorem \ref{dkb}
+Let $S = \{s_1, \dots,  s_l\}$ be the set of vertices of $D_{k,4}$ with outdegree 0 and $T = \{t_1, \dots, t_f\}$ the set of vertices with indegree 0.
+
+Consider the digraph $D$ obtained from $D_{k,4}$ as follows. Add a dipath  $P = x_1,x_2....x_l,z,y_1,y_2,\dots, y_f$ and the arcs $s_ix_i$ and
+$y_jt_j$. It is easy to see that $D$ is strongly connected.
+Moreover, in $D$, every directed cycle uses the arc $x_lz$, therefore $D$ does not contain a subdivision of $P_{2,2}$, which has two arc-disjoint cycle. 
+Suppose $D$ has a subdivision of $P_3$ between two vertices $u$ and $v$. Every vertex of $P$ has indegree and outdegree at most 2, meaning that $u$ and $v$ do not
+belong to $P$. In $D$ each cycle on two blocks between vertices outside $P$ must use the arc $x_lz$. The union of $Q_1$ and $Q_2$ form a cycle on two blocks, 
+which means one of the two paths, say $Q_1$ contains $x_lz$. But $Q_2$ and $Q_3$ also form a cycle on two blocks, but they cannot contain $x_lz$, a contradiction.
 \end{proof}
 
 
@@ -189,76 +280,78 @@ Moreover, in $D_{k,4}$, every directed cycle uses the arc $xy$, therefore $D$ do
 
 \section{$P(k,1;1)$}
 
-\begin{theorem}\label{th:P11k}
-Let $D$ be a strongly connected digraph. If $\chi(D) >  (k+1) (2k)$ then $D$ contains a subdivision of $P(1,1;k)$
-\end{theorem}
 
-A collection ${\cal C}$ of directed cycles is {\it suitable} if all cycles of ${\cal C}$ have length at least $2k$, and for
-any two distinct cycles $C_i,C_j\in\mathcal C$, they intersect on at most one vertex. When this intersection exists, we call it $x_{i,j}$.
-A {\it component} of $\mathcal{C}$ is a connected component in the graph of adjacency of the cycles of $C$, where vertices correspond to cycles in $\mathcal{C}$
-and two vertices are adjacent if the cycles intersect. 
+
+A collection ${\cal C}$ of directed cycles is {\it nice} if all cycles of ${\cal C}$ have length at least $2k$, and
+any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on at most one vertex. When this intersection exists, we call it $x_{i,j}$.
+A {\it component} of $\mathcal{C}$ is a connected component in the adjacency graph of the $\mathcal{C}$, where vertices correspond to cycles in $\mathcal{C}$
+and two vertices are adjacent if the corresponding cycles intersect. 
 Call $D_{\mathcal{C}}$ the digraph obtained from $D$ by contracting each component of $\mathcal{C}$ into one vertex. 
 
-We will prove that every $P(1,1;k)$ subdivision-free strong digraph $D$ has bounded chromatic number in the following way:
-Take ${\cal C}$ a maximal suitable collection of cycle. 
+We will prove that every $P(k,1;1)$ subdivision-free strong digraph $D$ has bounded chromatic number in the following way:
+Take ${\cal C}$ a maximal nice collection of cycles. 
 We will prove that every component $S$ of ${\cal C}$ induces a digraph $D[S]$ on $D$ of bounded chromatic number. 
-Then we will prove that, since it doesn't contains large directed cycle and it is strongly connected, $D_{\mathcal{C}}$ has bounded chromatic number.
-Finally we will, using the two previous results exhibit a colouring of $D$.
+Then we will prove that, since it doesn't contains large directed cycle and it is strongly connected, $D_{\mathcal{C}}$ has bounded chromatic number,
+which, by \ref{lem:contrac}, allows us to conclude. 
 
 We will need the following lemma:
 
+
+
 \begin{lemma}\label{lem:headphone}
-Let ${\cal C}$ be a suitable collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $C_i$, $C_j$ two cycles of the same
-component $S$ of $\mathcal{C}$. There is no path $P_S$ between $C_i$ and $C_j$ which uses only edges outside of $S$.  
+Let ${\cal C}$ be a nice collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $C$, $C'$ two cycles of the same
+component $S$ of $\mathcal{C}$. There is no path $P$ between $C$ and $C'$ which uses only edges outside of $S$.  
 \end{lemma}
 
 \begin{proof}
-We suppose there exists an $x-y$ dipath $P_S$ between $x \in C_i$ and $y \in C_j$ and show that we can find a subdivision of $P(k,1;1)$. 
-By definition of $S$ there exists a sequence of cycles $C_1, C_2, \dots C_l$ such that $C_1 = C_i$, $C_l = C_j$ and $x_{s,s+1}$ exists for $s$ between $1$ and $l-1$.
-On $C_1$, either $C_1[x_{1,2}, x]$ or $C_1[x, x_{1,2}]$ is longer than $k$. 
-Let $P$ be the path from $x_{l-1,l}$ to $x_{1,2}$ using, outside of its ends, only vertices in $C_s$ for $s$ between $2$ and $l-1$ (if $l = 2$ then
-$x_{l-1,l} = x_{1,2}$ and $P = x_{1,2}$ works).
+We suppose there exists an $(x,y)$-dipath $P$ with $x \in C$ and $y \in C'$ and show that we can find a subdivision of $P(k,1;1)$. 
+By definition of $S$ there exists a $(s(Q),t(Q))$-dipath $Q$ from $C$ to $C'$ using edges in $S$. By choosing $C$ and $C'$ such that 
+$Q$ is as small as possible, then $s(Q) \not = y$ and $t(Q) \not = x$ (note that $s(Q)$ and $t(Q)$ can be the same vertex). 
+
+%By definition of $S$ there exists a sequence of cycles $C_1, C_2, \dots C_l$ such that $C_1 = C_i$, $C_l = C_j$ and $x_{s,s+1}$ exists for $s$ between $1$ and $l-1$.
+On $C$, either $C[t(Q), x]$ or $C[x, t(Q)]$ is longer than $k$. 
+%Let $P$ be the path from $x_{l-1,l}$ to $x_{1,2}$ using, outside of its ends, only vertices in $C_s$ for $s$ between $2$ and $l-1$ (if $l = 2$ then
+%$x_{l-1,l} = x_{1,2}$ and $P = x_{1,2}$ works).
 \begin{itemize}
-	\item If $C_1[x_{1,2}, x]$ is longer than $k$ then we find a subdivision of $P(k,1;1)$ between $x_{l-1,l}$ and $y$. 
-	The first path of the subdivision of $P(k,1;1)$ is $P \odot C_1[x_{1,2}, x] \odot P_S$, the second is 
-	$C_l[x_{l-1,l}, y]$ and the third is $C_l[ y, x_{l-1,l}]$
-	\item If $C_1[x, x_{1,2}]$ is longer than $k$ then we find a subdivision of $P(k,1;1)$ between $x$ and $x_{1,2}$.
-	The first path is $C_1[x, x_{1,2}]$, the second is $P_S \odot C_l[y, x_{l-1,l}] \odot P$ and the third is $C_1[x_{1,2}, x]$. 
+	\item If $C[t(Q), x]$ has length at least $k$ then the union of $Q \odot C[t(Q), x] \odot P$, $C'[s(Q), y]$ and $C'[ y, s(Q)]$
+	is a subdivision of $P(k,1;1)$ between $s(Q)$ and $y$. 
+	\item If $C[x, t(Q)]$ is longer than $k$ then the union of $C[x, t(Q)]$, $P \odot C'[y, s(Q)] \odot Q$ and $C[t(Q), x]$
+	is a subdivision of $P(k,1;1)$ between $x$ and $t(Q)$. 
 \end{itemize}
 \end{proof}
 
  
 \begin{lemma}\label{lem:compo1}
-Let ${\cal C}$ be a suitable collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $S$ a component of $\mathcal{C}$, then $\chi(D[S]) < k+1$.	 
+Let ${\cal C}$ be a nice collection of cycles in a $P(k,1;1)$-subdivision-free digraph $D$ and $S$ a component of $\mathcal{C}$, then $\chi(D[S]) < 2k-1$.	 
 \end{lemma}
 
 \begin{proof}
-We do it by induction on the number of cycle in $S$. Let $C$ be a cycle of $S$. Since $C$ is longer than $2k$, there is no cords between $x$ and $y$ in $C$
-such that $C[x,y]$ is longer than $k$. This means that $C$ is $k+1$ degenerate and has chromatic number smaller than $k +1$. Let $c$ be a colouring of $C$ with
+By induction on the number of cycle in $S$. Let $C$ be a cycle of $S$. Since $C$ has length at least $2k$, there is no chords between $x$ and $y$ in $C$
+such that $C[x,y]$ is longer than $k$. This means that $C$ is $2k-2$ degenerate and has chromatic number smaller than $2k -2$. Let $c$ be a colouring of $C$ with
 $k$ colours. Let $S_1, S_2, \dots, S_r$ be the components containing cycles of $S$ in $\mathcal{C} \setminus{C}$. Since $S$ is exactly the union of the $S_i$ and $C$
-then each $S_i$ has strictly less cycle than $S$. By induction there exists a colouring $c_i$ using $k+1$ colours for each $S_i$.
+then each $S_i$ has strictly less cycle than $S$. By induction there exists a colouring $c_i$ using $2k-1$ colours for each $S_i$.
  
 Now we claim that the intersection of each $D[S_i]$ with $C$ is exactly one vertex. It is easy to see that $C$ must intersect at least one cycle of each $S_i$, 
-now suppose there exists two vertices of $C$, $x$ and $y$ who belongs to $D[S_i]$. By definition of a suitable collection, they cannot belong to the same cycle 
+now suppose there exists two vertices of $C$, $x$ and $y$ who belongs to $D[S_i]$. By definition of a nice collection, they cannot belong to the same cycle 
 of $S_i$, so there exists two cycles $C_i$ and $C_j$ of $S_r$ such that $x \in C_i$ and $y \in C_j$. By lemma \ref{lem:headphone} where $C[x,y]$ plays the role
-of $P_S$, it is not possible. This means, modulo a permutation of the $c_i$,
+of $P$, it is not possible. This means, modulo a permutation of the $c_i$,
 that we can consider that each vertex of $C$ receives the same colour in $c$ and in the $c_i$. 
 
-Moreover, because of lemma \ref{lem:headphone}, there is no edge between different $S_i$ and between $S_i$ and $C$. This means that if we take the union of the 
+Moreover, because of lemma \ref{lem:headphone}, there is no arc between different $S_i$ and between $S_i$ and $C$. This means that if we take the union of the 
 $c_i$ and $c$, we obtain a proper colouring of $D[S]$ using $k+1$ colours. 
 \end{proof}
 
 
 \begin{lemma}\label{lem:reduce}
-Let ${\cal C}$ be a maximal suitable collection of cycle in a $P(k,1;1)$ subdivision-free strongly connected digraph $D$. Then $\chi(D_{\mathcal{C}}) < 2k$
+Let ${\cal C}$ be a maximal nice collection of cycle in a $P(k,1;1)$ subdivision-free strongly connected digraph $D$. Then $\chi(D_{\mathcal{C}}) < 2k$
 \end{lemma}
 
 \begin{proof}
 First note that, since $D$ is strongly connected,  so is $D_{\mathcal{C}}$. Suppose $\chi(D_{\mathcal{C}}) \geq 2k$, by Bondy's Theorem, there exists a directed cycle
-$C = x_1\dots x_l$ of length greater than $2k$ in $ D_{\mathcal{C}}$. We deduce a cycle $C'$ in $D$ the following way:
+$C = x_1\dots x_l$ of length at least $2k$ in $ D_{\mathcal{C}}$. We deduce a cycle $C'$ in $D$ the following way:
 Suppose the vertex $x_j$ corresponds to a component $S_i$ in $D$: the arc $x_{j-1}x_j$ corresponds in $D$ to an arc arriving on 
-$p_i$, a vertex of $S_i$ and the arc $x_jx_{j+1}$ corresponds to an arc leaving $l_i$, a vertex of $S_i$. Let $P_j$ be the dipath 
-from $p_i$ to $l_i$ in $D[S_i]$. Note that $P_j$ intersect each cycle of $S_i$ on a, possibly empty, subpath of $P_j$. 
+$p_i$, a vertex of $S_i$ and the arc $x_jx_{j+1}$ corresponds to an arc leaving $l_i$, a vertex of $S_i$. Let $P_j$ be a dipath 
+from $p_i$ to $l_i$ in $D[S_i]$. Note that $P_j$ intersects each cycle of $S_i$ on a, possibly empty, subpath of $P_j$. 
 Then $C'$ is the cycle obtained from $C$ by replacing the vertices $x_i$ which correspond to a component of $\mathcal{C}$ in $D$ by the path $P_j$.
 
 $C'$ is a cycle of $D$ which is longer than $2k$ because it is longer than $C$. Let $C_1$ be a cycle of $\mathcal{C}$, then by construction of $C'$ 
@@ -273,22 +366,13 @@ to one vertex in $D_{\mathcal{C}}$, which contradicts the fact that $\mathcal{C}
 So we can finally prove Theorem \ref{th:P11k}
 
 \begin{proof}
-Let ${\cal C}$ be a maximal suitable collection of cycle in $D$. By lemma \ref{lem:compo1}, for each component $S_i$ of $\mathcal{C}$, there exists a colouring
-$c_i$ using colours in $[k+1]$ and by lemma \ref{lem:reduce} there exists a colouring $c'$ of $D_{\mathcal{C}}$ using colours in $[2k]$. 
-Define $c : V(D) \rightarrow ([k+1],[2k])$ as follows. If $x$ is a vertex belonging to some component $S_i$ of $\mathcal{C}$ and $s_i$ 
-is the vertex corresponding to $S_i$ in $D_{\mathcal{C}}$, then $c(x) = (c_i(x), c'(s_i))$, else $c(x) =(1,c'(x))$. 
-Let $x$ and $y$ be adjacent vertices of $D$. If they belong to the same component $S_i$, then $c_i(x) \not = c_i(y)$ and $c(x) \not = c(y)$. If they don't belong
-to the same component, then the vertices corresponding to these vertices in $D_{\mathcal{C}}$ will be adjacent and $c(x) \not = c(y)$. 
-Thus $c$ is a proper colouring of $D$ using $(k+1)(2k)$ colours. 
+Let ${\cal C}$ be a maximal nice collection of cycle in $D$, then lemmas \ref{lem:compo1}, \ref{lem:reduce} and \ref{lem:contrac} give the result.
 \end{proof}
 
 
 \section{$P(k,1;k)$}
 %%%%%%%%%%%
 
-\begin{theorem}\label{th:main}
-Let $D$ be a strongly connected digraph. If $\chi(D) > \cste$, then $D$ contains a subdvision of $P(k,1;k)$.
-\end{theorem}
 
 
 We prove the result by the contrapositive. We consider a digraph $D$ that contains no subdivision of $P(k,1;k)$.
@@ -299,7 +383,8 @@ We shall prove that $\chi(D) \leq \cste$.
  
  A collection ${\cal C}$ of directed cycles is {\it suitable} if all cycles of ${\cal C}$ have length at least $12k$, and for
 any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on  subpath $P_{i,j}$ of order at most $k$.
-We denote by $s_{i,j}$ (resp. $t_{i,j}$) the initial (resp. terminal) vertex of  $P_{i,j}$.
+We denote by $s_{i,j}$ (resp. $t_{i,j}$) the initial (resp. terminal) vertex of  $P_{i,j}$. This notion generalises 
+the notion of nice collection seen before. 
  
  
  
@@ -652,7 +737,7 @@ By lemma \ref{lem:decomp} this means $\chi(D_r^+) <  \dr$
 
 \end{proof}
 
-\section{Proof of Theorem \ref{th:main}}
+\subsection{Proof of Theorem \ref{th:main}}
 
 Consider $\mathcal{C}$ be a maximal suitable collection of cycles in $D$. Let $D'$ be the digraph obtained by contracting 
 every connected component $S$ of $\bigcup \mathcal{C}$ into one vertex. For each connected component $S_i$ we call $s_i$ the
@@ -680,8 +765,159 @@ subdipath of length at most $k$. This contradicts the maximality of $\mathcal{C}
 \end{proof}
 
 
-So this means by using $12k \cdot (2\cdot \col + 18k) \cdot (2 \cdot \dr)$ we can colour $D$.
+Lemma \ref{lem:contrac} implies that we can colour $D$ using $12k \cdot (2\cdot \col + 18k) \cdot (2 \cdot \dr)$ colours.
 
 
+
+\begin{thebibliography}{XX}
+
+\bibitem{AHT07}
+L.~Addario-Berry, F.~Havet, and S.~Thomass{\'e}.
+\newblock Paths with two blocks in $n$-chromatic digraphs.
+\newblock \emph{Journal of Combinatorial Theory, Series B}, 97
+  (4): 620--626, 2007.
+
+\bibitem{AHS+13}
+L.~Addario-Berry, F.~Havet, C.~L. Sales, B.~A. Reed, and S.~Thomass{\'e}.
+\newblock Oriented trees in digraphs.
+\newblock \emph{Discrete Mathematics}, 313 (8): 967--974,
+  2013.
+
+
+\bibitem{alon2014coloring}
+N. Alon, A. Kostochka, B. Reiniger, D.~B West, and X.
+  Zhu.
+\newblock Coloring, sparseness, and girth.
+\newblock {\em arXiv preprint arXiv:1412.8002}, 2014.
+
+
+ %\bibitem{BeWo83} A. Benhocine and A. P. Wojda.
+ %\newblock On the existence of specified cycles in a tournament.
+ %\newblock \emph{J. Graph Theory}, 7: 469-473, 1983.
+
+   \bibitem{Bon76} J. A. Bondy, Disconnected orientations and a conjecture of Las Vergnas,
+{\it J. London Math. Soc. (2)}, {\bf 14} (2) (1976), 277--282.
+
+
+  \bibitem{BoMu08}
+J.A. Bondy and U.S.R. Murty.
+\newblock {\em {G}raph {T}heory}, volume 244 of {\em Graduate Texts in
+  Mathematics}.
+\newblock Springer, 2008.
+
+
+%\bibitem{Bro41}
+%R.~L. Brooks.
+%\newblock On colouring the nodes of a network.
+%\newblock {\em Proc. Cambridge Philos. Soc.}, 37:194--197, 1941.
+
+\bibitem{Burr80}
+S.~A. Burr.
+\newblock Subtrees of directed graphs and hypergraphs.
+\newblock In \emph{Proceedings of the 11th Southeastern Conference on
+  Combinatorics, Graph theory and Computing}, pages 227--239, Boca Raton - FL,
+  1980. Florida Atlantic University.
+
+\bibitem{Bur82} S. A. Burr,
+Antidirected subtrees of directed graphs.
+{\it Canad. Math. Bull.} {\bf 25} (1982), no. 1, 119--120.
+
+\bibitem{CHLN16}
+N. Cohen, F. Havet, W. Lochet, and N. Nisse.
+\newblock Subdivisions of oriented cycles in digraphs with large chromatic number.
+\newblock arXiv:1605.07762
+
+\bibitem{Erd59}
+P.~Erd{\H{o}}s.
+\newblock Graph theory and probability.
+\newblock {\em Canad. J. Math.}, 11:34--38, 1959.
+
+\bibitem{ErHa66}
+P.~Erd{\H{o}}s and A. Hajnal.
+\newblock On chromatic number of graphs and set-systems.
+\newblock {\em Acta Mathematica Academiae Scientiarum Hungarica}, 17(1-2):61--99, 1966.
+
+
+\bibitem{EL75}
+P.~Erd{\H{o}}s and L.~Lov{\'a}sz.
+\newblock Problems and results on {$3$}-chromatic hypergraphs and some related
+  questions.
+\newblock In {\em Infinite and finite sets ({C}olloq., {K}eszthely, 1973;
+  dedicated to {P}. {E}rd{\H o}s on his 60th birthday), {V}ol. {II}}, pages
+  609--627. Colloq. Math. Soc. J\'anos Bolyai, Vol. 10. North-Holland,
+  Amsterdam, 1975.
+
+
+\bibitem{Gal68}
+T.~Gallai.
+\newblock On directed paths and circuits.
+\newblock In \emph{Theory of Graphs (Proc. Colloq. Titany, 1966)}, pages
+  115--118. Academic Press, New York, 1968.
+
+\bibitem{Gya92}
+A. Gy\'arf\'as.
+\newblock Graphs with $k$ odd cycle lengths.
+\newblock {\it Discrete Math.}, 103, pp. 41--48, 1992.
+
+
+\bibitem{Has64}
+M.~Hasse.
+\newblock Zur algebraischen bergr\"und der graphentheorie {I}.
+\newblock \emph{Math. Nachr.}, 28: 275--290, 1964.
+
+\bibitem{HoTa73}
+J. Hopcroft and R. Tarjan.
+\newblock Efficient algorithms for graph manipulation.
+\newblock {\it Communications of the ACM}, 16 (6): 372--378, 1973.
+
+
+\bibitem{KRS11}
+T. Kaiser, O. Ruck\'y, and R. Skrekovski.
+\newblock Graphs with odd cycle lengths 5 and 7 are 3-colorable.
+\newblock {\it SIAM J. Discrete Math.},25(3):1069--1088, 2011.
+
+\bibitem{KKPM}
+R. Kim, SJ. Kim, J. Ma; B. Park
+\newblock Cycles with two blocks in $k$-chromatic digraphs
+\newblock arXiv:1610.05839
+
+\bibitem{LRS10}
+C. L\"owenstein, D. Rautenbach, and I. Schiermeyer.
+\newblock Cycle length parities and the chromate number.
+\newblock {\it J. Graph Theory}, 64(3):210--218, 2010.
+
+
+\bibitem{MiSc04}
+P. Mih\'ok and I. Schiermeyer.
+\newblock Cycle lengths and chromatic number of graphs.
+\newblock {\it Discrete Math.}, 286(1-2): 147--149, 2004.
+
+\bibitem{Roy67}
+B.~Roy.
+\newblock Nombre chromatique et plus longs chemins d'un graphe.
+\newblock \emph{Rev. Francaise Informat. Recherche Op\'erationnelle},
+  1 (5): 129--132, 1967.
+
+
+\bibitem{Sum81}
+D.~P. Sumner.
+\newblock Subtrees of a graph and the chromatic number.
+\newblock In {\em The theory and applications of graphs (Kalamazoo, Mich.,
+  1980)}, pages 557--576. Wiley, New York, 1981.
+
+\bibitem{Vit62}
+L.~M. Vitaver.
+\newblock Determination of minimal coloring of vertices of a graph by means of
+  boolean powers of the incidence matrix.
+\newblock \emph{Doklady Akademii Nauk SSSR}, 147: 758--759, 1962.
+
+
+\bibitem{Wan08}
+S.S. Wang.
+\newblock Structure and coloring of graphs with only small odd cycles.
+\newblock {\it SIAM J.Discrete Math.}, 22:1040--1072, 2008.
+
+
+\end{thebibliography}
 
 \end{document}
