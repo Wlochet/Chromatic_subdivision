@@ -85,8 +85,12 @@ Throughout this paper, the chromatic number of a digraph $D$ is the chromatic nu
 
 A classical result due to Gallai, Hasse, Roy and Vitaver says that the chromatic number of a graph $G$ equals one plus the length of a longest path in an orientation 
 of $G$ chosen to minimise this path's length. This surprising characterisation of the chromatic number with the orientation of a graph motivates
-the following question: what are the subdigraphs of digraphs with large chromatic number.
-In this setting, which will be the one that interests us from now on, the Theorem can be stated as follows: 
+the following question:
+\begin{question}
+What are the subdigraphs of digraphs with large chromatic number ?
+\end{question}
+
+In this setting, the Theorem can be stated as follows: 
 
 \begin{theorem}[Gallai~\cite{Gal68}, Hasse~\cite{Has64}, Roy~\cite{Roy67}, Vitaver~\cite{Vit62}]\label{thm:gallairoy}
 	If $\chi(D) \geq k$ then $D$ contains a dipath of length $k+1$.  
@@ -280,7 +284,7 @@ which means one of the two paths, say $Q_1$ contains $x_lz$. But $Q_2$ and $Q_3$
 
 \section{$P(k,1;1)$}
 
-
+In this section we will present a proof of \ref{th:P11k}
 
 A collection ${\cal C}$ of directed cycles is {\it nice} if all cycles of ${\cal C}$ have length at least $2k$, and
 any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on at most one vertex. When this intersection exists, we call it $x_{i,j}$.
@@ -373,7 +377,7 @@ Let ${\cal C}$ be a maximal nice collection of cycle in $D$, then lemmas \ref{le
 \section{$P(k,1;k)$}
 %%%%%%%%%%%
 
-
+In thi section, we present a proof of \ref{th:main}.
 
 We prove the result by the contrapositive. We consider a digraph $D$ that contains no subdivision of $P(k,1;k)$.
 We shall prove that $\chi(D) \leq \cste$.
