@@ -743,6 +743,10 @@ By lemma \ref{lem:lvl}, $\chi(D_r^+[A_0]) \leq k$ as the colour obtained by assi
 We will now prove that $\chi(D_r^+[A_1]) \leq (2k)^{2k}$ by contradiction. 
 Suppose it is not, it means that there exists a level $i$ such that the chromatic number of $\chi(D_r^+[A_1])$ in this level is greater 
 than $k$. By Theorem \ref{thm:gallairoy} there exists a dipath $P=(v_1,  \dots , v_{p})$ of length $p\geq (2k)^{2k}$.
+Note that all cycles intersect this path at most once.
+Suppose this dipath visits twice 
+the same cycle $C_1$ of $\mathcal{C}$. Because all the vertices belonging to the dipath receives colour $r$ in $c$ it means there exists a 
+dipath internally disjoint from $C_1$ between two vertices at distance at least $7k$ of the cycle $C_1$ in $\mathcal{C}$, which is impossible. 
 For $1\leq i\leq p$, let $m_i = \min \Dis(v_i)$. 
 Lemma \ref{min} applied to $(m_i)_{1\leq i\leq p}$ yields a set $L$ of $2k^2$ indices of such that 
 for any $i< j \in L$,  $m_i=m_j$ and $m_k > m_i$, for all $i< k < j$.
@@ -778,7 +782,7 @@ $P_5[v, v_{\ell_1} \odot P_1 \odot P[v_{\ell_1}, v_{\ell_2]}$ and $P[v_{\ell_1},
 form a subdivision of $P(k,1;k)$.
 	
 		\item Assume now $P_1$ and $P_2$ intersect. Let $u$ be the last vertex along $P_2$ on which they intersect.
-		 The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3\odot C[t(P_3), s(P_1)]\odot P_1[s(P_1), u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+		 The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3\odot P_5 \odot P_1[s(P_1), u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
 	\end{itemize}
 
 	\item Assume $P_3$ intersect $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cap P_2$ and let $u$ be the last vertex of $P_1\cap P_2$ along $P_2$. The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3[v_f,v]\odot P_1[v, u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
@@ -811,9 +815,7 @@ If $P_1$ and $P_2$ intersect, let $u$ be a vertex of the intersection such that 
 Let% 
 
 
-Suppose this dipath visits twice 
-the same cycle $C_1$ of $\mathcal{C}$. Because all the vertices belonging to the dipath receives colour $r$ in $c$ it means there exists a 
-dipath internally disjoint from $C_1$ between two vertices at distance at least $7k$ of the cycle $C_1$ in $\mathcal{C}$, which is impossible. 
+
 Consider $C_{j_1}$ and $C_{j_k}$ cycles containing $v_{\ell_1}$ and $v_{\ell_k}$ in $L_i$ and $C$, $C'$ their respective fathers. 
 By considering the common ancestor of $C_{x'}$ and $C_{y'}$, we can find a dipath $P_y$ from $l_{y,y'}$ to $s_{x,x'}$ which 
 only uses vertices in levels smaller than $i-1$, thus disjoint of $P$, $C_y[l_{y,y'}, y]$, $C_y[y, l_{y,y'}]$ and $C_x[s_{x,x'}, x]$. 
