@@ -61,7 +61,7 @@
 
 \newcommand{\cste}{ 8k \cdot (2\cdot \col + 14k) \cdot (2 \cdot \dr)}
 \newcommand{\qj}{\bf cste2}
-\newcommand{\dr}{ k^2}
+\newcommand{\dr}{ k \cdot (2k)^k}
 \newcommand{\col}{(6k^2)^{3k}}
 \newcommand{\free}{subdivision-free}
 
@@ -537,7 +537,7 @@ We shall now prove that there exists a colouring $c^+$ of $I^+(C_1)$ with $\col$
 The union of these three colourings is clearly the desired colouring of $C_1\cup \bigcup{\cal C}[I(C_1)]$. (Observe that a vertex of $I(C_1)$ is coloured only once because  $I^+(C_1)$ and $I^-(C_1)$ are disjoint.)
 
 It remains to prove the existence of $c^+$ and $c^-$. By symmetry, it suffices to prove the existence of $c^+$.
- To prove the existence of $c^+$ we consider an auxilary digraph $D^+_1$.
+ To prove the existence of $c^+$ we consider an auxiliary digraph $D^+_1$.
  For each $C_j\in {\cal C}\cap C_1$, let $T^+_j$ be the transitive tournament whose hamiltonian dipath is $Q^+_j$.
 Let $D^+_1=\bigcup_{C_j\in  {\cal C}\cap C_1} T^+_j$. 
 The arcs of the $A(T^+_j)\setminus A(Q^+_j)$ are called {\it fake arcs}.
@@ -561,7 +561,7 @@ $Q^+_j[u,v]$ we obtain a directed walk $P$ in $I^+(C_1)$ of length at least $\co
 For $1\leq i\leq p$, let $m_i = \min \Dis(v_i)$. 
 Lemma \ref{min} applied to $(m_i)_{1\leq i\leq p}$ yields a set $L$ of $6k^2$ indices of such that 
 for any $i< j \in L$,  $m_i=m_j$ and $m_k > m_i$, for all $i< k < j$.
-Let $l_1 < l_2 < \cdots < l_{8k^2}$ be the elements of $L$ and let $m= m_{l_1} = \cdots = m_{l_{8k^2}}$.
+Let $l_1 < l_2 < \cdots < l_{6k^2}$ be the elements of $L$ and let $m= m_{l_1} = \cdots = m_{l_{6k^2}}$.
 
 
 For $1\leq j\leq 6k^2-1$, let $M_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Dis(v_i)$.
@@ -637,8 +637,7 @@ For every strong component $\mathcal{S}$ of $\bigcup \mathcal{C}$, let $D_{\math
 on $D$ by the vertices in $\mathcal{S}$. Then $\chi(D_{\mathcal{S}}) < (2\cdot \col + 14k) \cdot (2 \cdot \dr)$.
 \end{lemma}
 
-Consider the colouring $c$ obtained by lemma \ref{lem:col-union-cycle}. It allows us 
-to deal with the arcs belonging to cycles in $\mathcal{C}$, to deal with the other, we do the following:
+
 We present a sort BFS for $\mathcal{S}$.
 Let $C_r$ (for root) be a cycle of $\mathcal{S}$ and $L_0 = \{C_r\}$. For every cycle $C_s$ of $\mathcal{S}$ for which 
 $P_{r,s}$ is not empty, we put $C_s$ in $L_1$ and say that $C_0$ is the \textit{father} of $C_s$. We build $L_i$ inductively
@@ -658,7 +657,8 @@ Let $Q^-_l$ be the set of vertices $x$ of $C_l \setminus C_a$ such that the path
 We denote by $Q^+_l$ $C_l \setminus( C_a \cup Q^-_l) $. Note that for a vertex $x$ in  $Q^+_l$, $C_l[x,s_{a,l}]$ is longer than $k$. 
 
 For a vertex $x$ belonging to cycles in $\mathcal{S}$, we say that $x$ \textit{belongs to}  $L_i$ if
-$i$ is the smallest integer such that $x \ C_l$ for some $C_l \in L_i$.
+$i$ is the smallest integer such that $x \ C_l$ for some $C_l \in L_i$. Moreover, if $v$ belongs to $L_i$, let $\Dis(v)$ be the lengths of the
+$C_j[t_{1,j},v]$ for all cycle $C_j \in  L_i$ containing $v$.
 
 \begin{lemma}\label{lem:Qpos}
 Suppose there exists a vertex $x$ such that $x \in Q^+_l$ and $x \in C_s$ for some cycles $C_l$ and $C_s$ in some $L_j$.
@@ -740,12 +740,81 @@ We use the following partition of the arcs of $D_r^+$
 
 By lemma \ref{lem:lvl}, $\chi(D_r^+[A_0]) \leq k$ as the colour obtained by assigning to each level $L_i$ the colour $i$ modulo $k$ is proper. 
 
-We will now prove that $\chi(D_r^+[A_1]) \leq k$ by contradiction. 
+We will now prove that $\chi(D_r^+[A_1]) \leq (2k)^{2k}$ by contradiction. 
 Suppose it is not, it means that there exists a level $i$ such that the chromatic number of $\chi(D_r^+[A_1])$ in this level is greater 
-than $k$. By Theorem \ref{thm:gallairoy} there exists a dipath $P$ of length $k$ in this level between vertices $x$ and $y$. Suppose this dipath visits twice 
+than $k$. By Theorem \ref{thm:gallairoy} there exists a dipath $P=(v_1,  \dots , v_{p})$ of length $p\geq (2k)^{2k}$.
+For $1\leq i\leq p$, let $m_i = \min \Dis(v_i)$. 
+Lemma \ref{min} applied to $(m_i)_{1\leq i\leq p}$ yields a set $L$ of $2k^2$ indices of such that 
+for any $i< j \in L$,  $m_i=m_j$ and $m_k > m_i$, for all $i< k < j$.
+Let $l_1 < l_2 < \cdots < l_{2k^2}$ be the elements of $L$ and let $m= m_{l_1} = \cdots = m_{l_{2k^2}}$.
+
+
+For $1\leq j\leq 2k^2-1$, let $M_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Dis(v_i)$.
+By definition $M_j\leq k$.
+Applying Lemma~\ref{max} to $(M_j)_{1\leq j\leq 2k^2}$,  we get a sequence of size $2k$ $M_{j_0+1} \dots M_{j_0+{2k}}$ such that $M_{j_0+{2k}}$ is the greatest. 
+For sake of simplicity, we set $\ell_i =j_0+i$ for $1\leq i\leq 2k$.
+Let $f$ the smallest index not smaller than $\ell_{2k}$ for which $M_{\ell_{2k}} \in \Dis (v_f)$. 
+
+Let $j_1$ and $f(j_1)$ be indices such that $v_{\ell_1} \in C_{j_1}$, $C_{j_1}$ is in $L_i$, $C_{f(j_1)}$ is in $L_{i-1}$ and 
+$C_{j_1}[t_{f(j_1),j_1},v_{\ell_1}]$ has length $m$. Set $P_1=C_{j_1}[t_{f(j_1),j_1},v_{\ell_1}]$.
+Let $j_2$ and $f(j_2)$ be indices such that $v_{\ell_2} \in C_{j_2}$, $C_{j_2}$ is in $L_i$, $C_{f(j_2)}$ is in $L_{i-1}$ and 
+$C_{j_2}[t_{f(j_2),j_2},v_{\ell_2}]$ has length $m$. Set $P_2=C_{j_2}[t_{f(j_2),j_2},v_{\ell_2}]$.
+Let $j_3$ and $f(j_3)$ be indices such that $v_{\ell_3} \in C_{j_3}$, $C_{j_3}$ is in $L_i$, $C_{f(j_3)}$ is in $L_{i-1}$ and 
+$C_{j_3}[v_{f},s_{f(j_3),j_3}]$ has length $M_{\ell_{2k}}$. Set $P_3=C_{j_3}[v_{f},s_{f(j_3),j_3}]$.
+
+Note that any internal vertex $x$ of $P_1$ or $P_2$ has an integer in $\Dis(x)$
+which is smaller than $m$ and every internal vertex $y$ of $P_3$ has an integer in $\Dis(y)$ which
+is greater than $M_{\ell_{2k}}$, or does not belong to $I^+(C_1)$. Hence, 
+$P_1$, $P_2$ and $P_3$ are disjoint from $P[v_{\ell_1},v_f]$. 
+
+We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
+
+\begin{itemize}
+	\item Suppose $P_3$ does not intersect $P_1 \cup P_2$. Let $P_5$ be the shortest paths in $\cup_{s < i} L_s$ from $s_{f(j_3),j_3}$ to $t_{f(j_1),j_1}$.
+	\begin{itemize}
+		\item Suppose $P_1$ and $P_2$ are disjoint and let $P_4$ be the shortest paths in $\cup_{s < i} L_s$ 
+from $t_{f(j_1),j_1}$ to $t_{f(j_2),j_2}$. Let $v$ be the last vertex of $P_4$ in $P_4 \cap P_5$, then $P_4[v,v_{\ell_2}] \odot P_2$,
+$P_5[v, v_{\ell_1} \odot P_1 \odot P[v_{\ell_1}, v_{\ell_2]}$ and $P[v_{\ell_1}, v_f] \odot P_3 \odot P_5[t_{f(j_3),j_3}, v]$
+form a subdivision of $P(k,1;k)$.
+	
+		\item Assume now $P_1$ and $P_2$ intersect. Let $u$ be the last vertex along $P_2$ on which they intersect.
+		 The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3\odot C[t(P_3), s(P_1)]\odot P_1[s(P_1), u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+	\end{itemize}
+
+	\item Assume $P_3$ intersect $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cap P_2$ and let $u$ be the last vertex of $P_1\cap P_2$ along $P_2$. The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3[v_f,v]\odot P_1[v, u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+
+	\item Assume now that $P_3$ intersect $P_1\cup P_2$ but not $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cup P_2$.
+	\begin{itemize}
+	\item If $v \in P_2$, let $u$ be the last vertex on $P_2\cap P_3$ along $P_3$. Observe that $P_3[v,u]$ is also a subpath of $P_2$ and therefore contains no vertex of $P_1$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_1}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_1$. Hence, the union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,v]$, $Q\odot P[v_{\ell_1},v_{\ell_k}]$, and $P_2[u,v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+	
+	\item If $v\in P_1$, let $u$ be the last vertex on $P_1\cap P_3$ along $P_3$.  Observe that $P_3[v,u]$ is also a subpath of $P_1$ and therefore contains no vertex of $P_2$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_k}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_2$.
+	The union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,u]$, $P_1[u, v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$ and $Q$ is a subdivision of $P(k,1;k)$, a contradiction.
+
+	\end{itemize}
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+Suppose $P_1$ and $P_2$ are disjoint and let $P_4$ and $P_5$ be the shortest paths in $\cup_{s < i} L_s$ 
+from $t_{f(j_1),j_1}$ to $t_{f(j_2),j_2}$
+and from $s_{f(j_3),j_3}$ to $t_{f(j_1),j_1}$. Let $v$ be the last vertex of $P_4$ in $P_4 \cap P_5$, then $P_4[v,v_{\ell_2}] \odot P_2$,
+$P_5[v, v_{\ell_1} \odot P_1 \odot P[v_{\ell_1}, v_{\ell_2]}$ and $P[v_{\ell_1}, v_f] \odot P_3 \odot P_5[t_{f(j_3),j_3}, v]$
+form a subdivision of $P(k,1;k)$.
+If $P_1$ and $P_2$ intersect, let $u$ be a vertex of the intersection such that $P_2[u, v_{\ell_2}]$ and $P_1[u, v_{\ell_1}]$ are disjoint.
+Let% 
+
+
+Suppose this dipath visits twice 
 the same cycle $C_1$ of $\mathcal{C}$. Because all the vertices belonging to the dipath receives colour $r$ in $c$ it means there exists a 
-dipath internaly disjoint from $C_1$ between two vertices at distance at least $7k$ of the cycle $C_1$ in $\mathcal{C}$, which is impossible. 
-Consider $C_x$ and $C_y$ cycles containing $x$ and $y$ in $L_i$ and $C_{x'}$, $C_{y'}$ their respective fathers. 
+dipath internally disjoint from $C_1$ between two vertices at distance at least $7k$ of the cycle $C_1$ in $\mathcal{C}$, which is impossible. 
+Consider $C_{j_1}$ and $C_{j_k}$ cycles containing $v_{\ell_1}$ and $v_{\ell_k}$ in $L_i$ and $C$, $C'$ their respective fathers. 
 By considering the common ancestor of $C_{x'}$ and $C_{y'}$, we can find a dipath $P_y$ from $l_{y,y'}$ to $s_{x,x'}$ which 
 only uses vertices in levels smaller than $i-1$, thus disjoint of $P$, $C_y[l_{y,y'}, y]$, $C_y[y, l_{y,y'}]$ and $C_x[s_{x,x'}, x]$. 
 Then $C_y[l_{y,y'}, y]$, $C_y[y, l_{y,y'}]$ and $P_y \odot C_x[s_{x,x'}, x] \odot P$ form a subdivision of $P(k,1;k)$ between $y$ 
