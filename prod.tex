@@ -99,7 +99,7 @@ What are the subdigraphs of digraphs with large chromatic number ?
 
 A famous theorem by Erd\H{o}s~\cite{Erd59} states that there exists graphs with arbitrarily high girth and arbitrarily large
 chromatic number. This means that if $H$ is a digraph containing a cycle, there exists digraphs with arbitrarily high 
-chromatic number without any copy of $H$. Thus the only possible candidates to generalise Theorem \ref{thm:gallairoy} are oriented
+chromatic number without any copy of $H$. Thus the only possible candidates to generalise Theorem \ref{thm:gallairoy} are orientations
 of trees.
 Burr proved that every $(k-1)^2$-chromatic digraph contains every oriented tree of order $k$ and conjectured the following:
 
@@ -139,12 +139,12 @@ The bound has recently been improved to $O((k+l)^2)$  by Kim et al. \cite{KKPM}.
 
 A subdivision of $C(k,l)$ can be seen as two disjoint dipaths $P_l$ of length at least $l$ and $P_k$ of length at least $k$,
 between the same pair of vertices. The goal of this paper is to try to generalise this result to more than two paths.  
-First we give a construction of digraphs with arbitrarily large chromatic number such that for any pair of vertices
-$x$ and $y$, there is no three disjoint dipaths from $x$ to $y$ or four disjoint dipaths, two from $x$ to $y$ and two form $y$ to $x$. 
-This implies that, if $P(k_1,k_2;k_3)$ be the digraph formed by three internally disjoint paths between two vertices $x,y$,
+First, we give a construction of digraphs with arbitrarily large chromatic number such that for any pair of vertices
+$x$ and $y$, there are no three disjoint dipaths from $x$ to $y$ or four disjoint dipaths, two from $x$ to $y$ and two form $y$ to $x$. 
+This implies that, if $P(k_1,k_2;k_3)$ is the digraph formed by three internally disjoint paths between two vertices $x,y$,
 two $(x,y)$-dipaths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$,
-$P(k_1,k_2;k_3)$ is the only possible candidate if we want to generalise Theorem \ref{th:ckl}. 
-Then we present a proof for forcing $P(k,1;1)$: 
+then $P(k_1,k_2;k_3)$ is the only possible candidate if we want to generalise Theorem \ref{th:ckl}.
+Then we present a proof for forcing $P(k,1;1)$:
 
 \begin{theorem}\label{th:P11k}
 Let $D$ be a strong digraph. If $\chi(D) >  (2k-1)\cdot (2k)$, then $D$ contains a subdivision of $P(k,1;1)$
@@ -156,8 +156,8 @@ and finally, building on the proof of Theorem \ref{th:P11k}, we present our main
 Let $D$ be a strong digraph. If $\chi(D) > \cste$, then $D$ contains a subdvision of $P(k,1;k)$.
 \end{theorem}
 
-Related questions can be looked at for other parameters than $\chi$. We refer the reader to \cite{AC+16} and \cite{CHLN16} for related questions.
-In particular, Aboulker et al. prove the following: 
+Related questions can be looked at for parameters other than $\chi$. We refer the reader to \cite{AC+16} and \cite{CHLN16} for related questions.
+In particular, Aboulker et al. prove the following:
 
 \begin{theorem}[Theorem 28 \cite{AC+16}]
 Let $k_1,k_2,k_3$ be  positive integers with $k_1 \ge k_2$.
@@ -186,7 +186,7 @@ $\chi(D_1\cup D_2) \leq \chi(D_1)\times \chi(D_2)$.
 
 
 
-In a digraph $D$, a \emph{directed path}, or \emph{dipath} in an oriented path where all the arcs are oriented in the same direction. 
+In a digraph $D$, a \emph{directed path}, or \emph{dipath} is an oriented path where all the arcs are oriented in the same direction.
 Let $P$ be a path. We denote by $s(P)$ its initial vertex and by $t(P)$ its terminal vertex.
 The subpath of $P$ with initial vertex $u$ and terminal vertex $v$ is denoted by $P[u,v]$.
 Similarly, if $C$ is a directed cycle, we denote by $C[u,v]$ the subdipath of $C$ with initial vertex $u$ and terminal vertex $v$.
@@ -226,12 +226,12 @@ We will need the following lemmas:
 %\end{proof}
 
 \begin{lemma}\label{min}
-Let $\sigma=(u_t)_{t\in [p]}$ be a sequence of integers in $[k]$. If $p\geq l^k$, then there exists a set $L$ of $l$ indices such that for any $i,j \in L$ with $i < j$ the following holds : $u_i=u_j$ and $u_k > u_i$, for all $i < k < j$.
+Let $\sigma=(u_t)_{t\in [p]}$ be a sequence of integers in $[k]$. If $p\geq l^k$, then there exists a set $L$ of $l$ indices such that for any $i,j \in L$ with $i < j$ the following holds : $u_i=u_j$ and $u_k > u_i$, for all $i < k < j$. \nathann{Variable $k$ used twice}
 \end{lemma}
 
 \begin{proof}
 By induction on $k$, the result holding trivially when $k=1$. Assume now that $k>1$. Let $L_1$ be the elements of the sequence with value $1$. If $L_1$ has at least $l$ elements, we are done.
-If not then there is a subsequence $\sigma'$ of $l^k/l$ consecutive elements in $\{2, \dots , k-1\}$. Applying the induction hypothesis to $\sigma'$ yields the result.
+If not then there is a subsequence $\sigma'$ of $l^k/l$ \nathann{$(l^k-(l-1))/l$} consecutive elements in $\{2, \dots , k-1\}$. Applying the induction hypothesis to $\sigma'$ yields the result.
 \end{proof}
 
 \begin{lemma}\label{max}
@@ -242,7 +242,7 @@ last one is the largest.
 
 \begin{proof}
 By induction on $k$, the result holding trivially when $k=1$. 
-Let $i$ be the smallest integer such that $u_t\leq k-1$ for all $i\leq t\leq p$.
+Let $i$ be the smallest integer such that $u_t\leq k-1$ for all $i\leq t$.
 If $i>m$, then $u_{i-1}=k$, and the subsequence of the $i-1$ first elements of $\sigma$ is the desired sequence.
 If $i\leq m$, apply the induction on $\sigma'=(u_t)_{i\leq t\leq p}$ which is a sequence of more than $(k-1)(m-1)$ integers in $[k-1]$, to get the result. 
 \end{proof}
@@ -266,7 +266,7 @@ Thus $c$ is a proper colouring of $D$ using $(k+1)(2k)$ colours.
 
 \section{Negative side}
 
-Let $P_3$ be the union of three internally disjoint $(x,y)$-dipaths $Q_1$, $Q_2$ and $Q_3$ for some vertices $x$ and $y$ 
+Let $P_3$ \nathann{Overloads the standard notation for a path on 3 vertices. William proposed $J_3$ instead. Or, as it is actually a family of graphs, $\mathcal P_3$.} be the union of three internally disjoint $(x,y)$-dipaths $Q_1$, $Q_2$ and $Q_3$ for some vertices $x$ and $y$ 
 and $P_{2,2}$ be the union of four internally disjoint dipaths: two $(x,y)$-dipaths and two $(y,x)$-dipaths for some $x$ and $y$. 
 
 \begin{theorem}
@@ -274,12 +274,12 @@ For every integer $k$, there exists a strongly connected digraph $D$ such that $
 \end{theorem}
 
 \begin{proof}
-Let $D_{k,4}$ a digraph with chromatic number greater than $k$ and with every cycle having at least 4 blocks obtained by Theorem \ref{dkb}
+Let $D_{k,4}$ a digraph with chromatic number greater than $k$ and with every cycle having at least 4 blocks obtained by Theorem \ref{dkb}.
 Let $S = \{s_1, \dots,  s_l\}$ be the set of vertices of $D_{k,4}$ with outdegree 0 and $T = \{t_1, \dots, t_f\}$ the set of vertices with indegree 0.
 
 Consider the digraph $D$ obtained from $D_{k,4}$ as follows. Add a dipath  $P = x_1,x_2....x_l,z,y_1,y_2,\dots, y_f$ and the arcs $s_ix_i$ and
 $y_jt_j$. It is easy to see that $D$ is strong.
-Moreover, in $D$, every directed cycle uses the arc $x_lz$, therefore $D$ does not contain a subdivision of $P_{2,2}$, which has two arc-disjoint cycle. 
+Moreover, in $D$, every directed cycle uses the arc $x_lz$, therefore $D$ does not contain a subdivision of $P_{2,2}$, which has two arc-disjoint cycles. 
 Suppose $D$ has a subdivision of $P_3$ between two vertices $u$ and $v$. Every vertex of $P$ has indegree and outdegree at most 2, meaning that $u$ and $v$ do not
 belong to $P$. In $D$ each cycle on two blocks between vertices outside $P$ must use the arc $x_lz$. The union of $Q_1$ and $Q_2$ form a cycle on two blocks, 
 which means one of the two paths, say $Q_1$ contains $x_lz$. But $Q_2$ and $Q_3$ also form a cycle on two blocks, but they cannot contain $x_lz$, a contradiction.
@@ -290,7 +290,7 @@ which means one of the two paths, say $Q_1$ contains $x_lz$. But $Q_2$ and $Q_3$
 
 \section{$P(k,1;1)$}
 
-In this section we will present a proof of \ref{th:P11k}
+In this section we will present a proof of Theorem~\ref{th:P11k}.
 
 A collection ${\cal C}$ of directed cycles is {\it nice} if all cycles of ${\cal C}$ have length at least $2k$, and
 any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on at most one vertex. When this intersection exists, we call it $x_{i,j}$.
@@ -310,7 +310,9 @@ We will need the following lemma:
 
 \begin{lemma}\label{lem:headphone}
 Let ${\cal C}$ be a nice collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $C$, $C'$ two cycles of the same
-component $S$ of $\mathcal{C}$. There is no path $P$ between $C$ and $C'$ which uses only edges outside of $S$.  
+component $S$ of $\mathcal{C}$. There is no path $P$ between $C$ and $C'$ which uses only edges outside of $S$. 
+\nathann{The $\mathcal C$ in this Lemma is not assumed to be inclusionwise maximal (and this is right). However, a couple of lines above $\mathcal C$ is presented as being inclusionwise maximal, which may (or may not) be a source of misunderstandings.}
+\nathann{Also, this lemma could be made to handle situations where there is a long handle between two vertices of the {\em same} cycle.}
 \end{lemma}
 
 \begin{proof}
@@ -343,11 +345,11 @@ then each $S_i$ has strictly less cycle than $S$. By induction there exists a co
  
 Now we claim that the intersection of each $D[S_i]$ with $C$ is exactly one vertex. It is easy to see that $C$ must intersect at least one cycle of each $S_i$, 
 now suppose there exists two vertices of $C$, $x$ and $y$ who belongs to $D[S_i]$. By definition of a nice collection, they cannot belong to the same cycle 
-of $S_i$, so there exists two cycles $C_i$ and $C_j$ of $S_r$ such that $x \in C_i$ and $y \in C_j$. By lemma \ref{lem:headphone} where $C[x,y]$ plays the role
+of $S_i$, so there exist two cycles $C_i$ and $C_j$ of $S_r$ such that $x \in C_i$ and $y \in C_j$. By lemma \ref{lem:headphone} where $C[x,y]$ plays the role
 of $P$, it is not possible. This means, modulo a permutation of the $c_i$,
 that we can consider that each vertex of $C$ receives the same colour in $c$ and in the $c_i$. 
 
-Moreover, because of lemma \ref{lem:headphone}, there is no arc between different $S_i$ and between $S_i$ and $C$. This means that if we take the union of the 
+Moreover, because of lemma \ref{lem:headphone}, there is no arc between different $S_i$ nor between $S_i$ and $C$. This means that if we take the union of the 
 $c_i$ and $c$, we obtain a proper colouring of $D[S]$ using $k+1$ colours. 
 \end{proof}
 
@@ -357,7 +359,7 @@ Let ${\cal C}$ be a maximal nice collection of cycle in a $P(k,1;1)$ subdivision
 \end{lemma}
 
 \begin{proof}
-First note that, since $D$ is strong,  so is $D_{\mathcal{C}}$. Suppose $\chi(D_{\mathcal{C}}) \geq 2k$, by Bondy's Theorem, there exists a directed cycle
+First note that since $D$ is strong, then so is $D_{\mathcal{C}}$. Suppose $\chi(D_{\mathcal{C}}) \geq 2k$, by Bondy's Theorem, there exists a directed cycle
 $C = x_1\dots x_l$ of length at least $2k$ in $ D_{\mathcal{C}}$. We deduce a cycle $C'$ in $D$ the following way:
 Suppose the vertex $x_j$ corresponds to a component $S_i$ in $D$: the arc $x_{j-1}x_j$ corresponds in $D$ to an arc arriving on 
 $p_i$, a vertex of $S_i$ and the arc $x_jx_{j+1}$ corresponds to an arc leaving $l_i$, a vertex of $S_i$. Let $P_j$ be a dipath 
@@ -398,8 +400,7 @@ the notion of nice collection seen before.
 
 The proof of Theorem \ref{th:main} uses the same idea as Theorem \ref{th:P11k}: take a maximal suitable collection and contract 
 the components to obtain a graph with small chromatic number. However, because the intersection of cycles in this collection are more
-complicated and because there exists arcs between cycle of the same component, bounding the chromatic number of the component,
-which corresponds to Lemma \ref{lem:compo1}, is way more challenging. 
+complicated and because there exists arcs between cycle of the same component, bounding the chromatic number of the component (which corresponds to Lemma \ref{lem:compo1}) is way more challenging.
 
  
  
@@ -416,7 +417,7 @@ Then exactly one of the following holds:
 
 \begin{proof}
 Suppose it is not the case. By symmetry, we may assume that $C_3[t_{1,3},v]$ has length at most $3k$ and
-$C_2[t_{1,2},v]$ has length at least than $3k$.
+$C_2[t_{1,2},v]$ has length at least $3k$.
 
 Observe that $t_{2,3}\notin V(C_1)$ for otherwise $C_3[v,t_{1,3}]$ has length less than $2k$ (since it is contained in $P_{2,3}\cup P_{1,3}$ and each of those paths has length at most $k-1$ by definition of ${\cal C}$) and so $C_3[t_{1,3},v]$ has length at least $6k$, a contradiction.
 We distinguish two cases according to the position of $s_{1,3}$ in $C_1$ relatively to $s_{1,2}$ and $t_{1,2}$.
