@@ -2,7 +2,7 @@
 \documentclass[utf8,10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{fullpage}
-
+\usepackage{authblk}
 
 % Please remove all other commands that change parameters such as
 % margins or pagesizes.
@@ -56,6 +56,8 @@
 
 \newcommand{\william}[1]{{\color{red}{\bf William:} #1}}
 \newcommand{\nathann}[1]{{\color{blue}{\bf Nathann:} #1}}
+\newcommand{\FH}[1]{{\color{red}{\bf Fred:} #1}}
+
 
 \newenvironment{subproof}{\par\noindent {\it Subproof}.\ }{\hfill$\lozenge$\par\vspace{11pt}}
 
@@ -72,7 +74,18 @@
 
 % if needed include a line break (\\) at an appropriate place in the title
 
-\title{Some paths and chromatic number}
+\title{Some paths and chromatic number \FH{Find a better title}}
+
+\author[1]{Nathann Cohen}
+\author[2,3]{Fr\'ed\'eric Havet}
+\author[2,3,4]{William Lochet}
+\author[5]{Raul Lopes}
+\affil[1]{ CNRS, LRI, Univ. Paris Sud, Orsay, France}
+\affil[2]{ Univ. C\^ote d'Azur, CNRS, I3S, UMR 7271, 06900 Sophia Antipolis, France}
+\affil[3]{ INRIA, France}
+\affil[4]{ LIP, ENS de Lyon, France}
+\affil[5]{ Departamento de Computa\c{c}ao, Universidade Federal do Cear\'a, Fortaleza, Brazil}
+
 
 
 
@@ -81,85 +94,105 @@
 \maketitle
 
 \section{Introduction}
-Throughout this paper, the chromatic number of a digraph $D$, denoted by $\chi(D)$, is the chromatic number of the underlying graph. 
+Throughout this paper, the {\it chromatic number} of a digraph $D$, denoted by $\chi(D)$, is the chromatic number of its underlying graph. 
+In a digraph $D$, a \emph{directed path}, or \emph{dipath} is an oriented path where all the arcs are oriented in the same direction.
 
-A classical result due to Gallai, Hasse, Roy and Vitaver says: 
-
+A classical result due to Gallai, Hasse, Roy and Vitaver is the following. 
 \begin{theorem}[Gallai~\cite{Gal68}, Hasse~\cite{Has64}, Roy~\cite{Roy67}, Vitaver~\cite{Vit62}]\label{thm:gallairoy}
-	If $\chi(D) \geq k$ then $D$ contains a dipath of length $k+1$.  
+	If $\chi(D) \geq k$, then $D$ contains a directed path of length $k+1$.  
 \end{theorem}   
 
-which motives the following question:
+This raises the following question.
 
 \begin{question}
-What are the subdigraphs of digraphs with large chromatic number ?
+Which digraphs are subdigraphs of all digraphs with large chromatic number ?
 \end{question}
 
 
 
-A famous theorem by Erd\H{o}s~\cite{Erd59} states that there exists graphs with arbitrarily high girth and arbitrarily large
-chromatic number. This means that if $H$ is a digraph containing a cycle, there exists digraphs with arbitrarily high 
-chromatic number without any copy of $H$. Thus the only possible candidates to generalise Theorem \ref{thm:gallairoy} are orientations
-of trees.
-Burr proved that every $(k-1)^2$-chromatic digraph contains every oriented tree of order $k$ and conjectured the following:
+A famous theorem by Erd\H{o}s~\cite{Erd59} states that there exist graphs with arbitrarily high girth and arbitrarily large
+chromatic number. This means that if $H$ is a digraph containing a cycle, there exist digraphs with arbitrarily high 
+chromatic number with no subdigraph isomorphic to $H$. Thus the only possible candidates to generalise Theorem \ref{thm:gallairoy} are the {\it oriented trees} that are orientations of trees.
+Burr\cite{Burr80} proved that every $(k-1)^2$-chromatic digraph contains every oriented tree of order $k$ and made the following conjecture.
 
 \begin{conjecture}[Burr~\cite{Burr80}]\label{cnj:tn}
-	 If $\chi(D) \geq (2k-2)$ then $D$ contains a copy of any oriented tree $T$ of order $k$.
+	 If $\chi(D) \geq (2k-2)$, then $D$ contains a copy of any oriented tree $T$ of order $k$.
 \end{conjecture}
 The best known upper bound, due to Addario-Berry et al.~\cite{AHS+13}, is in $(k/2)^2$.
-However, for paths with two blocks ({\it blocks} are maximal directed subpaths), the best possible upper bound is known:
+However, for paths with two blocks ({\it blocks} are maximal directed subpaths), the best possible upper bound is known.
 
 \begin{theorem}[Addario-Berry et al.~\cite{AHT07}]\label{thm:2blocks}
-Let $P$ be an oriented path with two blocks on $n > 3$ vertices, then every digraph with chromatic number at least $n$ contains $P$. 
+Let $P$ be an oriented path with two blocks on $n > 3$ vertices, then every digraph with chromatic number (at least) $n$ contains $P$. 
 \end{theorem}
 
-The following famous theorem by Bondy can be seen as a generalisation of the Gallai-Roy-Hasse-Vitaver's result: 
+
+
+However the following celebrated theorem of Bondy shows that  the story does not stop here.
 
 \begin{theorem}[Bondy~\cite{Bon76}]\label{thm:bondy}
 Every strong digraph of chromatic number at least $k$ contains a directed cycle of length at least $k$.
 \end{theorem} 
 
-The strong property is indeed necessary, as transitive tournaments can have high chromatic number without any directed cycle. 
-Moreover any strong orientation of bridgeless graph given by Erd\H{o}s' result show that we cannot ask for more than subdivision.  
+The strong connectivity assumption is indeed necessary, as transitive tournaments contain no directed cycle but can have arbitrarily  high chromatic number. 
 
-In this context, \cite{CHLN16} Cohen et al. proved the following:
+Observe that a directed cycle of length at least $k$ can be seen as a subdivision of $\vec{C}_k$, the directed cycle of length $k$.
+Recall that a {\it subdivision} of a digraph $F$ is a digraph that can be obtained from $F$ by replacing each arc $uv$ by a directed path from $u$ to $v$.
 
+\begin{conjecture}\label{conj:cycle-sub}
+For every cycle $C$, there exists a constant $f(C)$ such that every strong digraph with chromatic number at least $f(C)$ contains a subdivision of $C$.
+\end{conjecture}
+
+The strong connectivity assumption is also necessary in Conjecture~\ref{conj:cycle-sub} as shown by Cohen et al.  \cite{CHLN16}. They actually proved the following stronger result.
 \begin{theorem}\label{dkb}
 For any positive integer $b$ and $k$, there exists an acyclic digraph $D_{k,b}$ such that any cycle in $D_{k,b}$ has at least $b$ blocks and $\chi(D_{k,b}) > k$.
 \end{theorem}
 
-Meaning that if we want to hope to force more than oriented tree via chromatic number, then the digraphs considered should be strong. 
 
-Let $C(k,l)$ denote the cycle on two blocks, one of length at least $k$ and the other of length at least $l$.
-In \cite{CHLN16}, Cohen et al. proved the following result:
+
+
+On the other hand, Cohen et al.  \cite{CHLN16} proved conjecture for cycles with two blocks and the antidirected cycle of length $4$.
+More precisely, denoting by $C(k,\ell)$ the cycle on two blocks, one of length $k$ and the other of length $\ell$,
+ Cohen et al. \cite{CHLN16} proved the following result.
 \begin{theorem}\label{th:ckl}
-Every strong digraph of chromatic number greater than $O((k+l)^4)$ contains a subdivision of $C(k,l)$.
+Every strong digraph with chromatic number at least $O((k+\ell)^4)$ contains a subdivision of $C(k,\ell)$.
 \end{theorem} 
-The bound has recently been improved to $O((k+l)^2)$  by Kim et al. \cite{KKPM}.  
+The bound has recently been improved to $O((k+\ell)^2)$  by Kim et al. \cite{KKPM}.  
 
-A subdivision of $C(k,l)$ can be seen as two disjoint dipaths $P_l$ of length at least $l$ and $P_k$ of length at least $k$,
-between the same pair of vertices. The goal of this paper is to try to generalise this result to more than two paths.  
+
+A subdivision of $C(k,\ell)$ can be seen as two internally disjoint dipaths, one of length at least $k$ and one of length at least $\ell$, from a vertex to another, and a subdivision of $\vec{C}_{k+\ell}$ can be seen as two internally disjoint dipaths in opposite direction between two vertices, one length at least $k$ and one of length at least $\ell$.
+In this paper, we generalize this and study the existence of several internally disjoint dipaths between two vertices in strong digraphs with large chromatic number.
 First, we give a construction of digraphs with arbitrarily large chromatic number such that for any pair of vertices
-$x$ and $y$, there are no three disjoint dipaths from $x$ to $y$ or four disjoint dipaths, two from $x$ to $y$ and two form $y$ to $x$. 
-This implies that, if $P(k_1,k_2;k_3)$ is the digraph formed by three internally disjoint paths between two vertices $x,y$,
-two $(x,y)$-dipaths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$,
-then $P(k_1,k_2;k_3)$ is the only possible candidate if we want to generalise Theorem \ref{th:ckl}.
-Then we present a proof for forcing $P(k,1;1)$:
+$x$ and $y$, there are no three disjoint dipaths from $x$ to $y$ or no four disjoint dipaths, two from $x$ to $y$ and two from $y$ to $x$. 
+Therefore, the most we can expect in all strong digraphs with large chromatic in number are two vertices with three internally disjoint dipaths between them, two in one direction and on in the other.
+Let $P(k_1,k_2;k_3)$ denote the digraph formed by three internally disjoint paths between two vertices $x,y$,
+two $(x,y)$-directed paths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-directed path of size at least $k_3$.
+We conjecture the following.
+
+\begin{conjecture}\label{conj:3chemins}
+There is a function $g:\mathbb{N}^3 \rightarrow \mathbb{N}$ such that  every strong digraph with chromatic number at least $g(k_1,k_2,k_3)$ contains
+a subdivision of $P(k_1,k_2;k_3)$.
+\end{conjecture}
+
+As an evidence, we prove this conjecture for $k_2=1$ and arbitrary $k_1$ and $k_3$. In Section~\ref{sec:k,1,1}, we first investigate the case $k_2=k_3=1$.
 
 \begin{theorem}\label{th:P11k}
 Let $D$ be a strong digraph. If $\chi(D) >  (2k-1)\cdot (2k)$, then $D$ contains a subdivision of $P(k,1;1)$
 \end{theorem}
 
-and finally, building on the proof of Theorem \ref{th:P11k}, we present our main result: 
+In Section~\ref{sec:main}, using the same approach but in a more complicated way, we prove our main result: 
 
 \begin{theorem}\label{th:main}
-Let $D$ be a strong digraph. If $\chi(D) > \cste$, then $D$ contains a subdvision of $P(k,1;k)$.
+There is a constant $C_k$ such that if $D$ is a strong digraph with $\chi(D) > C_k$, then $D$ contains a subdvision of $P(k,1;k)$.
 \end{theorem}
 
-Related questions can be looked at for parameters other than $\chi$. We refer the reader to \cite{AC+16} and \cite{CHLN16} for related questions.
-In particular, Aboulker et al. prove the following:
 
-\begin{theorem}[Theorem 28 \cite{AC+16}]
+\medskip
+
+Similar questions with $\chi$ replaced by another graph parameter can be studied.
+We refer the reader to \cite{AC+16} and \cite{CHLN16} for more exhaustive discussions on such questions.
+Let us just give one result proved by Aboulker et al. \cite{AC+16} which can be seen as an analogue to Conjecture~\ref{conj:3chemins}.
+
+\begin{theorem}[Theorem 28 in \cite{AC+16}]
 Let $k_1,k_2,k_3$ be  positive integers with $k_1 \ge k_2$.
 Let $D$ be a digraph with $\delta^+(D) \geq 3k_1+2k_2+k_3-5$. Then $D$ contains $P(k_1,k_2;k_3)$ as a subdivision.
 \end{theorem}
@@ -179,6 +212,9 @@ $A(D_1\cup D_2) = A(D_1)\cup A(D_2)$.
 If ${\cal D}$ is a set of digraphs, we denote by $\bigcup {\cal D}$ the union of the digraphs, i.e. $V(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} V(D)$
 and $A(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} A(D)$.
 
+
+The following easy lemma is well-known.
+
 \begin{lemma}\label{lem:decomp}
 Let $D_1$ and $D_2$ be two digraphs.
 $\chi(D_1\cup D_2) \leq \chi(D_1)\times \chi(D_2)$.
@@ -186,15 +222,15 @@ $\chi(D_1\cup D_2) \leq \chi(D_1)\times \chi(D_2)$.
 
 
 
-In a digraph $D$, a \emph{directed path}, or \emph{dipath} is an oriented path where all the arcs are oriented in the same direction.
+
 Let $P$ be a path. We denote by $s(P)$ its initial vertex and by $t(P)$ its terminal vertex.
 The subpath of $P$ with initial vertex $u$ and terminal vertex $v$ is denoted by $P[u,v]$.
 Similarly, if $C$ is a directed cycle, we denote by $C[u,v]$ the subdipath of $C$ with initial vertex $u$ and terminal vertex $v$.
 
 
-Let $k_1,k_2,k_3$ be positive integers. Let $P(k_1,k_2;k_3)$ be the digraph formed by three internally disjoint paths between two vertices $x,y$, two $(x,y)$-dipaths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$.
+%Let $k_1,k_2,k_3$ be positive integers. Let $P(k_1,k_2;k_3)$ be the digraph formed by three internally disjoint paths between two vertices $x,y$, two $(x,y)$-dipaths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$.
 When we want to insist on the vertices $x$ and $y$, we denote it by $P_{xy}(k_1,k_2;k_3)$.
-
+{\bf is it used ?}
 
 The {\it connected components} of a digraph are the connected components of its underlying graph.
 
@@ -203,7 +239,7 @@ Let $c$ be a colouring of a graph $G$. A subset of vertices or a subgraph $S$ of
 
 A (directed) graph $G$ is {\it $k$-degenerate} if every subgraph $H$ of $G$ has a vertex of degree at most $k$.
 The following proposition is well-known.
-\begin{proposition}[useful??]\label{prop:deg}
+\begin{proposition}\label{prop:deg}
 Every $k$-degenerate (directed) graph is $(k+1)$-colourable.
 \end{proposition}
 
@@ -226,12 +262,11 @@ We will need the following lemmas:
 %\end{proof}
 
 \begin{lemma}\label{min}
-Let $\sigma=(u_t)_{t\in [p]}$ be a sequence of integers in $[k]$. If $p\geq l^k$, then there exists a set $L$ of $l$ indices such that for any $i,j \in L$ with $i < j$ the following holds : $u_i=u_j$ and $u_k > u_i$, for all $i < k < j$. \nathann{Variable $k$ used twice}
-\end{lemma}
+Let $\sigma=(u_t)_{t\in [p]}$ be a sequence of integers in $[k]$, and let $l$ be a positive integer. If $p\geq l^k$, then there exists a set $L$ of $l$ indices such that for any $i,j \in L$ with $i < j$ the following holds : $u_i=u_j$ and $u_t > u_i$, for all $i < t < j$. \end{lemma}
 
 \begin{proof}
 By induction on $k$, the result holding trivially when $k=1$. Assume now that $k>1$. Let $L_1$ be the elements of the sequence with value $1$. If $L_1$ has at least $l$ elements, we are done.
-If not then there is a subsequence $\sigma'$ of $l^k/l$ \nathann{$(l^k-(l-1))/l$} consecutive elements in $\{2, \dots , k-1\}$. Applying the induction hypothesis to $\sigma'$ yields the result.
+If not, then there is a subsequence $\sigma'$ of $\left\lceil \frac{l^k-(l-1)}{l}\right \rceil = l^{k-1}$ consecutive elements in $\{2, \dots , k-1\}$. Applying the induction hypothesis to $\sigma'$ yields the result.
 \end{proof}
 
 \begin{lemma}\label{max}
@@ -242,29 +277,30 @@ last one is the largest.
 
 \begin{proof}
 By induction on $k$, the result holding trivially when $k=1$. 
-Let $i$ be the smallest integer such that $u_t\leq k-1$ for all $i\leq t$.
+Let $i$ be the smallest integer such that $u_t\leq k-1$ for all $t\geq i$.
 If $i>m$, then $u_{i-1}=k$, and the subsequence of the $i-1$ first elements of $\sigma$ is the desired sequence.
 If $i\leq m$, apply the induction on $\sigma'=(u_t)_{i\leq t\leq p}$ which is a sequence of more than $(k-1)(m-1)$ integers in $[k-1]$, to get the result. 
 \end{proof}
 
 \begin{lemma}\label{lem:contrac}
-Let $D$ be a digraph, $D_1 \dots D_l$ be disjoint subdigraphs of $D$ and $D'$ the digraph obtained by contracting all $D_i$ into
-one vertex $d_i$. Then $\chi(D) \leq \chi(D')\cdot max_{i \in [l]}(\chi(D_i))$.
+Let $D$ be a digraph, $D_1 \dots D_l$ be disjoint subdigraphs of $D$ and $D'$ the digraph obtained by contracting each $D_i$ into
+one vertex $d_i$. Then $\chi(D) \leq \chi(D')\cdot \max\{\chi(D_i) \mid i \in [l]\}$.
 \end{lemma}
 
 \begin{proof}
 
-Let $k_1 = max_{i \in [l]}(\chi(D_i))$ and $k_2 = \chi(D')$ and. For each $i$, let $c_i$ be the colouring of $D_i$ using colours in $[k_1]$ and let
-$c'$ be the colouring of $D'$ using colours in $[k_2]$. 
-Define $c : V(D) \rightarrow ([k_1],[k_2])$ as follows. If $x$ is a vertex belonging to some $D_i$, then $c(x) = (c_i(x), c'(d_i))$, else $c(x) =(1,c'(x))$. 
-Let $x$ and $y$ be adjacent vertices of $D$. If they belong to the same subdigraph $D_i$, then $c_i(x) \not = c_i(y)$ and $c(x) \not = c(y)$. If they don't belong
-to the same component, then the vertices corresponding to these vertices in $D_{\mathcal{C}}$ will be adjacent and $c(x) \not = c(y)$. 
-Thus $c$ is a proper colouring of $D$ using $(k+1)(2k)$ colours. 
+Set $k_1 = \max\{\chi(D_i) \mid i \in [l]\}$ and $k_2 = \chi(D')$. For each $i$, let $c_i$ be a proper colouring of $D_i$ using colours in $[k_1]$ and let
+$c'$ be a proper colouring of $D'$ using colours in $[k_2]$. 
+Define $c : V(D) \rightarrow [k_1] \times [k_2]$ as follows. If $x$ is a vertex belonging to some $D_i$, then $c(x) = (c_i(x), c'(d_i))$, else $c(x) =(1,c'(x))$. 
+Let $x$ and $y$ be adjacent vertices of $D$. If they belong to the same subdigraph $D_i$, then $c_i(x) \not = c_i(y)$ and so $c(x) \not = c(y)$. If they do not belong
+to the same component, then the vertices corresponding to these vertices in $D_{\mathcal{C}}$ are adjacent and so $c(x) \not = c(y)$. 
+Thus $c$ is a proper colouring of $D$ using $k_1\cdot k_2$ colours. 
 \end{proof}
 
 
 
 \section{Negative side}
+%%%%%%%%%%%%
 
 Let $P_3$ \nathann{Overloads the standard notation for a path on 3 vertices. William proposed $J_3$ instead. Or, as it is actually a family of graphs, $\mathcal P_3$.} be the union of three internally disjoint $(x,y)$-dipaths $Q_1$, $Q_2$ and $Q_3$ for some vertices $x$ and $y$ 
 and $P_{2,2}$ be the union of four internally disjoint dipaths: two $(x,y)$-dipaths and two $(y,x)$-dipaths for some $x$ and $y$. 
@@ -288,9 +324,11 @@ which means one of the two paths, say $Q_1$ contains $x_lz$. But $Q_2$ and $Q_3$
 
 
 
-\section{$P(k,1;1)$}
+\section{$P(k,1;1)$}\label{sec:k,1,1}
+%%%%%%%%%%%
 
-In this section we will present a proof of Theorem~\ref{th:P11k}.
+
+In this section we present a proof of Theorem~\ref{th:P11k}.
 
 A collection ${\cal C}$ of directed cycles is {\it nice} if all cycles of ${\cal C}$ have length at least $2k$, and
 any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on at most one vertex. When this intersection exists, we call it $x_{i,j}$.
@@ -382,7 +420,7 @@ Let ${\cal C}$ be a maximal nice collection of cycle in $D$, then lemmas \ref{le
 \end{proof}
 
 
-\section{$P(k,1;k)$}
+\section{$P(k,1;k)$}\label{sec:main}
 %%%%%%%%%%%
 
 In this section, we present a proof of Theorem \ref{th:main}.
