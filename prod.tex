@@ -173,10 +173,11 @@ There is a function $g:\mathbb{N}^3 \rightarrow \mathbb{N}$ such that  every str
 a subdivision of $P(k_1,k_2;k_3)$.
 \end{conjecture}
 
-As an evidence, we prove this conjecture for $k_2=1$ and arbitrary $k_1$ and $k_3$. In Section~\ref{sec:k,1,1}, we first investigate the case $k_2=k_3=1$.
+As an evidence, we prove this conjecture for $k_2=1$ and arbitrary $k_1$ and $k_3$. In Section~\ref{sec:k,1,1}, we first investigate the case $k_2=k_3=1$. We first prove in Proposition~\ref{prop:p211} that very strong digraph $D$ with $\chi(D)>3$ contains a subdivision of $P(2,1;1)$. We then prove the following.
+
 
 \begin{theorem}\label{th:P11k}
-Let $D$ be a strong digraph. If $\chi(D) >  (2k-1)\cdot (2k)$, then $D$ contains a subdivision of $P(k,1;1)$
+Let $k \geq 3$ be an integer and let $D$ be a strong digraph. If $\chi(D) >  (2k-2)(2k-3)$, then $D$ contains a subdivision of $P(k,1;1)$.
 \end{theorem}
 
 In Section~\ref{sec:main}, using the same approach but in a more complicated way, we prove our main result: 
@@ -243,6 +244,12 @@ The following proposition is well-known.
 Every $k$-degenerate (directed) graph is $(k+1)$-colourable.
 \end{proposition}
 
+\begin{theorem}[Brooks]\label{thm:brooks}
+Let $G$ be a connected graph.
+Then $\chi(G)\leq \Delta(G)$ unless $G$ is a complete graph or an odd cycle.
+\end{theorem}
+
+
 
 
 
@@ -299,6 +306,31 @@ Thus $c$ is a proper colouring of $D$ using $k_1\cdot k_2$ colours.
 
 
 
+The {\it rotative tournament on $2k-1$ vertices}, denoted by $R_{2k-1}$, is the tournament with vertex set $v_1, \dots , v_{2k-1}$ in which $v_i$ dominates $v_j$ if and only if $1\leq j-i \leq k-1$ (indices are modulo $2k-1$).
+
+
+\begin{proposition}\label{prop:tournoi}
+Every strong tournament of order $2k-1$ contains a $P(k,1;1)$-subdivision.
+\end{proposition}
+\begin{proof}
+Let $T$ be a strong tournament of order $2k-1$. By Camion's Theorem, it has a hamiltonian directed cycle $C=(v_1,v_2, \dots ,v_{2k-1},v_1)$.
+If there exists an arc $v_iv_j$ with $j-i\geq k$  (indices are modulo $2k-1$), then the union of  $C[v_i,v_j]$, $(v_i,v_j)$ and $C[v_j,v_i]$ is a $P(k,1;1)$-subdivision.
+Henceforth, we may assume that $T=R_{2k-1}$.
+Then the union of $C[v_1, v_{k-1}] \odot (v_{k-1}, v_{k+1}, v_{k+2})$,  $(v_1, v_{k}, v_{k+2})$, and $C[v_{k+2}, v_1]$ is a $P(k,1;1)$-subdivision.
+\end{proof}
+
+
+
+Let $F$ be a subdigraph of a digraph $D$. A {\em directed
+  ear} of $F$ in $D$ is a directed path in $D$ whose ends lie in $F$ but whose internal
+vertices do not.   The following lemma is well known.
+
+\begin{lemma}[Proposition 5.11 in \cite{BoMu08}] \label{lem:diear}
+Let $F$ be a nontrivial proper nonseparable strong subdigraph of a
+nonseparable strong digraph $D$. Then $F$ has a directed ear in $D$.
+\end{lemma}
+
+
 \section{Many paths between two vertices}
 %%%%%%%%%%%%
 
@@ -320,7 +352,7 @@ Let $S = \{s_1, \dots,  s_l\}$ be the set of vertices of $D_{k,4}$ with out-degr
 
 Consider the digraph $D$ obtained from $D_{k,4}$ as follows. Add a dipath  $P = (x_1,x_2, \dots , x_l,z,y_1,y_2,\dots, y_m)$ and the arc $s_ix_i$ for all $i\in [l]$ and
 $y_jt_j$ for all $j\in [m]$. It is easy to see that $D$ is strong.
-Moreover, in $D$, every directed cycle uses the arc $x_lz$, therefore $D$ does not contain a $(2+2)$-bispindle, which has two arc-disjoint directed cycles. 
+Moreover, in $D$, every directed cycle uses the arc $x_lz$. Therefore $D$ does not contain a $(2+2)$-bispindle, which has two arc-disjoint directed cycles. 
 
 Suppose now that $D$ has a $3$-spindle with tail $u$ and head $v$, and let $Q_1, Q_2, Q_3$ be its three $(u,v)$-dipaths. Observe that $u$ and $v$ are not vertices of $P$, because all vertices of this dipath have either in-degree $2$ or out-degree $2$. In $D$ each cycle with two blocks between vertices outside $P$ must use the arc $x_lz$. The union of $Q_1$ and $Q_2$ form a cycle on two blocks, 
 which means one of the two paths, say $Q_1$, contains $x_lz$. But $Q_2$ and $Q_3$ also form a cycle on two blocks, but they cannot contain $x_lz$, a contradiction.
@@ -333,95 +365,117 @@ which means one of the two paths, say $Q_1$, contains $x_lz$. But $Q_2$ and $Q_3
 %%%%%%%%%%%
 
 
-In this section we present a proof of Theorem~\ref{th:P11k}.
 
-A collection ${\cal C}$ of directed cycles is {\it nice} if all cycles of ${\cal C}$ have length at least $2k$, and
+\begin{proposition}\label{prop:p211}
+Let $D$ be a strong digraph.
+If $\chi(D)\geq 4$, then $D$ contains a $P(2,1;1)$-subdivision.
+\end{proposition}
+\begin{proof}
+Assume  $\chi(D)\geq 4$.
+Let $C$ be a shortest directed cycle in $D$. 
+It must be induced, so $\chi(D[C]=\chi(C) \leq 3$. 
+Now by Lemma~\ref{lem:diear}, $C$ has a directed ear$P$ in $D$. Necessarily, $P$ has length at least $2$ since $C$ is induced.
+Thus the union of $P$ and $C$ is a $P(2,1;1)$-subdivision.
+\end{proof}
+
+The bound $4$ in Proposition~\ref{prop:p211} is best possible because a directed odd cycle has chromatic number $3$ and contains no $P(2,1;1)$-subdivision.
+
+
+\medskip
+
+In the remaining of this section, we present a proof of Theorem~\ref{th:P11k}.
+
+A collection ${\cal C}$ of directed cycles is {\it nice} if all cycles of ${\cal C}$ have length at least $2k-2$, and
 any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on at most one vertex. When this intersection exists, we call it $x_{i,j}$.
-A {\it component} of $\mathcal{C}$ is a connected component in the adjacency graph of the $\mathcal{C}$, where vertices correspond to cycles in $\mathcal{C}$
+A {\it component} of $\mathcal{C}$ is a connected component in the adjacency graph of $\mathcal{C}$, where vertices correspond to cycles in $\mathcal{C}$
 and two vertices are adjacent if the corresponding cycles intersect. 
 Call $D_{\mathcal{C}}$ the digraph obtained from $D$ by contracting each component of $\mathcal{C}$ into one vertex. 
+For sake of simplicity, we denote by $D[{\cal S}]$ the digraph $D[\bigcup {\cal S}]$. Observe that this digraph contains $\bigcup {\cal S}$ but has more arcs.
 
-We will prove that every $P(k,1;1)$ subdivision-free strong digraph $D$ has bounded chromatic number in the following way:
+
+We will prove that every $P(k,1;1)$-subdivision-free strong digraph $D$ has bounded chromatic number in the following way:
 Take ${\cal C}$ a maximal nice collection of cycles. 
-We will prove that every component $S$ of ${\cal C}$ induces a digraph $D[S]$ on $D$ of bounded chromatic number. 
-Then we will prove that, since it doesn't contains large directed cycle and it is strong, $D_{\mathcal{C}}$ has bounded chromatic number,
-which, by \ref{lem:contrac}, allows us to conclude. 
+We will prove that every component $S$ of ${\cal C}$ induces a digraph $D[{\cal S}]$ on $D$ of bounded chromatic number. 
+Then we will prove that, since it contains no long directed cycle and it is strong, $D_{\mathcal{C}}$ has bounded chromatic number,
+which, by Lemma~\ref{lem:contrac}, allows us to conclude. 
 
 We will need the following lemma:
 
 
 
 \begin{lemma}\label{lem:headphone}
-Let ${\cal C}$ be a nice collection of cycle in a $P(k,1;1)$ subdivision-free digraph $D$ and $C$, $C'$ two cycles of the same
-component $S$ of $\mathcal{C}$. There is no path $P$ between $C$ and $C'$ which uses only edges outside of $S$. 
-\nathann{The $\mathcal C$ in this Lemma is not assumed to be inclusionwise maximal (and this is right). However, a couple of lines above $\mathcal C$ is presented as being inclusionwise maximal, which may (or may not) be a source of misunderstandings.}
-\nathann{Also, this lemma could be made to handle situations where there is a long handle between two vertices of the {\em same} cycle.}
+Let ${\cal C}$ be a nice collection of cycle in a $P(k,1;1)$-subdivision-free digraph $D$ and let $C$, $C'$ be two cycles of the same
+component ${\cal S}$ of $\mathcal{C}$. There is no dipath $P$ from $C$ to $C'$ whose arcs are not in $A (\bigcup  {\cal S})$. 
 \end{lemma}
 
 \begin{proof}
-We suppose there exists an $(x,y)$-dipath $P$ with $x \in C$ and $y \in C'$ and show that we can find a subdivision of $P(k,1;1)$. 
-By definition of $S$ there exists a $(s(Q),t(Q))$-dipath $Q$ from $C$ to $C'$ using edges in $S$. By choosing $C$ and $C'$ such that 
-$Q$ is as small as possible, then $s(Q) \not = y$ and $t(Q) \not = x$ (note that $s(Q)$ and $t(Q)$ can be the same vertex). 
+By the contrapositive. We suppose that there exists such a dipath $P$ and show that there is a subdivision of $P(k,1;1)$ in $D$.
 
-%By definition of $S$ there exists a sequence of cycles $C_1, C_2, \dots C_l$ such that $C_1 = C_i$, $C_l = C_j$ and $x_{s,s+1}$ exists for $s$ between $1$ and $l-1$.
-On $C$, either $C[t(Q), x]$ or $C[x, t(Q)]$ is longer than $k$. 
+By definition of ${\cal S}$, there exists a dipath $Q$ from $C$ to $C'$ in $\bigcup S$. By choosing $C$ and $C'$ such that 
+$Q$ is as small as possible, then $s(Q) \not = t(P)$ and $t(Q) \not = s(P)$ (note that $s(Q)$ and $t(Q)$ can be the same vertex). 
+
+%By definition of $S$ there exists a sequence of cycles $C_1, C_2, \dots C_l$ such that $C_1 = C_i$, $C_l = C_j$ and $x_{s,s+1}$ exists for $s$ between $1$ and $l-1$.S
+Since $C$ has length at least $2k-2$, either $C[t(Q), s(P)]$ has length at least $k-1$ or $C[s(P), t(Q)]$ has length at least $k$. 
 %Let $P$ be the path from $x_{l-1,l}$ to $x_{1,2}$ using, outside of its ends, only vertices in $C_s$ for $s$ between $2$ and $l-1$ (if $l = 2$ then
 %$x_{l-1,l} = x_{1,2}$ and $P = x_{1,2}$ works).
+
 \begin{itemize}
-	\item If $C[t(Q), x]$ has length at least $k$ then the union of $Q \odot C[t(Q), x] \odot P$, $C'[s(Q), y]$ and $C'[ y, s(Q)]$
-	is a subdivision of $P(k,1;1)$ between $s(Q)$ and $y$. 
-	\item If $C[x, t(Q)]$ is longer than $k$ then the union of $C[x, t(Q)]$, $P \odot C'[y, s(Q)] \odot Q$ and $C[t(Q), x]$
-	is a subdivision of $P(k,1;1)$ between $x$ and $t(Q)$. 
+	\item If $C[t(Q), s(P)]$ has length at least $k-1$, then the union of $Q \odot C[t(Q), s(P)] \odot P$, $C'[s(Q), t(P)]$ and $C'[ t(P), s(Q)]$
+	is a subdivision of $P(k,1;1)$ between $s(Q)$ and $t(P)$. 
+	\item If $C[s(P), t(Q)]$ has length at least $k$, then the union of $C[s(P), t(Q)]$, $P \odot C'[t(P), s(Q)] \odot Q$ and $C[t(Q), s(P)]$
+	is a subdivision of $P(k,1;1)$ between $s(P)$ and $t(Q)$. 
 \end{itemize}
 \end{proof}
 
- 
+
 \begin{lemma}\label{lem:compo1}
-Let ${\cal C}$ be a nice collection of cycles in a $P(k,1;1)$-subdivision-free digraph $D$ and $S$ a component of $\mathcal{C}$, then $\chi(D[S]) < 2k-1$.	 
+Let $k\geq 3$ be an integer, and let ${\cal C}$ be a nice collection of cycles in a $P(k,1;1)$-subdivision-free digraph $D$ and ${\cal S}$ a component of $\mathcal{C}$. Then $\chi(D[S]) \leq 2k-2$.	 
 \end{lemma}
 
 \begin{proof}
-By induction on the number of cycle in $S$. Let $C$ be a cycle of $S$. Since $C$ has length at least $2k$, there is no chords between $x$ and $y$ in $C$
-such that $C[x,y]$ is longer than $k$. This means that $C$ is $2k-2$ degenerate and has chromatic number smaller than $2k -2$. Let $c$ be a colouring of $C$ with
-$k$ colours. Let $S_1, S_2, \dots, S_r$ be the components containing cycles of $S$ in $\mathcal{C} \setminus{C}$. Since $S$ is exactly the union of the $S_i$ and $C$
-then each $S_i$ has strictly less cycle than $S$. By induction there exists a colouring $c_i$ using $2k-1$ colours for each $S_i$.
+By induction on the number of cycles in ${\cal S}$. Let $C$ be a cycle of ${\cal S}$. There is no chord between $x$ and $y$ in $C$
+such that $C[x,y]$ has length at least $k$, for otherwise there would be a $P(k,1;1)$-subdivision. Hence $D[C]$ has maximum degree at most $2k-2$. Moreover, by Proposition~\ref{prop:tournoi}, $D[C]$ is not a tournament of order $2k-1$.
+Thus, by Brooks' Theorem (\ref{thm:brooks}), $\chi(D[C])\leq 2k-2$.
+ Let $c$ be a proper colouring of $C$ with $2k-2$ colours. Let ${\cal S}_1, {\cal S}_2, \dots, {\cal S}_r$ be the components of ${\cal S} \setminus{C}$. Since ${\cal S}$ is the union the ${\cal S}_l$, $l\in [r]$, and $\{C\}$,
+each ${\cal S}_l$ has less cycles than ${\cal S}$. By the induction hypothesis, there exists a proper colouring $c_l$ using $2k-2$ colours for each $D[{\cal S}_i]$.
  
-Now we claim that the intersection of each $D[S_i]$ with $C$ is exactly one vertex. It is easy to see that $C$ must intersect at least one cycle of each $S_i$, 
-now suppose there exists two vertices of $C$, $x$ and $y$ who belongs to $D[S_i]$. By definition of a nice collection, they cannot belong to the same cycle 
-of $S_i$, so there exist two cycles $C_i$ and $C_j$ of $S_r$ such that $x \in C_i$ and $y \in C_j$. By lemma \ref{lem:headphone} where $C[x,y]$ plays the role
-of $P$, it is not possible. This means, modulo a permutation of the $c_i$,
-that we can consider that each vertex of $C$ receives the same colour in $c$ and in the $c_i$. 
+Now, we claim that each $D[{\cal S}_l]$ intersects $C$ in exactly one vertex. It is easy to see that $C$ must intersect at least one cycle of each ${\cal S}_l$.
+Now suppose there exist two vertices of $C$, $x$ and $y$ in $D[{\cal S}_l]$. By definition of a nice collection, they cannot belong to the same cycle 
+of ${\cal S}_l$, so there exist two cycles $C_i$ and $C_j$ of $S_l$ such that $x \in C_i$ and $y \in C_j$. Now $C[x,y]$ is a dipath form $C_i$ to $C_j$ whose arcs are not in $A(\bigcup {\cal S}_l)$. This contradicts Lemma~\ref{lem:headphone}. 
 
-Moreover, because of lemma \ref{lem:headphone}, there is no arc between different $S_i$ nor between $S_i$ and $C$. This means that if we take the union of the 
-$c_i$ and $c$, we obtain a proper colouring of $D[S]$ using $k+1$ colours. 
+Consequently, free to permute the colours of the $c_l$,
+we may assume that each vertex of $C$ receives the same colour in $c$ and in the $c_l$. 
+In addition, by Lemma~\ref{lem:headphone}, there is no arc between different $D[{\cal S}_l]$ nor between $D[{\cal S}_l]$ and $C$. Hence the union of the 
+$c_l$ and $c$ is a proper colouring of $D[{\cal S}]$ using $2k-2$ colours. 
 \end{proof}
 
 
 \begin{lemma}\label{lem:reduce}
-Let ${\cal C}$ be a maximal nice collection of cycle in a $P(k,1;1)$ subdivision-free strong digraph $D$. Then $\chi(D_{\mathcal{C}}) < 2k$
+Let ${\cal C}$ be a maximal nice collection of cycle in a $P(k,1;1)$-subdivision-free strong digraph $D$. Then $\chi(D_{\mathcal{C}}) \leq 2k-3$
 \end{lemma}
 
 \begin{proof}
-First note that since $D$ is strong, then so is $D_{\mathcal{C}}$. Suppose $\chi(D_{\mathcal{C}}) \geq 2k$, by Bondy's Theorem, there exists a directed cycle
-$C = x_1\dots x_l$ of length at least $2k$ in $ D_{\mathcal{C}}$. We deduce a cycle $C'$ in $D$ the following way:
-Suppose the vertex $x_j$ corresponds to a component $S_i$ in $D$: the arc $x_{j-1}x_j$ corresponds in $D$ to an arc arriving on 
-$p_i$, a vertex of $S_i$ and the arc $x_jx_{j+1}$ corresponds to an arc leaving $l_i$, a vertex of $S_i$. Let $P_j$ be a dipath 
-from $p_i$ to $l_i$ in $D[S_i]$. Note that $P_j$ intersects each cycle of $S_i$ on a, possibly empty, subpath of $P_j$. 
-Then $C'$ is the cycle obtained from $C$ by replacing the vertices $x_i$ which correspond to a component of $\mathcal{C}$ in $D$ by the path $P_j$.
+First note that since $D$ is strong, then so is $D_{\mathcal{C}}$. Suppose $\chi(D_{\mathcal{C}}) \geq 2k-2$. By Bondy's Theorem, there exists a directed cycle
+$C = x_1\dots x_l$ of length at least $2k-2$ in $ D_{\mathcal{C}}$. We derive a cycle $C'$ in $D$ the following way:
+Suppose the vertex $x_i$ corresponds to a component ${\cal S}_i$ of ${\cal C}$: the arc $x_{i-1}x_i$ corresponds in $D$ to an arc whose head
+is a vertex $p_i$ of $\bigcup {\cal S}_i$, and the arc $x_ix_{i+1}$ corresponds to an arc whose tail is a vertex  $l_i$ of $\bigcup {\cal S}_i$. 
+Let $P_i$ be a dipath 
+from $p_i$ to $l_i$ in $D[{\cal S}_i]$. Note that $P_i$ intersects each cycle of $S_i$ on a, possibly empty, subpath of $P_i$. 
+Then $C'$ is the cycle obtained from $C$ by replacing the vertices $x_i$ by the path $P_i$.
 
-$C'$ is a cycle of $D$ which is longer than $2k$ because it is longer than $C$. Let $C_1$ be a cycle of $\mathcal{C}$, then by construction of $C'$ 
-and $D_{\mathcal{C}}$, $C'$ and $C_1$ can intersect only along a subpath of one $P_j$. Suppose this intersection is more than just a vertex and call $x$ and
-$y$ the first and last vertices of this intersection. Then we find a subdivision of $P(k,1;1)$ between $x$ and $y$. The first is $C'[x,y]$ and the other are
-$C[x,y]$ and $C[y,x]$.
+$C'$ is a cycle of $D$ of length at least $2k-2$ because it is no shorter than $C$. Let $C_1$ be a cycle of $\mathcal{C}$. By construction of $C'$ 
+and $D_{\mathcal{C}}$, $C'$ and $C_1$ can intersect only along a subpath of one $P_i$. Suppose this dipath is more than just one vertex. Let $x$ and
+$y$ the initial and terminal vertex of this path. Then the union of $C'[x,y]$,
+$C_1[x,y]$ and $C_1[y,x]$ is a $P(k,1;1)$-subdivision.
 
-So $C'$ is a cycle longer than $2k$, intersecting cycles of $\mathcal{C}$ on at most one vertex, and which does not belong to $\mathcal{C}$, or it would be reduced
-to one vertex in $D_{\mathcal{C}}$, which contradicts the fact that $\mathcal{C}$ is maximal.
+So $C'$ is a cycle of length at least $2k-2$, intersecting each cycle of $\mathcal{C}$ on at most one vertex, and which does not belong to $\mathcal{C}$, for otherwise would be reduced
+to one vertex in $D_{\mathcal{C}}$. This contradicts the fact that $\mathcal{C}$ is maximal.
 \end{proof}
 
-So we can finally prove Theorem \ref{th:P11k}
+So we can finally prove Theorem \ref{th:P11k}.
 
-\begin{proof}
-Let ${\cal C}$ be a maximal nice collection of cycle in $D$, then lemmas \ref{lem:compo1}, \ref{lem:reduce} and \ref{lem:contrac} give the result.
+\begin{proof}[Proof of Theorem~\ref{th:P11k}]
+Let ${\cal C}$ be a maximal nice collection of cycle in $D$.  Lemmas \ref{lem:compo1}, \ref{lem:reduce} and \ref{lem:contrac} give the result.
 \end{proof}
 
 
