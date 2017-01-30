@@ -68,6 +68,7 @@
 \newcommand{\free}{subdivision-free}
 
 \DeclareMathOperator{\Dis}{Dis}
+\DeclareMathOperator{\lgth}{lgth}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -205,6 +206,12 @@ Let $D$ be a digraph with $\delta^+(D) \geq 3k_1+2k_2+k_3-5$. Then $D$ contains 
 
 We denote by $[k]$ the set of integers $\{1, \dots , k\}$.
 
+If $D$ is a directed path or a directed cycle, then we denote by $C[a,b]$ the subdipath of $D$ with initial vertex $a$ and terminal vertex $b$.
+We dente by $C[a,b[$ the dipath $C[a,b] -b$ and by $C]a,b]$ the dipath $C[a,b] -a$.
+
+\medskip
+
+
 Let $F$ be a digraph.
 A digraph $D$ is said to be {\it $F$-subdivision-free}, if it contains no subdivision of $F$.
 
@@ -319,15 +326,15 @@ Henceforth, we may assume that $T=R_{2k-1}$.
 Then the union of $C[v_1, v_{k-1}] \odot (v_{k-1}, v_{k+1}, v_{k+2})$,  $(v_1, v_{k}, v_{k+2})$, and $C[v_{k+2}, v_1]$ is a $P(k,1;1)$-subdivision.
 \end{proof}
 
-
+\FH{Il faut definir 2-connexe + dire que tout graphe contient un 2-connexe de meme nombre chromatique que lui}
 
 Let $F$ be a subdigraph of a digraph $D$. A {\em directed
   ear} of $F$ in $D$ is a directed path in $D$ whose ends lie in $F$ but whose internal
 vertices do not.   The following lemma is well known.
 
 \begin{lemma}[Proposition 5.11 in \cite{BoMu08}] \label{lem:diear}
-Let $F$ be a nontrivial proper nonseparable strong subdigraph of a
-nonseparable strong digraph $D$. Then $F$ has a directed ear in $D$.
+Let $F$ be a nontrivial proper $2$-connected strong subdigraph of a
+$2$-connected strong digraph $D$. Then $F$ has a directed ear in $D$.
 \end{lemma}
 
 
@@ -386,7 +393,7 @@ The bound $4$ in Proposition~\ref{prop:p211} is best possible because a directed
 In the remaining of this section, we present a proof of Theorem~\ref{th:P11k}.
 
 A collection ${\cal C}$ of directed cycles is {\it nice} if all cycles of ${\cal C}$ have length at least $2k-2$, and
-any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on at most one vertex. When this intersection exists, we call it $x_{i,j}$.
+any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on at most one vertex. %When this intersection exists, we call it $x_{i,j}$.
 A {\it component} of $\mathcal{C}$ is a connected component in the adjacency graph of $\mathcal{C}$, where vertices correspond to cycles in $\mathcal{C}$
 and two vertices are adjacent if the corresponding cycles intersect. 
 Call $D_{\mathcal{C}}$ the digraph obtained from $D$ by contracting each component of $\mathcal{C}$ into one vertex. 
@@ -485,50 +492,70 @@ Let ${\cal C}$ be a maximal nice collection of cycle in $D$.  Lemmas \ref{lem:co
 In this section, we present a proof of Theorem \ref{th:main}.
 
 We prove the result by the contrapositive. We consider a digraph $D$ that contains no subdivision of $P(k,1;k)$.
-We shall prove that $\chi(D) \leq \cste$.
+We shall prove that $\chi(D) \leq  C_k= \cste$.
 
-\subsection{Suitable collections of directed cycles}
-%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+Our proof heavily uses the notion of $k$-suitable collection of directed cycles, which can be seen as a generalization of the notion of nice collection of cycles used to prove Theorem~\ref{th:P11k}.
+
  
- A collection ${\cal C}$ of directed cycles is {\it suitable} if all cycles of ${\cal C}$ have length at least $8k$, and
-any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on  subpath $P_{i,j}$ of order at most $k$.
-We denote by $s_{i,j}$ (resp. $t_{i,j}$) the initial (resp. terminal) vertex of  $P_{i,j}$. This notion generalises 
+ A collection ${\cal C}$ of directed cycles is {\it $k$-suitable} if all cycles of ${\cal C}$ have length at least $8k$, and
+any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on  a subpath $P_{i,j}$ of order at most $k$.
+We denote by $s_{i,j}$ (resp. $t_{i,j}$) the initial (resp. terminal) vertex of  $P_{i,j}$. %This notion generalises 
 the notion of nice collection seen before. 
 
-The proof of Theorem \ref{th:main} uses the same idea as Theorem \ref{th:P11k}: take a maximal suitable collection and contract 
-the components to obtain a graph with small chromatic number. However, because the intersection of cycles in this collection are more
-complicated and because there exists arcs between cycle of the same component, bounding the chromatic number of the component (which corresponds to Lemma \ref{lem:compo1}) is way more challenging.
-
+The proof of Theorem \ref{th:main} uses the same idea as Theorem \ref{th:P11k}: take a maximal $k$-suitable collection of directed cycles ${\cal C}$; show that the digraph $D_{\cal C}$ obtained by contracting the components of ${\cal C}$ has bounded chromatic number, and that each component also has bounded chromatic; conclude using Lemma~\ref{lem:contrac}. However, because the intersection of cycles in this collection are more
+complicated and because there might be arcs between cycles of the same component, bounding the chromatic number of the components is way more challenging. The next subsection is devoted to this.
  
+ 
+ \subsection{$k$-suitable collections of directed cycles}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
  
  
  \begin{lemma}\label{lem:dis}
- Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+ Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
 Let $C_1,C_2,C_3\in\mathcal C$ which pairwise intersect, and let $v$ belong to $V(C_2)\cap V(C_3)\setminus V(C_1)$. 
 Then exactly one of the following holds:
 \begin{itemize}
-\item $C_2[t_{1,2}, v]$ and $C_3[t_{1,3}, v]$ have both length at most $3k$; 
-\item $C_2[v, s_{1,2}]$ and $C_3[v, s_{1,3}]$ have both length at most $3k$.
+\item[(i)] $C_2[t_{1,2}, v]$ and $C_3[t_{1,3}, v]$ have both length at most $3k$; 
+\item[(ii)] $C_2[v, s_{1,2}]$ and $C_3[v, s_{1,3}]$ have both length at most $3k$.
 \end{itemize}
 \end{lemma}
 
-\begin{proof}
-Suppose it is not the case. By symmetry, we may assume that $C_3[t_{1,3},v]$ has length at most $3k$ and
-$C_2[t_{1,2},v]$ has length at least $3k$.
-
-Observe that $t_{2,3}\notin V(C_1)$ for otherwise $C_3[v,t_{1,3}]$ has length less than $2k$ (since it is contained in $P_{2,3}\cup P_{1,3}$ and each of those paths has length at most $k-1$ by definition of ${\cal C}$) and so $C_3[t_{1,3},v]$ has length at least $6k$, a contradiction.
-We distinguish two cases according to the position of $s_{1,3}$ in $C_1$ relatively to $s_{1,2}$ and $t_{1,2}$.
-
-\begin{itemize}
-	\item Assume $s_{1,3}\in C_1[s_{1,2},t_{1,2}]$. The dipath  $C_3[s_{1,3},t_{2,3}]$ is contained in $P_{1,2}\cup P_{2,3}$ and has lentgh less than $2k$. So $C_3[t_{2,3}, s_{1,3}]$ has length at least $k$. Moreover, $C_1[s_{1,3}, t_{1,2}]\odot C_2[t_{1,2}, t_{2,3}]$ contains $C_2[t_{1,2}, v]$  and so has length at least $3k$. Consequently, the union of $C_1[s_{1,3}, t_{1,2}]\odot C_2[t_{1,2}, t_{2,3}]$, $C_3[t_{2,3}, s_{1,3}]$, and
-$C_2[t_{2,3}, s_{1,2}]\odot C_1[s_{1,2}, s_{1,3}]$ is a subdivision of $P(k,1;k)$, a contradiction.
-
-	\item Assume now that $s_{1,3}\in C_1[t_{1,2},s_{1,2}]$. The dipath  $C_2[s_{1,2}, t_{2,3}]$ has length greater than $3k$ because it contains $C_2[t_{1,2},v]$. Moreover, the dipath $C_3[s_{1,3}, t_{2,3}]$ is contained in $P_{1,3}\cup C_3[t_{1,3},v]\cup C_3[v,t_{2,3}]$, and so has length at most $5k$.
-	Thus $C_3[t_{2,3}, s_{1,3}]$ has length at least $3k$.
-	 Consequently, the union of $C_2[s_{1,2}, t_{2,3}]$, $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$, and $C_2[t_{2,3}, s_{1,2}]$ is a subdivision of $P(k,1;k)$, a contradiction.
-\end{itemize}
-\end{proof}
+\FH{On peut descendre la longueur 8k des cycles ici ainsi que la valeur 3k}
  
+
+\begin{proof}
+Observe first that since $C_2$ has length at least $8k$ and $P_{1,2}$ has length at most $k-1$, the sum of lengths of $C_2[t_{1,2}, v]$ and  $C[v, s_{1,2}])$ is at least $7k+1$. Similarly, the sum of lengths of $C_2[t_{1,3}, v])$ and +$C[v, s_{1,3}])$ is at least $7k+1$. In particular, if (i) holds, then (ii) does not hold and vice-versa.
+
+
+Suppose for a contradiction that both (i) and (ii) do not hold. By symmetry and the above inequalities, we may assume that both $C_2[t_{1,2}, v])$ and $C_3[v, s_{1,3}]$ have length more than $3k$.
+But $v\notin V(C_1)$, so $v\notin V(P_{1,3})$. Thus $C_3[v, t_{1,3}]$  has also length more than $3k$. 
+
+If there is a vertex in $V(C_1)\cap V(C_2)\cap V(C_3)$, then $C_3[v,t_{1,3}]$ would have length less than $2k$ (since it would be contained in $P_{2,3}\cup P_{1,3}$ and each of those paths has length less than $k$), a contradiction.
+Hence $V(C_1)\cap V(C_2)\cap V(C_3)=\emptyset$. In particular, $P_{1,2}$, $P_{1,3}$, and $P_{2,3}$ are disjoint.
+
+The dipath  $C_2[s_{1,2}, t_{2,3}]$ has length greater than $3k$ because it contains $C_2[t_{1,2},v]$. Moreover, the dipath $C_3[t_{2,3}, s_{1,3}]$ 
+has length at least $2k$ because $C_3[v, s_{1,3}]$ has length at least $3k$ and $C_3[v,t_{2,3}]$ has length less than $k$.
+Thus $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$ has length at least $2k$.
+Consequently, the union of $C_2[s_{1,2}, t_{2,3}]$, $C_2[t_{2,3}, s_{1,2}]$, and $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$  is a subdivision of $P(k,1;k)$, a contradiction.
+\end{proof}
+
+%We distinguish two cases according to the position of $s_{1,3}$ in $C_1$ relatively to $s_{1,2}$ and $t_{1,2}$.
+
+%\begin{itemize}
+%	\item Assume $s_{1,3}\in C_1[s_{1,2},t_{1,2}]$. The dipaths  $C_2[t_{2,3},s_{2,3}]$ and $C_3[t_{2,3}, s_{2,3}]$ have length at least $7k+1$ because $P_{2,3}$ and has lentgh less than $k$. Moreover, $P_{2,3}=C_2[s_{2,3}, t_{2,3}]$ contains $C_2[t_{1,2}, v]$  and so has length at least $3k$. Consequently, the union of  $C_3[t_{2,3}, s_{1,3}]$,
+%$C_2[t_{2,3}, s_{1,3}]$, and $C_2[s_{1,3}, t_{2,3}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+
+%	\item Assume now that $s_{1,3}\in C_1[t_{1,2},s_{1,2}]$. The dipath  $C_2[s_{1,2}, t_{2,3}]$ has length greater than $3k$ because it contains $C_2[t_{1,2},v]$. Moreover, the dipath $C_3[s_{1,3}, t_{2,3}]$ is contained in $P_{1,3}\cup C_3[t_{1,3},v]\cup C_3[v,t_{2,3}]$, and so has length at most $5k$.
+%	Thus $C_3[t_{2,3}, s_{1,3}]$ has length at least $3k$.
+%	 Consequently, the union of $C_2[s_{1,2}, t_{2,3}]$, $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$, and $C_2[t_{2,3}, s_{1,2}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+%\end{itemize}
+
+
+
  
  
  
@@ -536,7 +563,7 @@ $C_2[t_{2,3}, s_{1,2}]\odot C_1[s_{1,2}, s_{1,3}]$ is a subdivision of $P(k,1;k)
  
 % Let $D[\mathcal{C}]$ be the graph induced on $D$ by the vertices in $\mathcal{C}$ and let $D'$ be the subdigraph of $D[\mathcal{C}]$ with vertex set $V(D)$ and arc set  $\bigcup_{C\in {\cal C}} A(C)$.
 
-Let ${\cal C}$ be a suitable collection of directed cycles.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles.
 For every set of vertices or digraph $S$, we denote by ${\cal C}\cap S$ the set of cycles of ${\cal C}$ that intersect $S$. 
 
 
@@ -555,17 +582,17 @@ Observe that Lemma~\ref{lem:dis} implies that $I^+(C_1)$ and $I^-(C_1)$ are vert
 
 
 \begin{lemma}\label{lem:A}
-Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
 Let $C_1$ be a cycle of ${\cal C}$ and let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$.
-All vertices of $({\cal C}\cap A)  - A$ belongs to a unique cycle $C_A$ of $\mathcal{C}$.
+All vertices of $\bigcup({\cal C}\cap A)  - A$ belongs to a unique cycle $C_A$ of $\mathcal{C}$.
 \end{lemma}
 
 \begin{proof}
 Suppose it is not the case. Then there are two distinct cycles $C_2, C_3$ of ${\cal C}\cap A$ that intersect with $C_1$.
 
-Let $t$ be the closest vertex among $\{t_{1,2}, t_{1,3}\}$ in $C_1$ and let $t'$ be the other vertex of $\{t_{1,2}, t_{1,3}\}$.
-(If $t_{1,2}=t_{1,3}$, then $t=t'$.) For $i=2,3$, let $R_i$ be the $(t,t(Q_i)$-dipath in $C_1\cup Q_i$. Observe that $R_i=Q_i$ or $R_i=C_1[t,t']\cup Q_I$. Hence $R_i$ has length at least $3k$.
-Let $v$ be the last vertex in $R_2\cap R_3$ along $R_2$. (This vertex exists since $t\in R_2\cap R_3$.) In $A$, there exists a $(t(Q_3), C_2)$-dipath $R_A$. Let $w$ be its terminal vertex. By definition of $A$, $w$ is in $C_2[t(Q_2, s(Q_2)]$, therefore $C_2[w,v]$ has length at least $3k$ since it contains $C_2[s(Q_2), s_{1,2}]$. Consequently, both $R_2[v,t(Q_2)]$ and $R_3[v,t(Q_3)]$ have length less than $k$ for otherwise the union of $C_2[w,v]$, $C_2[v,w]$ and $R_3[v,t(Q_3)]\odot R_A$ would be a subdivision of $P(k,1;k)$.
+Let $t$ be the closest vertex among $\{t_{1,2}, t_{1,3}\}$ in $C_1$ and let $t'$ be the other vertex of $\{t_{1,2}, t_{1,3}\}$. \FH{$t$ mal defini.}
+(If $t_{1,2}=t_{1,3}$, then $t=t'$.) For $i=2,3$, let $R_i$ be the $(t,t(Q_i)$-dipath in $C_1\cup Q_i$. Observe that $R_i=Q_i$ or $R_i=C_1[t,t']\cup Q_i$. Hence $R_i$ has length at least $3k$.
+Let $v$ be the last vertex in $R_2\cap R_3$ along $R_2$. (This vertex exists since $t\in R_2\cap R_3$.) In $A$, there exists a $(t(Q_3), C_2)$-dipath $R_A$. \FH{Pourquoi?} Let $w$ be its terminal vertex. By definition of $A$, $w$ is in $C_2[t(Q_2, s(Q_2)]$, therefore $C_2[w,v]$ has length at least $3k$ since it contains $C_2[s(Q_2), s_{1,2}]$. Consequently, both $R_2[v,t(Q_2)]$ and $R_3[v,t(Q_3)]$ have length less than $k$ for otherwise the union of $C_2[w,v]$, $C_2[v,w]$ and $R_3[v,t(Q_3)]\odot R_A$ would be a subdivision of $P(k,1;k)$.
 In particular, $v\neq t$. This implies that $s_{2,3}\in V(R_2\cap R_3)$.
 Moreover, $R_2[s_{2,3}, t(Q_2)]$ has length at most $2k$ because $R_2[s_{2,3},v]$ is a subdipath of $P_{2,3}$ and so has length at most $k$.
 Therefore $R_2[t,s_{2,3}]$ has length at least $k$ because $R_2$ has length at least $3k$.
@@ -576,7 +603,7 @@ It follows that the union of $C_2[s_{2,3},t]$,  $R_2[t,s_{2,3}]$ and  $R_3[t,s_{
 
 
 \begin{lemma}\label{lem:no-dicycle}
-Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph. For any cycle $C_1\in {\cal C}$, the digraph
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph. For any cycle $C_1\in {\cal C}$, the digraph
 $I^+(C_1)$ has no directed cycle.  
 \end{lemma}
 \begin{proof}
@@ -621,7 +648,7 @@ $C_W[b_2, a_4]$, $C_W[a_4,b_2]$ and $C'[b_2,a_4]=C_3[b_3,a_4]$ is a subdivision 
 
 
 \begin{lemma}\label{lem:IC}
-Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
 
 Let $c$ be a partial colouring of a cycle $C_1\in {\cal C}$ such that only a path of length at most
 $7k$ is coloured and this path is rainbow-coloured. Then $c$ can be extended into
@@ -707,7 +734,7 @@ We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
 
 
 \begin{lemma}\label{lem:col-union-cycle}
-Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
 There exists a proper colouring $c$ of $\bigcup{\cal C}$ with $2\cdot \col + 14k$ colours, such that, each subpath of length $7k$ of each cycle of $\mathcal{C}$ is rainbow-coloured.
 \end{lemma}
 \begin{proof}
@@ -730,7 +757,7 @@ Hence, by the induction hypothesis, we can extend $c_1$ to $A$. Doing this for e
 
 
 \begin{lemma}\label{lem:DC}
-Let ${\cal C}$ be a suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph $D$.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph $D$.
 For every strong component $\mathcal{S}$ of $\bigcup \mathcal{C}$, let $D_{\mathcal{S}}$ be the graph induced 
 on $D$ by the vertices in $\mathcal{S}$. Then $\chi(D_{\mathcal{S}}) < (2\cdot \col + 14k) \cdot (2 \cdot \dr)$.
 \end{lemma}
@@ -926,7 +953,7 @@ By lemma \ref{lem:decomp} this means $\chi(D_r^+) \leq  \dr$
 
 \subsection{Proof of Theorem \ref{th:main}}
 
-Consider $\mathcal{C}$ be a maximal suitable collection of cycles in $D$. Let $D'$ be the digraph obtained by contracting 
+Consider $\mathcal{C}$ be a maximal $k$-suitable collection of cycles in $D$. Let $D'$ be the digraph obtained by contracting 
 every connected component $S$ of $\bigcup \mathcal{C}$ into one vertex. For each connected component $S_i$ we call $s_i$ the
 new vertex created.
 
