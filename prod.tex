@@ -68,6 +68,7 @@
 \newcommand{\free}{subdivision-free}
 
 \DeclareMathOperator{\Dis}{Dis}
+\DeclareMathOperator{\Len}{Len}
 \DeclareMathOperator{\lgth}{lgth}
 
 
@@ -206,10 +207,6 @@ Let $D$ be a digraph with $\delta^+(D) \geq 3k_1+2k_2+k_3-5$. Then $D$ contains 
 
 We denote by $[k]$ the set of integers $\{1, \dots , k\}$.
 
-If $D$ is a directed path or a directed cycle, then we denote by $C[a,b]$ the subdipath of $D$ with initial vertex $a$ and terminal vertex $b$.
-We dente by $C[a,b[$ the dipath $C[a,b] -b$ and by $C]a,b]$ the dipath $C[a,b] -a$.
-
-\medskip
 
 
 Let $F$ be a digraph.
@@ -232,13 +229,14 @@ $\chi(D_1\cup D_2) \leq \chi(D_1)\times \chi(D_2)$.
 
 
 Let $P$ be a path. We denote by $s(P)$ its initial vertex and by $t(P)$ its terminal vertex.
-The subpath of $P$ with initial vertex $u$ and terminal vertex $v$ is denoted by $P[u,v]$.
-Similarly, if $C$ is a directed cycle, we denote by $C[u,v]$ the subdipath of $C$ with initial vertex $u$ and terminal vertex $v$.
+If $D$ is a directed path or a directed cycle, then we denote by $D[a,b]$ the subdipath of $D$ with initial vertex $a$ and terminal vertex $b$.
+We denote by $D[a,b[$ the dipath $D[a,b] -b$, by $C]a,b]$ the dipath $D[a,b] -a$, and by $D]a,b[$ the dipath $D]a,b[ -\{a,b\}$.
 
+\medskip
 
 %Let $k_1,k_2,k_3$ be positive integers. Let $P(k_1,k_2;k_3)$ be the digraph formed by three internally disjoint paths between two vertices $x,y$, two $(x,y)$-dipaths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$.
-When we want to insist on the vertices $x$ and $y$, we denote it by $P_{xy}(k_1,k_2;k_3)$.
-{\bf is it used ?}
+%When we want to insist on the vertices $x$ and $y$, we denote it by $P_{xy}(k_1,k_2;k_3)$.
+%{\bf is it used ?}
 
 The {\it connected components} of a digraph are the connected components of its underlying graph.
 
@@ -395,7 +393,8 @@ In the remaining of this section, we present a proof of Theorem~\ref{th:P11k}.
 A collection ${\cal C}$ of directed cycles is {\it nice} if all cycles of ${\cal C}$ have length at least $2k-2$, and
 any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on at most one vertex. %When this intersection exists, we call it $x_{i,j}$.
 A {\it component} of $\mathcal{C}$ is a connected component in the adjacency graph of $\mathcal{C}$, where vertices correspond to cycles in $\mathcal{C}$
-and two vertices are adjacent if the corresponding cycles intersect. 
+and two vertices are adjacent if the corresponding cycles intersect. Note that if ${\cal S}$ is a component of ${\cal C}$, then $\bigcup{\cal S}$ is 
+both a connected component and a strong component of $\bigcup{\cal C}$.
 Call $D_{\mathcal{C}}$ the digraph obtained from $D$ by contracting each component of $\mathcal{C}$ into one vertex. 
 For sake of simplicity, we denote by $D[{\cal S}]$ the digraph $D[\bigcup {\cal S}]$. Observe that this digraph contains $\bigcup {\cal S}$ but has more arcs.
 
@@ -519,8 +518,8 @@ complicated and because there might be arcs between cycles of the same component
 Let $C_1,C_2,C_3\in\mathcal C$ which pairwise intersect, and let $v$ belong to $V(C_2)\cap V(C_3)\setminus V(C_1)$. 
 Then exactly one of the following holds:
 \begin{itemize}
-\item[(i)] $C_2[t_{1,2}, v]$ and $C_3[t_{1,3}, v]$ have both length at most $3k$; 
-\item[(ii)] $C_2[v, s_{1,2}]$ and $C_3[v, s_{1,3}]$ have both length at most $3k$.
+\item[(i)] $C_2[t_{1,2}, v]$ and $C_3[t_{1,3}, v]$ have both length less than $3k$; 
+\item[(ii)] $C_2[v, s_{1,2}]$ and $C_3[v, s_{1,3}]$ have both length less than $3k$.
 \end{itemize}
 \end{lemma}
 
@@ -528,16 +527,16 @@ Then exactly one of the following holds:
  
 
 \begin{proof}
-Observe first that since $C_2$ has length at least $8k$ and $P_{1,2}$ has length at most $k-1$, the sum of lengths of $C_2[t_{1,2}, v]$ and  $C[v, s_{1,2}])$ is at least $7k+1$. Similarly, the sum of lengths of $C_2[t_{1,3}, v])$ and +$C[v, s_{1,3}])$ is at least $7k+1$. In particular, if (i) holds, then (ii) does not hold and vice-versa.
+Observe first that since $C_2$ has length at least $8k$ and $P_{1,2}$ has length at most $k-1$, the sum of lengths of $C_2[t_{1,2}, v]$ and  $C[v, s_{1,2}]$ is at least $7k+1$. Similarly, the sum of lengths of $C_2[t_{1,3}, v]$ and $C[v, s_{1,3}]$ is at least $7k+1$. In particular, if (i) holds, then (ii) does not hold and vice-versa.
 
 
-Suppose for a contradiction that both (i) and (ii) do not hold. By symmetry and the above inequalities, we may assume that both $C_2[t_{1,2}, v])$ and $C_3[v, s_{1,3}]$ have length more than $3k$.
-But $v\notin V(C_1)$, so $v\notin V(P_{1,3})$. Thus $C_3[v, t_{1,3}]$  has also length more than $3k$. 
+Suppose for a contradiction that both (i) and (ii) do not hold. By symmetry and the above inequalities, we may assume that both $C_2[t_{1,2}, v]$ and $C_3[v, s_{1,3}]$ have length more than $3k$.
+But $v\notin V(C_1)$, so $v\notin V(P_{1,3})$. Thus $C_3[v, t_{1,3}]$  has also length at least $3k$. 
 
 If there is a vertex in $V(C_1)\cap V(C_2)\cap V(C_3)$, then $C_3[v,t_{1,3}]$ would have length less than $2k$ (since it would be contained in $P_{2,3}\cup P_{1,3}$ and each of those paths has length less than $k$), a contradiction.
 Hence $V(C_1)\cap V(C_2)\cap V(C_3)=\emptyset$. In particular, $P_{1,2}$, $P_{1,3}$, and $P_{2,3}$ are disjoint.
 
-The dipath  $C_2[s_{1,2}, t_{2,3}]$ has length greater than $3k$ because it contains $C_2[t_{1,2},v]$. Moreover, the dipath $C_3[t_{2,3}, s_{1,3}]$ 
+The dipath  $C_2[s_{1,2}, t_{2,3}]$ has length at least $3k$ because it contains $C_2[t_{1,2},v]$. Moreover, the dipath $C_3[t_{2,3}, s_{1,3}]$ 
 has length at least $2k$ because $C_3[v, s_{1,3}]$ has length at least $3k$ and $C_3[v,t_{2,3}]$ has length less than $k$.
 Thus $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$ has length at least $2k$.
 Consequently, the union of $C_2[s_{1,2}, t_{2,3}]$, $C_2[t_{2,3}, s_{1,2}]$, and $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$  is a subdivision of $P(k,1;k)$, a contradiction.
@@ -575,30 +574,46 @@ Then the dipath $C_j[s(Q_j), s_{1,j}]$ and  $C_j[t_{1,j},t (Q_j)]$ have length $
 Set $Q^-_j=C[s(Q_j), s_{1,j}[$ and $Q^+_j=C]t_{1,j}, t(Q_j)]$.
 
 
-Set $I^+(C_1) = \bigcup_{C_j\in {\cal C}\cap C_1} Q^+_j$ and $I^-(C_1) = \bigcup_{C_j\in {\cal C}\cap C_1} Q^-_j$.
-Observe that Lemma~\ref{lem:dis} implies that $I^+(C_1)$ and $I^-(C_1)$ are vertex-disjoint digraphs. We set $I(C_1)=I^+(C_1)\cup I^-(C_1)$.
-
+Set  $I(C_1) =C_1\cup \bigcup_{C_j\in {\cal C}\cap C_1} Q_j$, $I^+(C_1) = \bigcup_{C_j\in {\cal C}\cap C_1} Q^+_j$ and $I^-(C_1) = \bigcup_{C_j\in {\cal C}\cap C_1} Q^-_j$.
+Observe that Lemma~\ref{lem:dis} implies directly the following.
+\begin{corollary}\label{cor:util}
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles and let $C_1\in {\cal C}$.
+\begin{itemize}
+\item[(i)]  $I^+(C_1)$ and $I^-(C_1)$ are vertex-disjoint digraphs. 
+\item[(ii)] $I^-(C_1) \cap C_j = Q^-_j$ and $I^+(C_1) \cap C_j = Q^+_j$, for all $C_j\in {\cal C}\cap C_1$.
+\end{itemize}
+ \end{corollary}
+%We set $I(C_1)=I^+(C_1)\cup I^-(C_1)$.
 
 
 
 \begin{lemma}\label{lem:A}
-Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph $D$.
 Let $C_1$ be a cycle of ${\cal C}$ and let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$.
 All vertices of $\bigcup({\cal C}\cap A)  - A$ belongs to a unique cycle $C_A$ of $\mathcal{C}$.
 \end{lemma}
 
+\FH{ici on a  besoin du 3k}
+
+
 \begin{proof}
 Suppose it is not the case. Then there are two distinct cycles $C_2, C_3$ of ${\cal C}\cap A$ that intersect with $C_1$.
+Observe that there is a sequence of distinct cycles $C_2=C^*_1, C^*_2, \dots , C^*_q=C_3$ of cycles of ${\cal C}\cap A$ such that $C^*_j\cap C^*_{j+1}\neq \emptyset$ because $A$ is a connected component of $\bigcup{\cal C} - I(C_1)$.
+Free to consider the first $C^*_j \neq C_2$ in this sequence such that $V(C^*_j)\not\subseteq A$ in place of $C_3$, we may assume
+ that all $C^*_j$, $2\leq j\leq q-1$, have all their vertices in $A$.
+ In particular, there exist a  $(C_3,C_2)$-dipath $Q_A$ in $D[A]$.
 
-Let $t$ be the closest vertex among $\{t_{1,2}, t_{1,3}\}$ in $C_1$ and let $t'$ be the other vertex of $\{t_{1,2}, t_{1,3}\}$. \FH{$t$ mal defini.}
-(If $t_{1,2}=t_{1,3}$, then $t=t'$.) For $i=2,3$, let $R_i$ be the $(t,t(Q_i)$-dipath in $C_1\cup Q_i$. Observe that $R_i=Q_i$ or $R_i=C_1[t,t']\cup Q_i$. Hence $R_i$ has length at least $3k$.
-Let $v$ be the last vertex in $R_2\cap R_3$ along $R_2$. (This vertex exists since $t\in R_2\cap R_3$.) In $A$, there exists a $(t(Q_3), C_2)$-dipath $R_A$. \FH{Pourquoi?} Let $w$ be its terminal vertex. By definition of $A$, $w$ is in $C_2[t(Q_2, s(Q_2)]$, therefore $C_2[w,v]$ has length at least $3k$ since it contains $C_2[s(Q_2), s_{1,2}]$. Consequently, both $R_2[v,t(Q_2)]$ and $R_3[v,t(Q_3)]$ have length less than $k$ for otherwise the union of $C_2[w,v]$, $C_2[v,w]$ and $R_3[v,t(Q_3)]\odot R_A$ would be a subdivision of $P(k,1;k)$.
-In particular, $v\neq t$. This implies that $s_{2,3}\in V(R_2\cap R_3)$.
-Moreover, $R_2[s_{2,3}, t(Q_2)]$ has length at most $2k$ because $R_2[s_{2,3},v]$ is a subdipath of $P_{2,3}$ and so has length at most $k$.
-Therefore $R_2[t,s_{2,3}]$ has length at least $k$ because $R_2$ has length at least $3k$.
-It follows that the union of $C_2[s_{2,3},t]$,  $R_2[t,s_{2,3}]$ and  $R_3[t,s_{2,3}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+%Let $t$ be the first vertex among $\{t_{1,2}, t_{1,3}\}$ in $C_1$ and let $t'$ be the other vertex of $\{t_{1,2}, t_{1,3}\}$. \FH{$t$ mal defini.}
+%(If $t_{1,2}=t_{1,3}$, then $t=t'$.) 
+%For $i=2,3$, let $R_i$ be the $(t,t(Q_i)$-dipath in $C_1\cup Q_i$. Observe that $R_i=Q_i$ or $R_i=C_1[t,t']\cup Q_i$. 
+Let $R_3=C_1[t_{1,2},t_{1,3}]\odot Q_3$. Clearly, $R_3$ has length at least $3k$.
+%Hence $R_i$ has length at least $3k$.
+Let $v$ be the last vertex in $Q_2\cap R_3$ along $Q_2$. (This vertex exists since $t_{1,2}\in Q_2\cap R_3$.) Since there is a $(C_3,C_2)$-dipath in $D[A]$, by Corollary~\ref{cor:util}, $C_3[t(Q_3), s(Q_A)]$ is in $D[A]$. Thus  there exists a $(t(Q_3), C_2)$-dipath $R_A$ in $D[A]$.  Let $w$ be its terminal vertex. By definition of $A$, $w$ is in $C_2[t(Q_2), s(Q_2)]$, therefore $C_2[w,v]$ has length at least $3k$ since it contains $C_2[s(Q_2), s_{1,2}]$. Consequently, both $C_2[v,t(Q_2)]$ and $R_3[v,t(Q_3)]$ have length less than $k$ for otherwise the union of $C_2[w,v]$, $C_2[v,w]$ and $R_3[v,t(Q_3)]\odot R_A$ would be a subdivision of $P(k,1;k)$.
+In particular, $v\neq t(Q_2)$. This implies that $s_{2,3}\in V(Q_2\cap R_3)$.
+Moreover, $Q_2[s_{2,3}, t(Q_2)]$ has length less than $2k$ because $Q_2[s_{2,3},v]$ is a subdipath of $P_{2,3}$ and so has length less than $k$.
+Therefore $C_2[t_{1,2},s_{2,3}]=Q_2[t_{1,2},s_{2,3}]$ has length at least $k$ because $Q_2$ has length at least $3k$.
+It follows that the union of $C_2[s_{2,3},t_{1,2}]$,  $C_2[t_{1,2},s_{2,3}]$ and  $R_3[t_{1,2},s_{2,3}]$ is a subdivision of $P(k,1;k)$, a contradiction.
 \end{proof}
-
 
 
 
@@ -606,6 +621,8 @@ It follows that the union of $C_2[s_{2,3},t]$,  $R_2[t,s_{2,3}]$ and  $R_3[t,s_{
 Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph. For any cycle $C_1\in {\cal C}$, the digraph
 $I^+(C_1)$ has no directed cycle.  
 \end{lemma}
+
+\FH{Ici on peut descendre de $8k$ a $7k$}
 \begin{proof}
 
 Suppose for a contradiction that $I^+(C_1)$  contains a directed cycle $C'$.
@@ -625,7 +642,7 @@ Without loss of generality, we may assume that there are cycles $C_2, \dots , C_
 \item for all $2\leq j\leq p$, $C'\cap Q^+_j$ is a directed path $P^+_j$ with initial vertex $a_j$ and terminal vertex $b_j$;
 \item the $a_j$ and the $b_j$ appear according to the following order around $C'$: $(a_2, b_p, a_3, b_2, \dots ,   a_p, b_{p-1}, a_2)$ with possibly $a_{j+1}=b_j$ for some $1\leq j \leq p$ where $a_{p+1}=a_2$.
 \end{itemize}
-For $2\leq j\leq p$, set $B_j=C_j[b_j, a_j]$. Note that $B_j$ has length at least $4k$, because $Q^+_2$ has length at most $4k$.
+For $2\leq j\leq p$, set $B_j=C_j[b_j, a_j]$. Note that $B_j$ has length at least $4k$, because $Q^+_2$ has length less than $3k$.
 
 
 Consider the closed directed walk $$W=C_p[a_2,b_p]\odot B_p \odot C_{p-1}[a_p, b_{p-1}] \odot  \cdots  \odot  B_3\odot C_2[a_3, b_2]\odot B_2.$$
@@ -645,33 +662,35 @@ $C_W[b_2, a_4]$, $C_W[a_4,b_2]$ and $C'[b_2,a_4]=C_3[b_3,a_4]$ is a subdivision 
 \end{proof}
 
 
-
+Set $\alpha_k=2\cdot \col + 14k$.
 
 \begin{lemma}\label{lem:IC}
 Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
 
-Let $c$ be a partial colouring of a cycle $C_1\in {\cal C}$ such that only a path of length at most
-$7k$ is coloured and this path is rainbow-coloured. Then $c$ can be extended into
-a colouring of $C_1\cup I(C_1)$ using $2\cdot \col + 14k$ colours, such that every subpath of length at most $7k$ of $C_1$ is rainbow-coloured and  $Q_j$ is rainbow-coloured, for every $C_j\in {\cal C}\cap C_1$.\end{lemma}
+Let $\phi$ be a partial colouring of a cycle $C_1\in {\cal C}$ such that only a path of length at most
+$7k$ is coloured and this path is rainbow-coloured. Then $\phi$ can be extended into
+a colouring of $I(C_1)$ using $\alpha_k$ colours, such that every subpath of length at most $7k$ of $C_1$ is rainbow-coloured and  $Q_j$ is rainbow-coloured, for every $C_j\in {\cal C}\cap C_1$.\end{lemma}
 
 \begin{proof}
-We can easily extend $c$ to $C_1$ using $14k$ colours (including the at most $7k$ already used colours)
+We can easily extend $\phi$ to $C_1$ using $14k$ colours (including the at most $7k$ already used colours)
 so that every subpath of $C_1$ of length $7k$ is rainbow-coloured.
 
-We shall now prove that there exists a colouring $c^+$ of $I^+(C_1)$ with $\col$ (new) colours so that $Q^+_j$ is rainbow-coloured for every $C_j\in {\cal C}\cap C_1$, and a colouring $c^-$ of $I^-(C_1)$ with $\col$ (other new) colours so that $Q^-_j$ is rainbow-coloured for every $C_j\in {\cal C}\cap C_1$.
-The union of these three colourings is clearly the desired colouring of $C_1\cup \bigcup{\cal C}[I(C_1)]$. (Observe that a vertex of $I(C_1)$ is coloured only once because  $I^+(C_1)$ and $I^-(C_1)$ are disjoint.)
+We shall now prove that there exists a colouring $\phi^+$ of $I^+(C_1)$ with $\col$ (new) colours so that $Q^+_j$ is rainbow-coloured for every $C_j\in {\cal C}\cap C_1$, and a colouring $\phi^-$ of $I^-(C_1)$ with $\col$ (other new) colours so that $Q^-_j$ is rainbow-coloured for every $C_j\in {\cal C}\cap C_1$.
+The union of the three colourings $\phi$, $\phi^+$, and $\phi^-$ is clearly the desired colouring of $I(C_1)$. (Observe that a vertex of $I(C_1)$ is coloured only once because  $C_1$, $I^+(C_1)$ and $I^-(C_1)$ are disjoint by Corollary~\ref{cor:util}.)
 
-It remains to prove the existence of $c^+$ and $c^-$. By symmetry, it suffices to prove the existence of $c^+$.
- To prove the existence of $c^+$ we consider an auxiliary digraph $D^+_1$.
+\smallskip
+
+It remains to prove the existence of $\phi^+$ and $\phi^-$. By symmetry, it suffices to prove the existence of $\phi^+$.
+ To do so, we consider an auxiliary digraph $D^+_1$.
  For each $C_j\in {\cal C}\cap C_1$, let $T^+_j$ be the transitive tournament whose hamiltonian dipath is $Q^+_j$.
 Let $D^+_1=\bigcup_{C_j\in  {\cal C}\cap C_1} T^+_j$. 
 The arcs of the $A(T^+_j)\setminus A(Q^+_j)$ are called {\it fake arcs}.
 %Observe that $D^+_1$ is acyclic because $I^+(C_1)$ is. Indeed, if there were a directed cycle
 %cycle in $D^+_1$, it could be transformed into a closed directed walk (by replacing each arc $(u,v)\in A(T^+_j)$, by 
 %$Q^+_j[u,v]$), which would contain a directed cycle.
-Clearly, $c^+$ exists if and only if $D^+_1$ admits a proper colouring. Henceforth it remains to prove the following claim.
+Clearly, $\phi^+$ exists if and only if $D^+_1$ admits a proper $\col$-colouring. Henceforth it remains to prove the following claim.
 
-\begin{claim}
+\begin{claim}\label{claim:c+}
 $\chi(D^+_1) \leq  \col$.
 \end{claim}
 
@@ -725,9 +744,10 @@ We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
 	The union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,u]$, $P_1[u, v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$ and $Q$ is a subdivision of $P(k,1;k)$, a contradiction.
 
 	\end{itemize}
-
 \end{itemize}
 \end{subproof}
+
+Claim~\ref{claim:c+} shows the existence of $\phi^+$ and completes the proof of Lemma~\ref{lem:IC}.
 \end{proof}
 
 
@@ -735,77 +755,78 @@ We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
 
 \begin{lemma}\label{lem:col-union-cycle}
 Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
-There exists a proper colouring $c$ of $\bigcup{\cal C}$ with $2\cdot \col + 14k$ colours, such that, each subpath of length $7k$ of each cycle of $\mathcal{C}$ is rainbow-coloured.
+There exists a proper colouring $\phi$ of $\bigcup{\cal C}$ with $\alpha_k$ colours, such that, each subpath of length $7k$ of each cycle of $\mathcal{C}$ is rainbow-coloured.
 \end{lemma}
 \begin{proof}
 We prove by induction on the number of cycles in $\mathcal{C}$ the following stronger statement:
 {\it if there exists
-a partial colouring $c$ such that one of the cycle $C_1$ has a path of length less than $7k$
+a partial colouring $\phi$ such that one of the cycle $C_1$ has a path of length less than $7k$
 which is rainbow-coloured, then we can extend this colouring to all $D[\mathcal{C}]$ using less
-than $2\col +14k$ colours such that, on each cycle, every subpath of length
+than $\alpha_k$ colours such that, on each cycle, every subpath of length
 $7k$ is rainbow-coloured}.
 
 Consider a rainbow-colouring of a subpath of length less than $7k$ of a cycle $C_1\in {\cal C}$.
-By Lemma \ref{lem:IC}, we can extend this colouring to a colouring $c_1$ of $I(C_1)$ at most $2\cdot \col + 14k$ colours.
+By Lemma \ref{lem:IC}, we can extend this colouring to a colouring $\phi_1$ of $I(C_1)$ at most $\alpha_k$ colours.
 Note that the non-coloured vertices of $\bigcup{\cal C}$ are in one of the connected components of $\bigcup{\cal C} - I(C_1)$.
-Let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$. The coloured (by $c_1$) vertices of ${\cal C}\cap A$ are those of $({\cal C}\cap A)-A$. Hence, by Lemma \ref{lem:A}, they all belong to some cycle $C_j$ and so to the diptah $Q_j$ which has length at most $7k$.
-Hence, by the induction hypothesis, we can extend $c_1$ to $A$. Doing this for each component, we extend $c_1$ to the whole $\bigcup{\cal C}$.
+Let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$. The coloured (by $\phi_1$) vertices of ${\cal C}\cap A$ are those of $({\cal C}\cap A)-A$. Hence, by Lemma \ref{lem:A}, they all belong to some cycle $C_j$ and so to the diptah $Q_j$ which has length at most $7k$.
+Hence, by the induction hypothesis, we can extend $\phi_1$ to $A$. Doing this for each component, we extend $\phi_1$ to the whole $\bigcup{\cal C}$.
 \end{proof}
 
 
 
-
+Set $\beta_k=\alpha_k \cdot (2k)^{k+1}$.
 
 \begin{lemma}\label{lem:DC}
 Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph $D$.
-For every strong component $\mathcal{S}$ of $\bigcup \mathcal{C}$, let $D_{\mathcal{S}}$ be the graph induced 
-on $D$ by the vertices in $\mathcal{S}$. Then $\chi(D_{\mathcal{S}}) < (2\cdot \col + 14k) \cdot (2 \cdot \dr)$.
+For every component $\mathcal{S}$ of $\mathcal{C}$, we have $\chi(D[\mathcal{S}] \leq \beta_k$.
 \end{lemma}
 
+\begin{proof}
+We define a sort of Breadth-First-Search for $\mathcal{S}$.
+Let $C_0$ be a cycle of $\mathcal{S}$ and set $L_0 = \{C_0\}$. For every cycle $C_s$ of $\mathcal{S}\cap C_0$, we put $C_s$ in level $L_1$ and say that $C_0$ is the \textit{father} of $C_s$. We build  the levels $L_i$ inductively
+until we cover all cycle of $\mathcal{S}$ : $L_{i+1}$ consists of every cycle $C_l$ not in $\bigcup_{j \leq i} L_j$ such that 
+there exists a cycle in $L_i$ intersecting $C_l$.  For every $C_l\in L_{i+1}$, we choose one of the cycles $L_{i}$ intersecting it to be its {\it  father}  $C_l$. Henceforth every cycle in $L_{i+1}$ has a unique  father even though it might intersect many cycles of $L_i$.
+A cycle $C$ is an {\it ancestor} of $C'$ if there is a sequence $C=C_1, \dots , C_q=C'$ such that $C_i$ is the father of $C_{i+1}$ for all $i\in [q-1]$.
 
-We present a sort BFS for $\mathcal{S}$.
-Let $C_r$ (for root) be a cycle of $\mathcal{S}$ and $L_0 = \{C_r\}$. For every cycle $C_s$ of $\mathcal{S}$ for which 
-$P_{r,s}$ is not empty, we put $C_s$ in $L_1$ and say that $C_0$ is the \textit{father} of $C_s$. We build $L_i$ inductively
-until we cover all cycle of $\mathcal{S}$ : $L_{i+1}$ consists of every cycle $C_l$ not in $\cup_{j \leq i} L_j$ such that 
-there exists a cycle $C_a \in L_i$ such that $P_{a,l}$ is non empty. $C_a$ is the father of $C_l$ and it is important to note that we 
-fix it uniquely, even though there might exists multiple choices for a father of $C_a$ in $L_i$. We define the \textit{ancestors} of 
-cycle like in trees.
+For a vertex $x$ of $\bigcup \mathcal{S}$, we say that $x$ \textit{belongs to} level $L_i$ if
+$i$ is the smallest integer such that there exists a cycle in $L_i$ containing $x$. Moreover, if $v$ belongs to $L_i$, let $\Len(v)$ be the set of lengths of $C_l[t_{1,j},v]$ for all cycle $C_l \in  L_i$ containing $v$.
+Observe that the vertices of each cycle $C_l$ of ${\cal S}$ belong to consecutive levels, that is there exists $i$ such that $V(C_l)\subseteq L_i\cup L_{i+1}$.
+Observe moreover the digraph induced by 
 
 
-Let $C_l$ be a cycle and $C_a$ its father. 
+
+Let $C_l$ be a cycle and $C_{l'}$ its father. 
 %let $Q_l$ be the subdipath of $C_l$ which contains
 %all the vertices that are at distance at most $k$ from $P_{l,a}$ in the cycle underlying $C_l$.
 %Then the dipath $C_l[s(Q_l), s_{l,a}]$ and  $C_j[t_{a,l},t (Q_l)]$ have length $k$.
 %Set $Q^-_l=C[s(Q_l), s_{l,a}[$ and $Q^+_l=C]t_{l,a}, t(Q_l)]$.
+Let $r_l$ be the vertex such that $C_l[t_{l,l'}, r_l]$ has length $k$.
+Set $R^-_l$ be the set of vertices of $C_l]r_l, s_{l,l'}[$  and $R^+_l$ be the set of vertices of $C_l ]t_{l,l'}, r_l]$. Note that for a vertex $x$ in  $R^+_l$, $C_l[x,s_{l,l'}]$ is longer than $k$. 
 
-Let $Q^-_l$ be the set of vertices $x$ of $C_l \setminus C_a$ such that the path $C_l[t_{a,l}, x]$ is longer than $k$. 
-We denote by $Q^+_l$ $C_l \setminus( C_a \cup Q^-_l) $. Note that for a vertex $x$ in  $Q^+_l$, $C_l[x,s_{a,l}]$ is longer than $k$. 
+\begin{claim}\label{claim:Rpos}
+Let $x$ be a vertex in $L_i$, $i\geq 1$, and $C_l$ and $C_m$ be two vertices of $L_i$ containing $x$.
+If $x \in R^+_l$, then  $x \in  R^+_m$.
+\end{claim}
 
-For a vertex $x$ belonging to cycles in $\mathcal{S}$, we say that $x$ \textit{belongs to}  $L_i$ if
-$i$ is the smallest integer such that $x \ C_l$ for some $C_l \in L_i$. Moreover, if $v$ belongs to $L_i$, let $\Dis(v)$ be the lengths of the
-$C_j[t_{1,j},v]$ for all cycle $C_j \in  L_i$ containing $v$.
+\begin{subproof}
+Suppose for a contradiction that $x\in R^+_l$ and $x \not \in  R^+_m$. %We can assume $t_{l,m}$ {\bf ???}.
+Let $C_{l'}$ and $C_{m'}$ be the fathers of $C_l$ and $C_m$ respectively (they can be the same cycle). 
+By definition of the $L_j$'s,  there exists a dipath $P$ from $t_{l,l'}$ to $s_{m,m'}$ only going through $C_{l'}$, $C_{s'}$ and their ancestors.
+In particular $P$ is disjoint from $C_l \setminus C_{l'}$ and  $C_s \setminus C_{s'}$.
+Observe that $C_m[s_{m,m'},t_{l,m}]$ contains  $C_m[t_{m,m'}, x]$ which has length at least $k$ because $x\notin R^+_m$.
+Thus the union of $C_l[t_{l,m},s_{l,l'}] \odot P$, $C_m[t_{l,m},s_{m,m'}]$, and  $C_m[s_{m,m'},t_{l,m}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+\end{subproof}
 
-\begin{lemma}\label{lem:Qpos}
-Suppose there exists a vertex $x$ such that $x \in Q^+_l$ and $x \in C_s$ for some cycles $C_l$ and $C_s$ in some $L_j$.
-If $x$ belongs to $L_j$ then  $x \in  Q^+_s$ or $D$ contains a subdivision of $P(k,1;k)$
-\end{lemma}
+In the very same way, one shows the following.
 
-\begin{proof}
-Suppose $x$ belongs to $L_j$ and $x \not \in  Q^+_s$. We can assume $x = l_{s,l}$.
-Let $C_{l'}$ and $C_{s'}$ be the father of $C_l$ and $C_s$ (they can be the same). 
-By definition of the $L_i$ there exists a dipath $P$ from $s_{l,l'}$ to $l_{s,s'}$ only going through $C_{l'}$, $C_{s'}$ and their ancestors.
-In particular $P$ is disjoint from $C_l \setminus C_{l'}$ and  $C_s \setminus C_{s'}$
-Let $y$ be the first vertex of $P$ which belongs to $C_s$.
-Then $C_s[y,x]$, $C_l[x,s_{l,l'}] \odot P[ s_{l,l'}, y]$ and $C_s[x,y]$ form a subdivision of $P(k,1;k)$. 
-\end{proof}
+\begin{claim}\label{claim:Rneg}
+Let $x$ be a vertex in $L_i$, $i\geq 1$, and $C_l$ and $C_m$ be two vertices of $L_i$ containing $x$.
+If $x \in R^-_l$, then  $x \in  R^-_m$.
+\end{claim}
 
-The same works for $Q^-$:
-
-\begin{lemma}\label{lem:Qneg}
-Suppose there exists a vertex $x$ such that $x \in Q^-_l$ and $x \in C_s$ for some cycles $C_l$ and $C_s$ in some $L_j$.
-If $x$ belongs to $L_j$ then  $x \in  Q^-_s$ or $D$ contains a subdivision of $P(k,1;k)$
-\end{lemma}
-
+Claim~\ref{claim:Rpos} and \ref{claim:Rneg} imply that each level $L_i$ may be partitioned into two sets $X^+_i$ and $X^-_i$, where
+$X^+_i$ (resp.  $X^-_i$) is the set of vertices $x$ of $L_i$ such that every $x\in R^+_l$ (resp. $x\in R^-_l$) for every cycle $C_l$ of $L_i$ containing $x$.
+Set $X^+=V(C_0) \cup \bigcup_{\i\geq 1} X^+_i$ and $X^-=\bigcup_{i\geq 1} X^-_i$. Clearly $(X^+, X^-)$ is a partition of $V(D[{\cal S}])$.
 
 %\begin{lemma}\label{lem:Ql}
 %Suppose there exists an arc between $x_1 \in C_{l_1}$ and $x_2 \in C_{l_2}$. If $C_{l_1}$ and $C_{l_1}$ both belong to the same
@@ -826,63 +847,63 @@ If $x$ belongs to $L_j$ then  $x \in  Q^-_s$ or $D$ contains a subdivision of $P
 %\end{itemize}
 %
 %\end{proof}
-We define $Q^+(r)$ (resp $Q^-(r)$) a partition of the vertices coloured $r$ in $c$ as follow:
-If $x$ belongs to $L_j$ and, for all cycle $C_l$ in $L_j$ such that $x \in C_l$, $x \in Q^+_l$ then $x \in Q^+(r)$.
-If all cycle $C_l$ in $L_j$ such that $x \in C_l$, $x \in Q^-_l$ then $x \in Q^-(r)$.
-By lemmas \ref{lem:Qpos} and \ref{lem:Qneg}, this is indeed a partition of the vertices coloured $r$ in $c$.
-Thus, if for every $r$ we can colour the graph $D_r^+$ induced on $D$ by the vertices in 
-$Q^+(r)$ with $\dr$ colours, then we can colour $D_{\mathcal{S}}$ using 
-$(2\cdot \col + 14k) \cdot (2 \cdot \dr)$ colours.  
+
+Let $\phi$ be a colouring of $\bigcup {\cal S}$ given by Lemma~\ref{lem:col-union-cycle}.
+For every colour $c\in [\alpha_k]$, let $X^+(c)$ be the set $X^+\cap \phi^{-1}(c)$ of vertices of $X^+$ coloured $c$, and $X^-(c)$ the set $X^-\cap \phi^{-1}(c)$ of vertices of $X^-$ coloured $c$.
 
 
-\begin{lemma}\label{lem:lvl}
-Let $x$ and $y$ be vertices of $Q^+(s)$ belonging to $L_i$ and $L_j$, such that $i-j> k$, then there is no arc between $x$ and $y$.
-\end{lemma}
+\begin{claim}\label{lem:lvl}
+Let $c\in [\alpha_k]$, and let $x$ and $y$ are vertices of $X^+(c)$ belonging to $L_i$ and $L_j$ respectively. 
+If $j-i> k$, then there is no arc between $x$ and $y$.
+\end{claim}
 
 \begin{proof}
 Let $C_x$ be the cycle of $L_i$ such that $x \in C_x$ and $C_y$ the cycle of $L_j$ such that $y \in C_y$.
-By considering the common ancestor of $C_x$ and $C_y$, we obtain a sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$
-and $P_{i,i+1}$ exists for all $i$ between 1 and $l-1$.
-If the arc is from $x$ to $y$, then we find a subdivision of $P(k,1;k)$ between $l_{p-1,p}$ and $y$. 
-First note that by definition of the $L_i$, the dipaths $C_{i-1}[l_{i-1,i}, l_{i-2,i-1}]$ are all disjoint. 
-Then the path $P = C_{p-1}[l_{p-1,p}, l_{p-2,p-1}] \odot C_{p-2}[l_{p-2,p-1}, l_{p-3,p-2}] \dots \odot C_{2}[l_{2,3}, s_{2,1}] 
-\odot C_1[s_{2,1}, x]$ is longer than $k$. Then the union of $P \odot (xy)$, $C_l[l_{p-1,p}, y]$ and $C_l[y,l_{p-1,p}]$ form a subdivision of $P(k,1;k)$.
+By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
+In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+(c)$, then $C[y,t_{p-1,p}]$ has length at least $k$.
 
-The case where the arc is from $y$ to $x$ is similar.
+Assume that $xy$ is an arc. In $\bigcup_{i=1}^{p-1} C_i$, there is a dipath $P$ from $t_{p-1,p}$ to $x$. This path has length at least $k$ because
+it must go through all levels $L_{i'}$, $i\leq i'\leq j-1$ because the vertices of any cycle of ${\cal S}$ are in two consecutive levels.
+Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C[y,t_{p-1,p}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+
+The case where the arc is from $y$ to $x$ is similar. \FH{Je ne vois pas comment}
 \end{proof}
 
 \begin{lemma}
-$\chi(D_r^+) < \dr$
+$\chi(D[X^+(c)]) < \dr$ for all $c\in [\alpha_k]$.
 \end{lemma}
 
 \begin{proof}
-We use the following partition of the arcs of $D_r^+$
 
+We partition the set of arc of $D[X^+(c)]$ in $(A_0,A_1)$, where
 \begin{itemize}
-	\item $A_0$ is the set of arcs of $D_r^+$ which ends belong to different levels.
-	\item $A_1$ is the set of arcs of $D_r^+$ which ends belong to the same levels.
+	\item $A_0$ is the set of arcs of $D[X^+(c)]$ which ends belong to the same level, and
+	\item $A_1$ is the set of arcs of $D[X^+(c)]$ which ends belong to different levels.	
 \end{itemize} 
 
-By lemma \ref{lem:lvl}, $\chi(D_r^+[A_0]) \leq k$ as the colour obtained by assigning to each level $L_i$ the colour $i$ modulo $k$ is proper. 
+Let $D^+_0$  (resp. $D^+_1$) be the spanning subdigraph of $D[X^+(c)]$ with arc set $A_0$ (resp. $A_1$).
 
-We will now prove that $\chi(D_r^+[A_1]) \leq (2k)^{2k}$ by contradiction. 
-Suppose it is not, it means that there exists a level $i$ such that the chromatic number of $\chi(D_r^+[A_1])$ in this level is greater 
+
+By Lemma \ref{lem:lvl}, $\chi(D^+_1) \leq k$ as the colouring that assigns to all vertices of level $L_i$ the colour $i$ modulo $k$ is proper. 
+
+We will now prove that $\chi(D^+_0) \leq (2k)^{2k}$ by contradiction. 
+Suppose it is not, it means that there exists a level $i$ such that the chromatic number of $\chi(D^+_0)$ in this level is greater 
 than $k$. By Theorem \ref{thm:gallairoy} there exists a dipath $P=(v_1,  \dots , v_{p})$ of length $p\geq (2k)^{2k}$.
 Note that all cycles intersect this path at most once.
 Suppose this dipath visits twice 
 the same cycle $C_1$ of $\mathcal{C}$. Because all the vertices belonging to the dipath receives colour $r$ in $c$ it means there exists a 
 dipath internally disjoint from $C_1$ between two vertices at distance at least $7k$ of the cycle $C_1$ in $\mathcal{C}$, which is impossible. 
-For $1\leq i\leq p$, let $m_i = \min \Dis(v_i)$. 
+For $1\leq i\leq p$, let $m_i = \min \Len(v_i)$. 
 Lemma \ref{min} applied to $(m_i)_{1\leq i\leq p}$ yields a set $L$ of $2k^2$ indices of such that 
 for any $i< j \in L$,  $m_i=m_j$ and $m_k > m_i$, for all $i< k < j$.
 Let $l_1 < l_2 < \cdots < l_{2k^2}$ be the elements of $L$ and let $m= m_{l_1} = \cdots = m_{l_{2k^2}}$.
 
 
-For $1\leq j\leq 2k^2-1$, let $M_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Dis(v_i)$.
+For $1\leq j\leq 2k^2-1$, let $M_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Len(v_i)$.
 By definition $M_j\leq k$.
 Applying Lemma~\ref{max} to $(M_j)_{1\leq j\leq 2k^2}$,  we get a sequence of size $2k$ $M_{j_0+1} \dots M_{j_0+{2k}}$ such that $M_{j_0+{2k}}$ is the greatest. 
 For sake of simplicity, we set $\ell_i =j_0+i$ for $1\leq i\leq 2k$.
-Let $f$ the smallest index not smaller than $\ell_{2k}$ for which $M_{\ell_{2k}} \in \Dis (v_f)$. 
+Let $f$ the smallest index not smaller than $\ell_{2k}$ for which $M_{\ell_{2k}} \in \Len (v_f)$. 
 
 Let $j_1$ and $f(j_1)$ be indices such that $v_{\ell_1} \in C_{j_1}$, $C_{j_1}$ is in $L_i$, $C_{f(j_1)}$ is in $L_{i-1}$ and 
 $C_{j_1}[t_{f(j_1),j_1},v_{\ell_1}]$ has length $m$. Set $P_1=C_{j_1}[t_{f(j_1),j_1},v_{\ell_1}]$.
@@ -891,8 +912,8 @@ $C_{j_2}[t_{f(j_2),j_2},v_{\ell_2}]$ has length $m$. Set $P_2=C_{j_2}[t_{f(j_2),
 Let $j_3$ and $f(j_3)$ be indices such that $v_{\ell_3} \in C_{j_3}$, $C_{j_3}$ is in $L_i$, $C_{f(j_3)}$ is in $L_{i-1}$ and 
 $C_{j_3}[v_{f},s_{f(j_3),j_3}]$ has length $M_{\ell_{2k}}$. Set $P_3=C_{j_3}[v_{f},s_{f(j_3),j_3}]$.
 
-Note that any internal vertex $x$ of $P_1$ or $P_2$ has an integer in $\Dis(x)$
-which is smaller than $m$ and every internal vertex $y$ of $P_3$ has an integer in $\Dis(y)$ which
+Note that any internal vertex $x$ of $P_1$ or $P_2$ has an integer in $\Len(x)$
+which is smaller than $m$ and every internal vertex $y$ of $P_3$ has an integer in $\Len(y)$ which
 is greater than $M_{\ell_{2k}}$, or does not belong to $I^+(C_1)$. Hence, 
 $P_1$, $P_2$ and $P_3$ are disjoint from $P[v_{\ell_1},v_f]$. 
 
@@ -947,7 +968,11 @@ only uses vertices in levels smaller than $i-1$, thus disjoint of $P$, $C_y[l_{y
 Then $C_y[l_{y,y'}, y]$, $C_y[y, l_{y,y'}]$ and $P_y \odot C_x[s_{x,x'}, x] \odot P$ form a subdivision of $P(k,1;k)$ between $y$ 
 and $l_{y,y'}$. 
 
-By lemma \ref{lem:decomp} this means $\chi(D_r^+) \leq  \dr$ 
+By lemma \ref{lem:decomp} this means $\chi(D[X^+(c)]) \leq  \dr$ 
+
+\end{proof}
+
+
 
 \end{proof}
 
