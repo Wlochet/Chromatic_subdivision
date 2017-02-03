@@ -185,7 +185,7 @@ Let $k \geq 3$ be an integer and let $D$ be a strong digraph. If $\chi(D) >  (2k
 In Section~\ref{sec:main}, using the same approach but in a more complicated way, we prove our main result: 
 
 \begin{theorem}\label{th:main}
-There is a constant $C_k$ such that if $D$ is a strong digraph with $\chi(D) > C_k$, then $D$ contains a subdvision of $P(k,1;k)$.
+There is a constant $\gamma_k$ such that if $D$ is a strong digraph with $\chi(D) > C_k$, then $D$ contains a subdvision of $P(k,1;k)$.
 \end{theorem}
 
 
@@ -723,7 +723,7 @@ is greater than $M_{\ell_{2k}}$, or does not belong to $I^+(C_1)$. Hence,
 $P_1$, $P_2$ and $P_3$ are disjoint from $P[v_{\ell_1},v_f]$. 
 
 
-We distinguishes between the intersection of $P_1$, $P_2$ and $P_3$:
+We distinguish between the intersection of $P_1$, $P_2$ and $P_3$:
 
 \begin{itemize}
 	\item Suppose $P_3$ does not intersect $P_1 \cup P_2$.
@@ -778,7 +778,7 @@ Set $\beta_k=\alpha_k \cdot (2k)^{k+1}$.
 
 \begin{lemma}\label{lem:DC}
 Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph $D$.
-For every component $\mathcal{S}$ of $\mathcal{C}$, we have $\chi(D[\mathcal{S}] \leq \beta_k$.
+For every component $\mathcal{S}$ of $\mathcal{C}$, we have $\chi(D[\mathcal{S}]) \leq \beta_k$.
 \end{lemma}
 
 \begin{proof}
@@ -791,7 +791,7 @@ A cycle $C$ is an {\it ancestor} of $C'$ if there is a sequence $C=C_1, \dots , 
 For a vertex $x$ of $\bigcup \mathcal{S}$, we say that $x$ \textit{belongs to} level $L_i$ if
 $i$ is the smallest integer such that there exists a cycle in $L_i$ containing $x$. Moreover, if $v$ belongs to $L_i$, let $\Len(v)$ be the set of lengths of $C_l[t_{1,j},v]$ for all cycle $C_l \in  L_i$ containing $v$.
 Observe that the vertices of each cycle $C_l$ of ${\cal S}$ belong to consecutive levels, that is there exists $i$ such that $V(C_l)\subseteq L_i\cup L_{i+1}$.
-Observe moreover the digraph induced by 
+
 
 
 
@@ -849,15 +849,35 @@ Set $X^+=V(C_0) \cup \bigcup_{\i\geq 1} X^+_i$ and $X^-=\bigcup_{i\geq 1} X^-_i$
 %\end{proof}
 
 Let $\phi$ be a colouring of $\bigcup {\cal S}$ given by Lemma~\ref{lem:col-union-cycle}.
-For every colour $c\in [\alpha_k]$, let $X^+(c)$ be the set $X^+\cap \phi^{-1}(c)$ of vertices of $X^+$ coloured $c$, and $X^-(c)$ the set $X^-\cap \phi^{-1}(c)$ of vertices of $X^-$ coloured $c$.
+For every colour $c\in [\alpha_k]$, let $X^+(c)$ be the set $X^+\cap \phi^{-1}(c)$ of vertices of $X^+$ coloured $c$, and $X^-(c)$ the set $X^-\cap \phi^{-1}(c)$ of vertices of $X^-$ coloured $c$. Similarly, let  $X^+_i(c)= X^+_i\cap \phi^{-1}(c)$ and $X^-_i(c)= X^-_i\cap \phi^{-1}(c)$.
 
 
-\begin{claim}\label{lem:lvl}
-Let $c\in [\alpha_k]$, and let $x$ and $y$ are vertices of $X^+(c)$ belonging to $L_i$ and $L_j$ respectively. 
-If $j-i> k$, then there is no arc between $x$ and $y$.
+
+In order to prove the lemma, we shall prove that $\chi(D[X^+(c)]) < \dr$ and $\chi(D[X^+(c)]) < \dr$ for all $c\in [\alpha_k]$.
+To do so, we partition the set of arc of $D[X^+(c)]$ in $(A_0(c),A_1(c))$, where
+\begin{itemize}
+	\item $A_0(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to the same level, and
+	\item $A_1(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to different levels.	
+\end{itemize} 
+
+Let $D^+_0(c)$  (resp. $D^+_1(c)$) be the spanning subdigraph of $D[X^+(c)]$ with arc set $A_0(c)$ (resp. $A_1(c)$).
+In the next two claims, we bound the chromatic number of $D^+_0(c)$ and $D.^+_1(c)$
+
+
+
+
+\begin{claim}\label{claim:D1}
+$\chi(D^+_1(c))\leq k$ for all $c\in [\alpha_k]$.
 \end{claim}
 
-\begin{proof}
+\begin{subproof}
+Let $\phi_1$ be the colouring that assigns to all vertices of level $L_i$ the colour $i$ modulo $k$.
+
+Let us show that $\phi_1$ is a proper colouring of $D^+_1(c)$. 
+
+Suppose for a contradiction that it is not the case. There are two vertices $x$ and $y$ of $X^+(c)$ such that $x$ belongs to $L_i$ and $x$ belongs to $L_j$.  
+If $j-i> k$, then there is no arc between $x$ and $y$.
+
 Let $C_x$ be the cycle of $L_i$ such that $x \in C_x$ and $C_y$ the cycle of $L_j$ such that $y \in C_y$.
 By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
 In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+(c)$, then $C[y,t_{p-1,p}]$ has length at least $k$.
@@ -867,32 +887,26 @@ it must go through all levels $L_{i'}$, $i\leq i'\leq j-1$ because the vertices 
 Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C[y,t_{p-1,p}]$ is a subdivision of $P(k,1;k)$, a contradiction.
 
 The case where the arc is from $y$ to $x$ is similar. \FH{Je ne vois pas comment}
-\end{proof}
-
-\begin{lemma}
-$\chi(D[X^+(c)]) < \dr$ for all $c\in [\alpha_k]$.
-\end{lemma}
-
-\begin{proof}
-
-We partition the set of arc of $D[X^+(c)]$ in $(A_0,A_1)$, where
-\begin{itemize}
-	\item $A_0$ is the set of arcs of $D[X^+(c)]$ which ends belong to the same level, and
-	\item $A_1$ is the set of arcs of $D[X^+(c)]$ which ends belong to different levels.	
-\end{itemize} 
-
-Let $D^+_0$  (resp. $D^+_1$) be the spanning subdigraph of $D[X^+(c)]$ with arc set $A_0$ (resp. $A_1$).
+\end{subproof}
 
 
-By Lemma \ref{lem:lvl}, $\chi(D^+_1) \leq k$ as the colouring that assigns to all vertices of level $L_i$ the colour $i$ modulo $k$ is proper. 
 
-We will now prove that $\chi(D^+_0) \leq (2k)^{2k}$ by contradiction. 
-Suppose it is not, it means that there exists a level $i$ such that the chromatic number of $\chi(D^+_0)$ in this level is greater 
-than $k$. By Theorem \ref{thm:gallairoy} there exists a dipath $P=(v_1,  \dots , v_{p})$ of length $p\geq (2k)^{2k}$.
+\begin{claim}\label{claim:D0}
+$\chi(D^+_0(c))\leq (2k)^{2k}$ for all $c\in [\alpha_k]$. \FH{Attention ici on a $(2k)^{2k}$ mais dans le Lemme et fin du Lemme seulement $(2k)^k$}
+\end{claim}
+\begin{subproof}
+Set $p=(2k)^{2k}$.
+Suppose for a contradiction that there exist $c$ such that $\chi(D^+_0(c)) > p$. 
+Observe that $D^+_0(c)$ is the disjoint union of the $D[X^+_i(c)]$. Thus there exists a level $L_i$ such that $\chi[X^+_i(c)] >p$.
+ By Theorem~\ref{thm:gallairoy}, there exists a dipath $P=(v_0,  \dots , v_{p})$ of length $p$.
+
+\FH{reprendre ici}
 Note that all cycles intersect this path at most once.
 Suppose this dipath visits twice 
 the same cycle $C_1$ of $\mathcal{C}$. Because all the vertices belonging to the dipath receives colour $r$ in $c$ it means there exists a 
 dipath internally disjoint from $C_1$ between two vertices at distance at least $7k$ of the cycle $C_1$ in $\mathcal{C}$, which is impossible. 
+
+
 For $1\leq i\leq p$, let $m_i = \min \Len(v_i)$. 
 Lemma \ref{min} applied to $(m_i)_{1\leq i\leq p}$ yields a set $L$ of $2k^2$ indices of such that 
 for any $i< j \in L$,  $m_i=m_j$ and $m_k > m_i$, for all $i< k < j$.
@@ -944,14 +958,6 @@ form a subdivision of $P(k,1;k)$.
 
 \end{itemize}
 
-
-
-
-
-
-
-
-
 Suppose $P_1$ and $P_2$ are disjoint and let $P_4$ and $P_5$ be the shortest paths in $\cup_{s < i} L_s$ 
 from $t_{f(j_1),j_1}$ to $t_{f(j_2),j_2}$
 and from $s_{f(j_3),j_3}$ to $t_{f(j_1),j_1}$. Let $v$ be the last vertex of $P_4$ in $P_4 \cap P_5$, then $P_4[v,v_{\ell_2}] \odot P_2$,
@@ -967,14 +973,18 @@ By considering the common ancestor of $C_{x'}$ and $C_{y'}$, we can find a dipat
 only uses vertices in levels smaller than $i-1$, thus disjoint of $P$, $C_y[l_{y,y'}, y]$, $C_y[y, l_{y,y'}]$ and $C_x[s_{x,x'}, x]$. 
 Then $C_y[l_{y,y'}, y]$, $C_y[y, l_{y,y'}]$ and $P_y \odot C_x[s_{x,x'}, x] \odot P$ form a subdivision of $P(k,1;k)$ between $y$ 
 and $l_{y,y'}$. 
+\end{subproof}
 
-By lemma \ref{lem:decomp} this means $\chi(D[X^+(c)]) \leq  \dr$ 
 
+
+
+Claims~\ref{claim:D0} and \ref{claim:D1}, together with Lemma~\ref{lem:decomp} imply $\chi(D[X^+(c)]) \leq  \dr$ for all $c\in [\alpha_k]$.
+Similarly, one can show that  $\chi(D[X^+(c)]) \leq  \dr$ for all $c\in [\alpha_k]$. So $$\chi(D[{\cal S}]\leq \sum_{c\in [\alpha_k]} \left (\chi(D[X^+(c)]) + \chi(D[X^-(c)]) \right) \leq \alpha_k \times 2k \cdot (2k)^k=\beta_k.$$
 \end{proof}
 
 
 
-\end{proof}
+
 
 \subsection{Proof of Theorem \ref{th:main}}
 
