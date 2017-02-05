@@ -63,7 +63,7 @@
 
 \newcommand{\cste}{ 8k \cdot (2\cdot \col + 14k) \cdot (2 \cdot \dr)}
 \newcommand{\qj}{\bf cste2}
-\newcommand{\dr}{ k \cdot (2k)^k}
+\newcommand{\dr}{ 2k^2 \cdot (2k)^k}
 \newcommand{\col}{(6k^2)^{3k}}
 \newcommand{\free}{subdivision-free}
 
@@ -853,40 +853,73 @@ For every colour $c\in [\alpha_k]$, let $X^+(c)$ be the set $X^+\cap \phi^{-1}(c
 
 
 
-In order to prove the lemma, we shall prove that $\chi(D[X^+(c)]) < \dr$ and $\chi(D[X^+(c)]) < \dr$ for all $c\in [\alpha_k]$.
-To do so, we partition the set of arc of $D[X^+(c)]$ in $(A_0(c),A_1(c))$, where
+In order to prove the lemma, we shall prove that $\chi(D[X^+(c)]) < \dr$ for all $c\in [\alpha_k]$.
+To do so, we partition the set of arc of $D[X^+(c)]$ in $(A_0(c),A_1(c), A_2(c))$, where
 \begin{itemize}
 	\item $A_0(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to the same level, and
-	\item $A_1(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to different levels.	
+	\item $A_1(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to different levels $i$ and $j$ with $ \| i - j\| \leq k$.	
+	\item $A_2(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to different levels $i$ and $j$ with $ \| i - j\| > k$.
 \end{itemize} 
 
-Let $D^+_0(c)$  (resp. $D^+_1(c)$) be the spanning subdigraph of $D[X^+(c)]$ with arc set $A_0(c)$ (resp. $A_1(c)$).
-In the next two claims, we bound the chromatic number of $D^+_0(c)$ and $D.^+_1(c)$
-
-
-
+Let $D^+_i(c)$ be, for $i \in [3]$ the spanning subdigraph of $D[X^+(c)]$ with arc set $A_i(c)$.
+In the next three claims, we bound the chromatic number of $D^+_0(c)$, $D^+_1(c)$ and  $D^+_2(c)$
 
 \begin{claim}\label{claim:D1}
 $\chi(D^+_1(c))\leq k$ for all $c\in [\alpha_k]$.
 \end{claim}
 
+\begin{proof}
+Let $\phi_1$ be the colouring that assigns to all vertices of level $L_i$ the colour $i$ modulo $k$, it 
+is easy to see that $\phi_1$ is a proper colouring of $D^+_1(c)$.
+\end{proof}
+
+\begin{claim}\label{claim:D2}
+$\chi(D^+_1(c))\leq 2k +1 $ for all $c\in [\alpha_k]$.
+\end{claim}
+
 \begin{subproof}
-Let $\phi_1$ be the colouring that assigns to all vertices of level $L_i$ the colour $i$ modulo $k$.
+We will show that $D^+_1(c)$ is $2k$ degenerate by showing that the maximum oudegree is smaller than $k$.  
 
-Let us show that $\phi_1$ is a proper colouring of $D^+_1(c)$. 
-
-Suppose for a contradiction that it is not the case. There are two vertices $x$ and $y$ of $X^+(c)$ such that $x$ belongs to $L_i$ and $x$ belongs to $L_j$.  
-If $j-i> k$, then there is no arc between $x$ and $y$.
-
+Let $x$ and $y$ be two adjacent vertices of $D^+_1(c)$.
 Let $C_x$ be the cycle of $L_i$ such that $x \in C_x$ and $C_y$ the cycle of $L_j$ such that $y \in C_y$.
 By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
 In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+(c)$, then $C[y,t_{p-1,p}]$ has length at least $k$.
 
 Assume that $xy$ is an arc. In $\bigcup_{i=1}^{p-1} C_i$, there is a dipath $P$ from $t_{p-1,p}$ to $x$. This path has length at least $k$ because
 it must go through all levels $L_{i'}$, $i\leq i'\leq j-1$ because the vertices of any cycle of ${\cal S}$ are in two consecutive levels.
-Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C[y,t_{p-1,p}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C_p[y,t_{p-1,p}]$ is a subdivision of $P(k,1;k)$, a contradiction.
 
-The case where the arc is from $y$ to $x$ is similar. \FH{Je ne vois pas comment}
+Suppose now that $yx$ is an arc. Assume moreover that $C_x$ is not an ancestor of $C_y$. In particular, $C_2$ is the father of $C_1$
+and there exists a path $P$ from $t_{1,2}$ to $y$ in $\bigcup_{i=2}^{p-1} C_i$ of length at least $k-1$ and 
+internaly disjoint from $C_1$. Hence the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ is a subdivsion of  $P(k,1;k)$.
+Suppose now $C_x$ is an ancestor of $C_y$. Note that $C_i$ is the father of $C_{i+1}$ for all $i < p$, and 
+in particular $C_1$ is the father of $C_2$. Let $P$ be the dipath of length greater than $k-1$ from $t_{1,2}$ 
+to $y$ $\bigcup_{i=2}^{p-1} C_i$. If $ \| C_1[x,t_{1,2}] \| \geq k$ 
+the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ is a subdivsion of  $P(k,1;k)$.
+
+This means the only arcs of$D^+_1(c)$ are the arcs $yx$ such that $C_x$ is an ancestor of $C_y$ and if $C_1 \dots C_P$ is the
+sequence of cycle from $C_x$ to $C_y$ on the tree, then $ \| C_1[x,t_{1,2}] \| < k$. 
+
+Suppose $y$ has outdegree $k$ in $D^+_1(c)$. We can enumerate the outneigbhours $x_1, x_2, \dots, x_k$ such that
+$x_i$ is an ancestor of all $x_j$ for $i<j \leq 2k$. For all $i$, let $C_{x_i}$ be the cycle containing $x_i$ and let
+$C_2$ be the cycle such that, $C_2$ belong to the path from $C_{x_1}$ to $C_y$ on the tree and $C_{x_k}$ is the father of $C_2$.
+ We proved that $C_{x_k}[t_{x_k},2]$ has size less than $k$ which means that $x_k$ belongs to the path $P$ along the tree from $x_1$
+ to $y$. Moreover both $P[x_1, x_k]$ and $P[x_k, y]$ has size greater than $k$ and $yx_1 \odot P[x_1, x_k]$,  $P[x_k, y]$ and $yx_k$
+ form a subdivision of $P(k,1;k)$. 
+
+%
+%Suppose for a contradiction that it is not the case. There are two vertices $x$ and $y$ of $X^+(c)$ such that $x$ belongs to $L_i$ and $x$ belongs to $L_j$.  
+%If $j-i> k$, then there is no arc between $x$ and $y$.
+%
+%Let $C_x$ be the cycle of $L_i$ such that $x \in C_x$ and $C_y$ the cycle of $L_j$ such that $y \in C_y$.
+%By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
+%In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+(c)$, then $C[y,t_{p-1,p}]$ has length at least $k$.
+%
+%Assume that $xy$ is an arc. In $\bigcup_{i=1}^{p-1} C_i$, there is a dipath $P$ from $t_{p-1,p}$ to $x$. This path has length at least $k$ because
+%it must go through all levels $L_{i'}$, $i\leq i'\leq j-1$ because the vertices of any cycle of ${\cal S}$ are in two consecutive levels.
+%Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C[y,t_{p-1,p}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+%
+%The case where the arc is from $y$ to $x$ is similar. \FH{Je ne vois pas comment}
 \end{subproof}
 
 
@@ -978,7 +1011,7 @@ and $l_{y,y'}$.
 
 
 
-Claims~\ref{claim:D0} and \ref{claim:D1}, together with Lemma~\ref{lem:decomp} imply $\chi(D[X^+(c)]) \leq  \dr$ for all $c\in [\alpha_k]$.
+Claims~\ref{claim:D0}, \ref{claim:D1} and  \ref{claim:D2} , together with Lemma~\ref{lem:decomp} imply $\chi(D[X^+(c)]) \leq  \dr$ for all $c\in [\alpha_k]$.
 Similarly, one can show that  $\chi(D[X^+(c)]) \leq  \dr$ for all $c\in [\alpha_k]$. So $$\chi(D[{\cal S}]\leq \sum_{c\in [\alpha_k]} \left (\chi(D[X^+(c)]) + \chi(D[X^-(c)]) \right) \leq \alpha_k \times 2k \cdot (2k)^k=\beta_k.$$
 \end{proof}
 
