@@ -63,7 +63,7 @@
 
 \newcommand{\cste}{ 8k \cdot (2\cdot \col + 14k) \cdot (2 \cdot \dr)}
 \newcommand{\qj}{\bf cste2}
-\newcommand{\dr}{ 2k^2 \cdot (2k)^k}
+\newcommand{\dr}{ (2k+1)\odot k \cdot (2k)^k}
 \newcommand{\col}{(6k^2)^{3k}}
 \newcommand{\free}{subdivision-free}
 
@@ -878,9 +878,9 @@ $\chi(D^+_1(c))\leq 2k +1 $ for all $c\in [\alpha_k]$.
 \end{claim}
 
 \begin{subproof}
-We will show that $D^+_1(c)$ is $2k$ degenerate by showing that the maximum oudegree is smaller than $k$.  
+We will show that $D^+_2(c)$ is $2k$ degenerate by showing that the maximum oudegree is smaller than $k$.  
 
-Let $x$ and $y$ be two adjacent vertices of $D^+_1(c)$.
+Let $x$ and $y$ be two adjacent vertices of $D^+_2(c)$.
 Let $C_x$ be the cycle of $L_i$ such that $x \in C_x$ and $C_y$ the cycle of $L_j$ such that $y \in C_y$.
 By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
 In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+(c)$, then $C[y,t_{p-1,p}]$ has length at least $k$.
@@ -897,10 +897,10 @@ in particular $C_1$ is the father of $C_2$. Let $P$ be the dipath of length grea
 to $y$ $\bigcup_{i=2}^{p-1} C_i$. If $ \| C_1[x,t_{1,2}] \| \geq k$ 
 the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ is a subdivsion of  $P(k,1;k)$.
 
-This means the only arcs of$D^+_1(c)$ are the arcs $yx$ such that $C_x$ is an ancestor of $C_y$ and if $C_1 \dots C_P$ is the
+This means the only arcs of$D^+_2(c)$ are the arcs $yx$ such that $C_x$ is an ancestor of $C_y$ and if $C_1 \dots C_P$ is the
 sequence of cycle from $C_x$ to $C_y$ on the tree, then $ \| C_1[x,t_{1,2}] \| < k$. 
 
-Suppose $y$ has outdegree $k$ in $D^+_1(c)$. We can enumerate the outneigbhours $x_1, x_2, \dots, x_k$ such that
+Suppose $y$ has outdegree $k$ in $D^+_2(c)$. We can enumerate the outneigbhours $x_1, x_2, \dots, x_k$ such that
 $x_i$ is an ancestor of all $x_j$ for $i<j \leq 2k$. For all $i$, let $C_{x_i}$ be the cycle containing $x_i$ and let
 $C_2$ be the cycle such that, $C_2$ belong to the path from $C_{x_1}$ to $C_y$ on the tree and $C_{x_k}$ is the father of $C_2$.
  We proved that $C_{x_k}[t_{x_k},2]$ has size less than $k$ which means that $x_k$ belongs to the path $P$ along the tree from $x_1$
