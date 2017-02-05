@@ -847,41 +847,39 @@ Set $X^+=V(C_0) \cup \bigcup_{\i\geq 1} X^+_i$ and $X^-=\bigcup_{i\geq 1} X^-_i$
 %
 %\end{proof}
 
-Let $\phi$ be a colouring of $\bigcup {\cal S}$ given by Lemma~\ref{lem:col-union-cycle}.
-For every colour $c\in [\alpha_k]$, let $X^+(c)$ be the set $X^+\cap \phi^{-1}(c)$ of vertices of $X^+$ coloured $c$, and $X^-(c)$ the set $X^-\cap \phi^{-1}(c)$ of vertices of $X^-$ coloured $c$. Similarly, let  $X^+_i(c)= X^+_i\cap \phi^{-1}(c)$ and $X^-_i(c)= X^-_i\cap \phi^{-1}(c)$.
+In order, to prove the lemma, we shall prove the chromatic numbers of $D[X^-]$ and $D[X^+]$ are at most $\beta_k/2$.
+This yields the result as $\chi(D) \leq \chi(D[X^-]) +\chi(D[X^+])$.
 
 
-
-In order to prove the lemma, we shall prove that $\chi(D[X^+(c)]) \leq \dr$ for all $c\in [\alpha_k]$.
-To do so, we partition the set of arc of $D[X^+(c)]$ in $(A_0(c),A_1(c), A_2(c))$, where
+We partition the set of arc of $D[X^+]$ in $(A_0(c),A_1(c), A_2(c))$, where
 \begin{itemize}
-	\item $A_0(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to the same level, and
-	\item $A_1(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to different levels $i$ and $j$ with $ | i - j| < k$.	
-	\item $A_2(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to different levels $i$ and $j$ with $ | i - j| \geq k$.
+	\item $A_0$ is the set of arcs of $D[X^+]$ which ends belong to the same level, and
+	\item $A_1$ is the set of arcs of $D[X^+]$ which ends belong to different levels $i$ and $j$ with $ | i - j| < k$.	
+	\item $A_2$ is the set of arcs of $D[X^+]$ which ends belong to different levels $i$ and $j$ with $ | i - j| \geq k$.
 \end{itemize} 
 
-For $i \in [3]$, let $D^+_i(c)$ be the spanning subdigraph of $D[X^+(c)]$ with arc set $A_i(c)$.
-In the next three claims, we bound the chromatic number of $D^+_0(c)$, $D^+_1(c)$ and  $D^+_2(c)$.
+For $i \in [3]$, let $D^+_i$ be the spanning subdigraph of $D[X^+]$ with arc set $A_i$.
+In the next three claims, we bound the chromatic number of $D^+_0$, $D^+_1$ and  $D^+_2$.
 
 \begin{claim}\label{claim:D1}
-$\chi(D^+_1(c))\leq k$ for all $c\in [\alpha_k]$.
+$\chi(D^+_1)\leq k$.
 \end{claim}
 \begin{proof}
 Let $\phi_1$ be the colouring that assigns to all vertices of level $L_i$ the colour $i$ modulo $k$, it 
-is easy to see that $\phi_1$ is a proper colouring of $D^+_1(c)$.
+is easy to see that $\phi_1$ is a proper colouring of $D^+_1$.
 \end{proof}
 
 \begin{claim}\label{claim:D2}
-$\chi(D^+_2(c))\leq 2k+1$ for all $c\in [\alpha_k]$.
+$\chi(D^+_2)\leq 2k+1$.
 \end{claim}
 
 \begin{subproof}
-We will show that $D^+_2(c)$ is acyclic with maximum out-degree at most $2k$.  This directly implies that  $D^+_2(c)$ is $(k-1)$-degenerate, and so $\chi(D^+_2(c)) \leq 2k+1$.
+We will show that $D^+_2$ is acyclic with maximum out-degree at most $2k$.  This directly implies that  $D^+_2$ is $(k-1)$-degenerate, and so $\chi(D^+_2) \leq 2k+1$.
 
-Let $x$ and $y$ be two adjacent vertices of $D^+_2(c)$. Without loss of generality, we may assume that $x\in L_i$ and $y\in L_j$ for $i$ and $j$ such that $ j> i+k$.
+Let $x$ and $y$ be two adjacent vertices of $D^+_2$. Without loss of generality, we may assume that $x\in L_i$ and $y\in L_j$ for $i$ and $j$ such that $ j> i+k$.
 Let $C_x$ be a cycle of $L_i$ such that $x \in C_x$ and $C_y$ a cycle of $L_j$ such that $y \in C_y$.
 By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
-In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+(c)$, then $C[y,t_{p-1,p}]$ has length at least $k$.
+In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+$, then $C[y,t_{p-1,p}]$ has length at least $k$.
 
 Assume that $xy$ is an arc.  In $\bigcup_{i=1}^{p-1} C_i$, there is a dipath $P$ from $t_{p-1,p}$ to $x$. This path has length at least $k-1$ because
 it must go through all levels $L_{i'}$, $i\leq i'\leq j-1$ because the vertices of any cycle of ${\cal S}$ are in two consecutive levels.
@@ -899,18 +897,23 @@ to $y$ in $\bigcup_{i=2}^{p} C_i$. It has length at least $k-1$ since it goes th
 If $C_1[x,t_{1,2}]$ has length at least $k$, then 
 the union of $P \odot yx$, $C_1[t_{1,2},x]$, and $C_1[x,t_{1,2}]$  is a subdivsion of  $P(k,1;k)$.
 
-This means the only arcs of $D^+_2(c)$ are the arcs $yx$ such that $C_x$ is an ancestor of $C_y$ and if $C_1 \dots C_p$ is the
+This means the only arcs of $D^+_2$ are the arcs $yx$ such that $C_x$ is an ancestor of $C_y$ and if $C_1 \dots C_p$ is the
 sequence of ancestors from $C_x$ to $C_y$, then $C_1[x,t_{1,2}]$ has length less than $k$. 
-In particular, $D^+_2(c)$ is acyclic. Let us now show that is has out-degree at most $2k$.
+In particular, $D^+_2$ is acyclic. Let us now show that is has out-degree at most $2k$.
 
 
-Suppose for a contradiction that  $y$ has out-degree $2k+1$ in $D^+_2(c)$. We can enumerate its out-neigbhours $x_1, x_2, \dots, x_{2k}$ such that $x_i$ is an ancestor of all $x_j$ for $i<j \leq 2k$. Let $C_1 \dots C_p$ be  the sequence such that $x_1\in C_1$ and $C_p = C_y$ and for all $l\in [p-1]$, $C_l$ is the father of $C_{l+1}$.
+Suppose for a contradiction that  $y$ has out-degree $2k+1$ in $D^+_2$. We can enumerate its out-neigbhours $x_1, x_2, \dots, x_{2k}$ such that $x_i$ is an ancestor of all $x_j$ for $i<j \leq 2k$. Let $C_1 \dots C_p$ be  the sequence such that $x_1\in C_1$ and $C_p = C_y$ and for all $l\in [p-1]$, $C_l$ is the father of $C_{l+1}$.
 For all $i$, let $C_{l_i}$ be the cycle containing $x_i$.
 %  and let$C_2$ be the cycle such that, $C_2$ belong to the path from $C_{x_1}$ to $C_y$ on the tree and $C_{x_k}$ is the father of $C_2$.
  %We proved that $C_{x_k}[t_{x_k},2]$ has size less than $k$ which means that $x_k$ belongs to the path $P$ along the tree from $x_1$ to $y$.
  Let $P$ be the dipath from $x_1$ to $y$ in $\bigcup_{l\in [p]}C_l$. Let $z$ be the first vertex in $P$ on $C_{l_{k+1}}[x_{k+1}, t_{l_{k+1},l_{k+2}}]$.
- Both $P[x_1, z]$ has length at least $k-1$ and $P[z, y]$ has length at least $k$. Hence $(y,x_1) \odot P[x_1, z$, $(y,x_k)\odot C_{l_{k+1}}[x_{k+1},z]$, and $P[z, y]$ is a subdivision of $P(k,1;k)$, a contradiction.
+ Both $P[x_1, z]$ has length at least $k-1$ and $P[z, y]$ has length at least $k$. Hence the union of $(y,x_1) \odot P[x_1, z]$, $(y,x_k)\odot C_{l_{k+1}}[x_{k+1},z]$, and $P[z, y]$ is a subdivision of $P(k,1;k)$, a contradiction.
 \end{subproof}
+
+
+
+Let $\phi$ be a colouring of $\bigcup {\cal S}$ given by Lemma~\ref{lem:col-union-cycle}.
+For every colour $c\in [\alpha_k]$, let $X^+(c)$ be the set $X^+\cap \phi^{-1}(c)$ of vertices of $X^+$ coloured $c$, and $X^-(c)$ the set $X^-\cap \phi^{-1}(c)$ of vertices of $X^-$ coloured $c$. Similarly, let  $X^+_i(c)= X^+_i\cap \phi^{-1}(c)$ and $X^-_i(c)= X^-_i\cap \phi^{-1}(c)$.
 
 
 
