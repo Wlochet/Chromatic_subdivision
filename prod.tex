@@ -63,7 +63,7 @@
 
 \newcommand{\cste}{ 8k \cdot (2\cdot \col + 14k) \cdot (2 \cdot \dr)}
 \newcommand{\qj}{\bf cste2}
-\newcommand{\dr}{ (2k+1)\cdot k \cdot (2k)^{2k}}
+\newcommand{\dr}{ (2k+1)\cdot k \cdot (4k)^{4k}}
 \newcommand{\col}{(6k^2)^{3k}}
 \newcommand{\free}{subdivision-free}
 
@@ -491,7 +491,7 @@ Let ${\cal C}$ be a maximal nice collection of cycle in $D$.  Lemmas \ref{lem:co
 In this section, we present a proof of Theorem \ref{th:main}.
 
 We prove the result by the contrapositive. We consider a digraph $D$ that contains no subdivision of $P(k,1;k)$.
-We shall prove that $\chi(D) \leq  \gamma_k$ for some constant $\gamma_k$.
+We shall prove that $\chi(D) \leq  C_k= \cste$.
 
 
 
@@ -774,7 +774,7 @@ Hence, by the induction hypothesis, we can extend $\phi_1$ to $A$. Doing this fo
 
 
 
-Set $\beta_k=\alpha_k \cdot (2k+1) \cdot(2k)^{2k+1}$.
+Set $\beta_k=\alpha_k \cdot (2k)^{k+1}$.
 
 \begin{lemma}\label{lem:DC}
 Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph $D$.
@@ -789,43 +789,63 @@ there exists a cycle in $L_i$ intersecting $C_l$.  For every $C_l\in L_{i+1}$, w
 A cycle $C$ is an {\it ancestor} of $C'$ if there is a sequence $C=C_1, \dots , C_q=C'$ such that $C_i$ is the father of $C_{i+1}$ for all $i\in [q-1]$.
 
 For a vertex $x$ of $\bigcup \mathcal{S}$, we say that $x$ \textit{belongs to} level $L_i$ if
-$i$ is the smallest integer such that there exists a cycle in $L_i$ containing $x$. Observe that the vertices of each cycle $C_l$ of ${\cal S}$ belong to consecutive levels, that is there exists $i$ such that $V(C_l)\subseteq L_i\cup L_{i+1}$.
+$i$ is the smallest integer such that there exists a cycle in $L_i$ containing $x$. Moreover, if $v$ belongs to $L_i$, let $\Len(v)$ be the set of lengths of $C_l[t_{1,j},v]$ for all cycle $C_l \in  L_i$ containing $v$.
+Observe that the vertices of each cycle $C_l$ of ${\cal S}$ belong to consecutive levels, that is there exists $i$ such that $V(C_l)\subseteq L_i\cup L_{i+1}$.
 
 
 
 
-Let $C_l$ be a cycle and $C_{l'}$ its father. 
+Let $C_l$ be a cycle of $L_i$, $i \geq 1$ and $C_{l'}$ its father. 
 %let $Q_l$ be the subdipath of $C_l$ which contains
 %all the vertices that are at distance at most $k$ from $P_{l,a}$ in the cycle underlying $C_l$.
 %Then the dipath $C_l[s(Q_l), s_{l,a}]$ and  $C_j[t_{a,l},t (Q_l)]$ have length $k$.
 %Set $Q^-_l=C[s(Q_l), s_{l,a}[$ and $Q^+_l=C]t_{l,a}, t(Q_l)]$.
-Let $r_l$ be the vertex such that $C_l[t_{l,l'}, r_l]$ has length $k$.
-Set $R^-_l$ be the set of vertices of $C_l]r_l, s_{l,l'}[$  and $R^+_l$ be the set of vertices of $C_l ]t_{l,l'}, r_l]$. Note that for a vertex $x$ in  $R^+_l$, $C_l[x,s_{l,l'}]$ is longer than $k$. 
+Let $p^+_l$ and $r^+_l$ be the vertices such that $C_l[t_{l,l'}, p^+_l]$ and $C_l[p^+_l,r^+_l]$  have length $k$. 
+Let $p^-_l$ and $r^-_l$ be the vertices such that $C_l[p^-_l,s_{l,l'}]$ and $C_l[r^-_l,p^-_l]$ have length $k$.
+Let $R^-_l$ be the set of vertices of $C_l]r^-_l, s_{l,l'}[$, $P^-_l$ the set of vertices of $C_l]p^-_l, s_{l,l'}[$,
+$R^+_l$ the set of vertices of $C_l ]t_{l,l'}, r_l[$, $P^+_l$ the set of vertices of $C_l ]t_{l,l'}, r_l[$ and finally let 
+$R'_l$ be the set of vertices belonging to $L_i$ in $C_l \setminus \{ R^+_l \cup R^-_l \}$. 
+
+
 
 \begin{claim}\label{claim:Rpos}
-Let $x$ be a vertex in $L_i$, $i\geq 1$, and $C_l$ and $C_m$ be two vertices of $L_i$ containing $x$.
-If $x \in R^+_l$, then  $x \in  R^+_m$.
+Let $x$ be a vertex in $L_i$ with $i\geq 1$. Let $C_l$ and $C_m$ be two cycles of $L_i$ containing $x$.
+Then either $x \in P^+_l$ and  $x \in  P^+_m$ or $x \in P^-_l$ and  $x \in  P^-_m$
 \end{claim}
 
 \begin{subproof}
-Suppose for a contradiction that $x\in R^+_l$ and $x \not \in  R^+_m$. %We can assume $t_{l,m}$ {\bf ???}.
+Suppose for a contradiction that $x\in P^+_l$ and $x \not \in  P^+_m$  . %We can assume $t_{l,m}$ {\bf ???}.
 Let $C_{l'}$ and $C_{m'}$ be the fathers of $C_l$ and $C_m$ respectively (they can be the same cycle). 
-By definition of the $L_j$'s,  there exists a dipath $P$ from $t_{l,l'}$ to $s_{m,m'}$ only going through $C_{l'}$, $C_{s'}$ and their ancestors.
+By definition of the $L_j$'s,  there exists a dipath $P$ from $t_{l,l'}$ to $s_{m,m'}$ only going through 
+$C_{l'}$, $C_{s'}$ and their ancestors.
 In particular $P$ is disjoint from $C_l \setminus C_{l'}$ and  $C_s \setminus C_{s'}$.
-Observe that $C_m[s_{m,m'},t_{l,m}]$ contains  $C_m[t_{m,m'}, x]$ which has length at least $k$ because $x\notin R^+_m$.
-Thus the union of $C_l[t_{l,m},s_{l,l'}] \odot P$, $C_m[t_{l,m},s_{m,m'}]$, and  $C_m[s_{m,m'},t_{l,m}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+Observe that $C_m[s_{m,m'},t_{l,m}]$ contains  $C_m[t_{m,m'}, x]$ which has length at least $k$ because $x\notin P^+_m$.
+Thus the union of $C_l[t_{l,m},s_{l,l'}] \odot P$, $C_m[t_{l,m},s_{m,m'}]$, 
+and  $C_m[s_{m,m'},t_{l,m}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+The case where  $x\in P^-_l$ and $x \not \in  P^-_m$ is symmetrical and the case where $x$ doesn't belong to either $P^-_l \cup P^+_l$
+nor $P^-_m \cup P^+_m$ is identical.
 \end{subproof}
 
-In the very same way, one shows the following.
 
-\begin{claim}\label{claim:Rneg}
-Let $x$ be a vertex in $L_i$, $i\geq 1$, and $C_l$ and $C_m$ be two vertices of $L_i$ containing $x$.
-If $x \in R^-_l$, then  $x \in  R^-_m$.
+\begin{claim} \label{claim:X'}
+Let $x$ and $y$ be two vertices beloning to $L_i$ such that $x \in C_m$ and $x \in C_l$ where $C_m, C_l \in L_i$.
+If $x \in R'_l$ and $y \in R'_m$ then $x$ and $y$ are non adjacent.
 \end{claim}
 
-Claim~\ref{claim:Rpos} and \ref{claim:Rneg} imply that each level $L_i$ may be partitioned into two sets $X^+_i$ and $X^-_i$, where
-$X^+_i$ (resp.  $X^-_i$) is the set of vertices $x$ of $L_i$ such that every $x\in R^+_l$ (resp. $x\in R^-_l$) for every cycle $C_l$ of $L_i$ containing $x$.
-Set $X^+=V(C_0) \cup \bigcup_{\i\geq 1} X^+_i$ and $X^-=\bigcup_{i\geq 1} X^-_i$. Clearly $(X^+, X^-)$ is a partition of $V(D[{\cal S}])$.
+\begin{subproof}
+Suppose for a contradiction that $xy$ is an arc of $D$. Moreover suppose that $C_m$ and $C_y$ intersect, by \ref{claim:Rpos}, $s_{m,l}$
+belongs to $P^-_m$, $P^+_m$ or $L_{i-1}$, and by construction of $R'_m$, $C_m[x,s_{m,l}]$ and 
+$C_m[s_{m,l},x]$ are both longer than $k$. Therefore they form with $xy \odot C_l[y,s_{m,l}]$ a subdivision of $P(k,1;k)$.
+Similarely, if they don't intersect, let $C_l'$ and $C_m'$ be the fathers of $C_l$ and $C_m$. 
+Let $P$ be the dipath of $\cup_{j<i} L_j$ from $s_{l,l'}$ to $s_{m,m'}$, then the union of $C_m[s_{m,m'}, x]$, $C_m[x,s_{l,l'}]$ and
+$xy \odot C_l[y, s_{l,l'}] \odot P$ form a subdivsion of $P(k,1,;k)$.
+\end{subproof}
+
+Claim~\ref{claim:Rpos} imply that each level $L_i$ may be partitioned into sets $X^+_i$, $X^-_i$ and $X'_i$, where
+$X^+_i$ (resp.  $X^-_i$) is the set of vertices $x$ of $L_i$ such that every $x\in R^+_l$ (resp. $x\in R^-_l$)
+for every cycle $C_l$ of $L_i$ containing $x$ and $X'_i$ is the rest of the vertices. 
+Set $X^+=V(C_0) \cup \bigcup_{\i\geq 1} X^+_i$, $X^-=\bigcup_{i\geq 1} X^-_i$ and $X'=\bigcup_{i\geq 1} X'_i$.
+Clearly $(X^+, X^-, X')$ is a partition of $V(D[{\cal S}])$.
 
 %\begin{lemma}\label{lem:Ql}
 %Suppose there exists an arc between $x_1 \in C_{l_1}$ and $x_2 \in C_{l_2}$. If $C_{l_1}$ and $C_{l_1}$ both belong to the same
@@ -847,108 +867,109 @@ Set $X^+=V(C_0) \cup \bigcup_{\i\geq 1} X^+_i$ and $X^-=\bigcup_{i\geq 1} X^-_i$
 %
 %\end{proof}
 
-In order, to prove the lemma, we shall prove the chromatic numbers of $D[X^-]$ and $D[X^+]$ are at most $\beta_k/2$.
-This yields the result as $\chi(D) \leq \chi(D[X^-]) +\chi(D[X^+])$.
-
-
-We partition the set of arc of $D[X^+]$ in $(A_0(c),A_1(c), A_2(c))$, where
-\begin{itemize}
-	\item $A_0$ is the set of arcs of $D[X^+]$ which ends belong to the same level, and
-	\item $A_1$ is the set of arcs of $D[X^+]$ which ends belong to different levels $i$ and $j$ with $ | i - j| < k$.	
-	\item $A_2$ is the set of arcs of $D[X^+]$ which ends belong to different levels $i$ and $j$ with $ | i - j| \geq k$.
-\end{itemize} 
-
-For $i \in [3]$, let $D^+_i$ be the spanning subdigraph of $D[X^+]$ with arc set $A_i$.
-In the next three claims, we bound the chromatic number of $D^+_0$, $D^+_1$ and  $D^+_2$.
-
-\begin{claim}\label{claim:D1}
-$\chi(D^+_1)\leq k$.
-\end{claim}
-\begin{proof}
-Let $\phi_1$ be the colouring that assigns to all vertices of level $L_i$ the colour $i$ modulo $k$, it 
-is easy to see that $\phi_1$ is a proper colouring of $D^+_1$.
-\end{proof}
-
-\begin{claim}\label{claim:D2}
-$\chi(D^+_2)\leq 2k+1$.
-\end{claim}
-
-\begin{subproof}
-We will show that $D^+_2$ is acyclic with maximum out-degree at most $2k$.  This directly implies that  $D^+_2$ is $(k-1)$-degenerate, and so $\chi(D^+_2) \leq 2k+1$.
-
-Let $x$ and $y$ be two adjacent vertices of $D^+_2$. Without loss of generality, we may assume that $x\in L_i$ and $y\in L_j$ for $i$ and $j$ such that $ j> i+k$.
-Let $C_x$ be a cycle of $L_i$ such that $x \in C_x$ and $C_y$ a cycle of $L_j$ such that $y \in C_y$.
-By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
-In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+$, then $C[y,t_{p-1,p}]$ has length at least $k$.
-
-Assume that $xy$ is an arc.  In $\bigcup_{i=1}^{p-1} C_i$, there is a dipath $P$ from $t_{p-1,p}$ to $x$. This path has length at least $k-1$ because
-it must go through all levels $L_{i'}$, $i\leq i'\leq j-1$ because the vertices of any cycle of ${\cal S}$ are in two consecutive levels.
-Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C_p[y,t_{p-1,p}]$ is a subdivision of $P(k,1;k)$, a contradiction.
-Hence $xy$ is not an arc and so $yx$ is an arc.
-
-
-Assume that $C_x$ is  not an ancestor of $C_y$.  Then $C_2$ is the father of $C_1$
-and there exists a path $P$ from $t_{1,2}$ to $y$ in $\bigcup_{i=2}^{p-1} C_i$ of length at least $k-1$ and 
-internally disjoint from $C_1$. Recall that  $C_1[x,t_{1,2}]$ has length at least $k$ because $x\in X^+$. Hence the union of $P \odot yx$, $C_1[t_{1,2},x]$, and $C_1[x,t_{1,2}]$ is a subdivision of  $P(k,1;k)$, a contradiction. Thus $C_1[x,t_{1,2}]$ has length less than $k$.
-
-Thus $C_x$ is an ancestor of $C_y$.  Hence $C_i$ is the father of $C_{i+1}$ for all $i \in [p-1]$, and 
-in particular $C_1$ is the father of $C_2$. Let $P$ be the dipath from $t_{1,2}$ 
-to $y$ in $\bigcup_{i=2}^{p} C_i$. It has length at least $k-1$ since it goes through all levels from $L_i$ to $L_j$.
-If $C_1[x,t_{1,2}]$ has length at least $k$, then 
-the union of $P \odot yx$, $C_1[t_{1,2},x]$, and $C_1[x,t_{1,2}]$  is a subdivsion of  $P(k,1;k)$.
-
-This means the only arcs of $D^+_2$ are the arcs $yx$ such that $C_x$ is an ancestor of $C_y$ and if $C_1 \dots C_p$ is the
-sequence of ancestors from $C_x$ to $C_y$, then $C_1[x,t_{1,2}]$ has length less than $k$. 
-In particular, $D^+_2$ is acyclic. Let us now show that is has out-degree at most $2k$.
-
-
-Suppose for a contradiction that  $y$ has out-degree $2k+1$ in $D^+_2$. We can enumerate its out-neigbhours $x_1, x_2, \dots, x_{2k}$ such that $x_i$ is an ancestor of all $x_j$ for $i<j \leq 2k$. Let $C_1 \dots C_p$ be  the sequence such that $x_1\in C_1$ and $C_p = C_y$ and for all $l\in [p-1]$, $C_l$ is the father of $C_{l+1}$.
-For all $i$, let $C_{l_i}$ be the cycle containing $x_i$.
-%  and let$C_2$ be the cycle such that, $C_2$ belong to the path from $C_{x_1}$ to $C_y$ on the tree and $C_{x_k}$ is the father of $C_2$.
- %We proved that $C_{x_k}[t_{x_k},2]$ has size less than $k$ which means that $x_k$ belongs to the path $P$ along the tree from $x_1$ to $y$.
- Let $P$ be the dipath from $x_1$ to $y$ in $\bigcup_{l\in [p]}C_l$. Let $z$ be the first vertex in $P$ on $C_{l_{k+1}}[x_{k+1}, t_{l_{k+1},l_{k+2}}]$.
- Both $P[x_1, z]$ has length at least $k-1$ and $P[z, y]$ has length at least $k$. Hence the union of $(y,x_1) \odot P[x_1, z]$, $(y,x_k)\odot C_{l_{k+1}}[x_{k+1},z]$, and $P[z, y]$ is a subdivision of $P(k,1;k)$, a contradiction.
-\end{subproof}
-
-
-
 Let $\phi$ be a colouring of $\bigcup {\cal S}$ given by Lemma~\ref{lem:col-union-cycle}.
 For every colour $c\in [\alpha_k]$, let $X^+(c)$ be the set $X^+\cap \phi^{-1}(c)$ of vertices of $X^+$ coloured $c$, and $X^-(c)$ the set $X^-\cap \phi^{-1}(c)$ of vertices of $X^-$ coloured $c$. Similarly, let  $X^+_i(c)= X^+_i\cap \phi^{-1}(c)$ and $X^-_i(c)= X^-_i\cap \phi^{-1}(c)$.
 
 
 
-For every vertex $v$ in $X^+_i$, let $\Len(v)$ be the set of lengths of $C_l[t_{l,l'},v]$ for all cycle $C_l \in  L_i$ containing $v$ with father $C_{l'}$.
-Observe that $\Len(v) \subseteq [k]$ for all $v\in X^+_i$.
-\FH{Attention ceci n'est pas vrai pour $X^-$ car $R^-_l$ peut etre aussi grand qu'on veut}
+In order to prove the lemma, we shall prove that $\chi(D[X^+(c)]) < \dr$ for all $c\in [\alpha_k]$.
+By symmetry this will show that $\chi(D[X^-(c)]) < \dr$ and since $D[X^-(c)]$ doesn't have any arc we will
+be able to conclude.
+To bound $\chi(D[X^+(c)])$ , we partition the set of arc of $D[X^+(c)]$ in $(A_0(c),A_1(c), A_2(c))$, where
+\begin{itemize}
+	\item $A_0(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to the same level, and
+	\item $A_1(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to different levels $i$ and $j$ with $ \| i - j\| \leq k$.	
+	\item $A_2(c)$ is the set of arcs of $D[X^+(c)]$ which ends belong to different levels $i$ and $j$ with $ \| i - j\| > k$.
+\end{itemize} 
+
+Let $D^+_i(c)$ be, for $i \in [3]$ the spanning subdigraph of $D[X^+(c)]$ with arc set $A_i(c)$.
+In the next three claims, we bound the chromatic number of $D^+_0(c)$, $D^+_1(c)$ and  $D^+_2(c)$
+
+\begin{claim}\label{claim:D1}
+$\chi(D^+_1(c))\leq k$ for all $c\in [\alpha_k]$.
+\end{claim}
+
+\begin{proof}
+Let $\phi_1$ be the colouring that assigns to all vertices of level $L_i$ the colour $i$ modulo $k$, it 
+is easy to see that $\phi_1$ is a proper colouring of $D^+_1(c)$.
+\end{proof}
+
+\begin{claim}\label{claim:D2}
+$\chi(D^+_1(c))\leq 2k +1 $ for all $c\in [\alpha_k]$.
+\end{claim}
+
+\begin{subproof}
+We will show that $D^+_2(c)$ is $2k$ degenerate by showing that the maximum oudegree is smaller than $k$.  
+
+Let $x$ and $y$ be two adjacent vertices of $D^+_2(c)$.
+Let $C_x$ be the cycle of $L_i$ such that $x \in C_x$ and $C_y$ the cycle of $L_j$ such that $y \in C_y$.
+By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
+In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+(c)$, then $C[y,t_{p-1,p}]$ has length at least $k$.
+
+Assume that $xy$ is an arc. In $\bigcup_{i=1}^{p-1} C_i$, there is a dipath $P$ from $t_{p-1,p}$ to $x$. This path has length at least $k$ because
+it must go through all levels $L_{i'}$, $i\leq i'\leq j-1$ because the vertices of any cycle of ${\cal S}$ are in two consecutive levels.
+Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C_p[y,t_{p-1,p}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+
+Suppose now that $yx$ is an arc. Assume moreover that $C_x$ is not an ancestor of $C_y$. In particular, $C_2$ is the father of $C_1$
+and there exists a path $P$ from $t_{1,2}$ to $y$ in $\bigcup_{i=2}^{p-1} C_i$ of length at least $k-1$ and 
+internaly disjoint from $C_1$. Hence the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ is a subdivsion of  $P(k,1;k)$.
+Suppose now $C_x$ is an ancestor of $C_y$. Note that $C_i$ is the father of $C_{i+1}$ for all $i < p$, and 
+in particular $C_1$ is the father of $C_2$. Let $P$ be the dipath of length greater than $k-1$ from $t_{1,2}$ 
+to $y$ $\bigcup_{i=2}^{p-1} C_i$. If $ \| C_1[x,t_{1,2}] \| \geq k$ 
+the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ is a subdivsion of  $P(k,1;k)$.
+
+This means the only arcs of$D^+_2(c)$ are the arcs $yx$ such that $C_x$ is an ancestor of $C_y$ and if $C_1 \dots C_P$ is the
+sequence of cycle from $C_x$ to $C_y$ on the tree, then $ \| C_1[x,t_{1,2}] \| < k$. 
+
+Suppose $y$ has outdegree $k$ in $D^+_2(c)$. We can enumerate the outneigbhours $x_1, x_2, \dots, x_k$ such that
+$x_i$ is an ancestor of all $x_j$ for $i<j \leq 2k$. For all $i$, let $C_{x_i}$ be the cycle containing $x_i$ and let
+$C_2$ be the cycle such that, $C_2$ belong to the path from $C_{x_1}$ to $C_y$ on the tree and $C_{x_k}$ is the father of $C_2$.
+ We proved that $C_{x_k}[t_{x_k},2]$ has size less than $k$ which means that $x_k$ belongs to the path $P$ along the tree from $x_1$
+ to $y$. Moreover both $P[x_1, x_k]$ and $P[x_k, y]$ has size greater than $k$ and $yx_1 \odot P[x_1, x_k]$,  $P[x_k, y]$ and $yx_k$
+ form a subdivision of $P(k,1;k)$. 
+
+%
+%Suppose for a contradiction that it is not the case. There are two vertices $x$ and $y$ of $X^+(c)$ such that $x$ belongs to $L_i$ and $x$ belongs to $L_j$.  
+%If $j-i> k$, then there is no arc between $x$ and $y$.
+%
+%Let $C_x$ be the cycle of $L_i$ such that $x \in C_x$ and $C_y$ the cycle of $L_j$ such that $y \in C_y$.
+%By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of cycle $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
+%In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+(c)$, then $C[y,t_{p-1,p}]$ has length at least $k$.
+%
+%Assume that $xy$ is an arc. In $\bigcup_{i=1}^{p-1} C_i$, there is a dipath $P$ from $t_{p-1,p}$ to $x$. This path has length at least $k$ because
+%it must go through all levels $L_{i'}$, $i\leq i'\leq j-1$ because the vertices of any cycle of ${\cal S}$ are in two consecutive levels.
+%Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C[y,t_{p-1,p}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+%
+%The case where the arc is from $y$ to $x$ is similar. \FH{Je ne vois pas comment}
+\end{subproof}
+
 
 
 \begin{claim}\label{claim:D0}
-$\chi(D^+_0(c))\leq (2k)^{2k}$ for all $c\in [\alpha_k]$. 
+$\chi(D^+_0(c))\leq (4k)^{4k}$ for all $c\in [\alpha_k]$. \FH{Attention ici on a $(2k)^{2k}$ mais dans le Lemme et fin du Lemme seulement $(2k)^k$}
 \end{claim}
 \begin{subproof}
-Set $p=(2k)^{2k}$.
-Suppose for a contradiction that there exists $c$ such that $\chi(D^+_0(c)) > p$. 
-Observe that $D^+_0(c)$ is the disjoint union of the $D[X^+_i(c)]$. Thus there exists a level $L_i$ such that $\chi(D[X^+_i(c)]) >p$.
- By Theorem~\ref{thm:gallairoy}, there exists a dipath $P=(v_0,  \dots , v_{p})$ of length $p$ in $D[X^+_i(c)]$.
+Set $p=(4k)^{4k}$.
+Suppose for a contradiction that there exist $c$ such that $\chi(D^+_0(c)) > p$. 
+Observe that $D^+_0(c)$ is the disjoint union of the $D[X^+_i(c)]$. Thus there exists a level $L_i$ such that $\chi[X^+_i(c)] >p$.
+ By Theorem~\ref{thm:gallairoy}, there exists a dipath $P=(v_0,  \dots , v_{p})$ of length $p$.
 
-Recall that all vertices of $D[X^+_i(c)]$ are coloured $c$ by $\phi$ and that all subdipath of length $7k$ of any cycle in ${\cal C}$ are rainbow-coloured. Hence two vertices of  $D[X^+_i(c)]$ are at distance at least $7k$ on each cycle of ${\cal C}$.
-Consequently, two vertices $x,y$ of $P$ cannot be on a same cycle $C\in {\cal C}$, for the union of $C$ and $P[x,y]$ would contain a subdivision of
-$P(k,1;k)$. 
-
-
-
-
+\FH{reprendre ici}
+Note that all cycles intersect this path at most once.
+Suppose this dipath visits twice 
+the same cycle $C_1$ of $\mathcal{C}$. Because all the vertices belonging to the dipath receives colour $r$ in $c$ it means there exists a 
+dipath internally disjoint from $C_1$ between two vertices at distance at least $7k$ of the cycle $C_1$ in $\mathcal{C}$, which is impossible. 
 
 
 For $1\leq i\leq p$, let $m_i = \min \Len(v_i)$. 
-Lemma \ref{min} applied to $(m_i)_{1\leq i\leq p}$ yields a set $L$ of $2k^2$ indices of such that 
+Lemma \ref{min} applied to $(m_i)_{1\leq i\leq p}$ yields a set $L$ of $4k^2$ indices of such that 
 for any $i< j \in L$,  $m_i=m_j$ and $m_k > m_i$, for all $i< k < j$.
-Let $l_1 < l_2 < \cdots < l_{2k^2}$ be the elements of $L$ and let $m= m_{l_1} = \cdots = m_{l_{2k^2}}$.
+Let $l_1 < l_2 < \cdots < l_{4k^2}$ be the elements of $L$ and let $m= m_{l_1} = \cdots = m_{l_{4k^2}}$.
 
 
-For $1\leq j\leq 2k^2-1$, let $M_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Len(v_i)$.
+For $1\leq j\leq 4k^2-1$, let $M_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Len(v_i)$.
 By definition $M_j\leq k$.
-Applying Lemma~\ref{max} to $(M_j)_{1\leq j\leq 2k^2}$,  we get a sequence of size $2k$ $M_{j_0+1} \dots M_{j_0+{2k}}$ such that $M_{j_0+{2k}}$ is the greatest. 
+Applying Lemma~\ref{max} to $(M_j)_{1\leq j\leq 4k^2}$,  we get a sequence of size $2k$ $M_{j_0+1} \dots M_{j_0+{2k}}$ such that $M_{j_0+{2k}}$ is the greatest. 
 For sake of simplicity, we set $\ell_i =j_0+i$ for $1\leq i\leq 2k$.
 Let $f$ the smallest index not smaller than $\ell_{2k}$ for which $M_{\ell_{2k}} \in \Len (v_f)$. 
 
@@ -1012,7 +1033,7 @@ and $l_{y,y'}$.
 
 
 Claims~\ref{claim:D0}, \ref{claim:D1} and  \ref{claim:D2} , together with Lemma~\ref{lem:decomp} imply $\chi(D[X^+(c)]) \leq  \dr$ for all $c\in [\alpha_k]$.
-Similarly, one can show that  $\chi(D[X^+(c)]) \leq  \dr$ for all $c\in [\alpha_k]$. So $$\chi(D[{\cal S}]\leq \sum_{c\in [\alpha_k]} \left (\chi(D[X^+(c)]) + \chi(D[X^-(c)]) \right) \leq \alpha_k \times 2 \times \dr =\beta_k.$$
+Similarly, one can show that  $\chi(D[X^+(c)]) \leq  \dr$ for all $c\in [\alpha_k]$. So $$\chi(D[{\cal S}]\leq \sum_{c\in [\alpha_k]} \left (\chi(D[X^+(c)]) + \chi(D[X^-(c)]) \right) \leq \alpha_k \cdot (2k+1) \cdot  2k \cdot (4k)^{4k}=\beta_k.$$
 \end{proof}
 
 
