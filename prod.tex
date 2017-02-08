@@ -76,14 +76,14 @@
 
 % if needed include a line break (\\) at an appropriate place in the title
 
-\title{Some paths and chromatic number \FH{Find a better title}}
+\title{Internally disjoint directed paths in digraphs with large chromatic number}
 
 \author[1]{Nathann Cohen}
 \author[2,3]{Fr\'ed\'eric Havet}
 \author[2,3,4]{William Lochet}
 \author[5]{Raul Lopes}
 \affil[1]{ CNRS, LRI, Univ. Paris Sud, Orsay, France}
-\affil[2]{ Univ. C\^ote d'Azur, CNRS, I3S, UMR 7271, 06900 Sophia Antipolis, France}
+\affil[2]{ Universit\'e C\^ote d'Azur, CNRS, I3S, UMR 7271, Sophia Antipolis, France}
 \affil[3]{ INRIA, France}
 \affil[4]{ LIP, ENS de Lyon, France}
 \affil[5]{ Departamento de Computa\c{c}ao, Universidade Federal do Cear\'a, Fortaleza, Brazil}
@@ -95,9 +95,15 @@
 
 \maketitle
 
+\begin{abstract}
+We prove that there exists a constant $\gamma_k$ such that every strongly connected digraph with chromatic number at least $k$ contains
+two vertices joined $x$ and $y$ by three internally disjoint directed paths, one of which is from $x$ to $y$ and has length at least $k$ and one of which  is from $y$ to $x$ and has length at least $k$.
+We also show that there exist strongly connected digraphs with arbitrarily large chromatic number such that between any two vertices $x$ and $y$, there is no three internally disjoint directed paths all from $x$ to $y$ and there is no four internally disjoint directed paths, two from $x$ to $y$ and two from $y$ to $x$.
+\end{abstract}
+
 \section{Introduction}
 Throughout this paper, the {\it chromatic number} of a digraph $D$, denoted by $\chi(D)$, is the chromatic number of its underlying graph. 
-In a digraph $D$, a \emph{directed path}, or \emph{dipath} is an oriented path where all the arcs are oriented in the same direction.
+In a digraph $D$, a \emph{directed path}, or \emph{dipath} is an oriented path where all the arcs are oriented in the same direction, from the initial vertex towards the terminal vertex.
 
 A classical result due to Gallai, Hasse, Roy and Vitaver is the following. 
 \begin{theorem}[Gallai~\cite{Gal68}, Hasse~\cite{Has64}, Roy~\cite{Roy67}, Vitaver~\cite{Vit62}]\label{thm:gallairoy}
@@ -185,8 +191,11 @@ Let $k \geq 3$ be an integer and let $D$ be a strong digraph. If $\chi(D) >  (2k
 In Section~\ref{sec:main}, using the same approach but in a more complicated way, we prove our main result: 
 
 \begin{theorem}\label{th:main}
-There is a constant $\gamma_k$ such that if $D$ is a strong digraph with $\chi(D) > C_k$, then $D$ contains a subdvision of $P(k,1;k)$.
+There is a constant $\gamma_k$ such that if $D$ is a strong digraph with $\chi(D) > \gamma_k$, then $D$ contains a subdvision of $P(k,1;k)$.
 \end{theorem}
+
+We prove the above theorem for a huge constant $\gamma_k$. It can easily be lowered. However, we made no attempt to it here for two reasons:
+firstly, we would like to keep the proof as simple as possible; secondly using our method, there is no hope to get an optimal or near optimal value for $\gamma_k$.
 
 
 \medskip
@@ -204,13 +213,16 @@ Let $D$ be a digraph with $\delta^+(D) \geq 3k_1+2k_2+k_3-5$. Then $D$ contains 
 \section{Definitions and preliminaries}
 %%%%%%%%%%%%%%%%%%
 
+We follow standard terminology as used in \cite{BoMu08}. We denote by $[k]$ the set of integers $\{1, \dots , k\}$.
 
-We denote by $[k]$ the set of integers $\{1, \dots , k\}$.
 
-
+\smallskip
 
 Let $F$ be a digraph.
 A digraph $D$ is said to be {\it $F$-subdivision-free}, if it contains no subdivision of $F$.
+
+\smallskip
+
 
 The {\it union} of two digraphs $D_1$ and $D_2$ is the digraph  $D_1\cup D_2$ defined by $V(D_1\cup D_2) = V(D_1)\cup V(D_2)$ and 
 $A(D_1\cup D_2) = A(D_1)\cup A(D_2)$.
@@ -218,29 +230,31 @@ If ${\cal D}$ is a set of digraphs, we denote by $\bigcup {\cal D}$ the union of
 and $A(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} A(D)$.
 
 
-The following easy lemma is well-known.
-
-\begin{lemma}\label{lem:decomp}
-Let $D_1$ and $D_2$ be two digraphs.
-$\chi(D_1\cup D_2) \leq \chi(D_1)\times \chi(D_2)$.
-\end{lemma}
-
-
+\smallskip
 
 
 Let $P$ be a path. We denote by $s(P)$ its initial vertex and by $t(P)$ its terminal vertex.
 If $D$ is a directed path or a directed cycle, then we denote by $D[a,b]$ the subdipath of $D$ with initial vertex $a$ and terminal vertex $b$.
 We denote by $D[a,b[$ the dipath $D[a,b] -b$, by $C]a,b]$ the dipath $D[a,b] -a$, and by $D]a,b[$ the dipath $D]a,b[ -\{a,b\}$.
+If $P$ and $Q$ are two directed paths such that $V(P)\cap V(Q) =\{s(P)\}=\{t(Q)\}$, the {\it concatenation} of $P$ and $Q$, denoted by $P\odot Q$, is the dipath $P\cup Q$. 
 
-\medskip
+\smallskip
 
 %Let $k_1,k_2,k_3$ be positive integers. Let $P(k_1,k_2;k_3)$ be the digraph formed by three internally disjoint paths between two vertices $x,y$, two $(x,y)$-dipaths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$.
 %When we want to insist on the vertices $x$ and $y$, we denote it by $P_{xy}(k_1,k_2;k_3)$.
 %{\bf is it used ?}
 
+A digraph is {\it connected} (resp. {\it $2$-connected}) if its underlying graph is connected (resp. $2$-connected.
 The {\it connected components} of a digraph are the connected components of its underlying graph.
+A digraph $D$ is {\it strongly connected} or {\it strong} if for any two vertices $x,y$ there is directed path from $x$ to $y$.
+The {\it strong components} of a digraph are its maximal strong subdigraphs.
 
-Let $c$ be a colouring of a graph $G$. A subset of vertices or a subgraph $S$ of $G$ is {\it rainbow-coloured} if all vertices of $S$ have distinct colours.
+\smallskip
+
+Let $G$ be a graph or a digraph.
+A {\it proper $k$-colouring} of $G$ is a mapping $\phi: V(G) \rightarrow [k]$ such that $\phi(u) \neq \phi(v)$ whenever $u$ is adjacent to $v$. 
+$G$ is {\it $k$-colourable} if it admits a proper $k$-colouring. The {\it chromatic number} of $G$, denoted by $\chi(G)$, is the least integer $k$
+such that $G$ is $k$-colourable. 
 
 
 A (directed) graph $G$ is {\it $k$-degenerate} if every subgraph $H$ of $G$ has a vertex of degree at most $k$.
@@ -254,6 +268,54 @@ Let $G$ be a connected graph.
 Then $\chi(G)\leq \Delta(G)$ unless $G$ is a complete graph or an odd cycle.
 \end{theorem}
 
+
+The following easy lemma is well-known.
+
+\begin{lemma}\label{lem:decomp}
+Let $D_1$ and $D_2$ be two digraphs.
+$\chi(D_1\cup D_2) \leq \chi(D_1)\times \chi(D_2)$.
+\end{lemma}
+
+
+
+\begin{lemma}\label{lem:contrac}
+Let $D$ be a digraph, $D_1 \dots D_l$ be disjoint subdigraphs of $D$ and $D'$ the digraph obtained by contracting each $D_i$ into
+one vertex $d_i$. Then $\chi(D) \leq \chi(D')\cdot \max\{\chi(D_i) \mid i \in [l]\}$.
+\end{lemma}
+
+\begin{proof}
+
+Set $k_1 = \max\{\chi(D_i) \mid i \in [l]\}$ and $k_2 = \chi(D')$. For each $i$, let $\phi_i$ be a proper colouring of $D_i$ using colours in $[k_1]$ and let
+$\phi'$ be a proper colouring of $D'$ using colours in $[k_2]$. 
+Define $\phi : V(D) \rightarrow [k_1] \times [k_2]$ as follows. If $x$ is a vertex belonging to some $D_i$, then $\phi(x) = (\phi_i(x), \phi'(d_i))$, else $\phi(x) =(1,\phi'(x))$. 
+Let $x$ and $y$ be adjacent vertices of $D$. If they belong to the same subdigraph $D_i$, then $\phi_i(x) \not = \phi_i(y)$ and so $\phi(x) \not = \phi(y)$. If they do not belong
+to the same component, then the vertices corresponding to these vertices in $D_{\mathcal{C}}$ are adjacent and so $\phi(x) \not = \phi(y)$. 
+Thus $\phi$ is a proper colouring of $D$ using $k_1\cdot k_2$ colours. 
+\end{proof}
+
+
+
+The {\it rotative tournament on $2k-1$ vertices}, denoted by $R_{2k-1}$, is the tournament with vertex set $\{v_1, \dots , v_{2k-1}\}$ in which $v_i$ dominates $v_j$ if and only if $1\leq j-i \leq k-1$ (indices are modulo $2k-1$).
+
+
+\begin{proposition}\label{prop:tournoi}
+Every strong tournament of order $2k-1$ contains a $P(k,1;1)$-subdivision.
+\end{proposition}
+\begin{proof}
+Let $T$ be a strong tournament of order $2k-1$. By Camion's Theorem, it has a hamiltonian directed cycle $C=(v_1,v_2, \dots ,v_{2k-1},v_1)$.
+If there exists an arc $v_iv_j$ with $j-i\geq k$  (indices are modulo $2k-1$), then the union of  $C[v_i,v_j]$, $(v_i,v_j)$ and $C[v_j,v_i]$ is a $P(k,1;1)$-subdivision.
+Henceforth, we may assume that $T=R_{2k-1}$.
+Then the union of $C[v_1, v_{k-1}] \odot (v_{k-1}, v_{k+1}, v_{k+2})$,  $(v_1, v_{k}, v_{k+2})$, and $C[v_{k+2}, v_1]$ is a $P(k,1;1)$-subdivision.
+\end{proof}
+
+Let $F$ be a subdigraph of a digraph $D$. A {\em directed
+  ear} of $F$ in $D$ is a directed path in $D$ whose ends lie in $F$ but whose internal
+vertices do not.   The following lemma is well known.
+
+\begin{lemma}[Proposition 5.11 in \cite{BoMu08}] \label{lem:diear}
+Let $F$ be a nontrivial proper $2$-connected strong subdigraph of a
+$2$-connected strong digraph $D$. Then $F$ has a directed ear in $D$.
+\end{lemma}
 
 
 
@@ -294,46 +356,8 @@ If $i>m$, then $u_{i-1}=k$, and the subsequence of the $i-1$ first elements of $
 If $i\leq m$, apply the induction on $\sigma'=(u_t)_{i\leq t\leq p}$ which is a sequence of more than $(k-1)(m-1)$ integers in $[k-1]$, to get the result. 
 \end{proof}
 
-\begin{lemma}\label{lem:contrac}
-Let $D$ be a digraph, $D_1 \dots D_l$ be disjoint subdigraphs of $D$ and $D'$ the digraph obtained by contracting each $D_i$ into
-one vertex $d_i$. Then $\chi(D) \leq \chi(D')\cdot \max\{\chi(D_i) \mid i \in [l]\}$.
-\end{lemma}
-
-\begin{proof}
-
-Set $k_1 = \max\{\chi(D_i) \mid i \in [l]\}$ and $k_2 = \chi(D')$. For each $i$, let $c_i$ be a proper colouring of $D_i$ using colours in $[k_1]$ and let
-$c'$ be a proper colouring of $D'$ using colours in $[k_2]$. 
-Define $c : V(D) \rightarrow [k_1] \times [k_2]$ as follows. If $x$ is a vertex belonging to some $D_i$, then $c(x) = (c_i(x), c'(d_i))$, else $c(x) =(1,c'(x))$. 
-Let $x$ and $y$ be adjacent vertices of $D$. If they belong to the same subdigraph $D_i$, then $c_i(x) \not = c_i(y)$ and so $c(x) \not = c(y)$. If they do not belong
-to the same component, then the vertices corresponding to these vertices in $D_{\mathcal{C}}$ are adjacent and so $c(x) \not = c(y)$. 
-Thus $c$ is a proper colouring of $D$ using $k_1\cdot k_2$ colours. 
-\end{proof}
 
 
-
-The {\it rotative tournament on $2k-1$ vertices}, denoted by $R_{2k-1}$, is the tournament with vertex set $v_1, \dots , v_{2k-1}$ in which $v_i$ dominates $v_j$ if and only if $1\leq j-i \leq k-1$ (indices are modulo $2k-1$).
-
-
-\begin{proposition}\label{prop:tournoi}
-Every strong tournament of order $2k-1$ contains a $P(k,1;1)$-subdivision.
-\end{proposition}
-\begin{proof}
-Let $T$ be a strong tournament of order $2k-1$. By Camion's Theorem, it has a hamiltonian directed cycle $C=(v_1,v_2, \dots ,v_{2k-1},v_1)$.
-If there exists an arc $v_iv_j$ with $j-i\geq k$  (indices are modulo $2k-1$), then the union of  $C[v_i,v_j]$, $(v_i,v_j)$ and $C[v_j,v_i]$ is a $P(k,1;1)$-subdivision.
-Henceforth, we may assume that $T=R_{2k-1}$.
-Then the union of $C[v_1, v_{k-1}] \odot (v_{k-1}, v_{k+1}, v_{k+2})$,  $(v_1, v_{k}, v_{k+2})$, and $C[v_{k+2}, v_1]$ is a $P(k,1;1)$-subdivision.
-\end{proof}
-
-\FH{Il faut definir 2-connexe + dire que tout graphe contient un 2-connexe de meme nombre chromatique que lui}
-
-Let $F$ be a subdigraph of a digraph $D$. A {\em directed
-  ear} of $F$ in $D$ is a directed path in $D$ whose ends lie in $F$ but whose internal
-vertices do not.   The following lemma is well known.
-
-\begin{lemma}[Proposition 5.11 in \cite{BoMu08}] \label{lem:diear}
-Let $F$ be a nontrivial proper $2$-connected strong subdigraph of a
-$2$-connected strong digraph $D$. Then $F$ has a directed ear in $D$.
-\end{lemma}
 
 
 \section{Many paths between two vertices}
@@ -376,10 +400,10 @@ Let $D$ be a strong digraph.
 If $\chi(D)\geq 4$, then $D$ contains a $P(2,1;1)$-subdivision.
 \end{proposition}
 \begin{proof}
-Assume  $\chi(D)\geq 4$.
+Assume  $\chi(D)\geq 4$. Since every digraph contains a $2$-connected strong subdigraph with the same chromatic number, we may assume that $D$ is $2$-connected.
 Let $C$ be a shortest directed cycle in $D$. 
-It must be induced, so $\chi(D[C]=\chi(C) \leq 3$. 
-Now by Lemma~\ref{lem:diear}, $C$ has a directed ear$P$ in $D$. Necessarily, $P$ has length at least $2$ since $C$ is induced.
+It must be induced, so $\chi(D[C])=\chi(C) \leq 3$. 
+Now by Lemma~\ref{lem:diear}, $C$ has a directed ear $P$ in $D$. Necessarily, $P$ has length at least $2$ since $C$ is induced.
 Thus the union of $P$ and $C$ is a $P(2,1;1)$-subdivision.
 \end{proof}
 
@@ -390,7 +414,7 @@ The bound $4$ in Proposition~\ref{prop:p211} is best possible because a directed
 
 In the remaining of this section, we present a proof of Theorem~\ref{th:P11k}.
 
-A collection ${\cal C}$ of directed cycles is {\it nice} if all cycles of ${\cal C}$ have length at least $2k-2$, and
+Let  ${\cal C}$ be a collection of directed cycles. It is {\it nice} if all cycles of ${\cal C}$ have length at least $2k-2$, and
 any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on at most one vertex. %When this intersection exists, we call it $x_{i,j}$.
 A {\it component} of $\mathcal{C}$ is a connected component in the adjacency graph of $\mathcal{C}$, where vertices correspond to cycles in $\mathcal{C}$
 and two vertices are adjacent if the corresponding cycles intersect. Note that if ${\cal S}$ is a component of ${\cal C}$, then $\bigcup{\cal S}$ is 
@@ -654,6 +678,10 @@ In both case, $C_W[b_2, a_4]$ has length at least $k$.
 Furthermore, $C_W[a_4,b_2]$ has length at least $k$ because it contains $B_3$. Therefore the union of
 $C_W[b_2, a_4]$, $C_W[a_4,b_2]$ and $C'[b_2,a_4]=C_3[b_3,a_4]$ is a subdivision of of $P(k,1;k)$, a contradiction.
 \end{proof}
+
+
+Let $\phi$ be a colouring of $G$. A subset of vertices or a subgraph $S$ of $G$ is {\it rainbow-coloured} by $\phi$ if all vertices of $S$ have distinct colours.
+
 
 
 Set $\alpha_k=2\cdot \col + 14k$.
@@ -1067,7 +1095,6 @@ $$\chi(D) \leq \chi(D_0)\times \chi(D_1) \times \chi(D_2) \leq k(4k^2+2)(2\cdot 
 Consider $\mathcal{C}$ be a maximal $k$-suitable collection of cycles in $D$. Let $D'$ be the digraph obtained by contracting 
 every strong component $S$ of $\bigcup \mathcal{C}$ (which is $\bigcup {\cal S}$ for some component ${\cal S}$ of ${\cal C}$) into one vertex. For each connected component ${\cal S}_i$ we call $s_i$ the
 new vertex created.
-\FH{verifier que compo de ${\cal C}$ est defini}
 
 \begin{claim}\label{cl:nocycle}
 $\chi(D') \leq 8k$.
@@ -1090,7 +1117,7 @@ subdipath of length less than $k$. This contradicts the maximality of $\mathcal{
 
 Using Lemma \ref{lem:contrac} with
 Claim~\ref{cl:nocycle} and Lemma~\ref{lem:DC}, we get that $\chi(D) \leq 8k \cdot \beta_k$.
-This proves Theorem~\ref{th:main} for $\gamma_k=8k\cdot \beta_k = 8k^2(4k^2+2)(2\cdot (4k)^{4k} + 1) \alpha_k$.
+This proves Theorem~\ref{th:main} for $\gamma_k=8k\cdot \beta_k = 8k^2(4k^2+2)(2\cdot (4k)^{4k} + 1) (2\cdot \col + 14k)$.
 
 
 \begin{thebibliography}{XX}
