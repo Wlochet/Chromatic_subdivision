@@ -62,9 +62,9 @@
 A {\it $(k_1+k_2)$-bispindle} is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths pairwise internally disjoint.
 Recently Cohen et al. showed that for every $(1,1)$- bispindle $B$, there exists an integer $k$ such that every strong
 digraph with chromatic number greater than $k$ contains a subdivision of $B$. We investigate generalisation of
-this result by first showing constructions of strong digraphs with large chromatic number without any $(3,0)$-bispindle and then
-showing that strong digraphs with large chromatic number contains a subdivision of some $(2,1)$-bispindle, where at least two dipaths
-are long.    
+this result by first showing constructions of strong digraphs with large chromatic number without any $(3,0)$-bispindle
+or $(2,2)$-bispindle. Then we show that strong digraphs with large chromatic number contains a subdivision of some 
+$(2,1)$-bispindle, where at least two dipaths are long.    
 \end{abstract}
 
 \begin{keyword}
@@ -152,13 +152,12 @@ a subdivision of $P(k_1,k_2;k_3)$.
 As an evidence, we prove the follwing theorem:
 
 \begin{theorem}\label{thm:Pk1k}
-There is a function $f$ such that every strong digraph witch chromtic number at least $f(k)$ contains
+There is a function $f: \mathbb{N} \rightarrow \mathbb{N}$  such that every strong digraph witch chromtic number at least $f(k)$ contains
 a subdivsion of $P(k,1;k)$.
 \end{theorem}
 
 \section{Sktech of the main result}
-We will now sketch the proof that a digraph without any subdivision of $P(k,1;k)$ has bounded chromatic number.
-In what follows, $D$ is a digraph without any subdivision of $P(k,1;k)$.
+We will now sketch the proof that a digraph $D$ without any subdivision of $P(k,1;k)$ has bounded chromatic number.
 
 First observe that if the digraph is hamiltonian, then by degeneracy its chromatic number is bounded by $2k-1$.
 The idea of the proof is to use this remark to reduce to a digraph without large cycle by contracting the right parts of the digraph.
@@ -193,10 +192,12 @@ such that, each subpath of length $7k$ of each cycle of $\mathcal{C}$ is rainbow
 \end{lemma}
 
 The proof of this lemma uses induction on the number of cycle in a component. However, since removing one cycle from a component
-leaves components that shares paths together, we need to remove one cycle and some extra parts of the cycles intersecting it. 
+leaves components that share paths together, we need to remove one cycle and some extra parts of the cycles intersecting it to pass 
+the indcution. 
 
-Then we prove that $D'$ does not contain a cycle of length $8k$ while being
-strongly connected, which by Bondy's Theorem implies the following:
+Then we use the fact that $\mathcal{C}$ is maximal to
+prove that $D'$ does not contain a cycle of length greater than $8k$ while being
+strongly connected. By Bondy's Theorem, this implies the following:
 
 \begin{claim}\label{cl:nocycle}
 $\chi(D') \leq 8k$.
@@ -209,7 +210,7 @@ Let $D$ be a digraph, $D_1 \dots D_l$ be disjoint subdigraphs of $D$ and $D'$ th
 one vertex $d_i$. Then $\chi(D) \leq \chi(D')\cdot \max\{\chi(D_i) \mid i \in [l]\}$.
 \end{lemma}
 
-We can prove that $\chi(D) \leq 8k \cdot \beta_k$, where 
+We can prove that $\chi(D) \leq 8k \cdot \beta_k$, where $\beta_k$ is in $O(k^{4k+20})$.
 
 \begin{thebibliography}{10}\label{bibliography}
 
