@@ -1,0 +1,331 @@
+\documentclass{endm}
+\usepackage{endmmacro}
+\usepackage{graphicx}
+
+% The following is enclosed to allow easy detection of differences in
+% ascii coding.
+% Upper-case    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+% Lower-case    a b c d e f g h i j k l m n o p q r s t u v w x y z
+% Digits        0 1 2 3 4 5 6 7 8 9
+% Exclamation   !           Double quote "          Hash (number) #
+% Dollar        $           Percent      %          Ampersand     &
+% Acute accent  '           Left paren   (          Right paren   )
+% Asterisk      *           Plus         +          Comma         ,
+% Minus         -           Point        .          Solidus       /
+% Colon         :           Semicolon    ;          Less than     <
+% Equals        =           Greater than >          Question mark ?
+% At            @           Left bracket [          Backslash     \
+% Right bracket ]           Circumflex   ^          Underscore    _
+% Grave accent  `           Left brace   {          Vertical bar  |
+% Right brace   }           Tilde        ~
+
+\newcommand{\Nat}{{\mathbb N}}
+\newcommand{\Real}{{\mathbb R}}
+\def\lastname{Please list your Lastname here}
+
+\begin{document}
+
+% DO NOT REMOVE: Creates space for Elsevier logo, ScienceDirect logo
+% and ENDM logo
+\begin{verbatim}\end{verbatim}\vspace{2.5cm}
+
+\begin{frontmatter}
+
+\title{Bispindle in strong digraphs with large chromatic number.}
+
+\author{Nathann Cohen\thanksref{mail1}}
+\address{CNRS, LRI, Univ. Paris Sud, Orsay, France}
+
+\author{Fr\'ed\'eric Havet\thanksref{mail2}}
+\address{ Univ. C\^ote d'Azur, CNRS, I3S, INRIA, France}
+
+
+\author{William Lochet\thanksref{mail3}}
+\address{ Univ. C\^ote d'Azur, CNRS, I3S, INRIA, LIP, ENS Lyon, France}
+
+\author{Raul Lopes\thanksref{mail4}}
+\address{Departamento de Computa\c{c}ao, Universidade Federal do Cear\'a, Fortaleza, Brazil}
+
+
+
+   \thanks[mail1]{\texttt{\normalshape
+  nathann.cohen@gmail.com}} 
+  \thanks[mail2]{\texttt{\normalshape
+  frederic.havet@cnrs.fr}} 
+  \thanks[mail3]{\texttt{\normalshape
+  william.lochet@gmail.com}}
+  \thanks[mail4]{\texttt{\normalshape
+  raul.wayne@gmail.com}}
+
+
+\begin{abstract}
+A {\it $(k_1+k_2)$-bispindle} is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths pairwise internally disjoint.
+Recently Cohen et al. showed that for every $(1,1)$- bispindle $B$, there exists an integer $k$ such that every strong
+digraph with chromatic number greater than $k$ contains a subdivision of $B$. We investigate generalisation of
+this result by first showing constructions of strong digraphs with large chromatic number without any $(3,0)$-bispindle and then
+showing that strong digraphs with large chromatic number contains a subdivision of some $(2,1)$-bispindle, where at least two dipaths
+are long.    
+\end{abstract}
+
+\begin{keyword}
+Digraph, chromatic number, subdivision.
+\end{keyword}
+
+\end{frontmatter}
+
+
+
+\section{Introduction}
+Throughout this paper, the {\it chromatic number} of a digraph $D$, denoted by $\chi(D)$, is the chromatic number of its underlying graph. 
+In a digraph $D$, a \emph{directed path}, or \emph{dipath} is an oriented path where all the arcs are oriented in the same direction.
+A {\it $k$-spindle} is the union of $k$ internally disjoint $(x,y)$-dipaths for some vertices $x$ and $y$. Vertex $a$ is said to be the {\it tail} of the spindle and $b$ its {\it head}.
+A {\it $(k_1+k_2)$-bispindle} is the internally disjoint union of a $k_1$-spindle
+with tail $x$ and head $y$ and a  $k_2$-spindle with tail $y$ and head $x$.
+In other words, it is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths pairwise internally disjoint.
+
+A classical result due to Gallai, Hasse, Roy and Vitaver is the following. 
+\begin{theorem}[Gallai~\cite{Gal68}, Hasse~\cite{Has64}, Roy~\cite{Roy67}, Vitaver~\cite{Vit62}]\label{thm:gallairoy}
+	If $\chi(D) \geq k$, then $D$ contains a directed path of length $k+1$.  
+\end{theorem}   
+
+This raises the question of which digraphs are subdigraphs of all digraphs with large chromatic number.
+
+
+
+A famous theorem by Erd\H{o}s~\cite{Erd59} states that there exist graphs with arbitrarily high girth and arbitrarily large
+chromatic number. This means that if $H$ is a digraph containing a cycle, there exist digraphs with arbitrarily high 
+chromatic number with no subdigraph isomorphic to $H$. Thus the only possible candidates to generalise Theorem \ref{thm:gallairoy} are the {\it oriented trees} that are orientations of trees.
+Burr\cite{Burr80} proved that every $(k-1)^2$-chromatic digraph contains every oriented tree of order $k$ 
+and conjectured an upper bound of $2k-2$.
+The best known upper bound, due to Addario-Berry et al.~\cite{AHS+13}, is in $(k/2)^2$.
+However, for paths with two blocks ({\it blocks} are maximal directed subpaths), the best possible upper bound is known.
+
+\begin{theorem}[Addario-Berry et al.~\cite{AHT07}]\label{thm:2blocks}
+Let $P$ be an oriented path with two blocks on $n > 3$ vertices, then every digraph with chromatic number (at least) $n$ contains $P$. 
+\end{theorem}
+
+
+However the following celebrated theorem of Bondy shows that  the story does not stop here.
+
+\begin{theorem}[Bondy~\cite{Bon76}]\label{thm:bondy}
+Every strong digraph of chromatic number at least $k$ contains a directed cycle of length at least $k$.
+\end{theorem} 
+
+The strong connectivity assumption is indeed necessary, as transitive tournaments contain no directed cycle but can have arbitrarily  high chromatic number. 
+
+Observe that a directed cycle of length at least $k$ can be seen as a subdivision of $\vec{C}_k$, the directed cycle of length $k$.
+Recall that a {\it subdivision} of a digraph $F$ is a digraph that can be obtained from $F$ by replacing each arc $uv$ by a directed path from $u$ to $v$.
+
+\begin{conjecture}\label{conj:cycle-sub}
+For every cycle $C$, there exists a constant $f(C)$ such that every strong digraph with chromatic number at least $f(C)$ contains a subdivision of $C$.
+\end{conjecture}
+
+The strong connectivity assumption is also necessary in Conjecture~\ref{conj:cycle-sub} as shown by Cohen et al. in  \cite{CHLN16}
+where they proved the existence of digraphs with large chromatic number such that every cycle has high number of blocks.
+
+
+On the other hand, Cohen et al.  \cite{CHLN16} proved conjecture for cycles with two blocks and the antidirected cycle of length $4$.
+More precisely, denoting by $C(k,\ell)$ the cycle on two blocks, one of length $k$ and the other of length $\ell$,
+ Cohen et al. \cite{CHLN16} proved the following result.
+\begin{theorem}\label{th:ckl}
+Every strong digraph with chromatic number at least $O((k+\ell)^4)$ contains a subdivision of $C(k,\ell)$.
+\end{theorem} 
+The bound has recently been improved to $O((k+\ell)^2)$  by Kim et al. \cite{KKPM}.  
+
+
+A subdivision of $C(k,\ell)$ can be seen as two internally disjoint dipaths, one of length at least $k$ and one of length at least $\ell$, from a vertex to another, and a subdivision of $\vec{C}_{k+\ell}$ can be seen as two internally disjoint dipaths in opposite direction between two vertices, one length at least $k$ and one of length at least $\ell$.
+In this paper, we generalize this and study the existence of several internally disjoint dipaths between two vertices in strong digraphs with large chromatic number.
+Our first result is to give constructions for the following theorem: 
+\begin{theorem}
+For every integer $k$, there exists a strongly connected digraph $D$ with $\chi(D) >k$ that contains no $3$-spindle and no $(2+2)$-bispindle. 
+\end{theorem}
+Therefore, the most we can expect in all strong digraphs with large chromatic in number are two vertices with three internally disjoint dipaths between them, two in one direction and on in the other.
+Let $P(k_1,k_2;k_3)$ denote the digraph formed by three internally disjoint paths between two vertices $x,y$,
+two $(x,y)$-directed paths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-directed path of size at least $k_3$.
+We conjecture the following.
+
+\begin{conjecture}\label{conj:3chemins}
+There is a function $g:\mathbb{N}^3 \rightarrow \mathbb{N}$ such that  every strong digraph with chromatic number at least $g(k_1,k_2,k_3)$ contains
+a subdivision of $P(k_1,k_2;k_3)$.
+\end{conjecture}
+
+As an evidence, we prove the follwing theorem:
+
+\begin{theorem}\label{thm:Pk1k}
+There is a function $f$ such that every strong digraph witch chromtic number at least $f(k)$ contains
+a subdivsion of $P(k,1;k)$.
+\end{theorem}
+
+\section{Sktech of the main result}
+We will now sketch the proof that a digraph without any subdivision of $P(k,1;k)$ has bounded chromatic number.
+In what follows, $D$ is a digraph without any subdivision of $P(k,1;k)$.
+
+First observe that if the digraph is hamiltonian, then by degeneracy its chromatic number is bounded by $2k-1$.
+The idea of the proof is to use this remark to reduce to a digraph without large cycle by contracting the right parts of the digraph.
+
+More formaly, a collection ${\cal C}$ of directed cycles is {\it $k$-suitable} if 
+all cycles of ${\cal C}$ have length at least $8k$, and
+any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on  a subpath $P_{i,j}$ of order at most $k$.
+A \textit{component} of $\mathcal{C}$ is a connected component of the underlying graph of the digraph 
+induced by the arcs of elements of $\mathcal{C}$.		
+
+Take $\mathcal{C}$ a maximal $k$-suitable collection of cycle and let $D'$ be the digraph
+obtain from $D$ by contracting each vertex set of the connected components of $C$.
+
+The first lemma is the most difficult one:
+
+\begin{lemma}\label{lem:DC}
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-free digraph $D$.
+There exists a constant $\beta_k$ such that, for every component $\mathcal{S}$ of $\mathcal{C}$, 
+we have $\chi(D[\mathcal{S}]) \leq \beta_k$.
+\end{lemma} 
+
+To prove this we first consider the simplier digraph $\bigcup{\cal C}$ induced on $D$ by the arcs 
+of $\mathcal{C}$, which means we remove the arcs outside of the cycles in $D[\mathcal{S}]$. This easier structure 
+allow us to find a stronger statement, namely a colouring where the path of length $7k$ of the cycles are rainbow-coloured 
+(each vertex receive a different colour). This rainbow colouring allow us to control the dipaths using arcs outside of 
+$\bigcup{\cal C}$ that visit twice the same cycle. 
+
+\begin{lemma}\label{lem:col-union-cycle}
+There exists a constant $\alpha_k$ such that, if ${\cal C}$ be a $k$-suitable collection of directed cycles 
+in a $P(k,1;k)$-free digraph, then there exists a proper colouring $\phi$ of $\bigcup{\cal C}$ with $\alpha_k$ colours, 
+such that, each subpath of length $7k$ of each cycle of $\mathcal{C}$ is rainbow-coloured.
+\end{lemma}
+
+The proof of this lemma uses induction on the number of cycle in a component. However, since removing one cycle from a component
+leaves components that shares paths together, we need to remove one cycle and some extra parts of the cycles intersecting it. 
+
+Then we prove that $D'$ does not contain a cycle of length $8k$ while being
+strongly connected, which by Bondy's Theorem implies the following:
+
+\begin{claim}\label{cl:nocycle}
+$\chi(D') \leq 8k$.
+\end{claim} 
+
+Now, by using the following easy lemma:
+
+\begin{lemma}\label{lem:contrac}
+Let $D$ be a digraph, $D_1 \dots D_l$ be disjoint subdigraphs of $D$ and $D'$ the digraph obtained by contracting each $D_i$ into
+one vertex $d_i$. Then $\chi(D) \leq \chi(D')\cdot \max\{\chi(D_i) \mid i \in [l]\}$.
+\end{lemma}
+
+We can prove that $\chi(D) \leq 8k \cdot \beta_k$, where 
+
+\begin{thebibliography}{10}\label{bibliography}
+
+
+\bibitem{AHT07}
+L.~Addario-Berry, F.~Havet, and S.~Thomass{\'e}.
+\newblock Paths with two blocks in $n$-chromatic digraphs.
+\newblock \emph{Journal of Combinatorial Theory, Series B}, 97
+  (4): 620--626, 2007.
+
+\bibitem{AHS+13}
+L.~Addario-Berry, F.~Havet, C.~L. Sales, B.~A. Reed, and S.~Thomass{\'e}.
+\newblock Oriented trees in digraphs.
+\newblock \emph{Discrete Mathematics}, 313 (8): 967--974,
+  2013.
+
+%\bibitem{AC+16}
+%P. Aboulker, N. Cohen, F. Havet, W. Lochet, P. Moura and S. Thomassé
+%\newblock Subdivisions in digraphs of large out-degree or large dichromatic number
+%\newblock arXiv:1610.00876
+
+ %\bibitem{BeWo83} A. Benhocine and A. P. Wojda.
+ %\newblock On the existence of specified cycles in a tournament.
+ %\newblock \emph{J. Graph Theory}, 7: 469-473, 1983.
+
+   \bibitem{Bon76} J. A. Bondy, Disconnected orientations and a conjecture of Las Vergnas,
+{\it J. London Math. Soc. (2)}, {\bf 14} (2) (1976), 277--282.
+
+%
+%  \bibitem{BoMu08}
+%J.A. Bondy and U.S.R. Murty.
+%\newblock {\em {G}raph {T}heory}, volume 244 of {\em Graduate Texts in
+%  Mathematics}.
+%\newblock Springer, 2008.
+
+
+%\bibitem{Bro41}
+%R.~L. Brooks.
+%\newblock On colouring the nodes of a network.
+%\newblock {\em Proc. Cambridge Philos. Soc.}, 37:194--197, 1941.
+
+\bibitem{Burr80}
+S.~A. Burr.
+\newblock Subtrees of directed graphs and hypergraphs.
+\newblock In \emph{Proceedings of the 11th Southeastern Conference on
+  Combinatorics, Graph theory and Computing}, pages 227--239, Boca Raton - FL,
+  1980. Florida Atlantic University.
+
+\bibitem{Bur82} S. A. Burr,
+Antidirected subtrees of directed graphs.
+{\it Canad. Math. Bull.} {\bf 25} (1982), no. 1, 119--120.
+
+\bibitem{CHLN16}
+N. Cohen, F. Havet, W. Lochet, and N. Nisse.
+\newblock Subdivisions of oriented cycles in digraphs with large chromatic number.
+\newblock arXiv:1605.07762
+
+\bibitem{Erd59}
+P.~Erd{\H{o}}s.
+\newblock Graph theory and probability.
+\newblock {\em Canad. J. Math.}, 11:34--38, 1959.
+
+\bibitem{ErHa66}
+P.~Erd{\H{o}}s and A. Hajnal.
+\newblock On chromatic number of graphs and set-systems.
+\newblock {\em Acta Mathematica Academiae Scientiarum Hungarica}, 17(1-2):61--99, 1966.
+
+
+
+\bibitem{Gal68}
+T.~Gallai.
+\newblock On directed paths and circuits.
+\newblock In \emph{Theory of Graphs (Proc. Colloq. Titany, 1966)}, pages
+  115--118. Academic Press, New York, 1968.
+
+%\bibitem{Gya92}
+%A. Gy\'arf\'as.
+%\newblock Graphs with $k$ odd cycle lengths.
+%\newblock {\it Discrete Math.}, 103, pp. 41--48, 1992.
+
+
+\bibitem{Has64}
+M.~Hasse.
+\newblock Zur algebraischen bergr\"und der graphentheorie {I}.
+\newblock \emph{Math. Nachr.}, 28: 275--290, 1964.
+
+
+\bibitem{KKPM}
+R. Kim, SJ. Kim, J. Ma; B. Park
+\newblock Cycles with two blocks in $k$-chromatic digraphs
+\newblock arXiv:1610.05839
+
+
+
+\bibitem{Roy67}
+B.~Roy.
+\newblock Nombre chromatique et plus longs chemins d'un graphe.
+\newblock \emph{Rev. Francaise Informat. Recherche Op\'erationnelle},
+  1 (5): 129--132, 1967.
+
+
+%\bibitem{Sum81}
+%D.~P. Sumner.
+%\newblock Subtrees of a graph and the chromatic number.
+%\newblock In {\em The theory and applications of graphs (Kalamazoo, Mich.,
+%  1980)}, pages 557--576. Wiley, New York, 1981.
+
+\bibitem{Vit62}
+L.~M. Vitaver.
+\newblock Determination of minimal coloring of vertices of a graph by means of
+  boolean powers of the incidence matrix.
+\newblock \emph{Doklady Akademii Nauk SSSR}, 147: 758--759, 1962.
+
+
+
+
+\end{thebibliography}
+
+\end{document}
