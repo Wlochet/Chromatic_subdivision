@@ -76,7 +76,7 @@
 
 % if needed include a line break (\\) at an appropriate place in the title
 
-\title{Internally disjoint directed paths in digraphs with large chromatic number}
+\title{Bispindles in strongly connected digraphs with large chromatic number}
 
 \author[1]{Nathann Cohen}
 \author[2,3]{Fr\'ed\'eric Havet}
@@ -96,9 +96,12 @@
 \maketitle
 
 \begin{abstract}
-We prove that there exists a constant $\gamma_k$ such that every strongly connected digraph with chromatic number at least $k$ contains
-two vertices joined $x$ and $y$ by three internally disjoint directed paths, one of which is from $x$ to $y$ and has length at least $k$ and one of which  is from $y$ to $x$ and has length at least $k$.
-We also show that there exist strongly connected digraphs with arbitrarily large chromatic number such that between any two vertices $x$ and $y$, there is no three internally disjoint directed paths all from $x$ to $y$ and there is no four internally disjoint directed paths, two from $x$ to $y$ and two from $y$ to $x$.
+A {\it $(k_1+k_2)$-bispindle} is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths, all these dipaths being pairwise internally disjoint.
+Recently, Cohen et al. showed that for every $(1,1)$- bispindle $B$, there exists an integer $k$ such that every strongly connected
+digraph with chromatic number greater than $k$ contains a subdivision of $B$. We investigate generalisations of
+this result by first showing constructions of strongly connected digraphs with large chromatic number without any $(3,0)$-bispindle
+or $(2,2)$-bispindle. Then we show that strongly connected digraphs with large chromatic number contains a 
+$(2,1)$-bispindle, where at least one of the $(x,y)$-dipaths and the $(y,x)$-dipath are long.    
 \end{abstract}
 
 \section{Introduction}
@@ -135,7 +138,7 @@ Let $P$ be an oriented path with two blocks on $n > 3$ vertices, then every digr
 
 
 
-However the following celebrated theorem of Bondy shows that  the story does not stop here.
+The following celebrated theorem of Bondy shows that  the story does not stop here.
 
 \begin{theorem}[Bondy~\cite{Bon76}]\label{thm:bondy}
 Every strong digraph of chromatic number at least $k$ contains a directed cycle of length at least $k$.
@@ -144,13 +147,13 @@ Every strong digraph of chromatic number at least $k$ contains a directed cycle 
 The strong connectivity assumption is indeed necessary, as transitive tournaments contain no directed cycle but can have arbitrarily  high chromatic number. 
 
 Observe that a directed cycle of length at least $k$ can be seen as a subdivision of $\vec{C}_k$, the directed cycle of length $k$.
-Recall that a {\it subdivision} of a digraph $F$ is a digraph that can be obtained from $F$ by replacing each arc $uv$ by a directed path from $u$ to $v$.
+Recall that a {\it subdivision} of a digraph $F$ is a digraph that can be obtained from $F$ by replacing each arc $uv$ by a directed path from $u$ to $v$. Cohen et al.  \cite{CHLN16} conjecture that Bondy's theorem can be extended to all oriented cycles.
 
-\begin{conjecture}\label{conj:cycle-sub}
-For every cycle $C$, there exists a constant $f(C)$ such that every strong digraph with chromatic number at least $f(C)$ contains a subdivision of $C$.
+\begin{conjecture}[Cohen et al.  \cite{CHLN16}]\label{conj:cycle-sub}
+For every oriented cycle $C$, there exists a constant $f(C)$ such that every strong digraph with chromatic number at least $f(C)$ contains a subdivision of $C$.
 \end{conjecture}
 
-The strong connectivity assumption is also necessary in Conjecture~\ref{conj:cycle-sub} as shown by Cohen et al.  \cite{CHLN16}. They actually proved the following stronger result.
+The strong connectivity assumption is also necessary in Conjecture~\ref{conj:cycle-sub} as shown by Cohen et al.  \cite{CHLN16}. This follows from  the following result.
 \begin{theorem}\label{dkb}
 For any positive integer $b$ and $k$, there exists an acyclic digraph $D_{k,b}$ such that any cycle in $D_{k,b}$ has at least $b$ blocks and $\chi(D_{k,b}) > k$.
 \end{theorem}
@@ -167,11 +170,16 @@ Every strong digraph with chromatic number at least $O((k+\ell)^4)$ contains a s
 The bound has recently been improved to $O((k+\ell)^2)$  by Kim et al. \cite{KKPM}.  
 
 
-A subdivision of $C(k,\ell)$ can be seen as two internally disjoint dipaths, one of length at least $k$ and one of length at least $\ell$, from a vertex to another, and a subdivision of $\vec{C}_{k+\ell}$ can be seen as two internally disjoint dipaths in opposite direction between two vertices, one length at least $k$ and one of length at least $\ell$.
-In this paper, we generalize this and study the existence of several internally disjoint dipaths between two vertices in strong digraphs with large chromatic number.
-First, we give a construction of digraphs with arbitrarily large chromatic number such that for any pair of vertices
-$x$ and $y$, there are no three disjoint dipaths from $x$ to $y$ or no four disjoint dipaths, two from $x$ to $y$ and two from $y$ to $x$. 
-Therefore, the most we can expect in all strong digraphs with large chromatic in number are two vertices with three internally disjoint dipaths between them, two in one direction and on in the other.
+\medskip
+
+A {\it $p$-spindle} is the union of $k$ internally disjoint $(x,y)$-dipaths for some vertices $x$ and $y$. Vertex $a$ is said to be the {\it tail} of the spindle and $b$ its {\it head}.
+A {\it $(p+q)$-bispindle} is the internally disjoint union of a $p$-spindle
+with tail $x$ and head $y$ and a  $q$-spindle with tail $y$ and head $x$.
+In other words, it is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths, all of these dipaths being pairwise internally disjoint.
+Note that $2$-spindles are the cycles with two blocks and the $(1+1)$-bispindles are the directed cycles.
+In this paper, we generalize this and study the existence of spindles and bispindles in strong digraphs with large chromatic number.
+First, we give a construction of digraphs with arbitrarily large chromatic number that contains no $3$-spindle and no $(2+2)$-bispindle. 
+Therefore, the most we can expect in all strongly connected digraphs with large chromatic number are $(2+1)$-bispindle.
 Let $B(k_1,k_2;k_3)$ denote the digraph formed by three internally disjoint paths between two vertices $x,y$,
 two $(x,y)$-directed paths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-directed path of size at least $k_3$.
 We conjecture the following.
@@ -360,14 +368,14 @@ If $i\leq m$, apply the induction on $\sigma'=(u_t)_{i\leq t\leq p}$ which is a 
 
 
 
-\section{Many paths between two vertices}
+\section{$3$-spindles and $(2+2)$-bispindles}
 %%%%%%%%%%%%
 
-A {\it $k$-spindle} is the union of $k$ internally disjoint $(x,y)$-dipaths for some vertices $x$ and $y$. Vertex $a$ is said to be the {\it tail} of the spindle and $b$ its {\it head}.
+%A {\it $k$-spindle} is the union of $k$ internally disjoint $(x,y)$-dipaths for some vertices $x$ and $y$. Vertex $a$ is said to be the {\it tail} of the spindle and $b$ its {\it head}.
 
-A {\it $(k_1+k_2)$-bispindle} is the internally disjoint union of a $k_1$-spindle
-with tail $x$ and head $y$ and a  $k_2$-spindle with tail $y$ and head $x$.
-In other words, it is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths pairwise internally disjoint.
+%A {\it $(k_1+k_2)$-bispindle} is the internally disjoint union of a $k_1$-spindle
+%with tail $x$ and head $y$ and a  $k_2$-spindle with tail $y$ and head $x$.
+%In other words, it is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths pairwise internally disjoint.
 %The vertices $a$ and $b$ are called, respectively, the {\it left node} and the {\it right node} of the bispindle. The directed $(a,b)$-paths are called the {\it forward paths}, while the directed $(b,a)$-paths are called the {\it backward paths}.
 
 
