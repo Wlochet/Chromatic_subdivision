@@ -31,7 +31,7 @@
 
 \begin{frontmatter}
 
-\title{Bispindle in strong digraphs with large chromatic number.}
+\title{Bispindle in strongly connected digraphs with large chromatic number.}
 
 \author{Nathann Cohen\thanksref{mail1}}
 \address{CNRS, LRI, Univ. Paris Sud, Orsay, France}
@@ -41,7 +41,7 @@
 
 
 \author{William Lochet\thanksref{mail3}}
-\address{ Univ. C\^ote d'Azur, CNRS, I3S, INRIA, LIP, ENS Lyon, France}
+\address{ Univ. C\^ote d'Azur, CNRS, I3S, INRIA, and LIP, ENS Lyon, France}
 
 \author{Raul Lopes\thanksref{mail4}}
 \address{Departamento de Computa\c{c}ao, Universidade Federal do Cear\'a, Fortaleza, Brazil}
@@ -59,12 +59,12 @@
 
 
 \begin{abstract}
-A {\it $(k_1+k_2)$-bispindle} is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths pairwise internally disjoint.
-Recently Cohen et al. showed that for every $(1,1)$- bispindle $B$, there exists an integer $k$ such that every strong
-digraph with chromatic number greater than $k$ contains a subdivision of $B$. We investigate generalisation of
-this result by first showing constructions of strong digraphs with large chromatic number without any $(3,0)$-bispindle
-or $(2,2)$-bispindle. Then we show that strong digraphs with large chromatic number contains a subdivision of some 
-$(2,1)$-bispindle, where at least two dipaths are long.    
+A {\it $(k_1+k_2)$-bispindle} is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths, all these dipaths being pairwise internally disjoint.
+Recently, Cohen et al. showed that for every $(1,1)$- bispindle $B$, there exists an integer $k$ such that every strongly connected
+digraph with chromatic number greater than $k$ contains a subdivision of $B$. We investigate generalisations of
+this result by first showing constructions of strongly connected digraphs with large chromatic number without any $(3,0)$-bispindle
+or $(2,2)$-bispindle. Then we show that strongly connected digraphs with large chromatic number contains a 
+$(2,1)$-bispindle, where at least one of the $(x,y)$-dipaths and the $(y,x)$-dipath are long.    
 \end{abstract}
 
 \begin{keyword}
@@ -77,38 +77,35 @@ Digraph, chromatic number, subdivision.
 
 \section{Introduction}
 Throughout this paper, the {\it chromatic number} of a digraph $D$, denoted by $\chi(D)$, is the chromatic number of its underlying graph. 
-In a digraph $D$, a \emph{directed path}, or \emph{dipath} is an oriented path where all the arcs are oriented in the same direction.
+In a digraph $D$, a \emph{directed path}, or \emph{dipath} is an oriented path where all the arcs are oriented form the initial vertex towards the terminal vertex.
 A {\it $k$-spindle} is the union of $k$ internally disjoint $(x,y)$-dipaths for some vertices $x$ and $y$. Vertex $a$ is said to be the {\it tail} of the spindle and $b$ its {\it head}.
 A {\it $(k_1+k_2)$-bispindle} is the internally disjoint union of a $k_1$-spindle
 with tail $x$ and head $y$ and a  $k_2$-spindle with tail $y$ and head $x$.
-In other words, it is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths pairwise internally disjoint.
+In other words, it is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths, all of these dipaths being pairwise internally disjoint.
 
 A classical result due to Gallai, Hasse, Roy and Vitaver is the following. 
 \begin{theorem}[Gallai~\cite{Gal68}, Hasse~\cite{Has64}, Roy~\cite{Roy67}, Vitaver~\cite{Vit62}]\label{thm:gallairoy}
-	If $\chi(D) \geq k$, then $D$ contains a directed path of length $k+1$.  
+	If $\chi(D) \geq k$, then $D$ contains a directed path of length $k-1$.  
 \end{theorem}   
 
 This raises the question of which digraphs are subdigraphs of all digraphs with large chromatic number.
 
 
 
-A famous theorem by Erd\H{o}s~\cite{Erd59} states that there exist graphs with arbitrarily high girth and arbitrarily large
-chromatic number. This means that if $H$ is a digraph containing a cycle, there exist digraphs with arbitrarily high 
+A classical theorem by Erd\H{o}s~\cite{Erd59} implies that if $H$ is a digraph containing a cycle, there exist digraphs with arbitrarily high 
 chromatic number with no subdigraph isomorphic to $H$. Thus the only possible candidates to generalise Theorem \ref{thm:gallairoy} are the {\it oriented trees} that are orientations of trees.
 Burr\cite{Burr80} proved that every $(k-1)^2$-chromatic digraph contains every oriented tree of order $k$ 
 and conjectured an upper bound of $2k-2$.
 The best known upper bound, due to Addario-Berry et al.~\cite{AHS+13}, is in $(k/2)^2$.
-However, for paths with two blocks ({\it blocks} are maximal directed subpaths), the best possible upper bound is known.
+%However, for paths with two blocks ({\it blocks} are maximal directed subpaths), the best possible upper bound is known.
 
-\begin{theorem}[Addario-Berry et al.~\cite{AHT07}]\label{thm:2blocks}
-Let $P$ be an oriented path with two blocks on $n > 3$ vertices, then every digraph with chromatic number (at least) $n$ contains $P$. 
-\end{theorem}
-
-
-However the following celebrated theorem of Bondy shows that  the story does not stop here.
+%\begin{theorem}[Addario-Berry et al.~\cite{AHT07}]\label{thm:2blocks}
+%Let $P$ be an oriented path with two blocks on $n > 3$ vertices, then every digraph with chromatic number (at least) $n$ contains $P$. 
+%\end{theorem}
+However the following celebrated theorem of Bondy shows that  the story does not stop there.
 
 \begin{theorem}[Bondy~\cite{Bon76}]\label{thm:bondy}
-Every strong digraph of chromatic number at least $k$ contains a directed cycle of length at least $k$.
+Every strongly connected digraph with chromatic number at least $k$ contains a directed cycle of length at least $k$.
 \end{theorem} 
 
 The strong connectivity assumption is indeed necessary, as transitive tournaments contain no directed cycle but can have arbitrarily  high chromatic number. 
@@ -116,110 +113,143 @@ The strong connectivity assumption is indeed necessary, as transitive tournament
 Observe that a directed cycle of length at least $k$ can be seen as a subdivision of $\vec{C}_k$, the directed cycle of length $k$.
 Recall that a {\it subdivision} of a digraph $F$ is a digraph that can be obtained from $F$ by replacing each arc $uv$ by a directed path from $u$ to $v$.
 
-\begin{conjecture}\label{conj:cycle-sub}
-For every cycle $C$, there exists a constant $f(C)$ such that every strong digraph with chromatic number at least $f(C)$ contains a subdivision of $C$.
+\begin{conjecture}[Cohen et al.  \cite{CHLN16}]\label{conj:cycle-sub}
+For every cycle $C$, there exists a constant $f(C)$ such that every strongly connected digraph with chromatic number at least $f(C)$ contains a subdivision of $C$.
 \end{conjecture}
 
-The strong connectivity assumption is also necessary in Conjecture~\ref{conj:cycle-sub} as shown by Cohen et al. in  \cite{CHLN16}
-where they proved the existence of digraphs with large chromatic number such that every cycle has high number of blocks.
-
-
-On the other hand, Cohen et al.  \cite{CHLN16} proved conjecture for cycles with two blocks and the antidirected cycle of length $4$.
+The strong connectivity assumption is also necessary in Conjecture~\ref{conj:cycle-sub} as shown by Cohen et al. in  \cite{CHLN16}.
+%where they proved the existence of digraphs with large chromatic number such that every cycle has high number of blocks.
+In the same paper, Conjecture~\ref{conj:cycle-sub} was confirmed for cycles with two blocks (i.e. maximal directed subpaths of the cycle) and the antidirected cycle of length $4$.
 More precisely, denoting by $C(k,\ell)$ the cycle on two blocks, one of length $k$ and the other of length $\ell$,
- Cohen et al. \cite{CHLN16} proved the following result.
+ Cohen et al. \cite{CHLN16} proved the following.
 \begin{theorem}\label{th:ckl}
-Every strong digraph with chromatic number at least $O((k+\ell)^4)$ contains a subdivision of $C(k,\ell)$.
+Every strongly connected digraph with chromatic number at least $O((k+\ell)^4)$ contains a subdivision of $C(k,\ell)$.
 \end{theorem} 
 The bound has recently been improved to $O((k+\ell)^2)$  by Kim et al. \cite{KKPM}.  
 
 
-A subdivision of $C(k,\ell)$ can be seen as two internally disjoint dipaths, one of length at least $k$ and one of length at least $\ell$, from a vertex to another, and a subdivision of $\vec{C}_{k+\ell}$ can be seen as two internally disjoint dipaths in opposite direction between two vertices, one length at least $k$ and one of length at least $\ell$.
-In this paper, we generalize this and study the existence of several internally disjoint dipaths between two vertices in strong digraphs with large chromatic number.
+A subdivision of $C(k,\ell)$ can be seen as $2$-spindle made of  two internally disjoint dipaths, one of length at least $k$ and one of length at least $\ell$.
+% and a subdivision of $\vec{C}_{k+\ell}$ can be seen as two internally disjoint dipaths in opposite direction between two vertices, one length at least $k$ and one of length at least $\ell$.
+In this paper, we generalize this and study the existence of subdivision of spindles and bispindles in strongly connected digraphs with large chromatic number.
 Our first result is to give constructions for the following theorem: 
 \begin{theorem}
 For every integer $k$, there exists a strongly connected digraph $D$ with $\chi(D) >k$ that contains no $3$-spindle and no $(2+2)$-bispindle. 
 \end{theorem}
-Therefore, the most we can expect in all strong digraphs with large chromatic in number are two vertices with three internally disjoint dipaths between them, two in one direction and on in the other.
-Let $P(k_1,k_2;k_3)$ denote the digraph formed by three internally disjoint paths between two vertices $x,y$,
+Therefore, the most we can expect in all strongly connected digraphs with large chromatic number are $(2+1)$-bispindle. Let $B(k_1,k_2;k_3)$ denote the $(2+1)$-bispindle formed by three internally disjoint paths between two vertices $x,y$,
 two $(x,y)$-directed paths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-directed path of size at least $k_3$.
 We conjecture the following.
 
 \begin{conjecture}\label{conj:3chemins}
-There is a function $g:\mathbb{N}^3 \rightarrow \mathbb{N}$ such that  every strong digraph with chromatic number at least $g(k_1,k_2,k_3)$ contains
-a subdivision of $P(k_1,k_2;k_3)$.
+There is a function $g:\mathbb{N}^3 \rightarrow \mathbb{N}$ such that  every strongly connected digraph with chromatic number at least $g(k_1,k_2,k_3)$ contains
+a subdivision of $B(k_1,k_2;k_3)$.
 \end{conjecture}
 
-As an evidence, we prove the follwing theorem:
+As an evidence, we prove the following theorem:
 
 \begin{theorem}\label{thm:Pk1k}
-There is a function $f: \mathbb{N} \rightarrow \mathbb{N}$  such that every strong digraph witch chromtic number at least $f(k)$ contains
-a subdivsion of $P(k,1;k)$.
+For every positive integer $k$, there is a constant $\gamma_k$ such that every strongly connected digraph witch chromatic number greater than $\gamma_k$ contains
+a subdivsion of $B(k,1;k)$.
 \end{theorem}
 
-\section{Sktech of the main result}
-We will now sketch the proof that a digraph $D$ without any subdivision of $P(k,1;k)$ has bounded chromatic number.
+The value of $\gamma_k$ is the above theorem is huge, and certainly not best possible. We get a better bound for subdivision of $B(k,1;k)$.
+\begin{theorem}\label{th:P11k}
+Let $k \geq 3$ be an integer and let $D$ be a strong digraph. If $\chi(D) >  (2k-2)(2k-3)$, then $D$ contains a subdivision of $B(k,1;1)$.
+\end{theorem}
 
-First observe that if the digraph is hamiltonian, then by degeneracy its chromatic number is bounded by $2k-1$.
-The idea of the proof is to use this remark to reduce to a digraph without large cycle by contracting the right parts of the digraph.
 
-More formaly, a collection ${\cal C}$ of directed cycles is {\it $k$-suitable} if 
+\section{Proof of Theorem~\ref{thm:Pk1k}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We prove Theorem~\ref{thm:Pk1k} by the contrapositive.
+We consider a  digraph $D$ without any subdivision of $B(k,1;k)$. We shall prove that $\chi(D)\leq \gamma_k$.
+
+
+The general idea is to use the following easy lemma.
+\begin{lemma}\label{lem:contrac}
+Let $D$ be a digraph, $D_1 \dots D_l$ be disjoint subdigraphs of $D$ and $D'$ the digraph obtained by contracting each $D_i$ into
+one vertex $d_i$. Then $\chi(D) \leq \chi(D')\cdot \max\{\chi(D_i) \mid 1\leq i \leq l\}$.
+\end{lemma}
+
+The key is to find appropriate subdigraphs $D_i$.
+To do so, we consider some particular collections of directed cycles~:
+a collection ${\cal C}$ of directed cycles is {\it $k$-suitable} if 
 all cycles of ${\cal C}$ have length at least $8k$, and
-any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on  a subpath $P_{i,j}$ of order at most $k$.
-A \textit{component} of $\mathcal{C}$ is a connected component of the underlying graph of the digraph 
-induced by the arcs of elements of $\mathcal{C}$.		
+any two distinct cycles $C_i,C_j\in\mathcal C$ intersect on  a subpath of order at most $k$.
+A \textit{component} of $\mathcal{C}$ is a connected component of the underlying graph of the digraph $\bigcup {\cal C}$ which is the union of
+cycles of $\mathcal{C}$.		
 
-Take $\mathcal{C}$ a maximal $k$-suitable collection of cycle and let $D'$ be the digraph
-obtain from $D$ by contracting each vertex set of the connected components of $C$.
-
-The first lemma is the most difficult one:
+Consider $\mathcal{C}$ be a maximal $k$-suitable collection of cycles in $D$. Let $D'$ be the digraph obtained by contracting 
+every strong component $S$ of $\bigcup \mathcal{C}$ (which is $\bigcup {\cal S}$ for some component ${\cal S}$ of ${\cal C}$) into one vertex. For each connected component ${\cal S}_i$ we call $s_i$ the
+new vertex created. To apply Lemma~\ref{lem:contrac}, we shall prove in the next two lemmas that for every component $\mathcal{S}$ of $\mathcal{C}$, the digraph $D[{\cal S}]$ induced by $D$ on the vertices
+of $\bigcup {\cal S}$ has bounded chromatic number and that $\chi(D')\leq 8k$.
 
 \begin{lemma}\label{lem:DC}
-Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-free digraph $D$.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-free digraph $D$.
 There exists a constant $\beta_k$ such that, for every component $\mathcal{S}$ of $\mathcal{C}$, 
 we have $\chi(D[\mathcal{S}]) \leq \beta_k$.
 \end{lemma} 
+\noindent {\bf Sketch of proof}:
+We first consider $\bigcup{\cal S}$ which is a subdigraph of $D[{\cal S}]$.  We prove by induction on the number of cycles in ${\cal S}$ that this digraph admits a proper colouring $\phi$ with $\alpha_k=2\cdot (6k^2)^{3k} + 14k$ colours satisfying the following additional property, called {\it rainbow property} : the vertices of each subpath of length at most $7k$ of each cycle of $\mathcal{S}$ get different colours.
 
-To prove this we first consider the simplier digraph $\bigcup{\cal C}$ induced on $D$ by the arcs 
-of $\mathcal{C}$, which means we remove the arcs outside of the cycles in $D[\mathcal{S}]$. This easier structure 
-allow us to find a stronger statement, namely a colouring where the path of length $7k$ of the cycles are rainbow-coloured 
-(each vertex receive a different colour). This rainbow colouring allow us to control the dipaths using arcs outside of 
-$\bigcup{\cal C}$ that visit twice the same cycle. 
+We then define a sort of Breadth-First-Search for $\mathcal{S}$.
+Let $C_0$ be a cycle of $\mathcal{S}$ and set $L_0 = \{C_0\}$. We build  the levels $L_i$ inductively
+until all cycles of $\mathcal{S}$ are put in a level : $L_{i+1}$ consists of every cycle $C_l$ not in $\bigcup_{j \leq i} L_j$ such that 
+there exists a cycle in $L_i$ intersecting $C_l$.  For every $C_l\in L_{i+1}$, we choose one of the cycles $L_{i}$ intersecting it to be its {\it  father}. 
+%Henceforth every cycle in $L_{i+1}$ has a unique  father even though it might intersect many cycles of $L_i$.
+%A cycle $C$ is an {\it ancestor} of $C'$ if there is a sequence $C=C_1, \dots , C_q=C'$ such that $C_i$ is the father of $C_{i+1}$ for all $i\in [q-1]$.
+For a vertex $x$ of $\bigcup \mathcal{S}$, we say that $x$ \textit{belongs to} level $L_i$ if
+$i$ is the smallest integer such that there exists a cycle in $L_i$ containing $x$. 
+%Observe that the vertices of each cycle $C_l$ of ${\cal S}$ belong to consecutive levels, that is there exists $i$ such that $V(C_l)\subseteq L_i\cup L_{i+1}$.
 
-\begin{lemma}\label{lem:col-union-cycle}
-There exists a constant $\alpha_k$ such that, if ${\cal C}$ be a $k$-suitable collection of directed cycles 
-in a $P(k,1;k)$-free digraph, then there exists a proper colouring $\phi$ of $\bigcup{\cal C}$ with $\alpha_k$ colours, 
-such that, each subpath of length $7k$ of each cycle of $\mathcal{C}$ is rainbow-coloured.
-\end{lemma}
+We partition the arc set of of $D[{\cal S}]$  in $(A_0,A_1, A_2)$, where
+\begin{itemize}
+	\item $A_0$ is the set of arcs of $D[{\cal S}]$ which ends belong to the same level, and
+	\item $A_1$ is the set of arcs of $D[{\cal S}]$ which ends belong to different levels $i$ and $j$ with $ | i - j| < k$.	
+	\item $A_2$ is the set of arcs of $D[{\cal S}]$ which ends belong to different levels $i$ and $j$ with $ | i - j| \geq k$.
+\end{itemize} 
 
-The proof of this lemma uses induction on the number of cycle in a component. However, since removing one cycle from a component
-leaves components that share paths together, we need to remove one cycle and some extra parts of the cycles intersecting it to pass 
-the indcution. 
+For $i\in [3]$, let $D_i$ be the spanning subdigraph of $D[{\cal S}]$ with arc set $A_i$. It is well-known that $\chi(D[{\cal S}])\leq \chi(D_1)\times \chi(D_2) \times \chi(D_3)$.
 
-Then we use the fact that $\mathcal{C}$ is maximal to
-prove that $D'$ does not contain a cycle of length greater than $8k$ while being
-strongly connected. By Bondy's Theorem, this implies the following:
+Clearly, $\chi(D_1)\leq k$, and we show that $\chi(D_2)\leq 4k^2 +2$. To bound $\chi(D_0)$ we partition the vertex set according to the above-mention colouring $\phi$ of $\bigcup {\cal S}$.
+Using the rainbow property, we prove that the subdigraph of $D_0$ induced by the vertices of colour $c$ has chromatic number at most $2\cdot (4k)^{4k} + 1$ for all colour $c$. Hence $\chi(D_0) \leq (2\cdot (4k)^{4k} + 1) \alpha_k$.
+This gives the result for $\beta_k= k (4k^2+2) (2\cdot (4k)^{4k} + 1) \alpha_k$.
+\hfill $\square$
 
-\begin{claim}\label{cl:nocycle}
+
+
+\begin{lemma}\label{cl:nocycle}
 $\chi(D') \leq 8k$.
-\end{claim} 
+\end{lemma} 
+\noindent {\bf Proof.}
+First note that since $D$ is strongly connected so is $D'$. 
 
-Now, by using the following easy lemma:
+Suppose for a contradiction that $\chi(D') > 8k$. By Theorem \ref{thm:bondy}, there exists
+a directed cycle $C = (x_1, x_2, \dots , x_l, x_1)$ of length at least $8k$. 	
+For each vertex $x_j$ that corresponds to a $s_i$ in $D$, the arc $x_{j-1}x_j$ corresponds in $D$ to an arc whose head is a vertex $p_i$ of $S_i$ and the arc $x_jx_{j+1}$ corresponds to an arc whose tail is a vertex $l_i$ of $S_i$. Let $P_j$ be the dipath 
+		from $p_i$ to $l_i$ in $\bigcup \mathcal{C}$. Note that this path intersects the elements of $S_i$ only along a subdipath. 
+Let $C'$ be the cycle obtained from $C$ where we replace all contracted vertices $x_j$ by the path $P_j$. 
+First note that $C'$ has length at least $8k$. Moreover, a cycle of $\mathcal{C}$  can
+intersect $C'$ only along one $P_j$, because they all correspond to different strong components of $\bigcup \mathcal{C}$. Thus $C'$ intersects  each cycle of $\mathcal{C}$ on a subdipath. Moreover this subdipath has length smaller than $k$ for otherwise $D$ would contain 
+a subdivision of $B(k,1;k)$. So $C'$ is a directed cycle of length at least $8k$ which intersects every cycle of $\mathcal{C}$ along a 
+subdipath of length less than $k$. This contradicts the maximality of $\mathcal{C}$.
+\hfill $\square$
 
-\begin{lemma}\label{lem:contrac}
-Let $D$ be a digraph, $D_1 \dots D_l$ be disjoint subdigraphs of $D$ and $D'$ the digraph obtained by contracting each $D_i$ into
-one vertex $d_i$. Then $\chi(D) \leq \chi(D')\cdot \max\{\chi(D_i) \mid i \in [l]\}$.
-\end{lemma}
+\medskip
 
-We can prove that $\chi(D) \leq 8k \cdot \beta_k$, where $\beta_k$ is in $O(k^{4k+20})$.
+Using Lemma \ref{lem:contrac} with
+Claim~\ref{cl:nocycle} and Lemma~\ref{lem:DC}, we get that $\chi(D) \leq 8k \cdot \beta_k$.
+This proves Theorem~\ref{thm:Pk1k} for $\gamma_k=8k\cdot \beta_k$.
+
+
 
 \begin{thebibliography}{10}\label{bibliography}
 
 
-\bibitem{AHT07}
-L.~Addario-Berry, F.~Havet, and S.~Thomass{\'e}.
-\newblock Paths with two blocks in $n$-chromatic digraphs.
-\newblock \emph{Journal of Combinatorial Theory, Series B}, 97
-  (4): 620--626, 2007.
+%\bibitem{AHT07}
+%L.~Addario-Berry, F.~Havet, and S.~Thomass{\'e}.
+%\newblock Paths with two blocks in $n$-chromatic digraphs.
+%\newblock \emph{Journal of Combinatorial Theory, Series B}, 97
+ % (4): 620--626, 2007.
 
 \bibitem{AHS+13}
 L.~Addario-Berry, F.~Havet, C.~L. Sales, B.~A. Reed, and S.~Thomass{\'e}.
