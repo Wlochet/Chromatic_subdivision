@@ -172,26 +172,26 @@ In this paper, we generalize this and study the existence of several internally 
 First, we give a construction of digraphs with arbitrarily large chromatic number such that for any pair of vertices
 $x$ and $y$, there are no three disjoint dipaths from $x$ to $y$ or no four disjoint dipaths, two from $x$ to $y$ and two from $y$ to $x$. 
 Therefore, the most we can expect in all strong digraphs with large chromatic in number are two vertices with three internally disjoint dipaths between them, two in one direction and on in the other.
-Let $P(k_1,k_2;k_3)$ denote the digraph formed by three internally disjoint paths between two vertices $x,y$,
+Let $B(k_1,k_2;k_3)$ denote the digraph formed by three internally disjoint paths between two vertices $x,y$,
 two $(x,y)$-directed paths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-directed path of size at least $k_3$.
 We conjecture the following.
 
 \begin{conjecture}\label{conj:3chemins}
 There is a function $g:\mathbb{N}^3 \rightarrow \mathbb{N}$ such that  every strong digraph with chromatic number at least $g(k_1,k_2,k_3)$ contains
-a subdivision of $P(k_1,k_2;k_3)$.
+a subdivision of $B(k_1,k_2;k_3)$.
 \end{conjecture}
 
-As an evidence, we prove this conjecture for $k_2=1$ and arbitrary $k_1$ and $k_3$. In Section~\ref{sec:k,1,1}, we first investigate the case $k_2=k_3=1$. We first prove in Proposition~\ref{prop:p211} that very strong digraph $D$ with $\chi(D)>3$ contains a subdivision of $P(2,1;1)$. We then prove the following.
+As an evidence, we prove this conjecture for $k_2=1$ and arbitrary $k_1$ and $k_3$. In Section~\ref{sec:k,1,1}, we first investigate the case $k_2=k_3=1$. We first prove in Proposition~\ref{prop:p211} that very strong digraph $D$ with $\chi(D)>3$ contains a subdivision of $B(2,1;1)$. We then prove the following.
 
 
 \begin{theorem}\label{th:P11k}
-Let $k \geq 3$ be an integer and let $D$ be a strong digraph. If $\chi(D) >  (2k-2)(2k-3)$, then $D$ contains a subdivision of $P(k,1;1)$.
+Let $k \geq 3$ be an integer and let $D$ be a strong digraph. If $\chi(D) >  (2k-2)(2k-3)$, then $D$ contains a subdivision of $B(k,1;1)$.
 \end{theorem}
 
 In Section~\ref{sec:main}, using the same approach but in a more complicated way, we prove our main result: 
 
 \begin{theorem}\label{th:main}
-There is a constant $\gamma_k$ such that if $D$ is a strong digraph with $\chi(D) > \gamma_k$, then $D$ contains a subdvision of $P(k,1;k)$.
+There is a constant $\gamma_k$ such that if $D$ is a strong digraph with $\chi(D) > \gamma_k$, then $D$ contains a subdvision of $B(k,1;k)$.
 \end{theorem}
 
 We prove the above theorem for a huge constant $\gamma_k$. It can easily be lowered. However, we made no attempt to it here for two reasons:
@@ -206,7 +206,7 @@ Let us just give one result proved by Aboulker et al. \cite{AC+16} which can be 
 
 \begin{theorem}[Theorem 28 in \cite{AC+16}]
 Let $k_1,k_2,k_3$ be  positive integers with $k_1 \ge k_2$.
-Let $D$ be a digraph with $\delta^+(D) \geq 3k_1+2k_2+k_3-5$. Then $D$ contains $P(k_1,k_2;k_3)$ as a subdivision.
+Let $D$ be a digraph with $\delta^+(D) \geq 3k_1+2k_2+k_3-5$. Then $D$ contains $B(k_1,k_2;k_3)$ as a subdivision.
 \end{theorem}
 
 
@@ -240,7 +240,7 @@ If $P$ and $Q$ are two directed paths such that $V(P)\cap V(Q) =\{s(P)\}=\{t(Q)\
 
 \smallskip
 
-%Let $k_1,k_2,k_3$ be positive integers. Let $P(k_1,k_2;k_3)$ be the digraph formed by three internally disjoint paths between two vertices $x,y$, two $(x,y)$-dipaths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$.
+%Let $k_1,k_2,k_3$ be positive integers. Let $B(k_1,k_2;k_3)$ be the digraph formed by three internally disjoint paths between two vertices $x,y$, two $(x,y)$-dipaths, one of size at least $k_1$, the other of size at least $k_2$, and one $(y,x)$-dipath of size at least $k_3$.
 %When we want to insist on the vertices $x$ and $y$, we denote it by $P_{xy}(k_1,k_2;k_3)$.
 %{\bf is it used ?}
 
@@ -299,13 +299,13 @@ The {\it rotative tournament on $2k-1$ vertices}, denoted by $R_{2k-1}$, is the 
 
 
 \begin{proposition}\label{prop:tournoi}
-Every strong tournament of order $2k-1$ contains a $P(k,1;1)$-subdivision.
+Every strong tournament of order $2k-1$ contains a $B(k,1;1)$-subdivision.
 \end{proposition}
 \begin{proof}
 Let $T$ be a strong tournament of order $2k-1$. By Camion's Theorem, it has a hamiltonian directed cycle $C=(v_1,v_2, \dots ,v_{2k-1},v_1)$.
-If there exists an arc $v_iv_j$ with $j-i\geq k$  (indices are modulo $2k-1$), then the union of  $C[v_i,v_j]$, $(v_i,v_j)$ and $C[v_j,v_i]$ is a $P(k,1;1)$-subdivision.
+If there exists an arc $v_iv_j$ with $j-i\geq k$  (indices are modulo $2k-1$), then the union of  $C[v_i,v_j]$, $(v_i,v_j)$ and $C[v_j,v_i]$ is a $B(k,1;1)$-subdivision.
 Henceforth, we may assume that $T=R_{2k-1}$.
-Then the union of $C[v_1, v_{k-1}] \odot (v_{k-1}, v_{k+1}, v_{k+2})$,  $(v_1, v_{k}, v_{k+2})$, and $C[v_{k+2}, v_1]$ is a $P(k,1;1)$-subdivision.
+Then the union of $C[v_1, v_{k-1}] \odot (v_{k-1}, v_{k+1}, v_{k+2})$,  $(v_1, v_{k}, v_{k+2})$, and $C[v_{k+2}, v_1]$ is a $B(k,1;1)$-subdivision.
 \end{proof}
 
 Let $F$ be a subdigraph of a digraph $D$. A {\em directed
@@ -390,24 +390,24 @@ which means one of the two paths, say $Q_1$, contains $x_lz$. But $Q_2$ and $Q_3
 
 
 
-\section{$P(k,1;1)$}\label{sec:k,1,1}
+\section{$B(k,1;1)$}\label{sec:k,1,1}
 %%%%%%%%%%%
 
 
 
 \begin{proposition}\label{prop:p211}
 Let $D$ be a strong digraph.
-If $\chi(D)\geq 4$, then $D$ contains a $P(2,1;1)$-subdivision.
+If $\chi(D)\geq 4$, then $D$ contains a $B(2,1;1)$-subdivision.
 \end{proposition}
 \begin{proof}
 Assume  $\chi(D)\geq 4$. Since every digraph contains a $2$-connected strong subdigraph with the same chromatic number, we may assume that $D$ is $2$-connected.
 Let $C$ be a shortest directed cycle in $D$. 
 It must be induced, so $\chi(D[C])=\chi(C) \leq 3$. 
 Now by Lemma~\ref{lem:diear}, $C$ has a directed ear $P$ in $D$. Necessarily, $P$ has length at least $2$ since $C$ is induced.
-Thus the union of $P$ and $C$ is a $P(2,1;1)$-subdivision.
+Thus the union of $P$ and $C$ is a $B(2,1;1)$-subdivision.
 \end{proof}
 
-The bound $4$ in Proposition~\ref{prop:p211} is best possible because a directed odd cycle has chromatic number $3$ and contains no $P(2,1;1)$-subdivision.
+The bound $4$ in Proposition~\ref{prop:p211} is best possible because a directed odd cycle has chromatic number $3$ and contains no $B(2,1;1)$-subdivision.
 
 
 \medskip
@@ -423,7 +423,7 @@ Call $D_{\mathcal{C}}$ the digraph obtained from $D$ by contracting each compone
 For sake of simplicity, we denote by $D[{\cal S}]$ the digraph $D[\bigcup {\cal S}]$. Observe that this digraph contains $\bigcup {\cal S}$ but has more arcs.
 
 
-We will prove that every $P(k,1;1)$-subdivision-free strong digraph $D$ has bounded chromatic number in the following way:
+We will prove that every $B(k,1;1)$-subdivision-free strong digraph $D$ has bounded chromatic number in the following way:
 Take ${\cal C}$ a maximal nice collection of cycles. 
 We will prove that every component $S$ of ${\cal C}$ induces a digraph $D[{\cal S}]$ on $D$ of bounded chromatic number. 
 Then we will prove that, since it contains no long directed cycle and it is strong, $D_{\mathcal{C}}$ has bounded chromatic number,
@@ -434,12 +434,12 @@ We will need the following lemma:
 
 
 \begin{lemma}\label{lem:headphone}
-Let ${\cal C}$ be a nice collection of cycle in a $P(k,1;1)$-subdivision-free digraph $D$ and let $C$, $C'$ be two cycles of the same
+Let ${\cal C}$ be a nice collection of cycle in a $B(k,1;1)$-subdivision-free digraph $D$ and let $C$, $C'$ be two cycles of the same
 component ${\cal S}$ of $\mathcal{C}$. There is no dipath $P$ from $C$ to $C'$ whose arcs are not in $A (\bigcup  {\cal S})$. 
 \end{lemma}
 
 \begin{proof}
-By the contrapositive. We suppose that there exists such a dipath $P$ and show that there is a subdivision of $P(k,1;1)$ in $D$.
+By the contrapositive. We suppose that there exists such a dipath $P$ and show that there is a subdivision of $B(k,1;1)$ in $D$.
 
 By definition of ${\cal S}$, there exists a dipath $Q$ from $C$ to $C'$ in $\bigcup S$. By choosing $C$ and $C'$ such that 
 $Q$ is as small as possible, then $s(Q) \not = t(P)$ and $t(Q) \not = s(P)$ (note that $s(Q)$ and $t(Q)$ can be the same vertex). 
@@ -451,20 +451,20 @@ Since $C$ has length at least $2k-2$, either $C[t(Q), s(P)]$ has length at least
 
 \begin{itemize}
 	\item If $C[t(Q), s(P)]$ has length at least $k-1$, then the union of $Q \odot C[t(Q), s(P)] \odot P$, $C'[s(Q), t(P)]$ and $C'[ t(P), s(Q)]$
-	is a subdivision of $P(k,1;1)$ between $s(Q)$ and $t(P)$. 
+	is a subdivision of $B(k,1;1)$ between $s(Q)$ and $t(P)$. 
 	\item If $C[s(P), t(Q)]$ has length at least $k$, then the union of $C[s(P), t(Q)]$, $P \odot C'[t(P), s(Q)] \odot Q$ and $C[t(Q), s(P)]$
-	is a subdivision of $P(k,1;1)$ between $s(P)$ and $t(Q)$. 
+	is a subdivision of $B(k,1;1)$ between $s(P)$ and $t(Q)$. 
 \end{itemize}
 \end{proof}
 
 
 \begin{lemma}\label{lem:compo1}
-Let $k\geq 3$ be an integer, and let ${\cal C}$ be a nice collection of cycles in a $P(k,1;1)$-subdivision-free digraph $D$ and ${\cal S}$ a component of $\mathcal{C}$. Then $\chi(D[S]) \leq 2k-2$.	 
+Let $k\geq 3$ be an integer, and let ${\cal C}$ be a nice collection of cycles in a $B(k,1;1)$-subdivision-free digraph $D$ and ${\cal S}$ a component of $\mathcal{C}$. Then $\chi(D[S]) \leq 2k-2$.	 
 \end{lemma}
 
 \begin{proof}
 By induction on the number of cycles in ${\cal S}$. Let $C$ be a cycle of ${\cal S}$. There is no chord between $x$ and $y$ in $C$
-such that $C[x,y]$ has length at least $k$, for otherwise there would be a $P(k,1;1)$-subdivision. Hence $D[C]$ has maximum degree at most $2k-2$. Moreover, by Proposition~\ref{prop:tournoi}, $D[C]$ is not a tournament of order $2k-1$.
+such that $C[x,y]$ has length at least $k$, for otherwise there would be a $B(k,1;1)$-subdivision. Hence $D[C]$ has maximum degree at most $2k-2$. Moreover, by Proposition~\ref{prop:tournoi}, $D[C]$ is not a tournament of order $2k-1$.
 Thus, by Brooks' Theorem (\ref{thm:brooks}), $\chi(D[C])\leq 2k-2$.
  Let $c$ be a proper colouring of $C$ with $2k-2$ colours. Let ${\cal S}_1, {\cal S}_2, \dots, {\cal S}_r$ be the components of ${\cal S} \setminus{C}$. Since ${\cal S}$ is the union the ${\cal S}_l$, $l\in [r]$, and $\{C\}$,
 each ${\cal S}_l$ has less cycles than ${\cal S}$. By the induction hypothesis, there exists a proper colouring $c_l$ using $2k-2$ colours for each $D[{\cal S}_i]$.
@@ -481,7 +481,7 @@ $c_l$ and $c$ is a proper colouring of $D[{\cal S}]$ using $2k-2$ colours.
 
 
 \begin{lemma}\label{lem:reduce}
-Let ${\cal C}$ be a maximal nice collection of cycle in a $P(k,1;1)$-subdivision-free strong digraph $D$. Then $\chi(D_{\mathcal{C}}) \leq 2k-3$
+Let ${\cal C}$ be a maximal nice collection of cycle in a $B(k,1;1)$-subdivision-free strong digraph $D$. Then $\chi(D_{\mathcal{C}}) \leq 2k-3$
 \end{lemma}
 
 \begin{proof}
@@ -496,7 +496,7 @@ Then $C'$ is the cycle obtained from $C$ by replacing the vertices $x_i$ by the 
 $C'$ is a cycle of $D$ of length at least $2k-2$ because it is no shorter than $C$. Let $C_1$ be a cycle of $\mathcal{C}$. By construction of $C'$ 
 and $D_{\mathcal{C}}$, $C'$ and $C_1$ can intersect only along a subpath of one $P_i$. Suppose this dipath is more than just one vertex. Let $x$ and
 $y$ the initial and terminal vertex of this path. Then the union of $C'[x,y]$,
-$C_1[x,y]$ and $C_1[y,x]$ is a $P(k,1;1)$-subdivision.
+$C_1[x,y]$ and $C_1[y,x]$ is a $B(k,1;1)$-subdivision.
 
 So $C'$ is a cycle of length at least $2k-2$, intersecting each cycle of $\mathcal{C}$ on at most one vertex, and which does not belong to $\mathcal{C}$, for otherwise would be reduced
 to one vertex in $D_{\mathcal{C}}$. This contradicts the fact that $\mathcal{C}$ is maximal.
@@ -509,12 +509,12 @@ Let ${\cal C}$ be a maximal nice collection of cycle in $D$.  Lemmas \ref{lem:co
 \end{proof}
 
 
-\section{$P(k,1;k)$}\label{sec:main}
+\section{$B(k,1;k)$}\label{sec:main}
 %%%%%%%%%%%
 
 In this section, we present a proof of Theorem \ref{th:main}.
 
-We prove the result by the contrapositive. We consider a digraph $D$ that contains no subdivision of $P(k,1;k)$.
+We prove the result by the contrapositive. We consider a digraph $D$ that contains no subdivision of $B(k,1;k)$.
 We shall prove that $\chi(D) \leq  C_k= \cste$.
 
 
@@ -538,7 +538,7 @@ complicated and because there might be arcs between cycles of the same component
  
  
  \begin{lemma}\label{lem:dis}
- Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+ Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-\free\ digraph.
 Let $C_1,C_2,C_3\in\mathcal C$ which pairwise intersect, and let $v$ belong to $V(C_2)\cap V(C_3)\setminus V(C_1)$. 
 Then exactly one of the following holds:
 \begin{itemize}
@@ -560,18 +560,18 @@ Hence $V(C_1)\cap V(C_2)\cap V(C_3)=\emptyset$. In particular, $P_{1,2}$, $P_{1,
 The dipath  $C_2[s_{1,2}, t_{2,3}]$ has length at least $3k$ because it contains $C_2[t_{1,2},v]$. Moreover, the dipath $C_3[t_{2,3}, s_{1,3}]$ 
 has length at least $2k$ because $C_3[v, s_{1,3}]$ has length at least $3k$ and $C_3[v,t_{2,3}]$ has length less than $k$.
 Thus $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$ has length at least $2k$.
-Consequently, the union of $C_2[s_{1,2}, t_{2,3}]$, $C_2[t_{2,3}, s_{1,2}]$, and $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$  is a subdivision of $P(k,1;k)$, a contradiction.
+Consequently, the union of $C_2[s_{1,2}, t_{2,3}]$, $C_2[t_{2,3}, s_{1,2}]$, and $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$  is a subdivision of $B(k,1;k)$, a contradiction.
 \end{proof}
 
 %We distinguish two cases according to the position of $s_{1,3}$ in $C_1$ relatively to $s_{1,2}$ and $t_{1,2}$.
 
 %\begin{itemize}
 %	\item Assume $s_{1,3}\in C_1[s_{1,2},t_{1,2}]$. The dipaths  $C_2[t_{2,3},s_{2,3}]$ and $C_3[t_{2,3}, s_{2,3}]$ have length at least $7k+1$ because $P_{2,3}$ and has lentgh less than $k$. Moreover, $P_{2,3}=C_2[s_{2,3}, t_{2,3}]$ contains $C_2[t_{1,2}, v]$  and so has length at least $3k$. Consequently, the union of  $C_3[t_{2,3}, s_{1,3}]$,
-%$C_2[t_{2,3}, s_{1,3}]$, and $C_2[s_{1,3}, t_{2,3}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+%$C_2[t_{2,3}, s_{1,3}]$, and $C_2[s_{1,3}, t_{2,3}]$ is a subdivision of $B(k,1;k)$, a contradiction.
 
 %	\item Assume now that $s_{1,3}\in C_1[t_{1,2},s_{1,2}]$. The dipath  $C_2[s_{1,2}, t_{2,3}]$ has length greater than $3k$ because it contains $C_2[t_{1,2},v]$. Moreover, the dipath $C_3[s_{1,3}, t_{2,3}]$ is contained in $P_{1,3}\cup C_3[t_{1,3},v]\cup C_3[v,t_{2,3}]$, and so has length at most $5k$.
 %	Thus $C_3[t_{2,3}, s_{1,3}]$ has length at least $3k$.
-%	 Consequently, the union of $C_2[s_{1,2}, t_{2,3}]$, $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$, and $C_2[t_{2,3}, s_{1,2}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+%	 Consequently, the union of $C_2[s_{1,2}, t_{2,3}]$, $C_3[t_{2,3}, s_{1,3}]\odot C_1[s_{1,3}, s_{1,2}]$, and $C_2[t_{2,3}, s_{1,2}]$ is a subdivision of $B(k,1;k)$, a contradiction.
 %\end{itemize}
 
 
@@ -609,7 +609,7 @@ Let ${\cal C}$ be a $k$-suitable collection of directed cycles and let $C_1\in {
 
 
 \begin{lemma}\label{lem:A}
-Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph $D$.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-\free\ digraph $D$.
 Let $C_1$ be a cycle of ${\cal C}$ and let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$.
 All vertices of $\bigcup({\cal C}\cap A)  - A$ belongs to a unique cycle $C_A$ of $\mathcal{C}$.
 \end{lemma}
@@ -627,17 +627,17 @@ Free to consider the first $C^*_j \neq C_2$ in this sequence such that $V(C^*_j)
 %For $i=2,3$, let $R_i$ be the $(t,t(Q_i)$-dipath in $C_1\cup Q_i$. Observe that $R_i=Q_i$ or $R_i=C_1[t,t']\cup Q_i$. 
 Let $R_3=C_1[t_{1,2},t_{1,3}]\odot Q_3$. Clearly, $R_3$ has length at least $3k$.
 %Hence $R_i$ has length at least $3k$.
-Let $v$ be the last vertex in $Q_2\cap R_3$ along $Q_2$. (This vertex exists since $t_{1,2}\in Q_2\cap R_3$.) Since there is a $(C_3,C_2)$-dipath in $D[A]$, by Corollary~\ref{cor:util}, $C_3[t(Q_3), s(Q_A)]$ is in $D[A]$. Thus  there exists a $(t(Q_3), C_2)$-dipath $R_A$ in $D[A]$.  Let $w$ be its terminal vertex. By definition of $A$, $w$ is in $C_2[t(Q_2), s(Q_2)]$, therefore $C_2[w,v]$ has length at least $3k$ since it contains $C_2[s(Q_2), s_{1,2}]$. Consequently, both $C_2[v,t(Q_2)]$ and $R_3[v,t(Q_3)]$ have length less than $k$ for otherwise the union of $C_2[w,v]$, $C_2[v,w]$ and $R_3[v,t(Q_3)]\odot R_A$ would be a subdivision of $P(k,1;k)$.
+Let $v$ be the last vertex in $Q_2\cap R_3$ along $Q_2$. (This vertex exists since $t_{1,2}\in Q_2\cap R_3$.) Since there is a $(C_3,C_2)$-dipath in $D[A]$, by Corollary~\ref{cor:util}, $C_3[t(Q_3), s(Q_A)]$ is in $D[A]$. Thus  there exists a $(t(Q_3), C_2)$-dipath $R_A$ in $D[A]$.  Let $w$ be its terminal vertex. By definition of $A$, $w$ is in $C_2[t(Q_2), s(Q_2)]$, therefore $C_2[w,v]$ has length at least $3k$ since it contains $C_2[s(Q_2), s_{1,2}]$. Consequently, both $C_2[v,t(Q_2)]$ and $R_3[v,t(Q_3)]$ have length less than $k$ for otherwise the union of $C_2[w,v]$, $C_2[v,w]$ and $R_3[v,t(Q_3)]\odot R_A$ would be a subdivision of $B(k,1;k)$.
 In particular, $v\neq t(Q_2)$. This implies that $s_{2,3}\in V(Q_2\cap R_3)$.
 Moreover, $Q_2[s_{2,3}, t(Q_2)]$ has length less than $2k$ because $Q_2[s_{2,3},v]$ is a subdipath of $P_{2,3}$ and so has length less than $k$.
 Therefore $C_2[t_{1,2},s_{2,3}]=Q_2[t_{1,2},s_{2,3}]$ has length at least $k$ because $Q_2$ has length at least $3k$.
-It follows that the union of $C_2[s_{2,3},t_{1,2}]$,  $C_2[t_{1,2},s_{2,3}]$ and  $R_3[t_{1,2},s_{2,3}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+It follows that the union of $C_2[s_{2,3},t_{1,2}]$,  $C_2[t_{1,2},s_{2,3}]$ and  $R_3[t_{1,2},s_{2,3}]$ is a subdivision of $B(k,1;k)$, a contradiction.
 \end{proof}
 
 
 
 \begin{lemma}\label{lem:no-dicycle}
-Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph. For any cycle $C_1\in {\cal C}$, the digraph
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-\free\ digraph. For any cycle $C_1\in {\cal C}$, the digraph
 $I^+(C_1)$ has no directed cycle.  
 \end{lemma}
 
@@ -676,7 +676,7 @@ $5\leq q\leq p$, then it comes form the fact that $B_4$ is a subdipath of $C_W[v
 In both case, $C_W[b_2, a_4]$ has length at least $k$. 
 
 Furthermore, $C_W[a_4,b_2]$ has length at least $k$ because it contains $B_3$. Therefore the union of
-$C_W[b_2, a_4]$, $C_W[a_4,b_2]$ and $C'[b_2,a_4]=C_3[b_3,a_4]$ is a subdivision of of $P(k,1;k)$, a contradiction.
+$C_W[b_2, a_4]$, $C_W[a_4,b_2]$ and $C'[b_2,a_4]=C_3[b_3,a_4]$ is a subdivision of of $B(k,1;k)$, a contradiction.
 \end{proof}
 
 
@@ -687,7 +687,7 @@ Let $\phi$ be a colouring of $G$. A subset of vertices or a subgraph $S$ of $G$ 
 Set $\alpha_k=2\cdot \col + 14k$.
 
 \begin{lemma}\label{lem:IC}
-Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-\free\ digraph.
 
 Let $\phi$ be a partial colouring of a cycle $C_1\in {\cal C}$ such that only a path of length at most
 $7k$ is coloured and this path is rainbow-coloured. Then $\phi$ can be extended into
@@ -750,20 +750,20 @@ We distinguish between the intersection of $P_1$, $P_2$ and $P_3$:
 \begin{itemize}
 	\item Suppose $P_3$ does not intersect $P_1 \cup P_2$.
 	\begin{itemize}
-		\item Assume first that $P_1$ and $P_2$ are disjoint. If $s(P_1)$ is in $C_1[t(P_3), s(P_2)]$, then the union of  $P_1 \odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f] \odot P_3\odot C_1[t(P_3), s(P_1)]$ and $C_1[s(P_1), s(P_2)]\odot P_2$ is a subdivision of $P(k,1;k)$, a contradiction.
-		 If $s(P_1)$ is in $C_1[ s(P_2), t(P_3)]$, then the union of  $C_1[s(P_2), s(P_1)]\odot P_1\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot  P_3\odot C_1[t(P_3), s(P_2)]$, and  $P_2$ is a subdivision of $P(k,1;k)$, a contradiction.
+		\item Assume first that $P_1$ and $P_2$ are disjoint. If $s(P_1)$ is in $C_1[t(P_3), s(P_2)]$, then the union of  $P_1 \odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f] \odot P_3\odot C_1[t(P_3), s(P_1)]$ and $C_1[s(P_1), s(P_2)]\odot P_2$ is a subdivision of $B(k,1;k)$, a contradiction.
+		 If $s(P_1)$ is in $C_1[ s(P_2), t(P_3)]$, then the union of  $C_1[s(P_2), s(P_1)]\odot P_1\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot  P_3\odot C_1[t(P_3), s(P_2)]$, and  $P_2$ is a subdivision of $B(k,1;k)$, a contradiction.
 	
-		\item Assume now $P_1$ and $P_2$ intersect. Let $u$ be the last vertex along $P_2$ on which they intersect. The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3\odot C[t(P_3), s(P_1)]\odot P_1[s(P_1), u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+		\item Assume now $P_1$ and $P_2$ intersect. Let $u$ be the last vertex along $P_2$ on which they intersect. The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3\odot C[t(P_3), s(P_1)]\odot P_1[s(P_1), u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $B(k,1;k)$, a contradiction.
 	\end{itemize}
 
-	\item Assume $P_3$ intersect $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cap P_2$ and let $u$ be the last vertex of $P_1\cap P_2$ along $P_2$. The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3[v_f,v]\odot P_1[v, u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+	\item Assume $P_3$ intersect $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cap P_2$ and let $u$ be the last vertex of $P_1\cap P_2$ along $P_2$. The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P[v_{\ell_k}, v_f]\odot P_3[v_f,v]\odot P_1[v, u]$, and $P_2[u, v_{\ell_k}]$ is a subdivision of $B(k,1;k)$, a contradiction.
 
 	\item Assume now that $P_3$ intersects $P_1\cup P_2$ but not $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cup P_2$.
 	\begin{itemize}
-	\item If $v \in P_2$, let $u$ be the last vertex on $P_2\cap P_3$ along $P_3$. Observe that $P_3[v,u]$ is also a subpath of $P_2$ and therefore contains no vertex of $P_1$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_1}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_1$. Hence, the union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,v]$, $Q\odot P[v_{\ell_1},v_{\ell_k}]$, and $P_2[u,v_{\ell_k}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+	\item If $v \in P_2$, let $u$ be the last vertex on $P_2\cap P_3$ along $P_3$. Observe that $P_3[v,u]$ is also a subpath of $P_2$ and therefore contains no vertex of $P_1$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_1}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_1$. Hence, the union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,v]$, $Q\odot P[v_{\ell_1},v_{\ell_k}]$, and $P_2[u,v_{\ell_k}]$ is a subdivision of $B(k,1;k)$, a contradiction.
 	
 	\item If $v\in P_1$, let $u$ be the last vertex on $P_1\cap P_3$ along $P_3$.  Observe that $P_3[v,u]$ is also a subpath of $P_1$ and therefore contains no vertex of $P_2$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_k}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_2$.
-	The union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,u]$, $P_1[u, v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$ and $Q$ is a subdivision of $P(k,1;k)$, a contradiction.
+	The union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,u]$, $P_1[u, v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$ and $Q$ is a subdivision of $B(k,1;k)$, a contradiction.
 
 	\end{itemize}
 \end{itemize}
@@ -776,7 +776,7 @@ Claim~\ref{claim:c+} shows the existence of $\phi^+$ and completes the proof of 
 
 
 \begin{lemma}\label{lem:col-union-cycle}
-Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-\free\ digraph.
 There exists a proper colouring $\phi$ of $\bigcup{\cal C}$ with $\alpha_k$ colours, such that, each subpath of length $7k$ of each cycle of $\mathcal{C}$ is rainbow-coloured.
 \end{lemma}
 \begin{proof}
@@ -799,7 +799,7 @@ Hence, by the induction hypothesis, we can extend $\phi_1$ to $A$. Doing this fo
 Set $\beta_k= k(4k^2+2)(2\cdot (4k)^{4k} + 1) \alpha_k$.
 
 \begin{lemma}\label{lem:DC}
-Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $P(k,1;k)$-\free\ digraph $D$.
+Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-\free\ digraph $D$.
 For every component $\mathcal{S}$ of $\mathcal{C}$, we have $\chi(D[\mathcal{S}]) \leq \beta_k$.
 \end{lemma}
 
@@ -868,7 +868,7 @@ In particular $P$ is disjoint from $C_l - C_{l'}$ and  $C_s - C_{s'}$.
 Observe that $C_l[s_{l,l'},t_{l,m}]$ has length at most $3k$ because it is contained in the union of $P_{l,l'}$, $P_{l,m}$, and $C_l[t_{l.l'}, x]$ which has length at most $k$ because $x\in P^+_l$. Hence  $C_l[t_{l,m},s_{l,l'}]$ has length at least $k$.
 Moreover $C_m[s_{m,m'},t_{l,m}]$ contains  $C_m[t_{m,m'}, x]$ which has length at least $k$ because $x\notin P^+_m$.
 Thus the union of $C_l[t_{l,m},s_{l,l'}] \odot P$, $C_m[t_{l,m},s_{m,m'}]$, 
-and  $C_m[s_{m,m'},t_{l,m}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+and  $C_m[s_{m,m'},t_{l,m}]$ is a subdivision of $B(k,1;k)$, a contradiction.
 The case where  $x\in P^-_l$ and $x \not \in  P^-_m$ is symmetrical and the case where $x$ does not belong to $P^-_l \cup P^+_l \cup P^-_m \cup P^+_m$ is identical.
 \end{subproof}
 
@@ -893,7 +893,7 @@ Clearly $(X^+, X^-, X')$ is a partition of $V(D[{\cal S}])$.
 %We distinguishes between three different cases, regarding the intersection of $C_{l_1}$ and  $C_{l_2}$.
 %\begin{itemize}
 %	\item Suppose they don't intersect. 
-%	Then we find a subdivision of $P(k,1;k)$ between $y$ and $x_1$. 
+%	Then we find a subdivision of $B(k,1;k)$ between $y$ and $x_1$. 
 %	The long paths are $C_{l_1}[y,x_1]$ and $C_{l_1}[x_1,y]$ and the last is $(x_1,x_2) \odot C_{l_2}[x_2,y] \odot P$.
 %	\item Suppose they intersect By lemmas \ref{lem:Qneg} and \ref{lem:Qpos}
 %\end{itemize}
@@ -922,18 +922,18 @@ In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+\cup X'$, then $C
 
 Assume that $xy$ is an arc. In $\bigcup_{l=1}^{p-1} C_l$, there is a dipath $P$ from $t_{p-1,p}$ to $x$. This path has length at least $k-1$ because
 it must go through all levels $L_{i'}$, $i\leq i'\leq j-1$ because the vertices of any cycle of ${\cal S}$ are in two consecutive levels.
-Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C_p[y,t_{p-1,p}]$ is a subdivision of $P(k,1;k)$, a contradiction.
+Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C_p[y,t_{p-1,p}]$ is a subdivision of $B(k,1;k)$, a contradiction.
 Hence  $yx$ is an arc.
 
 
 Suppose that $C_x$ is not an ancestor of $C_y$. In particular, $C_2$ is the father of $C_1$
 and there exists a path $P$ from $t_{1,2}$ to $y$ in $\bigcup_{l=2}^{p-1} C_l$ of length at least $k-1$ and 
-internally disjoint from $C_1$. Hence the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ is a subdivsion of  $P(k,1;k)$.
+internally disjoint from $C_1$. Hence the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ is a subdivsion of  $B(k,1;k)$.
 Hence $C_x$ is an ancestor of $C_y$. 
 
 In  particular, $C_l$ is the father of $C_{l+1}$ for all $l\in [p-1]$. Let $P$ be the dipath from $t_{1,2}$ 
 to $y$ $\bigcup_{l=2}^{p} C_l$. It has length at least $k-1$ because it must go through all levels $L_i$, $1\leq i\leq p-1$. 
-$C_1[x,t_{1,2}]$ has length less than $k$ , for otherwise the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ would be a subdivision of  $P(k,1;k)$.
+$C_1[x,t_{1,2}]$ has length less than $k$ , for otherwise the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ would be a subdivision of  $B(k,1;k)$.
 
 To summarize, the only arcs of $D_2[X^+\cup X']$ are arcs $yx$ such that $C_x$ is an ancestor of $C_y$ and $C_1[x,t_{1,2}]$ has length less than $k$ with $C_1 \dots C_p$ is the
 sequence of cycles such that $C_1=C_x$ to $C_p=C_y$ and $C_l$ is the father of $C_{l+1}$ for all $l\in [p-1]$.
@@ -947,7 +947,7 @@ Suppose for a contradiction that $y$ has out-degree at least $2k^2+1$. Then ther
 Let $P$ be the shortest dipath from $x_1$ to $y$ in $\bigcup_{l=l_1}^p C_l$. This dipath intersect all cycles $C_l$ $l_1\leq l\leq p$. Let $z$ be first vertex of $P$ along $C_{l_{k+1}}[x_{k+1}, t_{l_{k+1}, l_{k+2}}]$. Vertex $z$ belongs to either $L_{l_{k+1}-1}$ or $L_{l_{k+1}}$.
 Thus $P[x_1, z]$ and $P[z, y]$ have length at least $k-1$ and $k$ respectively since $P$ goes through all levels from $L_{l_1}$ to $L_p$. 
  Hence the union of $(y, x_1) \odot P[x_1, z]$,  $(y,x_{k+1}\odot C_{l_{k+1}}[x_{k+1},z]$, and
-$P[z, y]$ is a subdivision of $P(k,1;k)$, a contradiction.
+$P[z, y]$ is a subdivision of $B(k,1;k)$, a contradiction.
 Therefore $D_2[X^+\cup X']$ has maximum out-degree at most $2k^2$. 
 
 $D_2[X^+\cup X']$ is acyclic and has maximum out-degree at most $2k^2$. Therefore it is $2k^2$-degenerate, and so $ \chi(D_2[X^+\cup X'])\leq 2k^2 +1$.
@@ -971,18 +971,18 @@ Suppose for a contradiction that $xy$ is an arc of $D'_0(c)$.
 By definition of $D_0$ $x$ and $y$ are in a same level $L_i$.
 Let $C_l$ and $C_m$ be two cycles of $L_i$ such that $x \in C_l$ and $y \in C_m$.
 
-If $C_l=C_m$, then both $C_l[x,y]$ and $C_l[y,x]$ have length at least $7k$ because the subdipaths of  length $7k$ of $C_l$ are rainbow-coloured by $\phi$. Hence the union of those paths and $(x,y)$ is  a subdivision of $P(k,1;k)$, a contradiction.
+If $C_l=C_m$, then both $C_l[x,y]$ and $C_l[y,x]$ have length at least $7k$ because the subdipaths of  length $7k$ of $C_l$ are rainbow-coloured by $\phi$. Hence the union of those paths and $(x,y)$ is  a subdivision of $B(k,1;k)$, a contradiction.
 Henceforth, $C_l$ and $C_m$ are distinct cycles.
 
 
 
 Suppose first that $C_l$ and $C_m$ intersect. By Claim~\ref{claim:Rpos}, $s_{l,m}$
 belongs to $P^-_l$, $P^+_l$ or $L_{i-1}$, and by construction of $R'_l$, $C_l[x,s_{l,m}]$ and 
-$C_l[s_{l,m},x]$ are both longer than $k$. Therefore they form with $(x,y) \odot C_m[y,s_{l,m}]$ a subdivision of $P(k,1;k)$, a contradiction.
+$C_l[s_{l,m},x]$ are both longer than $k$. Therefore they form with $(x,y) \odot C_m[y,s_{l,m}]$ a subdivision of $B(k,1;k)$, a contradiction.
 
 Suppose now that $C_l$ and $C_m$ do not intersect. Let $C_l'$ and $C_m'$ be the fathers of $C_l$ and $C_m$ respectively. 
 Let $P$ be the dipath  from $s_{m,m'}$ to $s_{l,l'}$ in of $\cup_{j<i} L_j$. Then the union of $C_l[s_{l,l'}, x]$,
-$(x,y) \odot C_m[y, s_{m,m'}] \odot P$, and $C_l[x,s_{l,l'}]$ is a subdivision of $P(k,1,;k)$, a contradiction.
+$(x,y) \odot C_m[y, s_{m,m'}] \odot P$, and $C_l[x,s_{l,l'}]$ is a subdivision of $B(k,1,;k)$, a contradiction.
 \end{subproof}
 
 
@@ -1008,7 +1008,7 @@ Moreover $i_0>0$, because the vertices of $C_0$ coloured $c$ form a stable set.
 Suppose that $P$ contains two vertices $x$ and $y$ of a same cycle $C$ of ${\cal S}$. 
 Without loss of generality, we may assume that $P]x,y[$ contains no vertices of $C$.
 Now  both $C[x,y]$ and $C[y,x]$ have length at least $7k$ because the subdipaths of  length $7k$ of $C$ are rainbow-coloured by $\phi$. 
-Thus the union of $C[x,y]$, $P[x,y]$ and $C[y,x]$ is a subdivision of $P(k,1,;k)$, a contradiction.
+Thus the union of $C[x,y]$, $P[x,y]$ and $C[y,x]$ is a subdivision of $B(k,1,;k)$, a contradiction.
 Hence $P$ intersects every cycle of ${\cal S}$ at most once.
 
 
@@ -1053,22 +1053,22 @@ Let $P_5$ be a shortest dipath in $\cup_{i < i_0} L_i$ from $s_{j'_3,j_3}$ to $t
 		\item Suppose $P_1$ and $P_2$ are disjoint and let $P_4$ be the shortest dipath in $\cup_{i < i_0} L_i$ 
 from $t_{j'_1,j_1}$ to $t_{j'_2,j_2}$. Let $v$ be the last vertex of $P_4$ in $P_4 \cap P_5$.
 The union of $P_5[v, t_{j'_1,j_1}] \odot P_1 \odot P[v_{\ell_1}, v_{\ell_k}]$, $P_4[v,t_{j'_2,j_2}] \odot P_2$,
-and $P[v_{\ell_k}, v_f] \odot P_3 \odot P_5[s_{j'_3,j_3}, v]$ is a subdivision of $P(k,1;k)$,  a contradiction.
+and $P[v_{\ell_k}, v_f] \odot P_3 \odot P_5[s_{j'_3,j_3}, v]$ is a subdivision of $B(k,1;k)$,  a contradiction.
 
 	
 		\item Assume now $P_1$ and $P_2$ intersect. Let $u$ be the last vertex along $P_2$ on which they intersect.
-		 The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P_2[u, v_{\ell_k}]$, and $P[v_{\ell_k}, v_f]\odot P_3\odot P_5 \odot P_1[t_{j'_1,j_1}, u]$ is a subdivision of $P(k,1;k)$, a contradiction.
+		 The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P_2[u, v_{\ell_k}]$, and $P[v_{\ell_k}, v_f]\odot P_3\odot P_5 \odot P_1[t_{j'_1,j_1}, u]$ is a subdivision of $B(k,1;k)$, a contradiction.
 	\end{itemize}
 
-	\item Assume $P_3$ intersects $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cap P_2$ and let $u$ be the last vertex of $P_1\cap P_2$ along $P_2$. The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P_2[u, v_{\ell_k}]$, and $P[v_{\ell_k}, v_f]\odot P_3[v_f,v]\odot P_1[v, u]$ is a subdivision of $P(k,1;k)$, a contradiction.
+	\item Assume $P_3$ intersects $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cap P_2$ and let $u$ be the last vertex of $P_1\cap P_2$ along $P_2$. The union of $P_1[u,v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P_2[u, v_{\ell_k}]$, and $P[v_{\ell_k}, v_f]\odot P_3[v_f,v]\odot P_1[v, u]$ is a subdivision of $B(k,1;k)$, a contradiction.
 
 	\item Assume now that $P_3$ intersect $P_1\cup P_2$ but not $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cup P_2$.
 	\begin{itemize}
-	\item If $v \in P_2$, let $u$ be the last vertex of $P_2\cap P_3$ along $P_3$. Observe that $P_3[v,u]$ is also a subpath of $P_2$ and therefore contains no vertex of $P_1$. Hence, the union of $P_3[u, s_{j'_3,j_3}]\odot P_5 \odot P_1\odot P[v_{\ell_1},v_{\ell_k}]$,  $P_2[u,v_{\ell_k}]$, and $P[v_{\ell_k}, v_f] \odot P_3[v_f,v]$ is a subdivision of $P(k,1;k)$, a contradiction.
+	\item If $v \in P_2$, let $u$ be the last vertex of $P_2\cap P_3$ along $P_3$. Observe that $P_3[v,u]$ is also a subpath of $P_2$ and therefore contains no vertex of $P_1$. Hence, the union of $P_3[u, s_{j'_3,j_3}]\odot P_5 \odot P_1\odot P[v_{\ell_1},v_{\ell_k}]$,  $P_2[u,v_{\ell_k}]$, and $P[v_{\ell_k}, v_f] \odot P_3[v_f,v]$ is a subdivision of $B(k,1;k)$, a contradiction.
 	
 	
 	\item If $v\in P_1$, let $u$ be the last vertex of $P_1\cap P_3$ along $P_3$.  Observe that $P_3[v,u]$ is also a subpath of $P_1$ and therefore contains no vertex of $P_2$. 
-	Hence the union of $P_1[u, v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P_3[u, s_{j'_3,j_3}]\odot P_6 \odot P_2$, and $P[v_{\ell_k}, v_f] \odot P_3[v_f,u]$,  is a subdivision of $P(k,1;k)$, a contradiction.
+	Hence the union of $P_1[u, v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P_3[u, s_{j'_3,j_3}]\odot P_6 \odot P_2$, and $P[v_{\ell_k}, v_f] \odot P_3[v_f,u]$,  is a subdivision of $B(k,1;k)$, a contradiction.
 
 	\end{itemize}
 
@@ -1110,7 +1110,7 @@ For each vertex $x_j$ that corresponds to a $s_i$ in $D$, the arc $x_{j-1}x_j$ c
 Let $C'$ be the cycle obtained from $C$ where we replace all contracted vertices $x_j$ by the path $P_j$. 
 First note that $C'$ has length at least $8k$. Moreover, a cycle of $\mathcal{C}$  can
 intersect $C'$ only along one $P_j$, because they all correspond to different strong components of $\bigcup \mathcal{C}$. Thus $C'$ intersects  each cycle of $\mathcal{C}$ on a subdipath. Moreover this subdipath has length smaller than $k$ for otherwise $D$ would contain 
-a subdivision of $P(k,1;k)$. So $C'$ is a directed cycle of length at least $8k$ which intersects every cycle of $\mathcal{C}$ along a 
+a subdivision of $B(k,1;k)$. So $C'$ is a directed cycle of length at least $8k$ which intersects every cycle of $\mathcal{C}$ along a 
 subdipath of length less than $k$. This contradicts the maximality of $\mathcal{C}$.
 \end{proof}
 
