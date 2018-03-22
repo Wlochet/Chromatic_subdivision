@@ -79,14 +79,13 @@
 \title{Bispindles in strongly connected digraphs with large chromatic number}
 
 \author[1]{Nathann Cohen}
-\author[2,3]{Fr\'ed\'eric Havet}
-\author[2,3,4]{William Lochet}
-\author[5]{Raul Lopes}
+\author[2]{Fr\'ed\'eric Havet}
+\author[2,3]{William Lochet}
+\author[4]{Raul Lopes}
 \affil[1]{ CNRS, LRI, Univ. Paris Sud, Orsay, France}
-\affil[2]{ Universit\'e C\^ote d'Azur, CNRS, I3S, UMR 7271, Sophia Antipolis, France}
-\affil[3]{ INRIA, France}
-\affil[4]{ LIP, ENS de Lyon, France}
-\affil[5]{ Departamento de Computa\c{c}ao, Universidade Federal do Cear\'a, Fortaleza, Brazil}
+\affil[2]{ Universit\'e C\^ote d'Azur, CNRS, I3S, INRIA, Sophia Antipolis, France}
+\affil[3]{ LIP, ENS de Lyon, France}
+\affil[4]{ Departamento de Computa\c{c}ao, Universidade Federal do Cear\'a, Fortaleza, Brazil}
 
 
 
@@ -98,7 +97,7 @@
 \begin{abstract}
 A {\it $(k_1+k_2)$-bispindle} is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths, all these dipaths being pairwise internally disjoint.
 Recently, Cohen et al. showed that for every $(1,1)$- bispindle $B$, there exists an integer $k$ such that every strongly connected
-digraph with chromatic number greater than $k$ contains a subdivision of $B$. We investigate generalisations of
+digraph with chromatic number greater than $k$ contains a subdivision of $B$. We investigate generalizations of
 this result by first showing constructions of strongly connected digraphs with large chromatic number without any $(3,0)$-bispindle
 or $(2,2)$-bispindle. We then consider $(2,1)$-bispindles. Let $B(k_1,k_2;k_3)$ denote the $(2,1)$-bispindle formed by three internally disjoint dipaths between two vertices $x,y$,
 two $(x,y)$-dipaths, one of length $k_1$ and the other of length $k_2$, and one $(y,x)$-dipath of length $k_3$. 
@@ -106,7 +105,7 @@ We conjecture that for any positive integers $k_1, k_2,k_3$, there is an integer
 digraph with chromatic number greater than $g(k_1,k_2,k_3)$ contains a subdivision of $B(k_1,k_2;k_3)$. As an evidence, we prove this conjecture for $k_2=1$ (and $k_1, k_3$ arbitrary). \end{abstract}
 
 \section{Introduction}
-Throughout this paper, a {\it colouring} of a digraph is a colouring of its underlying graph. Similarly,  the {\it chromatic number} of a digraph $D$, denoted by $\chi(D)$, is the chromatic number of its underlying graph. 
+Throughout this paper, a {\it proper colouring} of a digraph is a proper colouring of its underlying graph. Similarly,  the {\it chromatic number} of a digraph $D$, denoted by $\chi(D)$, is the chromatic number of its underlying graph. 
 In a digraph $D$, a \emph{dipath} is an oriented path where all the arcs are oriented in the same direction, from the initial vertex towards the terminal vertex.
  
 A classical result due to Gallai, Hasse, Roy and Vitaver is the following. 
@@ -124,14 +123,14 @@ Which digraphs are subdigraphs of all digraphs with large chromatic number ?
 
 A famous theorem by Erd\H{o}s~\cite{Erd59} states that there exist graphs with arbitrarily high girth and arbitrarily large
 chromatic number. This means that if $H$ is a digraph containing an oriented (non necessarily directed) cycle, there exist digraphs with arbitrarily high 
-chromatic number with no subdigraph isomorphic to $H$. Thus the only possible candidates to generalise Theorem \ref{thm:gallairoy} are the {\it oriented trees} that are orientations of trees.
-Burr\cite{Burr80} proved that every $(k-1)^2$-chromatic digraph contains every oriented tree of order $k$ and made the following conjecture.
+chromatic number with no subdigraph isomorphic to $H$. Thus the only possible candidates to generalize Theorem \ref{thm:gallairoy} are the {\it oriented trees} that are orientations of trees.
+Burr~\cite{Burr80} proved that every $(k-1)^2$-chromatic digraph contains every oriented tree of order $k$ and made the following conjecture.
 
 \begin{conjecture}[Burr~\cite{Burr80}]\label{cnj:tn}
 	 If $\chi(D) \geq (2k-2)$, then $D$ contains a copy of any oriented tree $T$ of order $k$.
 \end{conjecture}
 The best known upper bound, due to Addario-Berry et al.~\cite{AHS+13}, is in $(k/2)^2$.
-However, for paths with two blocks ({\it blocks} are maximal directed subpaths), the best possible upper bound is known.
+However, for oriented paths with two blocks ({\it blocks} are maximal directed subpaths), the best possible upper bound is known.
 
 \begin{theorem}[Addario-Berry et al.~\cite{AHT07}]\label{thm:2blocks}
 Let $P$ be an oriented path with two blocks on $n > 3$ vertices, then every digraph with chromatic number (at least) $n$ contains $P$. 
@@ -148,24 +147,24 @@ Every strong digraph of chromatic number at least $k$ contains a directed cycle 
 The strong connectivity assumption is indeed necessary, as transitive tournaments contain no directed cycle but can have arbitrarily  high chromatic number. 
 
 Observe that a directed cycle of length at least $k$ can be seen as a subdivision of $\vec{C}_k$, the directed cycle of length $k$.
-Recall that a {\it subdivision} of a digraph $F$ is a digraph that can be obtained from $F$ by replacing each arc $uv$ by a dipath from $u$ to $v$. Cohen et al.  \cite{CHLN16} conjecture that Bondy's theorem can be extended to all oriented cycles.
+Recall that a {\it subdivision} of a digraph $F$ is a digraph that can be obtained from $F$ by replacing each arc $(u,v)$ by a dipath from $u$ to $v$. Cohen et al.  \cite{CHLN16} conjecture that Bondy's theorem can be extended to all oriented cycles.
 
 \begin{conjecture}[Cohen et al.  \cite{CHLN16}]\label{conj:cycle-sub}
 For every oriented cycle $C$, there exists a constant $f(C)$ such that every strong digraph with chromatic number at least $f(C)$ contains a subdivision of $C$.
 \end{conjecture}
 
 The strong connectivity assumption is also necessary in Conjecture~\ref{conj:cycle-sub} as shown by Cohen et al.  \cite{CHLN16}. This follows from  the following result.
-\begin{theorem}\label{dkb}
+\begin{theorem}[Cohen et al.  \cite{CHLN16}]\label{dkb}
 For any positive integers $b$ and $k$, there exists an acyclic digraph $D_{k,b}$ such that any cycle in $D_{k,b}$ has at least $b$ blocks and $\chi(D_{k,b}) > k$.
 \end{theorem}
 
 
 
 
-On the other hand, Cohen et al.  \cite{CHLN16} proved conjecture for cycles with two blocks and the antidirected cycle of length $4$.
+On the other hand, Cohen et al.  \cite{CHLN16} proved Conjecture~\ref{conj:cycle-sub} for cycles with two blocks and the antidirected cycle of length $4$.
 More precisely, denoting by $C(k,\ell)$ the cycle with two blocks, one of length $k$ and the other of length $\ell$,
- Cohen et al. \cite{CHLN16} proved the following result.
-\begin{theorem}\label{th:ckl}
+they proved the following result.
+\begin{theorem}[ Cohen et al. \cite{CHLN16}]\label{th:ckl}
 For every two positive integers $k$ and $\ell$, every strong digraph with chromatic number at least $O((k+\ell)^4)$ contains a subdivision of $C(k,\ell)$.
 \end{theorem} 
 The bound has recently been improved to $O((k+\ell)^2)$  by Kim et al. \cite{KKPM}.  
@@ -173,13 +172,13 @@ The bound has recently been improved to $O((k+\ell)^2)$  by Kim et al. \cite{KKP
 
 \medskip
 
-A {\it $p$-spindle} is the union of $k$ internally disjoint $(x,y)$-dipaths for some vertices $x$ and $y$. Vertex $x$ is said to be the {\it tail} of the spindle and $y$ its {\it head}.
+A {\it $p$-spindle} is the union of $p$ internally disjoint $(x,y)$-dipaths for some vertices $x$ and $y$. Vertex $x$ is said to be the {\it tail} of the spindle and $y$ its {\it head}.
 A {\it $(p+q)$-bispindle} is the internally disjoint union of a $p$-spindle
 with tail $x$ and head $y$ and a  $q$-spindle with tail $y$ and head $x$.
-In other words, it is the union of $k_1$  $(x,y)$-dipaths and $k_2$ $(y,x)$-dipaths, all of these dipaths being pairwise internally disjoint.
+In other words, it is the union of $p$  $(x,y)$-dipaths and $q$ $(y,x)$-dipaths, all of these dipaths being pairwise internally disjoint.
 Note that $2$-spindles are the cycles with two blocks and the $(1+1)$-bispindles are the directed cycles.
 
-In this paper, we generalize this and study the existence of spindles and bispindles in strong digraphs with large chromatic number.
+In this paper, we study the existence of spindles and bispindles in strong digraphs with large chromatic number.
 First, let us give a construction of digraphs with arbitrarily large chromatic number that contain no $3$-spindle and no $(2+2)$-bispindle. 
 
 \begin{theorem}\label{thm:no}
@@ -187,15 +186,15 @@ For every positive integer $k$, there exists a strongly connected digraph $D$ wi
 \end{theorem}
 
 \begin{proof}
-Let $D_{k,4}$ be an acyclic digraph with chromatic number greater than $k$ and with every cycle having at least four blocks obtained by Theorem \ref{dkb}.
+Let $D_{k,4}$ be an acyclic digraph with chromatic number greater than $k$ in which every cycle has at least four blocks. The existence of such a digraph is given by Theorem \ref{dkb}.
 Let $S = \{s_1, \dots,  s_l\}$ be the set of vertices of $D_{k,4}$ with out-degree 0 and $T = \{t_1, \dots, t_m\}$ the set of vertices with in-degree 0.
 
-Consider the digraph $D$ obtained from $D_{k,4}$ as follows. Add a dipath  $P = (x_1,x_2, \dots , x_l,z,y_1,y_2,\dots, y_m)$ and the arc $(s_i,x_i)$ for all $i\in [l]$ and
+Consider the digraph $D$ obtained from $D_{k,4}$ as follows. Add a dipath  $P = (x_1,x_2, \dots , x_l,z,y_1,y_2,\dots, y_m)$ and the arcs $(s_i,x_i)$ for all $i\in [l]$ and
 $(y_j,t_j)$ for all $j\in [m]$. It is easy to see that $D$ is strong.
 Moreover, in $D$, every directed cycle uses the arc $(x_l,z)$. Therefore $D$ does not contain a $(2+2)$-bispindle, which has two arc-disjoint directed cycles. 
 
-Suppose now that $D$ has a $3$-spindle with tail $u$ and head $v$, and let $Q_1, Q_2, Q_3$ be its three $(u,v)$-dipaths. Observe that $u$ and $v$ are not vertices of $P$, because all vertices of this dipath have either in-degree $2$ or out-degree $2$. In $D$ each cycle with two blocks between vertices outside $P$ must use the arc $(x_l,z)$. The union of $Q_1$ and $Q_2$ form a cycle on two blocks, 
-which means one of the two paths, say $Q_1$, contains $(x_l,z)$. But $Q_2$ and $Q_3$ also form a cycle on two blocks, but they cannot contain $(x_l,z)$, a contradiction.
+Suppose now that $D$ has a $3$-spindle with tail $u$ and head $v$, and let $Q_1, Q_2, Q_3$ be its three $(u,v)$-dipaths. Observe that $u$ and $v$ are not vertices of $P$, because all vertices of this dipath have either in-degree $2$ or out-degree $2$. In $D$, each oriented cycle with two blocks between vertices outside $P$ must use the arc $(x_l,z)$. The union of $Q_1$ and $Q_2$ form a cycle on two blocks, 
+which means that one of the two paths, say $Q_1$, contains $(x_l,z)$. But $Q_2$ and $Q_3$ also form a cycle on two blocks, but they cannot contain $(x_l,z)$, a contradiction.
 \end{proof}
 
 
@@ -203,8 +202,8 @@ which means one of the two paths, say $Q_1$, contains $(x_l,z)$. But $Q_2$ and $
 
 
 By Theorem~\ref{thm:no}, the most we can expect in all strongly connected digraphs with large chromatic number are $(2+1)$-bispindles.
-Let $B(k_1,k_2;k_3)$ denote the digraph formed by three internally disjoint paths between two vertices $x,y$,
-two $(x,y)$-dipaths, one of length $k_1$, the other of length $k_2$, and one $(y,x)$-dipath of length $k_3$.
+Let $B(k_1,k_2;k_3)$ denote the $(2+1)$-bispindle formed by three internally disjoint paths between two vertices $x,y$,
+two $(x,y)$-dipaths, one of length $k_1$ and the other of length $k_2$, and one $(y,x)$-dipath of length $k_3$.
 
 One can easily prove that  every strong digraph with chromatic number at least $4$ contains a subdivision of $B(2,1;1)$.
 \begin{proposition}\label{prop:p211}
@@ -214,9 +213,9 @@ If $\chi(D)\geq 4$, then $D$ contains a subdivision of $B(2,1;1)$.
 \begin{proof}
 Assume  $\chi(D)\geq 4$. Since every digraph contains a $2$-connected strong subdigraph with the same chromatic number, we may assume that $D$ is $2$-connected.
 Let $C$ be a shortest directed cycle in $D$. 
-It must be induced, so $\chi(D[C])=\chi(C) \leq 3$. 
+It must be induced, so $\chi(D[C])=\chi(C) \leq 3$. In particular, $V(D)\setminus V(C)$ is not empty.
 
-By Proposition 5.11 in \cite{BoMu08},  there is a dipath $P$ in $D$ whose ends lie in $F$ but whose internal
+Thus, by Proposition 5.11 in \cite{BoMu08},  there is a dipath $P$ in $D$ whose ends lie in $F$ but whose internal
 vertices do not. Necessarily, $P$ has length at least $2$ since $C$ is induced.
 Thus the union of $P$ and $C$ is a subdivision of $B(2,1;1)$.
 \end{proof}
@@ -278,7 +277,7 @@ A digraph $D$ is said to be {\it $F$-subdivision-free}, if it contains no $F$-su
 
 The {\it union} of two digraphs $D_1$ and $D_2$ is the digraph  $D_1\cup D_2$ defined by $V(D_1\cup D_2) = V(D_1)\cup V(D_2)$ and 
 $A(D_1\cup D_2) = A(D_1)\cup A(D_2)$.
-If ${\cal D}$ is a set of digraphs, we denote by $\bigcup {\cal D}$ the union of the digraphs, i.e. $V(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} V(D)$
+If ${\cal D}$ is a set of digraphs, we denote by $\bigcup {\cal D}$ the union of the digraphs in ${\cal D}$, i.e. $V(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} V(D)$
 and $A(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} A(D)$.
 
 \smallskip
@@ -286,7 +285,7 @@ and $A(\bigcup {\cal D}) =\bigcup_{D\in {\cal D}} A(D)$.
 
 Let $P$ be a dipath. We denote by $s(P)$ its initial vertex and by $t(P)$ its terminal vertex.
 For any two vertices, a {\it $(u,v)$-dipath} or {\it dipath from $u$ to $v$} is a dipath $P$ with $s(P)=u$ and $t(P)=v$.
-For two sets $X,Y$ of vertices, a  {\it $(X,Y)$-dipath} or  {\it dipath from $X$ to $Y$} is a dipath $P$ such that $s(P)\in X$, $t(P)\in Y$, and no internal vertex is in $X\cup Y$.
+For two sets $X,Y$ of vertices, an  {\it $(X,Y)$-dipath} or  {\it dipath from $X$ to $Y$} is a dipath $P$ such that $s(P)\in X$, $t(P)\in Y$, and no internal vertex is in $X\cup Y$.
 
 If $D$ is a dipath or a directed cycle, then we denote by $D[a,b]$ the subdipath of $D$ with initial vertex $a$ and terminal vertex $b$.
 We denote by $D[a,b[$ the dipath $D[a,b] -b$, by $D]a,b]$ the dipath $D[a,b] -a$, and by $D]a,b[$ the dipath $D]a,b[ -\{a,b\}$.
@@ -312,7 +311,7 @@ such that $G$ is $k$-colourable.
 
 
 A (directed) graph $G$ is {\it $k$-degenerate} if every subgraph $H$ of $G$ has a vertex of degree at most $k$.
-The following proposition is well-known.
+The following three statements are well-known.
 \begin{proposition}\label{prop:deg}
 Every $k$-degenerate (directed) graph is $(k+1)$-colourable.
 \end{proposition}
@@ -322,9 +321,6 @@ Let $G$ be a connected graph.
 Then $\chi(G)\leq \Delta(G)$ unless $G$ is a complete graph or an odd cycle.
 \end{theorem}
 
-
-The following easy lemma is well-known.
-
 \begin{lemma}\label{lem:decomp}
 Let $D_1$ and $D_2$ be two digraphs.
 Then $\chi(D_1\cup D_2) \leq \chi(D_1)\times \chi(D_2)$.
@@ -333,7 +329,7 @@ Then $\chi(D_1\cup D_2) \leq \chi(D_1)\times \chi(D_2)$.
 
 
 \begin{lemma}\label{lem:contrac}
-Let $D$ be a digraph, $D_1 \dots D_l$ be disjoint subdigraphs of $D$ and $D'$ the digraph obtained by contracting each $D_i$ into
+Let $D$ be a digraph, $D_1, \dots , D_l$ be disjoint subdigraphs of $D$ and $D'$ the digraph obtained by contracting each $D_i$ into
 one vertex $d_i$. Then $\chi(D) \leq \chi(D')\cdot \max\{\chi(D_i) \mid i \in [l]\}$.
 \end{lemma}
 
@@ -357,7 +353,7 @@ Every strong tournament of order $2k-1$ contains a $B(k,1;1)$-subdivision.
 \end{proposition}
 \begin{proof}
 Let $T$ be a strong tournament of order $2k-1$. By Camion's Theorem, it has a hamiltonian directed cycle $C=(v_1,v_2, \dots ,v_{2k-1},v_1)$.
-If there exists an arc $v_iv_j$ with $j-i\geq k$  (indices are modulo $2k-1$), then the union of  $C[v_i,v_j]$, $(v_i,v_j)$ and $C[v_j,v_i]$ is a $B(k,1;1)$-subdivision.
+If there exists an arc $(v_i,v_j)$ with $j-i\geq k$  (indices are modulo $2k-1$), then the union of  $C[v_i,v_j]$, $(v_i,v_j)$ and $C[v_j,v_i]$ is a $B(k,1;1)$-subdivision.
 Henceforth, we may assume that $T=R_{2k-1}$.
 Then the union of $C[v_1, v_{k-1}] \odot (v_{k-1}, v_{k+1}, v_{k+2})$,  $(v_1, v_{k}, v_{k+2})$, and $C[v_{k+2}, v_1]$ is a $B(k,1;1)$-subdivision.
 \end{proof}
@@ -424,10 +420,10 @@ For sake of simplicity, we denote by $D[{\cal S}]$ the digraph $D[\bigcup {\cal 
 
 
 We will prove that every $B(k,1;1)$-subdivision-free strong digraph $D$ has bounded chromatic number in the following way:
-Take a maximal nice collection ${\cal C}$ of directed cycles. 
-We will prove that every component ${\cal S}$ of ${\cal C}$ induces a digraph $D[{\cal S}]$ on $D$ of bounded chromatic number. 
-Then we will prove that, since it contains no long directed cycle and it is strong, $D_{\mathcal{C}}$ has bounded chromatic number,
-which, by Lemma~\ref{lem:contrac}, allows us to conclude. 
+We take a maximal nice collection ${\cal C}$ of directed cycles. 
+We will prove that for every component ${\cal S}$ of ${\cal C}$, the digraph $D[{\cal S}]$ has bounded chromatic number. 
+Then we will prove that, since it contains no long directed cycle and it is strong, $D_{\mathcal{C}}$ has bounded chromatic number.
+Those two results allow us to conclude by Lemma~\ref{lem:contrac}.
 
 We will need the following lemma:
 
@@ -461,17 +457,17 @@ Since $C$ has length at least $2k-2$, either $C[t(Q), s(P)]$ has length at least
 \begin{lemma}\label{lem:compo1}
 Let $k\geq 3$ be an integer, and let ${\cal C}$ be a nice collection of directed cycles in a $B(k,1;1)$-subdivision-free digraph $D$ and ${\cal S}$ a component of $\mathcal{C}$. Then $\chi(D[S]) \leq 2k-2$.	 
 \end{lemma}
-
+ord
 \begin{proof}
-By induction on the number of directed cycles in ${\cal S}$. Let $C$ be a cycle of ${\cal S}$. There is no chord between $x$ and $y$ in $C$
+By induction on the number of directed cycles in ${\cal S}$. Let $C$ be a cycle of ${\cal S}$. There is no chord $(x,y)$ of $C$
 such that $C[x,y]$ has length at least $k$, for otherwise there would be a $B(k,1;1)$-subdivision. Hence $D[C]$ has maximum degree at most $2k-2$. Moreover, by Proposition~\ref{prop:tournoi}, $D[C]$ is not a tournament of order $2k-1$.
 Thus, by Brooks' Theorem (\ref{thm:brooks}), $\chi(D[C])\leq 2k-2$.
  Let $c$ be a proper colouring of $C$ with $2k-2$ colours. Let ${\cal S}_1, {\cal S}_2, \dots, {\cal S}_r$ be the components of ${\cal S} \setminus \{C\}$. Since ${\cal S}$ is the union the ${\cal S}_l$, $l\in [r]$, and $\{C\}$,
 each ${\cal S}_l$ has less cycles than ${\cal S}$. By the induction hypothesis, there exists a proper colouring $c_l$ using $2k-2$ colours for each $D[{\cal S}_l]$.
  
 Now, we claim that each $D[{\cal S}_l]$ intersects $C$ in exactly one vertex. It is easy to see that $C$ must intersect at least one cycle of each ${\cal S}_l$.
-Now suppose there exist two vertices of $C$, $x$ and $y$ in $D[{\cal S}_l]$. By definition of a nice collection, they cannot belong to the same cycle 
-of ${\cal S}_l$, so there exist two cycles $C_i$ and $C_j$ of $S_l$ such that $x \in C_i$ and $y \in C_j$. Now $C[x,y]$ is a dipath form $C_i$ to $C_j$ whose arcs are not in $A(\bigcup {\cal S}_l)$. This contradicts Lemma~\ref{lem:headphone}. 
+Now suppose there exist two vertices of $C$, $x$ and $y$, in $D[{\cal S}_l]$. By definition of a nice collection, they cannot belong to the same cycle 
+of ${\cal S}_l$, so there exist two cycles $C_i$ and $C_j$ of $S_l$ such that $x \in C_i$ and $y \in C_j$. Now $C[x,y]$ is a dipath from $C_i$ to $C_j$ whose arcs are not in $A(\bigcup {\cal S}_l)$. This contradicts Lemma~\ref{lem:headphone}. 
 
 Consequently, free to permute the colours of the $c_l$,
 we may assume that each vertex of $C$ receives the same colour in $c$ and in the $c_l$. 
@@ -485,24 +481,24 @@ Let ${\cal C}$ be a maximal nice collection of directed cycles in a $B(k,1;1)$-s
 \end{lemma}
 
 \begin{proof}
-First note that since $D$ is strong, then so is $D_{\mathcal{C}}$. Suppose $\chi(D_{\mathcal{C}}) \geq 2k-2$. By Bondy's Theorem, there exists a directed cycle
+First note that since $D$ is strong, then so is $D_{\mathcal{C}}$. Suppose $\chi(D_{\mathcal{C}}) \geq 2k-2$. By Bondy's Theorem (\ref{thm:bondy}), there exists a directed cycle
 $C = (x_1, \dots , x_l, x_1)$ of length at least $2k-2$ in $ D_{\mathcal{C}}$. We derive a cycle $C'$ in $D$ the following way:
 Suppose the vertex $x_i$ corresponds to a component ${\cal S}_i$ of ${\cal C}$: the arc $(x_{i-1},x_i)$ corresponds in $D$ to an arc whose head
 is a vertex $p_i$ of $\bigcup {\cal S}_i$, and the arc $(x_i,x_{i+1})$ corresponds to an arc whose tail is a vertex  $l_i$ of $\bigcup {\cal S}_i$. 
 Let $P_i$ be a dipath 
-from $p_i$ to $l_i$ in $D[{\cal S}_i]$. Note that $P_i$ intersects each cycle of $S_i$ on a, possibly empty, subpath of $P_i$. 
+from $p_i$ to $l_i$ in $D[{\cal S}_i]$. Note that $P_i$ intersects each cycle of $S_i$ on a, possibly empty, subdipath of $P_i$. 
 Then $C'$ is the cycle obtained from $C$ by replacing the vertices $x_i$ by the path $P_i$.
 
 $C'$ is a cycle of $D$ of length at least $2k-2$ because it is no shorter than $C$. Let $C_1$ be a cycle of $\mathcal{C}$. By construction of $C'$ 
-and $D_{\mathcal{C}}$, $C'$ and $C_1$ can intersect only along a subpath of one $P_i$. Suppose this dipath is more than just one vertex. Let $x$ and
-$y$ be the initial and terminal vertex, respectively, of this path. Then the union of $C'[x,y]$,
-$C_1[x,y]$ and $C_1[y,x]$ is a $B(k,1;1)$-subdivision.
+and $D_{\mathcal{C}}$, $C'$ and $C_1$ can intersect only along a subdipath of one $P_i$. Suppose this dipath is more than just one vertex. Let $x$ and
+$y$ be the initial and terminal vertex, respectively, of this dipath. Then the union of $C'[x,y]$,
+$C_1[x,y]$ and $C_1[y,x]$ is a $B(k,1;1)$-subdivision, a contradiction.
 
-So $C'$ is a cycle of length at least $2k-2$, intersecting each cycle of $\mathcal{C}$ on at most one vertex, and which does not belong to $\mathcal{C}$, for otherwise would be reduced
+So $C'$ is a cycle of length at least $2k-2$, intersecting each cycle of $\mathcal{C}$ on at most one vertex, and which does not belong to $\mathcal{C}$, for otherwise it would be reduced
 to one vertex in $D_{\mathcal{C}}$. This contradicts the fact that $\mathcal{C}$ is maximal.
 \end{proof}
 
-So we can finally prove Theorem \ref{th:P11k}.
+We can finally prove Theorem \ref{th:P11k}.
 
 \begin{proof}[Proof of Theorem~\ref{th:P11k}]
 Let ${\cal C}$ be a maximal nice collection of directed cycles in $D$.  Lemmas \ref{lem:compo1}, \ref{lem:reduce} and \ref{lem:contrac} give the result.
@@ -529,11 +525,11 @@ Our proof heavily uses the notion of $k$-suitable collection of directed cycles,
 
  
  A collection ${\cal C}$ of directed cycles is {\it $k$-suitable} if all cycles of ${\cal C}$ have length at least $8k$, and
-any two distinct directed cycles $C_i,C_j\in\mathcal C$ intersect on  a subpath $P_{i,j}$ of order at most $k$.
+any two distinct directed cycles $C_i,C_j\in\mathcal C$ intersect on  a dipath $P_{i,j}$ of order at most $k$.
 We denote by $s_{i,j}$ (resp. $t_{i,j}$) the initial (resp. terminal) vertex of  $P_{i,j}$. 
-%This notion generalises the notion of nice collection seen before. 
+%This notion generalizes the notion of nice collection seen before. 
 
-The proof of Theorem \ref{th:main} uses the same idea as Theorem \ref{th:P11k}: take a maximal $k$-suitable collection of directed cycles ${\cal C}$; show that the digraph $D_{\cal C}$ obtained by contracting the components of ${\cal C}$ has bounded chromatic number, and that each component also has bounded chromatic; conclude using Lemma~\ref{lem:contrac}. However, because the intersection of cycles in this collection are more
+The proof of Theorem \ref{th:main} uses the same general idea as Theorem \ref{th:P11k}: take a maximal $k$-suitable collection of directed cycles ${\cal C}$; show that the digraph $D_{\cal C}$ obtained by contracting the components of ${\cal C}$ has bounded chromatic number, and that each component also has bounded chromatic; conclude using Lemma~\ref{lem:contrac}. However, because the intersection of cycles in this collection are more
 complicated and because there might be arcs between directed cycles of the same component, bounding the chromatic number of the components is way more challenging. The next subsection is devoted to this.
  
  
@@ -547,7 +543,7 @@ The first step of the proof is the following lemma.
  
  \begin{lemma}\label{lem:col-union-cycle}
 Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-\free\ digraph.
-There exists a proper colouring $\phi$ of $\bigcup{\cal C}$ with $\alpha_k$ colours, such that, each subpath of length $7k$ of each directed cycle of $\mathcal{C}$ is rainbow-coloured.
+There exists a proper colouring $\phi$ of $\bigcup{\cal C}$ with $\alpha_k$ colours, such that, each subdipath of length $7k$ of each directed cycle of $\mathcal{C}$ is rainbow-coloured.
 \end{lemma}
  
  
@@ -556,7 +552,7 @@ There exists a proper colouring $\phi$ of $\bigcup{\cal C}$ with $\alpha_k$ colo
  
  \begin{lemma}\label{lem:dis}
  Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-\free\ digraph.
-Let $C_1,C_2,C_3\in\mathcal C$ which pairwise intersect, and let $v$ belong to $V(C_2)\cap V(C_3)\setminus V(C_1)$. 
+Let $C_1,C_2,C_3$ be three pairwise-intersecting directed cycles of ${\cal C}$, and let $v$ belong to $V(C_2)\cap V(C_3)\setminus V(C_1)$. 
 Then exactly one of the following holds:
 \begin{itemize}
 \item[(i)] $C_2[t_{1,2}, v]$ and $C_3[t_{1,3}, v]$ have both length less than $3k$; 
@@ -565,7 +561,7 @@ Then exactly one of the following holds:
 \end{lemma}
 
 \begin{proof}
-Observe first that since $C_2$ has length at least $8k$ and $P_{1,2}$ has length at most $k-1$, the sum of lengths of $C_2[t_{1,2}, v]$ and  $C[v, s_{1,2}]$ is at least $7k+1$. Similarly, the sum of lengths of $C_2[t_{1,3}, v]$ and $C[v, s_{1,3}]$ is at least $7k+1$. In particular, if (i) holds, then (ii) does not hold and vice-versa.
+Observe first that since $C_2$ has length at least $8k$ and $P_{1,2}$ has length at most $k-1$, the sum of the lengths of $C_2[t_{1,2}, v]$ and  $C[v, s_{1,2}]$ is at least $7k+1$. Similarly, the sum of the lengths of $C_2[t_{1,3}, v]$ and $C[v, s_{1,3}]$ is at least $7k+1$. In particular, if (i) holds, then (ii) does not hold and vice-versa.
 
 
 Suppose for a contradiction that both (i) and (ii) do not hold. By symmetry and the above inequalities, we may assume that both $C_2[t_{1,2}, v]$ and $C_3[v, s_{1,3}]$ have length more than $3k$.
@@ -684,7 +680,7 @@ Note that necessarily, $q\geq 4$, for $B_3$ does not intersect $B_2$, for otherw
 
 Observe that $C_W[b_2,v]=C_2[b_2,v]$ or $C_W[v, a_4]$ has length at least $k$.
 Indeed, if $q=p+1$, then it follows from the fact that $B_2$ has length as least $4k$; if
-$5\leq q\leq p$, then it comes form the fact that $B_4$ is a subdipath of $C_W[v, a_r]$; if $q=4$, then it follows from Lemma~\ref{lem:dis}  applied to $C_3$, $C_2$, $C_4$ in the role of $C_1$, $C_2$, $C_3$ respectively.
+$5\leq q\leq p$, then it comes from the fact that $B_4$ is a subdipath of $C_W[v, a_r]$; if $q=4$, then it follows from Lemma~\ref{lem:dis}  applied to $C_3$, $C_2$, $C_4$ in the role of $C_1$, $C_2$, $C_3$ respectively.
 In both cases, $C_W[b_2, a_4]$ has length at least $k$. 
 
 Furthermore, $C_W[a_4,b_2]$ has length at least $k$ because it contains $B_3$. Therefore the union of
@@ -699,11 +695,11 @@ Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-\
 
 Let $\phi$ be a partial colouring of a directed cycle $C_1\in {\cal C}$ such that only a path of length at most
 $7k$ is coloured and this path is rainbow-coloured. Then $\phi$ can be extended into
-a colouring of $I(C_1)$ using $\alpha_k$ colours, such that every subpath of length at most $7k$ of $C_1$ is rainbow-coloured and  $Q_j$ is rainbow-coloured, for every $C_j\in {\cal C}\cap C_1$.\end{lemma}
+a colouring of $I(C_1)$ using $\alpha_k$ colours, such that every subdipath of length at most $7k$ of $C_1$ is rainbow-coloured and  $Q_j$ is rainbow-coloured, for every $C_j\in {\cal C}\cap C_1$.\end{lemma}
 
 \begin{proof}
 We can easily extend $\phi$ to $C_1$ using $14k$ colours (including the at most $7k$ already used colours)
-so that every subpath of $C_1$ of length $7k$ is rainbow-coloured.
+so that every subdipath of $C_1$ of length $7k$ is rainbow-coloured.
 
 We shall now prove that there exists a colouring $\phi^+$ of $I^+(C_1)$ with $\col$ (new) colours so that $Q^+_j$ is rainbow-coloured for every $C_j\in {\cal C}\cap C_1$, and a colouring $\phi^-$ of $I^-(C_1)$ with $\col$ (other new) colours so that $Q^-_j$ is rainbow-coloured for every $C_j\in {\cal C}\cap C_1$.
 The union of the three colourings $\phi$, $\phi^+$, and $\phi^-$ is clearly the desired colouring of $I(C_1)$. (Observe that a vertex of $I(C_1)$ is coloured only once because  $C_1$, $I^+(C_1)$ and $I^-(C_1)$ are disjoint by Corollary~\ref{cor:util}.)
@@ -725,7 +721,7 @@ $\chi(D^+_1) \leq  \col$.
 \end{claim}
 
 \begin{subproof}
-To each vertex $v$ in $I^+(C_1)$ we associate the set $\Dis(v)$ of the lengths of the $C_j[t_{1,j},v]$ for all directed cycle $C_j\in {\cal C} \cap C_1$ containing $v$ such that $C_j[t_{1,j},v]$ has length at most $3k$.
+To each vertex $v$ in $I^+(C_1)$ we associate the set $\Dis(v)$ of the lengths of the $C_j[t_{1,j},v]$ for all directed cycles $C_j\in {\cal C} \cap C_1$ containing $v$ such that $C_j[t_{1,j},v]$ has length at most $3k$.
 
 
 Suppose for a contradiction that $\chi(D^+_1) \leq  \col$.
@@ -768,9 +764,9 @@ We distinguish between the intersection of $P_1$, $P_2$ and $P_3$:
 
 	\item Assume now that $P_3$ intersects $P_1\cup P_2$ but not $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cup P_2$.
 	\begin{itemize}
-	\item If $v \in P_2$, let $u$ be the last vertex on $P_2\cap P_3$ along $P_3$. Observe that $P_3[v,u]$ is also a subpath of $P_2$ and therefore contains no vertex of $P_1$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_1}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_1$. Hence, the union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,v]$, $Q\odot P[v_{\ell_1},v_{\ell_k}]$, and $P_2[u,v_{\ell_k}]$ is a $B(k,1;k)$-subdivision, a contradiction.
+	\item If $v \in P_2$, let $u$ be the last vertex on $P_2\cap P_3$ along $P_3$. Observe that $P_3[v,u]$ is also a subdipath of $P_2$ and therefore contains no vertex of $P_1$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_1}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_1$. Hence, the union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,v]$, $Q\odot P[v_{\ell_1},v_{\ell_k}]$, and $P_2[u,v_{\ell_k}]$ is a $B(k,1;k)$-subdivision, a contradiction.
 	
-	\item If $v\in P_1$, let $u$ be the last vertex on $P_1\cap P_3$ along $P_3$.  Observe that $P_3[v,u]$ is also a subpath of $P_1$ and therefore contains no vertex of $P_2$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_k}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_2$.
+	\item If $v\in P_1$, let $u$ be the last vertex on $P_1\cap P_3$ along $P_3$.  Observe that $P_3[v,u]$ is also a subdipath of $P_1$ and therefore contains no vertex of $P_2$. Furthermore, there is a dipath $Q$ from $u$ to $v_{\ell_k}$ in $P_3[u, t(P_3)]\cup C_1\cup  P_2$.
 	The union of $P[v_{\ell_k}, v_f] \odot P_3[v_f,u]$, $P_1[u, v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$ and $Q$ is a $B(k,1;k)$-subdivision, a contradiction.
 
 	\end{itemize}
@@ -786,24 +782,24 @@ We are now ready to prove Lemma~\ref{lem:col-union-cycle}. In fact, we prove the
 If there exists
 a partial colouring $\phi$ such that one of the directed cycle $C_1$ has a path of length less than $7k$
 which is rainbow-coloured, then we can extend this colouring to all $D[\mathcal{C}]$ using less
-than $\alpha_k$ colours such that, on each directed cycle, every subpath of length
+than $\alpha_k$ colours such that, on each directed cycle, every subdipath of length
 $7k$ is rainbow-coloured.
 \end{lemma}
 
 
 \begin{proof}
 By induction on the number of directed cycles in $\mathcal{C}$.
-Consider a rainbow-colouring of a subpath of length less than $7k$ of a directed cycle $C_1\in {\cal C}$.
+Consider a rainbow-colouring of a subdipath of length less than $7k$ of a directed cycle $C_1\in {\cal C}$.
 By Lemma \ref{lem:IC}, we can extend this colouring to a colouring $\phi_1$ of $I(C_1)$ at most $\alpha_k$ colours.
 Note that the non-coloured vertices of $\bigcup{\cal C}$ are in one of the connected components of $\bigcup{\cal C} - I(C_1)$.
-Let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$. The coloured (by $\phi_1$) vertices of ${\cal C}\cap A$ are those of $({\cal C}\cap A)-A$. Hence, by Lemma \ref{lem:A}, they all belong to some directed cycle $C_j$ and so to the diptah $Q_j$ which has length at most $7k$.
+Let $A$ be a connected component of $\bigcup{\cal C} - I(C_1)$. The coloured (by $\phi_1$) vertices of ${\cal C}\cap A$ are those of $({\cal C}\cap A)-A$. Hence, by Lemma \ref{lem:A}, they all belong to some directed cycle $C_j$ and so to the dipath $Q_j$ which has length at most $7k$.
 Hence, by the induction hypothesis, we can extend $\phi_1$ to $A$. Doing this for each component, we extend $\phi_1$ to the whole $\bigcup{\cal C}$.
 \end{proof}
 
 
 
 Set $\beta_k= k(4k^2+2)(2\cdot (4k)^{4k} + 1) \alpha_k$.
-The second step in the proof is the following lemma.
+The second step of the proof is the following lemma.
 
 \begin{lemma}\label{lem:DC}
 Let ${\cal C}$ be a $k$-suitable collection of directed cycles in a $B(k,1;k)$-\free\ digraph $D$.
@@ -823,7 +819,7 @@ $i$ is the smallest integer such that there exists a directed cycle in $L_i$ con
 
 
 
-To bound  the chromatic number of $D[{\cal S}]$, we partition its arc set of in $(A_0,A_1, A_2)$, where
+To bound  the chromatic number of $D[{\cal S}]$, we partition its arc set in $(A_0,A_1, A_2)$, where
 \begin{itemize}
 	\item $A_0$ is the set of arcs of $D[{\cal S}]$ which ends belong to the same level, and
 	\item $A_1$ is the set of arcs of $D[{\cal S}]$ which ends belong to different levels $i$ and $j$ with $ | i - j| < k$.	
@@ -924,13 +920,13 @@ We shall prove that $\chi (D_2[X^+\cup X'])\leq 2k^2+1$ and $\chi (D_2[X^-\cup X
 
 Let $x$ and $y$ be two adjacent vertices of $D_2[X^+\cup X']$. Let $L_i$ be the level of $x$ and $L_j$ be the level of $y$. Without loss of generality, we may assume that $j\geq i+k$.
 Let $C_x$ be the directed cycle of $L_i$ such that $x \in C_x$ and $C_y$ the directed cycle of $L_j$ such that $y \in C_y$.
-By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of directed cycles $C_1 \dots C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
+By considering ancestors of $C_x$ and $C_y$, there is a shortest sequence of directed cycles $C_1, \dots , C_p$ such that $C_1 = C_x$ and $C_p = C_y$ and for all $l\in [p-1]$, either $C_l$ is the father of $C_{l+1}$ or $C_{l+1}$ is the father of $C_l$.
 In particular $C_{p-1}$ is the father of $C_p$. Since $y\in X^+\cup X'$, then $C[y,t_{p-1,p}]$ has length at least $k$.
 
-Assume that $xy$ is an arc. In $\bigcup_{l=1}^{p-1} C_l$, there is a dipath $P$ from $t_{p-1,p}$ to $x$. This path has length at least $k-1$ because
+Assume that $(x,y)$ is an arc. In $\bigcup_{l=1}^{p-1} C_l$, there is a dipath $P$ from $t_{p-1,p}$ to $x$. This dipath has length at least $k-1$ because
 it must go through all levels $L_{i'}$, $i\leq i'\leq j-1$ because the vertices of any directed cycle of ${\cal S}$ are in two consecutive levels.
 Hence the union of $P\odot (x,y)$, $C_p[t_{p-1,p}, y]$, and  $C_p[y,t_{p-1,p}]$ is a $B(k,1;k)$-subdivision, a contradiction.
-Hence  $yx$ is an arc.
+Hence  $(y,x)$ is an arc.
 
 
 Suppose that $C_x$ is not an ancestor of $C_y$. In particular, $C_2$ is the father of $C_1$
@@ -940,9 +936,9 @@ Hence $C_x$ is an ancestor of $C_y$.
 
 In  particular, $C_l$ is the father of $C_{l+1}$ for all $l\in [p-1]$. Let $P$ be the dipath from $t_{1,2}$ 
 to $y$ in $\bigcup_{l=2}^{p} C_l$. It has length at least $k-1$ because it must go through all levels $L_i$, $1\leq i\leq p-1$. 
-$C_1[x,t_{1,2}]$ has length less than $k$ , for otherwise the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ would be a subdivision of  $B(k,1;k)$.
+$C_1[x,t_{1,2}]$ has length less than $k$, for otherwise the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ would be a subdivision of  $B(k,1;k)$.
 
-To summarize, the only arcs of $D_2[X^+\cup X']$ are arcs $yx$ such that $C_x$ is an ancestor of $C_y$ and $C_1[x,t_{1,2}]$ has length less than $k$ with $C_1 \dots C_p$ is the
+To summarize, the only arcs of $D_2[X^+\cup X']$ are arcs $(y,x)$ such that $C_x$ is an ancestor of $C_y$ and $C_1[x,t_{1,2}]$ has length less than $k$ with $C_1 \dots C_p$ is the
 sequence of directed cycles such that $C_1=C_x$ to $C_p=C_y$ and $C_l$ is the father of $C_{l+1}$ for all $l\in [p-1]$.
 In particular, $D_2[X^+\cup X']$ is acyclic.
 
@@ -974,8 +970,8 @@ $\chi(D'_0(c))= 1$ for all $c\in [\alpha_k]$.
 
 \begin{subproof}
 We need to prove that $D'_0(c)$ has no arc.
-Suppose for a contradiction that $xy$ is an arc of $D'_0(c)$. 
-By definition of $D_0$ $x$ and $y$ are in a same level $L_i$.
+Suppose for a contradiction that $(x,y)$ is an arc of $D'_0(c)$. 
+By definition of $D_0$, the vertices $x$ and $y$ are in a same level $L_i$.
 Let $C_l$ and $C_m$ be two directed cycles of $L_i$ such that $x \in C_l$ and $y \in C_m$.
 
 If $C_l=C_m$, then both $C_l[x,y]$ and $C_l[y,x]$ have length at least $7k$ because the subdipaths of  length $7k$ of $C_l$ are rainbow-coloured by $\phi$. Hence the union of those paths and $(x,y)$ is  a $B(k,1;k)$-subdivision, a contradiction.
@@ -988,7 +984,7 @@ belongs to $P^-_l$, $P^+_l$ or $L_{i-1}$, and by construction of $R'_l$, $C_l[x,
 $C_l[s_{l,m},x]$ are both longer than $k$. Therefore they form with $(x,y) \odot C_m[y,s_{l,m}]$ a $B(k,1;k)$-subdivision, a contradiction.
 
 Suppose now that $C_l$ and $C_m$ do not intersect. Let $C_l'$ and $C_m'$ be the fathers of $C_l$ and $C_m$ respectively. 
-Let $P$ be the dipath  from $s_{m,m'}$ to $s_{l,l'}$ in of $\cup_{j<i} L_j$. Then the union of $C_l[s_{l,l'}, x]$,
+Let $P$ be the dipath  from $s_{m,m'}$ to $s_{l,l'}$ in $\bigcup_{j<i} L_j$. Then the union of $C_l[s_{l,l'}, x]$,
 $(x,y) \odot C_m[y, s_{m,m'}] \odot P$, and $C_l[x,s_{l,l'}]$ is a $B(k,1;k)$-subdivision, a contradiction.
 \end{subproof}
 
@@ -1026,7 +1022,7 @@ Hence $P$ intersects every directed cycle of ${\cal S}$ at most once.
 For every $v\in V(P)$, let $\Len(v)$ be the set of lengths of $C_l[t_{l,l'},v]$ for all directed cycles $C_l \in  L_{i_0}$ containing $v$ and whose father is $C_{l'}$.
 
 
-For $1\leq i\leq p$, let $m_i = \min \Len(v_i)$. By Claim~\ref{claim:Rpos}, $\Len(v_i) \subset [2k]$.
+For $1\leq i\leq p$, let $m_i = \min \Len(v_i)$. By Claim~\ref{claim:Rpos}, $\Len(v_i) \subseteq [2k]$.
 Lemma \ref{min} applied to $(m_i)_{1\leq i\leq p}$ yields a set $L$ of $4k^2$ indices such that 
 for any $i< j \in L$,  $m_i=m_j$ and $m_k > m_i$, for all $i< k < j$.
 Let $l_1 < l_2 < \cdots < l_{4k^2}$ be the elements of $L$ and let $m= m_{l_1} = \cdots = m_{l_{4k^2}}$.
@@ -1070,10 +1066,10 @@ and $P[v_{\ell_k}, v_f] \odot P_3 \odot P_5[s_{j'_3,j_3}, v]$ is a $B(k,1;k)$-su
 
 	\item Assume now that $P_3$ intersects $P_1\cup P_2$ but not $P_1\cap P_2$. Let $v$ be the first vertex along $P_3$ in $P_1\cup P_2$.
 	\begin{itemize}
-	\item If $v \in P_2$, let $u$ be the last vertex of $P_2\cap P_3$ along $P_3$. Observe that $P_3[v,u]$ is also a subpath of $P_2$ and therefore contains no vertex of $P_1$. Hence, the union of $P_3[u, s_{j'_3,j_3}]\odot P_5 \odot P_1\odot P[v_{\ell_1},v_{\ell_k}]$,  $P_2[u,v_{\ell_k}]$, and $P[v_{\ell_k}, v_f] \odot P_3[v_f,v]$ is a $B(k,1;k)$-subdivision, a contradiction.
+	\item If $v \in P_2$, let $u$ be the last vertex of $P_2\cap P_3$ along $P_3$. Observe that $P_3[v,u]$ is also a subdipath of $P_2$ and therefore contains no vertex of $P_1$. Hence, the union of $P_3[u, s_{j'_3,j_3}]\odot P_5 \odot P_1\odot P[v_{\ell_1},v_{\ell_k}]$,  $P_2[u,v_{\ell_k}]$, and $P[v_{\ell_k}, v_f] \odot P_3[v_f,v]$ is a $B(k,1;k)$-subdivision, a contradiction.
 	
 	
-	\item If $v\in P_1$, let $u$ be the last vertex of $P_1\cap P_3$ along $P_3$.  Observe that $P_3[v,u]$ is also a subpath of $P_1$ and therefore contains no vertex of $P_2$. 
+	\item If $v\in P_1$, let $u$ be the last vertex of $P_1\cap P_3$ along $P_3$.  Observe that $P_3[v,u]$ is also a subdipath of $P_1$ and therefore contains no vertex of $P_2$. 
 	Hence the union of $P_1[u, v_{\ell_1}]\odot P[v_{\ell_1}, v_{\ell_k}]$, $P_3[u, s_{j'_3,j_3}]\odot P_6 \odot P_2$, and $P[v_{\ell_k}, v_f] \odot P_3[v_f,u]$,  is a $B(k,1;k)$-subdivision, a contradiction.
 
 	\end{itemize}
