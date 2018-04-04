@@ -1,0 +1,65 @@
+\documentclass[]{article}
+
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{amsmath}
+\newcommand{\joanna}[1]{\textcolor{blue}{(JOANNA: #1)}}
+
+\newcommand{\fred}[1]{{\color{red} [Fred: #1]}}
+
+\newcounter{cptcomments}
+\setcounter{cptcomments}{1}
+
+\newenvironment{comment}
+{ \noindent\textbf{Comment~\arabic{cptcomments}:~}\ignorespaces }
+{ \addtocounter{cptcomments}{1}\hfill\medskip\par\noindent\ignorespacesafterend }
+
+\newenvironment{answer}
+{ \noindent\textbf{Answer:~}\ignorespaces }
+{ \hfill\bigskip\par\noindent\ignorespacesafterend }
+
+\newenvironment{sketchofproof}{\noindent\emph{Proof sketch. }\ignorespaces}{\hfill\qed\medskip\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+
+\noindent\begin{tabular}{ll}
+\textbf{Manuscript Title:} & Bispindles in strongly connected digraphs with large chromatic number \\[1mm]
+\textbf{Authors:} & N. Cohen, F. Havet, W. Lochet, and R. Lopes\\[1mm]
+Submitted for publication to:& \emph{Algorithmica}
+\end{tabular}
+
+\bigskip
+\begin{center}
+  {\Large{\textbf{Response to reviewers}}}
+\end{center}
+\bigskip
+
+
+First of all, we would like to thank the anonymous reviewers for their time and
+efforts, and for providing valuable feedback in their reports. We carefully
+considered all the comments and suggested revisions. 
+
+
+\medskip
+
+We corrected all spotted misprints and unified the notations.
+
+\medskip
+
+We also reorganized the paper as suggested by one of the referees.
+
+Firstly, we included the easy results (Theorem 9 and Proposition 10) into the introduction to motivate possible readers and attract them to the problem.
+
+Secondly, we reorganized the proofs in Subsection 4.1. We moved Lemma 25 at the beginning of this subsection so that the reader knows the reason why we prove Lemmas 26-30.
+
+
+\medskip 
+
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+
+
+
+\end{document}
