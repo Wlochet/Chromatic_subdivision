@@ -61,7 +61,7 @@
 
 \newenvironment{subproof}{\par\noindent {\it Subproof}.\ }{\hfill$\lozenge$\par\vspace{11pt}}
 
-\newcommand{\cste}{ 8k \cdot (2\cdot \col + 14k) \cdot (2 \cdot \dr)}
+\newcommand{\cste}{ 8k^2(4k^2+2)(2\cdot (4k)^{4k} + 1) (2\cdot \col + 14k)}
 \newcommand{\qj}{\bf cste2}
 \newcommand{\dr}{ (2k+1)\cdot k \cdot (4k)^{4k}}
 \newcommand{\col}{(6k^2)^{3k}}
@@ -141,7 +141,7 @@ Let $P$ be an oriented path with two blocks on $n > 3$ vertices, then every digr
 The following celebrated theorem of Bondy shows that  the story does not stop here.
 
 \begin{theorem}[Bondy~\cite{Bon76}]\label{thm:bondy}
-Every strong digraph of chromatic number at least $k$ contains a directed cycle of length at least $k$.
+Every strongly connected digraph of chromatic number at least $k$ contains a directed cycle of length at least $k$.
 \end{theorem} 
 
 The strong connectivity assumption is indeed necessary, as transitive tournaments contain no directed cycle but can have arbitrarily  high chromatic number. 
@@ -153,7 +153,7 @@ Recall that a {\it subdivision} of a digraph $F$ is a digraph that can be obtain
 For every oriented cycle $C$, there exists a constant $f(C)$ such that every strong digraph with chromatic number at least $f(C)$ contains a subdivision of $C$.
 \end{conjecture}
 
-The strong connectivity assumption is also necessary in Conjecture~\ref{conj:cycle-sub} as shown by Cohen et al.  \cite{CHLN16}. This follows from  the following result.
+The strongly connected connectivity assumption is also necessary in Conjecture~\ref{conj:cycle-sub} as shown by Cohen et al.  \cite{CHLN16}. This follows from  the following result.
 \begin{theorem}[Cohen et al.  \cite{CHLN16}]\label{dkb}
 For any positive integers $b$ and $k$, there exists an acyclic digraph $D_{k,b}$ such that any cycle in $D_{k,b}$ has at least $b$ blocks and $\chi(D_{k,b}) > k$.
 \end{theorem}
@@ -165,7 +165,7 @@ On the other hand, Cohen et al.  \cite{CHLN16} proved Conjecture~\ref{conj:cycle
 More precisely, denoting by $C(k,\ell)$ the cycle with two blocks, one of length $k$ and the other of length $\ell$,
 they proved the following result.
 \begin{theorem}[ Cohen et al. \cite{CHLN16}]\label{th:ckl}
-For every two positive integers $k$ and $\ell$, every strong digraph with chromatic number at least $O((k+\ell)^4)$ contains a subdivision of $C(k,\ell)$.
+For every two positive integers $k$ and $\ell$, every strongly connected digraph with chromatic number at least $O((k+\ell)^4)$ contains a subdivision of $C(k,\ell)$.
 \end{theorem} 
 The bound has recently been improved to $O((k+\ell)^2)$  by Kim et al. \cite{KKPM}.  
 
@@ -178,7 +178,7 @@ with tail $x$ and head $y$ and a  $q$-spindle with tail $y$ and head $x$.
 In other words, it is the union of $p$  $(x,y)$-dipaths and $q$ $(y,x)$-dipaths, all of these dipaths being pairwise internally disjoint.
 Note that $2$-spindles are the cycles with two blocks and the $(1+1)$-bispindles are the directed cycles.
 
-In this paper, we study the existence of spindles and bispindles in strong digraphs with large chromatic number.
+In this paper, we study the existence of spindles and bispindles in strongly connected digraphs with large chromatic number.
 First, let us give a construction of digraphs with arbitrarily large chromatic number that contain no $3$-spindle and no $(2+2)$-bispindle. 
 
 \begin{theorem}\label{thm:no}
@@ -190,10 +190,10 @@ Let $D_{k,4}$ be an acyclic digraph with chromatic number greater than $k$ in wh
 Let $S = \{s_1, \dots,  s_l\}$ be the set of vertices of $D_{k,4}$ with out-degree 0 and $T = \{t_1, \dots, t_m\}$ the set of vertices with in-degree 0.
 
 Consider the digraph $D$ obtained from $D_{k,4}$ as follows. Add a dipath  $P = (x_1,x_2, \dots , x_l,z,y_1,y_2,\dots, y_m)$ and the arcs $(s_i,x_i)$ for all $i\in [l]$ and
-$(y_j,t_j)$ for all $j\in [m]$. It is easy to see that $D$ is strong.
+$(y_j,t_j)$ for all $j\in [m]$. It is easy to see that $D$ is strongly connected.
 Moreover, in $D$, every directed cycle uses the arc $(x_l,z)$. Therefore $D$ does not contain a $(2+2)$-bispindle, which has two arc-disjoint directed cycles. 
 
-Suppose now that $D$ has a $3$-spindle with tail $u$ and head $v$, and let $Q_1, Q_2, Q_3$ be its three $(u,v)$-dipaths. Observe that $u$ and $v$ are not vertices of $P$, because all vertices of this dipath have either in-degree $2$ or out-degree $2$. In $D$, each oriented cycle with two blocks between vertices outside $P$ must use the arc $(x_l,z)$. The union of $Q_1$ and $Q_2$ form a cycle on two blocks, 
+Suppose now that $D$ has a $3$-spindle with tail $u$ and head $v$, and let $Q_1, Q_2, Q_3$ be its three $(u,v)$-dipaths. Observe that $u$ and $v$ are not vertices of $P$, because all vertices of this dipath have either in-degree at most $2$ or out-degree at most $2$. In $D$, each oriented cycle with two blocks between vertices outside $P$ must use the arc $(x_l,z)$. The union of $Q_1$ and $Q_2$ form a cycle on two blocks, 
 which means that one of the two paths, say $Q_1$, contains $(x_l,z)$. But $Q_2$ and $Q_3$ also form a cycle on two blocks, but they cannot contain $(x_l,z)$, a contradiction.
 \end{proof}
 
@@ -205,17 +205,17 @@ By Theorem~\ref{thm:no}, the most we can expect in all strongly connected digrap
 Let $B(k_1,k_2;k_3)$ denote the $(2+1)$-bispindle formed by three internally disjoint paths between two vertices $x,y$,
 two $(x,y)$-dipaths, one of length $k_1$ and the other of length $k_2$, and one $(y,x)$-dipath of length $k_3$.
 
-One can easily prove that  every strong digraph with chromatic number at least $4$ contains a subdivision of $B(2,1;1)$.
+One can easily prove that  every strongly connected digraph with chromatic number at least $4$ contains a subdivision of $B(2,1;1)$.
 \begin{proposition}\label{prop:p211}
-Let $D$ be a strong digraph.
+Let $D$ be a strongly connected digraph.
 If $\chi(D)\geq 4$, then $D$ contains a subdivision of $B(2,1;1)$.
 \end{proposition}
 \begin{proof}
-Assume  $\chi(D)\geq 4$. Since every digraph contains a $2$-connected strong subdigraph with the same chromatic number, we may assume that $D$ is $2$-connected.
+Assume  $\chi(D)\geq 4$. Since every strongly connected digraph contains a $2$-connected strongly connected subdigraph with the same chromatic number, we may assume that $D$ is $2$-connected.
 Let $C$ be a shortest directed cycle in $D$. 
 It must be induced, so $\chi(D[C])=\chi(C) \leq 3$. In particular, $V(D)\setminus V(C)$ is not empty.
 
-Thus, by Proposition 5.11 in \cite{BoMu08},  there is a dipath $P$ in $D$ whose ends lie in $F$ but whose internal
+Thus, by Proposition 5.11 in \cite{BoMu08},  there is a dipath $P$ in $D$ whose ends lie in $C$ but whose internal
 vertices do not. Necessarily, $P$ has length at least $2$ since $C$ is induced.
 Thus the union of $P$ and $C$ is a subdivision of $B(2,1;1)$.
 \end{proof}
@@ -228,7 +228,7 @@ The bound $4$ in Proposition~\ref{prop:p211} is best possible because a directed
 
 We conjecture that Proposition~\ref{prop:p211} can be extended to any $(2+1)$-bispindle.
 \begin{conjecture}\label{conj:3chemins}
-There is a function $g:\mathbb{N}^3 \rightarrow \mathbb{N}$ such that  every strong digraph with chromatic number at least $g(k_1,k_2,k_3)$ contains
+There is a function $g:\mathbb{N}^3 \rightarrow \mathbb{N}$ such that  every strongly connected digraph with chromatic number at least $g(k_1,k_2,k_3)$ contains
 a subdivision of $B(k_1,k_2;k_3)$.
 \end{conjecture}
 
@@ -236,13 +236,13 @@ As an evidence, we prove this conjecture for $k_2=1$ and arbitrary $k_1$ and $k_
 
 
 \begin{theorem}\label{th:P11k}
-Let $k \geq 3$ be an integer and let $D$ be a strong digraph. If $\chi(D) >  (2k-2)(2k-3)$, then $D$ contains a subdivision of $B(k,1;1)$.
+Let $k \geq 3$ be an integer and let $D$ be a strongly connected digraph. If $\chi(D) >  (2k-2)(2k-3)$, then $D$ contains a subdivision of $B(k,1;1)$.
 \end{theorem}
 
 In Section~\ref{sec:main}, using the same approach but in a more complicated way, we prove our main result: 
 
 \begin{theorem}\label{th:main}
-For every positive integer $k$, there is a constant $\gamma_k$ such that if $D$ is a strong digraph with $\chi(D) > \gamma_k$, then $D$ contains a subdvision of $B(k,1;k)$.
+For every positive integer $k$, there is a constant $\gamma_k$ such that if $D$ is a strongly connected digraph with $\chi(D) > \gamma_k$, then $D$ contains a subdvision of $B(k,1;k)$.
 \end{theorem}
 
 We prove the above theorem for a huge constant $\gamma_k$. It can easily be lowered. However, we made no attempt to it here for two reasons:
@@ -457,21 +457,21 @@ Since $C$ has length at least $2k-2$, either $C[t(Q), s(P)]$ has length at least
 \begin{lemma}\label{lem:compo1}
 Let $k\geq 3$ be an integer, and let ${\cal C}$ be a nice collection of directed cycles in a $B(k,1;1)$-subdivision-free digraph $D$ and ${\cal S}$ a component of $\mathcal{C}$. Then $\chi(D[S]) \leq 2k-2$.	 
 \end{lemma}
-ord
+
 \begin{proof}
 By induction on the number of directed cycles in ${\cal S}$. Let $C$ be a cycle of ${\cal S}$. There is no chord $(x,y)$ of $C$
 such that $C[x,y]$ has length at least $k$, for otherwise there would be a $B(k,1;1)$-subdivision. Hence $D[C]$ has maximum degree at most $2k-2$. Moreover, by Proposition~\ref{prop:tournoi}, $D[C]$ is not a tournament of order $2k-1$.
 Thus, by Brooks' Theorem (\ref{thm:brooks}), $\chi(D[C])\leq 2k-2$.
- Let $c$ be a proper colouring of $C$ with $2k-2$ colours. Let ${\cal S}_1, {\cal S}_2, \dots, {\cal S}_r$ be the components of ${\cal S} \setminus \{C\}$. Since ${\cal S}$ is the union the ${\cal S}_l$, $l\in [r]$, and $\{C\}$,
+ Let $c$ be a proper colouring of $C$ with $2k-2$ colours. Let ${\cal S}_1, {\cal S}_2, \dots, {\cal S}_r$ be the components of ${\cal S} \setminus \{C\}$. Since ${\cal S}$ is the union of the ${\cal S}_l$, $l\in [r]$, and $\{C\}$,
 each ${\cal S}_l$ has less cycles than ${\cal S}$. By the induction hypothesis, there exists a proper colouring $c_l$ using $2k-2$ colours for each $D[{\cal S}_l]$.
  
 Now, we claim that each $D[{\cal S}_l]$ intersects $C$ in exactly one vertex. It is easy to see that $C$ must intersect at least one cycle of each ${\cal S}_l$.
 Now suppose there exist two vertices of $C$, $x$ and $y$, in $D[{\cal S}_l]$. By definition of a nice collection, they cannot belong to the same cycle 
 of ${\cal S}_l$, so there exist two cycles $C_i$ and $C_j$ of $S_l$ such that $x \in C_i$ and $y \in C_j$. Now $C[x,y]$ is a dipath from $C_i$ to $C_j$ whose arcs are not in $A(\bigcup {\cal S}_l)$. This contradicts Lemma~\ref{lem:headphone}. 
 
-Consequently, free to permute the colours of the $c_l$,
-we may assume that each vertex of $C$ receives the same colour in $c$ and in the $c_l$. 
-In addition, by Lemma~\ref{lem:headphone}, there is no arc between different $D[{\cal S}_l]$ nor between $D[{\cal S}_l]$ and $C$. Hence the union of the 
+Consequently, free to permute the colours of $c_l$,
+we may assume that each vertex of $C$ receives the same colour in $c$ and in $c_l$. 
+In addition, by Lemma~\ref{lem:headphone}, there is no arc between different $D[{\cal S}_l]$ nor between $D[{\cal S}_l]$ and $C$. Hence the union of 
 $c_l$ and $c$ is a proper colouring of $D[{\cal S}]$ using $2k-2$ colours. 
 \end{proof}
 
@@ -529,7 +529,7 @@ any two distinct directed cycles $C_i,C_j\in\mathcal C$ intersect on  a dipath $
 We denote by $s_{i,j}$ (resp. $t_{i,j}$) the initial (resp. terminal) vertex of  $P_{i,j}$. 
 %This notion generalizes the notion of nice collection seen before. 
 
-The proof of Theorem \ref{th:main} uses the same general idea as Theorem \ref{th:P11k}: take a maximal $k$-suitable collection of directed cycles ${\cal C}$; show that the digraph $D_{\cal C}$ obtained by contracting the components of ${\cal C}$ has bounded chromatic number, and that each component also has bounded chromatic; conclude using Lemma~\ref{lem:contrac}. However, because the intersection of cycles in this collection are more
+The proof of Theorem \ref{th:main} uses the same general idea as Theorem \ref{th:P11k}: take a maximal $k$-suitable collection of directed cycles ${\cal C}$; show that the digraph $D_{\cal C}$ obtained by contracting the components of ${\cal C}$ has bounded chromatic number, and that each component also has bounded chromatic number; conclude using Lemma~\ref{lem:contrac}. However, because the intersection of cycles in this collection are more
 complicated and because there might be arcs between directed cycles of the same component, bounding the chromatic number of the components is way more challenging. The next subsection is devoted to this.
  
  
@@ -736,7 +736,7 @@ Let $l_1 < l_2 < \cdots < l_{6k^2}$ be the elements of $L$ and let $m= m_{l_1} =
 
 For $1\leq j\leq 6k^2-1$, let $M_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Dis(v_i)$.
 By definition $M_j\leq 3k$.
-Applying Lemma~\ref{max} to $(M_j)_{1\leq j\leq 6k^2}$,  we get a sequence of size $2k$ $M_{j_0+1} \dots M_{j_0+{2k}}$ such that $M_{j_0+{2k}}$ is the greatest. For sake of simplicity, we set $\ell_i =j_0+i$ for $1\leq i\leq 2k$.
+Applying Lemma~\ref{max} to $(M_j)_{1\leq j\leq 6k^2}$,  we get a sequence of size $2k$ $M_{j_0+1}, \dots , M_{j_0+{2k}}$ such that $M_{j_0+{2k}}$ is the greatest. For sake of simplicity, we set $\ell_i =j_0+i$ for $1\leq i\leq 2k$.
 Let $f$ be the smallest index not smaller than $\ell_{2k}$ for which $M_{\ell_{2k}} \in \Dis (v_f)$. 
 
 Let $j_1$ be an index such that $C_{j_1}[t_{1,j_1},v_{\ell_1}]$ has length $m$ and set $P_1=C_{j_1}[t_{1,j_1},v_{\ell_1}]$.
@@ -827,7 +827,7 @@ To bound  the chromatic number of $D[{\cal S}]$, we partition its arc set in $(A
 \end{itemize} 
 
 For $i\in \{0,1,2\}$, let $D_i$ be the spanning subdigraph of $D[{\cal S}]$ with arc set $A_i$.
-We shall now we bound the chromatic numbers of $D_0$, $D_1$ and  $D_2$.
+We shall now bound the chromatic numbers of $D_0$, $D_1$ and  $D_2$.
 
 
 \begin{claim}\label{claim:D1}
@@ -938,7 +938,7 @@ In  particular, $C_l$ is the father of $C_{l+1}$ for all $l\in [p-1]$. Let $P$ b
 to $y$ in $\bigcup_{l=2}^{p} C_l$. It has length at least $k-1$ because it must go through all levels $L_i$, $1\leq i\leq p-1$. 
 $C_1[x,t_{1,2}]$ has length less than $k$, for otherwise the union of $P \odot yx$, $C_1[x,t_{1,2}]$ and $C_1[t_{1,2},x]$ would be a subdivision of  $B(k,1;k)$.
 
-To summarize, the only arcs of $D_2[X^+\cup X']$ are arcs $(y,x)$ such that $C_x$ is an ancestor of $C_y$ and $C_1[x,t_{1,2}]$ has length less than $k$ with $C_1 \dots C_p$ is the
+To summarize, the only arcs of $D_2[X^+\cup X']$ are arcs $(y,x)$ such that $C_x$ is an ancestor of $C_y$ and $C_1[x,t_{1,2}]$ has length less than $k$ with $C_1 \dots C_p$ the
 sequence of directed cycles such that $C_1=C_x$ to $C_p=C_y$ and $C_l$ is the father of $C_{l+1}$ for all $l\in [p-1]$.
 In particular, $D_2[X^+\cup X']$ is acyclic.
 
@@ -1030,7 +1030,7 @@ Let $l_1 < l_2 < \cdots < l_{4k^2}$ be the elements of $L$ and let $m= m_{l_1} =
 
 For $1\leq j\leq 4k^2-1$, let $M_j = \max \bigcup_{l_j\leq i < l_{j+1}} \Len(v_i)$.
 By definition $M_j\leq 2k$.
-Applying Lemma~\ref{max} to $(M_j)_{1\leq j\leq 4k^2}$,  we get a sequence of size $2k$ $M_{j_0+1} \dots M_{j_0+{2k}}$ such that $M_{j_0+{2k}}$ is the greatest. 
+Applying Lemma~\ref{max} to $(M_j)_{1\leq j\leq 4k^2}$,  we get a sequence of size $2k$ $M_{j_0+1}, \dots, M_{j_0+{2k}}$ such that $M_{j_0+{2k}}$ is the greatest. 
 For sake of simplicity, we set $\ell_i =j_0+i$ for $1\leq i\leq 2k$.
 Let $f$ be  the smallest index not smaller than $\ell_{2k}$ for which $M_{\ell_{2k}} \in \Len (v_f)$. 
 
